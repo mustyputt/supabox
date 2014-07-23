@@ -1,0 +1,115 @@
+<settings>
+
+<category label="General">
+<setting id="nextpagetop" type="bool" label="Next Page On Top Of Lists"default="true"/>
+
+<setting id="nextpagebottom" type="bool" label="Next Page On Bottom Of Lists"default="true"/>
+
+</category>
+
+<category label="Meta-Data">
+
+<setting id="metadata" type="bool" label="[COLOR blue]Enable Metahandlers[/COLOR]" default="true"/>
+
+<setting id="banners" type="bool" label="Prefer Banners For TV Shows" default="false" enable="!eq(-1,false)"/>
+
+</category>
+
+<category label="Auto-View">
+
+<setting id="auto-view" type="bool" label="[COLOR blue]Enable Autoview[/COLOR]" default="false"/>
+
+<setting id="movies-view" type="number" label="Movies View" default="503" enable="!eq(-1,false)"/>
+
+<setting id="shows-view" type="number" label="TV Shows View" default="503" enable="!eq(-2,false)"/>
+
+<setting id="episodes-view" type="number" label="Episodes View" default="503" enable="!eq(-3,false)"/>
+
+<setting id="default-view" type="number" label="Default View" default="50" enable="!eq(-4,false)"/>
+
+</category>
+
+<category label="Enable / Disable Sections">
+
+<setting id="adult" type="bool" label="[COLOR blue]Adult[/COLOR]" default="false"/>
+
+<setting id="epornik" type="bool" label="Epornik" default="true" enable="!eq(-1,false)"/>
+
+<setting id="filmikz" type="bool" label="Filmikz" default="true" enable="!eq(-2,false)"/>
+
+<setting id="freeomovie" type="bool" label="Freeomovie" default="true" enable="!eq(-3,false)"/>
+
+<setting id="tubepirate" type="bool" label="Tube Pirate" default="true" enable="!eq(-4,false)"/>
+
+
+<setting id="movies" type="bool" label="[COLOR blue]Movies[/COLOR]" default="true"/>
+
+<setting id="bmovies" type="bool" label="B-Movies" default="true" enable="!eq(-1,false)"/>
+
+<setting id="freemoviesaddict" type="bool" label="FreeMoviesAddict" default="true" enable="!eq(-2,false)"/>
+
+<setting id="iwatchonlinemovies" type="bool" label="I-WatchOnline" default="true" enable="!eq(-3,false)"/>
+
+<setting id="mmline" type="bool" label="MegaMovieLine" default="true" enable="!eq(-4,false)"/>
+
+<setting id="mooviemaniac" type="bool" label="MoovieManiac" default="true" enable="!eq(-5,false)"/>
+
+<setting id="tvreleasemovies" type="bool" label="TV Release" default="true" enable="!eq(-6,false)"/>
+
+<setting id="zmovie" type="bool" label="Watch-Movies / Z-Movie" default="true" enable="!eq(-7,false)"/>
+
+
+<setting id="shows" type="bool" label="[COLOR blue]TV Shows[/COLOR]" default="true"/>
+
+
+<setting id="channelcut" type="bool" label="Channel Cut" default="true" enable="!eq(-1,false)"/>
+
+<setting id="fullepisode" type="bool" label="FullEpisode.info" default="true" enable="!eq(-2,false)"/>
+
+<setting id="iwatchonlineshows" type="bool" label="I-WatchOnline" default="true" enable="!eq(-3,false)"/>
+
+<setting id="newmyvideolinksshows" type="bool" label="NewMyVideoLinks" default="true" enable="!eq(-4,false)"/>
+
+<setting id="tvreleaseshows" type="bool" label="TV Release" default="true" enable="!eq(-5,false)"/>
+
+<setting id="wsoeu" type="bool" label="WatchSeries-Online" default="true" enable="!eq(-6,false)"/>
+
+<setting id="hdmovies" type="bool" label="[COLOR blue]HD Movies[/COLOR]" default="true"/>
+
+<setting id="tvreleasehdmovies" type="bool" label="TV Release" default="true" enable="!eq(-1,false)"/>
+     
+
+<setting id="cartoons" type="bool" label="[COLOR blue]Cartoons[/COLOR]" default="true"/>
+
+
+<setting id="toonjet" type="bool" label="ToonJet" default="true" enable="!eq(-1,false)"/>
+
+
+<setting id="anime" type="bool" label="[COLOR blue]Anime[/COLOR]" default="true"/>
+
+
+<setting id="gogoanime" type="bool" label="GoGo Anime" default="true" enable="!eq(-1,false)"/>
+
+
+<setting id="shortsandclips" type="bool" label="[COLOR blue]Shorts And Clips[/COLOR]" default="true"/>
+
+<setting id="sotw" type="bool" label="Short Of The Week" default="true" enable="!eq(-1,false)"/>
+
+
+<setting id="music" type="bool" label="[COLOR blue]Music[/COLOR]" default="true"/>
+
+<setting id="metalVideo" type="bool" label="Metal Video" default="true" enable="!eq(-1,false)"/>
+
+<setting id="search" type="bool" label="[COLOR blue]Master Search[/COLOR]" default="true"/>
+
+
+<setting id="resolver" type="bool" label="[COLOR blue]Resolver Settings[/COLOR]" default="true"/>
+
+
+<setting id="favorites" type="bool" label="[COLOR blue]Favorites[/COLOR]" default="true"/>
+
+</category>
+   
+
+</settings>
+

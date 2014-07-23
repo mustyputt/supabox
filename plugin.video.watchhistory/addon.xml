@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="plugin.video.watchhistory"
+       name="** My Watch History **"
+       version="0.0.8"
+       provider-name="[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.t0mm0.common" version="0.0.1"/>
+	<import addon="script.module.universal" version="0.0.1"/>
+	<import addon="script.module.metahandler" version="1.0.2"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">My Watch History</summary>
+    <description lang="en">List of recently played videos across all addons.</description>
+    <platform>all</platform>
+  </extension>
+</addon>

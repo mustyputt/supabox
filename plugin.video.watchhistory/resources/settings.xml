@@ -1,0 +1,13 @@
+<settings>
+   <category label="30300">		
+		<setting id="ga_time" type="text" label="GA Called" default="2000-01-01 00:00:00" visible="false"/>
+    	<setting id="ga_visitor" type="text" label="GA visitor" default="" visible="false"/>
+		<setting id="universal_settings" type="action" label="30303" action="RunPlugin(plugin://plugin.video.watchhistory/default.py?mode=universalsettings)" />
+    </category>	
+	<category label="Meta Data">
+		<setting id="use-meta" type="bool" label="30600" default="true"/>
+		<setting id="meta-path" type="action" label="30601" enable="!eq(-1,false)" action="RunPlugin(plugin://plugin.video.watchhistory/default.py?mode=metahandlersettings)" option="close"/>
+		<setting id="movie-poster" type="bool" label="30602" enable="!eq(-2,false)" default="true"/>
+		<setting id="movie-fanart" type="bool" label="30603" enable="!eq(-3,false)" default="true"/>
+   </category>
+</settings>

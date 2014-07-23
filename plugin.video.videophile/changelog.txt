@@ -1,0 +1,173 @@
+Version 1.1.2.6
+Removed NewMyVideoLink Movie Sections Due to Adfly Links Being Used On Site. TV Episodes Remain.
+Fixed Channelcut Sources.
+
+Version 1.1.2.5
+Fixed MyVideoLinks
+Fixed WatchSeries-Online
+Temporarily removed Documentaries
+
+Version 1.1.2.4
+Removed Cartoonfreak 
+Removed We Watch Movies Free
+Fixed Z-Movie
+
+Version 1.1.2.3
+I forget :(
+
+Version 1.1.2.2
+Added B-Movies
+Re-Added MegaMovieLine
+Added Music Section
+Added Metal Video
+
+Version 1.1.2
+Fixed NewMyVideoLinks
+
+Version 1.1.1.9
+Fixed CartoonFreak
+Moved all artwork to a remote location
+
+Version 1.1.1.8
+Fixed TV Release
+Did up a few new tiles for hosters
+Small fixes to MyVideoLinks
+
+Version 1.1.1.7
+Fixed NewMyVideoLinks Again and Again.
+Removed Mechanize Code
+Fixed Some Disable Enable Section Issues
+
+Version 1.1.1.6
+Fixed NewMyVideoLinks Again.
+
+Version 1.1.1.5
+Fixed NewMyVideoLinks
+Other Small Fixes
+
+Version 1.1.1.4
+Small Fixes
+
+Version 1.1.1.3
+Lots of code cleanup
+Better filtering for Youtube Documentaries
+Added options for where Next Page directories should be located
+Fixed a bug in MyVideoLinks
+Changed Host listings to display the host's name'
+Removed MegaMovieLine 'Website Shutdown'
+Removed VideoCloud 'Changed Video Host'
+
+Version 1.1.1.2
+Added ToonJet (Stripped out the majority of dead links)
+Changed adult password to be set after section is enabled
+Made adult password optional
+Combined Site and Section options in the settings menu 
+Added Multi-Part artwork for filmikz hosts
+Added a name cleaning function to minimize the number of dropped results
+
+Version 1.1.1.1
+Fixed NewMyVideoLinks
+Small Fixes
+
+Version 1.1.1
+Fixed MegaMovieLine
+Added Fullepisode.info
+Added Some Missing Host Tiles
+
+Version 1.1
+Small Fixes
+
+Version 1.0.9.9
+Fixed some metadata issues
+
+Version 1.0.9.8
+Fixed I-WatchOnline
+
+Version 1.0.9.7
+Added GoGo Anime module
+Updated Import Versions
+
+Version 1.0.9.6
+Small Fixes
+
+Version 1.0.9.5
+Misnamed Variable
+
+Version 1.0.9.4
+Added Epornik Module to adult section
+Added Filmikz Module to adult section
+
+Version 1.0.9.3
+Added master search
+Added master search for The Collective to use
+Added MegaMovieLine module.
+
+Version 1.0.9.2
+Fixed a bug in CartoonFreak's Episode Index
+
+Version 1.0.9.1
+Fixed a bug in CartoonFreak's Next Page url.
+
+Version 1.0.9
+Fixed WatchSeries Online
+Found and repaired some error I came ascross while browsing with meta disabled
+Added Favorties
+
+Version 1.0.8.3
+Small Fixes
+
+Version 1.0.8.2
+Fixed password reset issue
+
+Version 1.0.8.1
+Small Fixes
+
+Version 1.0.8
+Fixed mode in Youtube Module that I forgot to rename
+Replace missing image Icons with VideoPhile Icon.
+
+Version 1.0.7
+Added CartoonFreak Module
+Added ChannelCut Module
+Added I-Watch Online TV Shows Module
+Added TubePirate Module
+Added Anime Section
+Added Cartoon Section
+Added Meta-Data Customization Options
+Changed All Mode ID's From Integers To Text
+Lots Of Code Clean Up
+Global Fanart
+Full Graphics Overhaul Compliments of Marquerite (Thank You)
+
+Version 1.0.6
+Implemented scraping of all TV Show, Movie and Episode sections in all relevant modules
+Made necessary adjustments to get trakt.tv scrobbling working with supported media types
+
+Version 1.0.5
+Fixed and overlooked indentation error.
+
+Version 1.0.4
+Added HD Movies Section
+Added Password Protected Adult Content Section 
+Added I-WatchOnline Module for movies
+Added TV Release module for TV Shows and Movies
+Added FreeOMovie module for adult content
+
+Version 1.0.3
+Added years to movie names where available
+Added shortcuts to all available searches to the main menu
+Added fanart to movies and shows where available
+Added metadata for episodes in WatchSeries-Onlines main index's
+Passed show thumbs to video player where available
+Added options to disable unwanted sites
+Added options to disable unwanted sections
+
+Version 1.0.2
+Removed a space from Z-Movie regex that should never have been.
+Added small delay to resolve fuction to prevent video occasionally wanting to loop
+
+Version 1.0.1
+Small fix for auto-view
+
+Version 1.0
+Initial Release

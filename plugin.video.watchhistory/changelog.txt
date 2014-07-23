@@ -1,0 +1,17 @@
+[B]v0.0.1[/B]
+Initial Release
+
+[B]v0.0.2[/B]
+Separated watchhistory into script and video plugin
+
+[B]v0.0.3[/B]
+Added meta-data support
+
+[B]v0.0.4[/B]
+Use IsPlayable from Database
+
+[B]v0.0.5[/B]
+Swtiched to Universal Watch History
+
+[B]v0.0.6[/B]
+Minor Fixes
