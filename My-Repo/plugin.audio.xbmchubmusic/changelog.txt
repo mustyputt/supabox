@@ -1,0 +1,122 @@
+v3.2.1
+Fixed Loads
+
+v3.0.7
+Fixed Fixed Fixed
+
+v3.0.1
+Fixed Download Single Song
+
+v3.0
+Fixed Download
+
+v2.9
+Fixed Play Album
+
+v2.8
+Fixed Soundcat issues
+
+v2.7
+Finally Added ownload Album But Choose Songs From List
+
+v2.6b
+Fixed A couple of issues with downloading
+
+v2.6a
+Stopped 30 Seconds Crap
+
+v2.5a
+Getting Ready For 181.FM
+
+v2.4b
+Fixed Uk Charts Play Album (Blame Spoyser He Broke IT !!!)
+Added Enable Mikeys Beautiful Fanart In Settings
+
+v2.4a
+Added POPUP
+
+v2.2a
+Added Onclick Playe (enable in settings)
+Added Return only 320Kbps
+
+v2.2
+Fixed Masive Issue With Soundcat
+
+v2.1a
+Fixed Fanart Issue
+
+v2.1
+Better GA
+
+v2.0b
+Quick Fix
+
+v2.0a
+Added Fanart
+
+v2.0
+Added Show Kbps
+
+v1.8e
+Added Download Single Song from Search
+Added if No Artist or Album Input The Names For Download
+
+v1.8c
+Added Download Single Song
+
+v1.8a
+Added UK Charts
+
+v1.8
+Fix
+
+v1.7c
+Quick Fix
+
+v1.6
+Quick Fix
+Added Google Analytics
+
+v1.5
+Added Queue Album
+Fixed infolabels so it actually shows name of song,artist and album playing
+
+v1.4e
+Fixed Not Getting Artist For Search
+
+v1.4d
+Fixed Some More Playlists
+i.e Andrea Bocelli or any other opera singer would not of played
+
+v1.4c
+Added Add To Favorites
+Tidied Code
+
+v1.4b
+Quick Fix To artist search for download or playlist
+
+v1.4a
+Extremely Fast And Better Playlist/Download Functionality
+
+v1.4
+Better Playlist/Download Functionality
+Billboard Broken
+
+v1.3
+Added Play Full Album
+Fixed SongList Issue
+
+1.2
+Added Download Album (Automatic Neat Folderisation Of Your Music With Album Cover Too)
+Added Themes
+Fixed Genre List
+Fixed Mood List
+
+v1.1
+Added Better Search Results
+Added What Mood Are You In
+Added Genre
+Added Billboard Charts
+
+v1.0
+Initial Release
