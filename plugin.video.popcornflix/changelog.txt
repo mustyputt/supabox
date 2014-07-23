@@ -1,0 +1,59 @@
+V2.1.0
+Final Standalone Version Update
+Find this addon within CLIQ!
+Available in my Repo!!!
+
+
+V1.9.0
+Fixed dead links in some menus
+
+V1.8.6
+Fixed Ouya/Android Bug
+Prepared for Gotham
+
+V1.8.5
+Complete Re-Write of addon
+Better Resolution videos
+Repaired Broken video links Due to Site changes
+Added Download function to allow Streams to be add to library
+Added MetaData, Can be turned on in Addon Settings
+Added Help and Extra Section
+
+V1.7.6
+Small Bug fix
+Removed Color Text in title
+
+V1.7.5
+Added Auto View
+
+V1.7.0
+Fixed Video Name not in Player
+
+V1.6.0
+Added Default Thumbnail  View
+
+V1.5.7
+Fixed broken link in "Comedy" section
+
+V1.5.6
+Improved Video performance
+PaPlayer is now set as default 
+
+V1.5.5
+Added Artwork
+
+V1.5.1
+Official Release
+
+
+V1.0.2b
+Quick Fix
+
+V1.0.1b
+Added Search option **Thanks to Highway99 for the advice"
+Added Artwork "Teaser"
+Cleaned up the Menus
+
+V1.0.0b
+Initial BETA Pre- Release
+Addon is in Testing and Upgrade Phase

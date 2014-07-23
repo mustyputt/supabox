@@ -1,0 +1,29 @@
+1.0.7b
+Fixed service.py error at startup
+
+1.0.7a
+Fixed issues with service.py hanging on close
+
+1.0.7
+Fixed change in movie and episode urls
+
+1.0.6
+Fixed change in episode url
+
+1.0.5
+Fixed Movies
+
+1.0.4
+Fixed episode lists
+
+1.0.3
+Added default tv show directory
+
+1.0.2
+Fixed issue with missing episodes (subscriptions)
+
+1.0.1
+Fixed search
+
+1.0.0
+Initial Release

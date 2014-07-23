@@ -1,0 +1,87 @@
+name="WARNING"
+url="http://fusion.xbmchub.com/xpert-advanced/tools/wizard.txt"
+img="http://tribeca.xbmchub.com/tools/wizard/thumbs/warning.jpg"
+fanart="http://dl.dropboxusercontent.com/u/24282292/Wizard/fanart.jpg"
+description="Configure XBMC with all the Best Goodies Available in Just One Click!
+WARNING: This tool will overwrite your current settings!"
+type="main"
+
+name="MAC"
+url="https://www.firedrive.com/file/69F2FC9B269305C8"
+img="http://tribeca.xbmchub.com/tools/wizard/thumbs/mac.jpg"
+fanart="http://dl.dropboxusercontent.com/u/24282292/Wizard/fanart.jpg"
+description="Configure XBMC with all the Best Goodies Available in Just One Click!
+WARNING: This tool will overwrite your current settings!"
+type="main"
+
+name="WINDOWS"
+url="https://www.firedrive.com/file/69F2FC9B269305C8"
+img="http://tribeca.xbmchub.com/tools/wizard/thumbs/windows.jpg"
+fanart="http://dl.dropboxusercontent.com/u/24282292/Wizard/fanart.jpg"
+description="Configure XBMC with all the Best Goodies Available in Just One Click!
+WARNING: This tool will overwrite your current settings!"
+type="main"
+
+name="OUYA"
+url="https://www.firedrive.com/file/69F2FC9B269305C8"
+img="http://tribeca.xbmchub.com/tools/wizard/thumbs/ouya.jpg"
+fanart="http://dl.dropboxusercontent.com/u/24282292/Wizard/fanart.jpg"
+description="Configure XBMC with all the Best Goodies Available in Just One Click!
+WARNING: This tool will overwrite your current settings!"
+type="main"
+
+name="ANDROID"
+url="https://www.firedrive.com/file/69F2FC9B269305C8"
+img="http://tribeca.xbmchub.com/tools/wizard/thumbs/android.jpg"
+fanart="http://dl.dropboxusercontent.com/u/24282292/Wizard/fanart.jpg"
+description="Configure XBMC with all the Best Goodies Available in Just One Click!
+WARNING: This tool will overwrite your current settings!"
+type="main"
+
+name="iDEVICES"
+url="https://www.firedrive.com/file/69F2FC9B269305C8"
+img="http://tribeca.xbmchub.com/tools/wizard/thumbs/idevices.jpg"
+fanart="http://dl.dropboxusercontent.com/u/24282292/Wizard/fanart.jpg"
+description="Configure XBMC with all the Best Goodies Available in Just One Click!
+WARNING: This tool will overwrite your current settings!"
+type="main"
+
+name="ATV"
+url="https://www.firedrive.com/file/69F2FC9B269305C8"
+img="http://tribeca.xbmchub.com/tools/wizard/thumbs/atv2.jpg"
+fanart="http://dl.dropboxusercontent.com/u/24282292/Wizard/fanart.jpg"
+description="Configure XBMC with all the Best Goodies Available in Just One Click!
+WARNING: This tool will overwrite your current settings!"
+type="main"
+
+name="PIVOS"
+url="https://www.firedrive.com/file/69F2FC9B269305C8"
+img="http://tribeca.xbmchub.com/tools/wizard/thumbs/pivos.jpg"
+fanart="http://dl.dropboxusercontent.com/u/24282292/Wizard/fanart.jpg"
+description="Configure XBMC with all the Best Goodies Available in Just One Click!
+WARNING: This tool will overwrite your current settings!"
+type="main"
+
+name="MATRICOM"
+url="https://www.firedrive.com/file/69F2FC9B269305C8"
+img="http://tribeca.xbmchub.com/tools/wizard/thumbs/matricom.jpg"
+fanart="http://dl.dropboxusercontent.com/u/24282292/Wizard/fanart.jpg"
+description="Configure XBMC with all the Best Goodies Available in Just One Click!
+WARNING: This tool will overwrite your current settings!"
+type="main"
+
+name="LINUX"
+url="https://www.firedrive.com/file/69F2FC9B269305C8"
+img="http://tribeca.xbmchub.com/tools/wizard/thumbs/linux.jpg"
+fanart="http://dl.dropboxusercontent.com/u/24282292/Wizard/fanart.jpg"
+description="Configure XBMC with all the Best Goodies Available in Just One Click!
+WARNING: This tool will overwrite your current settings and does not yet function with OpenELEC devices!"
+type="main"
+
+name="1CHANNEL UPDATE"
+url="http://www.firedrive.com/file/C54E96B0ABC650EC"
+img="http://i.imgur.com/ib9Q2lj.png"
+fanart="http://dl.dropboxusercontent.com/u/24282292/Wizard/fanart.jpg"
+description="Configure XBMC with all the Best Goodies Available in Just One Click!
+WARNING: This tool will overwrite your current settings and does not yet function with OpenELEC devices!"
+type="main"

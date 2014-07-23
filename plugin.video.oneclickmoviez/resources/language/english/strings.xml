@@ -1,0 +1,10 @@
+<strings>
+    <string id="30000">OneClickMoviez</string>
+    <string id="30001">Download path</string>
+    <string id="30002">Select download path:</string>
+    <string id="30003">Downloading video...</string>
+    <string id="30004">Please wait.</string>
+    <string id="30005">Video download failed. Trying to stream video...</string>
+    <string id="30006">Hide Adult Content</string>
+    <string id="30007">Cache Url</string>
+</strings>

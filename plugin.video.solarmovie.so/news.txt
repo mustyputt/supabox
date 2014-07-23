@@ -1,0 +1,312 @@
+
+
+[COLOR grey][Date: 2014.05.25][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.4.3
+
+[COLOR grey][Date: 2014.04.29][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.4.1
+
+[COLOR grey][Date: 2014.04.26][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.3.8
+
+[COLOR grey][Date: 2013.12.13][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.3.3
+
+[COLOR grey][Date: 2013.11.22][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.3.2
+
+[COLOR grey][Date: 2013.11.22][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Many Updates Lately.
+### Custom Domain Setting(s) due to recent ongoing changes.
+### Ongoing Fixes due to Site Changes.
+### Search [API] method(s).
+### nURL() function.
+### Check the changelog for more informatoin.
+
+[COLOR grey][Date: 2013.08.28][/COLOR][COLOR black][Post: 3][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.2.7
+
+[COLOR grey][Date: 2013.08.28][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.2.6
+
+[COLOR grey][Date: 2013.08.28][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Updates for Host Menu and Movie Listings.
+
+[COLOR grey][Date: 2013.08.23][/COLOR][COLOR black][Post: 4][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.2.6
+
+[COLOR grey][Date: 2013.08.23][/COLOR][COLOR black][Post: 3][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.2.5
+
+[COLOR grey][Date: 2013.08.23][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Fanart Changer for TV Show Favorites.
+
+[COLOR grey][Date: 2013.08.21][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Improved apon my plugin graphics.
+### fanart.jpg and icon.png have been updated.
+
+[COLOR grey][Date: 2013.08.20][/COLOR][COLOR black][Post: 4][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.2.5
+
+[COLOR grey][Date: 2013.08.20][/COLOR][COLOR black][Post: 3][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.2.4
+
+[COLOR grey][Date: 2013.08.20][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Don't forget the XBMCHUB Fest 
+### This weekend on August 24th, 2013 in the UK ( Sholing, Southampton )
+### Begining @ 12PM ( There time-zone ).
+### http://www.xbmchub.com/forums/announcements/9937-xbmchub-fest-24th-august-poll.html
+
+[COLOR grey][Date: 2013.08.20][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  
+
+[COLOR grey][Date: 2013.08.17][/COLOR][COLOR black][Post: 3][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.2.4
+
+[COLOR grey][Date: 2013.08.17][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.2.3
+
+[COLOR grey][Date: 2013.08.17][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  2 jDownloader DL-Methods for Testing.
+
+[COLOR grey][Date: 2013.08.16][/COLOR][COLOR black][Post: 4][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.2.3
+
+[COLOR grey][Date: 2013.08.16][/COLOR][COLOR black][Post: 3][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.2.2
+
+[COLOR grey][Date: 2013.08.15][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Show/Hide TV Episodes with 0 Links.
+
+[COLOR grey][Date: 2013.08.15][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Fixes to Next-Page in listItems()
+### Added missing section variable to Next Page Links in listItems().
+### ### /\ This makes it so that TV listings will stay under TV 
+### ### section when going to the next page.
+### Fixed Next-Page links to not show when on the last page.
+
+[COLOR grey][Date: 2013.08.11][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.2.2
+
+[COLOR grey][Date: 2013.08.11][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.2.1
+
+[COLOR grey][Date: 2013.08.09][/COLOR][COLOR black][Post: 4][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.2.1
+
+[COLOR grey][Date: 2013.08.09][/COLOR][COLOR black][Post: 3][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.2.0
+
+[COLOR grey][Date: 2013.08.09][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Wiki Pages
+### https://github.com/HIGHWAY99/plugin.video.solarmovie.so/wiki
+
+[COLOR grey][Date: 2013.08.09][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  A new Users Section!
+### It's so early in the morning yet, but I'm still going at it 
+### hard, finding more features to add.  Thus, attempting to claim 
+### my rightful spot among the fore-runners of xbmc video plugins 
+### and their authors.
+### It has been my purpose to use this, as well as my other plugins, 
+### as a learning experience.  Although, I can't help but admit that 
+### I also want to both meet and in some ways best the most popular 
+### of video plugin/addons for the XBMC comunity. I personally do 
+### Love and enjoy 1Channel (for PrimeWire.ag) and Simply Movies 
+### video plugins, as well as the UrlResolver.  But, I can't help 
+### but to try to do just as well as UrlResolver with my other 
+### projects that use videolinks.py and with TheAnimeHighway and 
+### SolarMovie.so, I personally think I have finally have a little 
+### bosting rights.  Minus the lack of a proper repository to host 
+### an auto-updating method for it, I most definately kept up with 
+### and out done the others in the ammmount of features I've 
+### included among other things.  Now, I just need advertising, 
+### testers, and some feed back.  Feel free to check out my wiki 
+### for plugin.video.solarmovie.so:  
+### https://github.com/HIGHWAY99/plugin.video.solarmovie.so/wiki
+### I've put a lot of work into this wiki.
+### I'm currently waiting on http://www.solarmovie.so/ to complete
+### it's updated registry method so I can create an account and 
+### hopefully find a tad bit more features to add for you great 
+### fans and users.
+
+[COLOR grey][Date: 2013.08.08][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Latest Threads
+### This allows you to check out the Latest Threads sectcion of the 
+### main page @ http://www.solarmovie.so/
+
+[COLOR grey][Date: 2013.08.08][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Whats NEW!
+### * See a list of Movies coming soon, including Premeire Date, 
+### how long until then, Director, Year, Poster-image, and Plot.
+### * Play Trailers (when available).
+
+[COLOR grey][Date: 2013.08.07][/COLOR][COLOR black][Post: 5][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.2.0
+
+[COLOR grey][Date: 2013.08.07][/COLOR][COLOR black][Post: 4][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.1.9b
+
+[COLOR grey][Date: 2013.08.07][/COLOR][COLOR black][Post: 3][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Quick Fix: Play videos.
+
+[COLOR grey][Date: 2013.08.07][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.1.9
+
+[COLOR grey][Date: 2013.08.07][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Download Feature for Testers.
+
+[COLOR grey][Date: 2013.08.06][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Settings Window given a lot of new 
+### content, much of which now works.
+
+[COLOR grey][Date: 2013.08.06][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Page Handling (Start,Current, End, 
+### Last, Next) given a major Fix. Sorry for not noticing it sooner.
+
+[COLOR grey][Date: 2013.08.05][/COLOR][COLOR black][Post: 4][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.1.9
+
+[COLOR grey][Date: 2013.08.05][/COLOR][COLOR black][Post: 3][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.1.8
+
+[COLOR grey][Date: 2013.08.05][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Fix: TV >> Latest Watched.
+
+[COLOR grey][Date: 2013.08.05][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Library Feature.
+
+[COLOR grey][Date: 2013.08.04][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Fans of Code Lyoko and the 
+### live-action season that fallowed, Code Lyoko Evolution... feel 
+### free to check out: 
+### https://github.com/HIGHWAY99/plugin.video.codelyokoevolution/releases
+
+[COLOR grey][Date: 2013.08.04][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  *WAVES* Bye-Bye, to the "import unicodedata".
+
+[COLOR grey][Date: 2013.08.01][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Code Clean-up.
+
+[COLOR grey][Date: 2013.08.01][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Multi-Category Favorites.
+
+[COLOR grey][Date: 2013.07.31][/COLOR][COLOR black][Post: 6][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.1.8
+
+[COLOR grey][Date: 2013.07.31][/COLOR][COLOR black][Post: 5][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.1.7
+
+[COLOR grey][Date: 2013.07.31][/COLOR][COLOR black][Post: 4][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Added Remove command for Favorites.
+
+[COLOR grey][Date: 2013.07.31][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.1.6
+
+[COLOR grey][Date: 2013.07.31][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  
+### More handling for Metadata on Episodes and passing of data from TV Show Titles to Season to Episode listings. This allows for Plot/Description/Overview of episode as well as episode screenshot and Name fixing.
+### More Label Coloring
+### Favorites for TV and Movies each.
+### Search feature works better now when activated from 1ch/Primewire's Subscription page... it now removes the text [TAGS]. and (YEAR) data to get down to the name.
+
+[COLOR grey][Date: 2013.07.29][/COLOR][COLOR black][Post: 5][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Added a normal Search feature, 
+### ### which can be made accessable from other addons.
+### ### ### For TV Shows
+### ### if os.path.exists(xbmc.translatePath("special://home/addons/") + 'plugin.video.solarmovie.so'):
+### ### 	contextmenuitems.append(('Search Solarmovie.so', 'XBMC.Container.Update(%s?mode=%s&section=%s&title=%s)' % ('plugin://plugin.video.solarmovie.so/','Search','tv',title)))
+### ### ### For Movies
+### ### if os.path.exists(xbmc.translatePath("special://home/addons/") + 'plugin.video.solarmovie.so'):
+### ### 	contextmenuitems.append(('Search Solarmovie.so', 'XBMC.Container.Update(%s?mode=%s&section=%s&title=%s)' % ('plugin://plugin.video.solarmovie.so/','Search','movies',title)))
+
+[COLOR grey][Date: 2013.07.29][/COLOR][COLOR black][Post: 4][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.1.6
+
+[COLOR grey][Date: 2013.07.29][/COLOR][COLOR black][Post: 3][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.1.5
+
+[COLOR grey][Date: 2013.07.29][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Some Sweet new Looks and Feels.
+### Fixes: infoLabels, Thumbnail, Plot Description.
+### New: Fanart, Added more Graphics over-all.
+### Note: Things will be slightly slower than before with data being fetched 
+### ### from the additional pages.
+### Note: Look for the weird turtle!  This is what happens when 
+### ### modules/scripts don't come with a fancy little icon.png... 
+### ### I have to come up with one, and this one so-- made me laugh.
+### Note: If your wondering about favorites and caching, I'm simply 
+### ### trying to make sure that I got things as sorted as possible 
+### ### with MetaData first, so I don't have to deal with clearing 
+### ### data left and right, not alone data tables. I haven't decided 
+### ### yet rather to use cache again or a sql .db file which be much 
+### ### more troublesome during testing and I'd have to learn how to 
+### ### use it via python a bit. I'm considering working on a search 
+### ### feature soon, though. Hope you look forward to upcoming versions.
+
+[COLOR grey][Date: 2013.07.29][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.1.5
+
+[COLOR grey][Date: 2013.07.28][/COLOR][COLOR black][Post: 5][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.1.4
+
+[COLOR grey][Date: 2013.07.28][/COLOR][COLOR black][Post: 4][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Many things to tell you about...
+### Note: It's a good idea to have MetaData in the settings window turned off for now.
+### Working on better handling of dependencies.
+### Config.py added.
+### Many functions added to make my life much easier.
+### Added Plot description to Movies. (TV Shows to come later.)
+### Added Latest Movie Listings and Latest TV Episode Listings.
+### Plot Data bugged for a moment but made a Temp fix til I can better fix the main function.
+### Plot Data returns blank now instead of erroring for those without any plot description.
+
+[COLOR grey][Date: 2013.07.28][/COLOR][COLOR black][Post: 3][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.1.4
+### I really hope you look forward to this version when it gets released.
+
+[COLOR grey][Date: 2013.07.28][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Running some tests for news and folder on github.
+
+[COLOR grey][Date: 2013.07.28][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR cornflowerblue][B]Release:[/B][/COLOR]  v0.1.3
+
+[COLOR grey][Date: 2013.07.27][/COLOR][COLOR black][Post: 10][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Added Feature: Find AirDates.  This can be linked to from other addons too. You can set it to bring up a keyboard for title entry or send a &title=snowname.
+
+[COLOR grey][Date: 2013.07.27][/COLOR][COLOR black][Post: 9][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Ability to Search for a TV Show or Movie by Title with 1Channel/PrimeWire plugin via ContextMenuItem.
+
+[COLOR grey][Date: 2013.07.27][/COLOR][COLOR black][Post: 8][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.1.3
+
+[COLOR grey][Date: 2013.07.27][/COLOR][COLOR black][Post: 7][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  TV Episodes are now Playable.
+
+[COLOR grey][Date: 2013.07.27][/COLOR][COLOR black][Post: 6][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  TextWindow Setup for News and Change Logs
+
+[COLOR grey][Date: 2013.07.27][/COLOR][COLOR black][Post: 5][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  TV >> (Season|Episode) Listings now Available.
+
+[COLOR grey][Date: 2013.07.27][/COLOR][COLOR black][Post: 4][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.1.2
+
+[COLOR grey][Date: 2013.07.27][/COLOR][COLOR black][Post: 3][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Popular Listings now Available.
+
+[COLOR grey][Date: 2013.07.27][/COLOR][COLOR black][Post: 2][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.1.1
+
+[COLOR grey][Date: 2013.07.27][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Plugin can now list movies and play for at least some hosters.
+
+[COLOR grey][Date: 2013.07.26][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR red][B]News:[/B][/COLOR]  Plugin can now list movies and tv show titles.
+
+[COLOR grey][Date: 2013.07.25][/COLOR][COLOR black][Post: 1][/COLOR]
+[COLOR cornflowerblue][B]Private Build:[/B][/COLOR]  v0.1.0
+
+
+
+
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon 
+	id="plugin.video.putlockertv" 
+	name="PutlockerTV" 
+	version="3.0.0" 
+	provider-name="bunkford">
+
+  <requires>
+	  <import addon="xbmc.python" version="2.1.0"/>
+	  <import addon="script.module.beautifulsoup" version="3.0.8" />
+	  <import addon="script.module.urlresolver"  version="1.0.0"/>
+	  <import addon="script.module.t0mm0.common" version="1.1.0"/>
+	  <import addon="script.module.metahandler"  version="1.0.0"/>
+	  <import addon="script.module.requests"  version="1.1.0"/>
+  </requires>
+
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+  </extension>
+
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Video Plugin maintained by Bunkford for putlockertvshows.me</summary>
+  
+    <description lang="en">
+	    A video plugin maintaned by bunkford for site putlockertvshows.me. These are one click sources, so no messing around with bad links. A bit of a step backwards as far as posters and video naming for subtitles.. but at least it seems to work now. Now resolves the mail.ru links.
+					
+    </description>
+ 
+
+    <disclaimer lang="en">use at your own risk!</disclaimer>
+
+    <license>GNU GENERAL PUBLIC LICENSE. Version 3, June 2007</license>
+  
+    <platform>all</platform>
+
+    <language>en</language>
+
+    <website></website>
+
+    <source></source>
+  </extension>
+</addon>

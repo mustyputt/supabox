@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="plugin.video.moviestwentyfive" version="0.9" name="Movie25" provider-name="The_Silencer">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.urlresolver"  version="1.0.0"/>
+        <import addon="script.module.addon.common" version="2.0.0"/>
+	<import addon="script.module.metahandler"  version="1.0.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Browse www.moive25.so/</summary>
+        <description>Watch content from www.movie25.so</description>
+        <platform>all</platform>
+    </extension>
+</addon>

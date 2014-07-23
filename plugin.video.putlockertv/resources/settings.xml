@@ -1,0 +1,10 @@
+<settings>
+<category label="Meta Data">
+  	<setting id="use-meta" type="bool" label="Use Meta Data" default="false"/>
+</category>
+<category label="Download Locations">
+	 <setting label="TV download location:" type="folder" id="tvdownpath" option="writeable" />
+	 <setting type="sep"/>
+	 <setting label="Movie download location:" type="folder" id="moviedownpath" ption="writeable" />
+</category>
+</settings>

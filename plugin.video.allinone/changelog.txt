@@ -1,0 +1,108 @@
+[B]Version 2.2.1[/B]
+- small fixes
+
+[B]Version 2.2.0[/B]
+- small fixes
+- (BETA) MEGA Search and Entertainment search
+
+[B]Version 2.1.0[/B]
+- small fixes
+- (BETA) MEGA Search = searches oneclickwatch watchthetapes binblix and tfpdl all at once..... (TESTING)
+- radio is now inside music
+
+[B]Version 2.0.2[/B]
+- small fixes
+
+[B]Version 2.0.1[/B]
+- small fixes
+
+[B]Version 2.0.0[/B]
+- added mmashare.com 
+- new icon
+
+[B]Version 1.4.1[/B]
+- added tfpdl.com (1080p tv movies) 
+
+[B]Version 1.4.0[/B]
+- added MY Streams
+
+[B]Version 1.2.8[/B]
+- added binflix (1080p tv shows & movies) 
+
+[B]Version 1.2.7[/B]
+- small fixes
+
+[B]Version 1.2.6[/B]
+- fixed myvideolinks.eu 
+
+[B]Version 1.2.5[/B]
+- small fixes 
+
+[B]Version 1.2.4[/B]
+- small fixes 
+
+[B]Version 1.2.1[/B]
+- added
+* some live streams
+* channel AKA
+* clubland tv
+
+[B]Version 1.2.0[/B]
+- small fixes 
+* one click watch search
+* TV HQ and added nextpage to tv shows
+- added
+* couch tuner in tv shows
+* some live streams
+* channel AKA
+* clubland tv
+
+[B]Version 1.1.5[/B]
+- small fixes
+
+[B]Version 1.1.4[/B]
+- small fix
+
+[B]Version 1.1.2[/B]
+- added searches
+- fixed primeflicks tv shows
+
+[B]Version 1.1.1[/B]
+- small fix
+
+[B]Version 1.1.0[/B]
+- added TV HQ & myvideolinks.eu is back
+
+[B]Version 1.0.9[/B]
+- small fix to flixanity movies
+
+[B]Version 1.0.8[/B]
+- free movies removied and prime flicks
+
+[B]Version 1.0.7[/B]
+- small fix to flixanity still needs a better fix when i get some time
+
+[B]Version 1.0.6[/B]
+- added tfpdl.com
+- added TwoDDL (HD)
+- added TheYid news
+
+[B]Version 1.0.5[/B]
+- added Notification
+- fixed watch the tapes
+
+[B]Version 1.0.4[/B]
+- added
+* tupeliculashd.com
+- removed
+* myvideolinks.eu 
+
+[B]Version 1.0.2[/B]
+- fixed channelcut 
+
+[B]Version 1.0.1[/B]
+- fixed my video links eu
+
+[B]Version 1.0.0[/B]
+- Full release of Entertainment [COLOR dodgerblue][B]HUB[/B][/COLOR] V-1.0.0
+

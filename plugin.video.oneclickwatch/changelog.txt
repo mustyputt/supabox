@@ -1,0 +1,32 @@
+[B]Version 0.6.0[/B]
+- fix
+
+[B]Version 0.5.9[/B]
+- clean up
+
+[B]Version 0.5.8[/B]
+- clean up
+
+[B]Version 0.5.7[/B]
+- fixed the addon
+
+[B]Version 0.5.6[/B]
+- code clean up
+
+[B]Version 0.5.5[/B]
+- code clean up
+
+[B]Version 0.5.4[/B]
+- code clean up
+
+[B]Version 0.5.3[/B]
+- clean up
+
+[B]Version 0.5.2[/B]
+- addon clean up
+
+[B]Version 0.5.1[/B]
+- addon clean up
+
+[B]Version 0.5.0[/B]
+- Initial version of oneclickwatch plugin v5
