@@ -71,8 +71,8 @@ def FireDrive(url):
 def HELPWIZARD(name,url,description,filetype):
     path=xbmc.translatePath(os.path.join('special://home/addons','packages'))
     confirm=xbmcgui.Dialog()
-    if confirm.yesno("TEAM Supabox","Would you like Supabox.COM to ","customize your add-on selection? "," "):
-        dp=xbmcgui.DialogProgress(); dp.create("Hub Wizard","Downloading ",'','Please Wait')
+    if confirm.yesno("Supabox","Would you like Supabox Wizard to ","customize your add-on selection? "," "):
+        dp=xbmcgui.DialogProgress(); dp.create("Supabox Wizard","Downloading ",'','Please Wait')
         lib=os.path.join(path,name+'.zip')
         try: os.remove(lib)
         except: pass
@@ -112,7 +112,7 @@ def HELPWIZARD(name,url,description,filetype):
         
         time.sleep(2)
         xbmc.executebuiltin('UnloadSkin()'); xbmc.executebuiltin('ReloadSkin()'); xbmc.executebuiltin("LoadProfile(%s)" % proname)
-        dialog=xbmcgui.Dialog(); dialog.ok("Success!","Installation Complete","   [COLOR gold]Brought To You By Supabox.COM[/COLOR]")
+        dialog=xbmcgui.Dialog(); dialog.ok("Success!","Installation Complete","   [COLOR gold]Brought To You By Supabox[/COLOR]")
         ##
 
 def WIZARDSTATUS(url):
