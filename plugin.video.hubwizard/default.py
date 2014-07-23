@@ -1,5 +1,4 @@
-# XBMCHUB Wizard By: Blazetamer 2013
-# Thanks to Blazetamer and the rest of the crew at XBMCHUB.com
+# Supabox Wizard By: Flaggsoft 2014
 
 import urllib,urllib2,re,xbmcplugin,xbmcgui,xbmc, xbmcaddon, os, sys
 import downloader
@@ -21,10 +20,10 @@ net.set_user_agent('Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) 
 def HELPCATEGORIES():
     if ((XBMCversion['Ver'] in ['','']) or (int(XBMCversion['two']) < 12)) and (settings.getSetting('bypass-xbmcversion')=='false'):
         eod(); 
-        addon.show_ok_dialog(["Compatibility Issue: Outdated XBMC Setup","Please upgrade to a newer version of XBMC first!","Visit XBMCHUB.COM for Support!"], title="XBMC "+XBMCversion['Ver'], is_error=False); 
+        addon.show_ok_dialog(["Compatibility Issue: Outdated Supabox Setup","Please upgrade to a newer version of Supabox first!","Visit Supabox.COM for Support!"], title="XBMC "+XBMCversion['Ver'], is_error=False); 
         DoA('Back'); 
     else:
-        link=OPEN_URL('http://tribeca.xbmchub.com/tools/wizard/links.txt').replace('\n','').replace('\r','')
+        link=OPEN_URL('http://www.firedrive.com/file/B4E6AA783273C446').replace('\n','').replace('\r','')
         match=re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)".+?ype="(.+?)"').findall(link)
         for name,url,iconimage,fanart,description,filetype in match:
             #if 'status' in filetype:
@@ -72,7 +71,7 @@ def FireDrive(url):
 def HELPWIZARD(name,url,description,filetype):
     path=xbmc.translatePath(os.path.join('special://home/addons','packages'))
     confirm=xbmcgui.Dialog()
-    if confirm.yesno("TEAM XBMCHUB","Would you like XBMCHUB.COM to ","customize your add-on selection? "," "):
+    if confirm.yesno("TEAM Supabox","Would you like Supabox.COM to ","customize your add-on selection? "," "):
         dp=xbmcgui.DialogProgress(); dp.create("Hub Wizard","Downloading ",'','Please Wait')
         lib=os.path.join(path,name+'.zip')
         try: os.remove(lib)
@@ -96,7 +95,7 @@ def HELPWIZARD(name,url,description,filetype):
         dp.update(0,"","Extracting Zip Please Wait")
         print '======================================='; print addonfolder; print '======================================='
         extract.all(lib,addonfolder,dp)
-        link=OPEN_URL('http://tribeca.xbmchub.com/tools/wizard/shortcuts.txt')
+        link=OPEN_URL('http://www.firedrive.com/file/60D59C6C635E8073')
         proname=xbmc.getInfoLabel("System.ProfileName")
         shorts=re.compile('shortcut="(.+?)"').findall(link)
         for shortname in shorts: xbmc.executebuiltin("Skin.SetString(%s)" % shortname)
@@ -113,7 +112,7 @@ def HELPWIZARD(name,url,description,filetype):
         
         time.sleep(2)
         xbmc.executebuiltin('UnloadSkin()'); xbmc.executebuiltin('ReloadSkin()'); xbmc.executebuiltin("LoadProfile(%s)" % proname)
-        dialog=xbmcgui.Dialog(); dialog.ok("Success!","Installation Complete","   [COLOR gold]Brought To You By XBMCHUB.COM[/COLOR]")
+        dialog=xbmcgui.Dialog(); dialog.ok("Success!","Installation Complete","   [COLOR gold]Brought To You By Supabox.COM[/COLOR]")
         ##
 
 def WIZARDSTATUS(url):
