@@ -23,7 +23,7 @@ def HELPCATEGORIES():
         addon.show_ok_dialog(["Compatibility Issue: Outdated Supabox Setup","Please upgrade to a newer version of Supabox first!","Visit Supabox.COM for Support!"], title="XBMC "+XBMCversion['Ver'], is_error=False); 
         DoA('Back'); 
     else:
-        link=OPEN_URL('http://www.firedrive.com/file/B4E6AA783273C446').replace('\n','').replace('\r','')
+        link=OPEN_URL('http://localhost:80801/links.txt').replace('\n','').replace('\r','')
         match=re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)".+?ype="(.+?)"').findall(link)
         for name,url,iconimage,fanart,description,filetype in match:
             #if 'status' in filetype:
@@ -95,7 +95,7 @@ def HELPWIZARD(name,url,description,filetype):
         dp.update(0,"","Extracting Zip Please Wait")
         print '======================================='; print addonfolder; print '======================================='
         extract.all(lib,addonfolder,dp)
-        link=OPEN_URL('http://www.firedrive.com/file/60D59C6C635E8073')
+        link=OPEN_URL('http://localhost:8081/shortcuts.txt')
         proname=xbmc.getInfoLabel("System.ProfileName")
         shorts=re.compile('shortcut="(.+?)"').findall(link)
         for shortname in shorts: xbmc.executebuiltin("Skin.SetString(%s)" % shortname)
