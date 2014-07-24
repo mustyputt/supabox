@@ -512,7 +512,7 @@
   <extension point="xbmc.service" library="service.py" start="login" />
 </addon>
 
-<addon id="plugin.video.hubwizard" version="1.1.5" name="Config Wizard" provider-name="xbmchub.com">
+<addon id="plugin.video.hubwizard" version="1.1.5" name="Supabox Config Wizard" provider-name="flaggsoft.com">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 	</requires>
@@ -520,12 +520,12 @@
 		<provides>executable</provides>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary>The Hub Wizard</summary>
-		<description>Instantly configure your XBMC experience with all the best add-ons and goodies from the XBMCHUB.COM community!  </description>
-		<website>http://www.xbmchub.com/</website>
+		<summary>The Supabox Wizard</summary>
+		<description>Instantly configure your Supabox experience with all the best add-ons and goodies!  </description>
+		<website>http://www.supabox.com/</website>
 		<platform>all</platform>
-		<forum>http://www.xbmchub.com/forums/official-xbmc-hub-repo/</forum>
-		<website>http://www.xbmchub.com/</website>
+		<forum>http://www.supabox.com/forums/official-xbmc-hub-repo/</forum>
+		<website>http://www.supabox.com/</website>
 	</extension>
 </addon>
 
