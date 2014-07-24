@@ -30,7 +30,7 @@ def run():
 def main_list(params):
     plugintools.log("freshstart.main_list "+repr(params))
 
-    yes_pressed = plugintools.message_yes_no("XBMC Fresh Start", "Do you wish to restore your", "XBMC configuration to default settings?")
+    yes_pressed = plugintools.message_yes_no("Supabox Fresh Start", "Do you wish to restore your", "Supabox configuration to default settings?")
 
     if yes_pressed:
         addonPath = xbmcaddon.Addon(id = 'plugin.video.freshstart').getAddonInfo('path')
@@ -60,19 +60,19 @@ def main_list(params):
 
             if not failed:
                 plugintools.log("freshstart.main_list All user files removed, you now have a clean install")
-                plugintools.message("XBMC Fresh Start", "The process is complete, you're now back to a fresh XBMC configuration!","Please reboot your system or restart XBMC in order for the changes to be applied.")
+                plugintools.message("Supabox Fresh Start", "The process is complete, you're now back to a fresh Supabox configuration!","Please reboot your system or restart Supabox Media in order for the changes to be applied.")
             else:
                 plugintools.log("freshstart.main_list User files partially removed")
-                plugintools.message("XBMC Fresh Start", "The process is finished, you're now back to a fresh XBMC configuration!","Please reboot your system or restart XBMC in order for the changes to be applied.")
+                plugintools.message("Supabox Fresh Start", "The process is finished, you're now back to a fresh Supabox configuration!","Please reboot your system or restart Supabox Media in order for the changes to be applied.")
         except:
-            plugintools.message("XBMC Fresh Start", "Problem found","Your settings has not been changed")
+            plugintools.message("Supabox Fresh Start", "Problem found","Your settings has not been changed")
             import traceback
             plugintools.log(traceback.format_exc())
             plugintools.log("freshstart.main_list NOT removed")
 
         plugintools.add_item( action="" , title="Done" , folder=False )
     else:
-        plugintools.message("XBMC Fresh Start", "Your settings", "has not been changed")
+        plugintools.message("Supabox Fresh Start", "Your settings", "has not been changed")
         plugintools.add_item( action="" , title="Done" , folder=False )
 
 run()
