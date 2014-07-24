@@ -8,8 +8,7 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>The Supabox Wizard</summary>
-		<description>Instantly configure your Supabox experience with all the best add-ons and goodies!  </description>
-		<website>http://www.andersonflagg.com/</website>
+		<description>Instantly configure your Supabox experience with all the best add-ons and goodies!</description>
 		<platform>all</platform>
 	</extension>
 </addon>
