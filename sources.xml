@@ -1,0 +1,33 @@
+<sources>
+    <programs>
+        <default pathversion="1"></default>
+    </programs>
+    <video>
+        <default pathversion="1"></default>
+    </video>
+    <music>
+        <default pathversion="1"></default>
+    </music>
+    <pictures>
+        <default pathversion="1"></default>
+    </pictures>
+    <files>
+        <default pathversion="1"></default>
+        <source>
+            <name>fusion</name>
+            <path pathversion="1">http://fusion.xbmchub.com/</path>
+        </source>
+        <source>
+            <name>xfinity</name>
+            <path pathversion="1">http://xfinity.xunitytalk.com/</path>
+        </source>
+        <source>
+            <name>SuperRepo.org Virtual Disk</name>
+            <path pathversion="1">http://use.superrepo.org/gotham/</path>
+        </source>
+        <source>
+            <name>Supabox</name>
+            <path pathversion="1">http://supabox.ddns.net:80801/supabox/</path>
+        </source>
+		</files>
+</sources>
