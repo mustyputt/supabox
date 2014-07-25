@@ -512,7 +512,7 @@
   <extension point="xbmc.service" library="service.py" start="login" />
 </addon>
 
-<addon id="plugin.video.hubwizard" version="1.1.7" name="Supabox Config Wizard" provider-name="flaggsoft.com">
+<addon id="plugin.video.hubwizard" version="1.1.8" name="Supabox Config Wizard" provider-name="flaggsoft.com">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 	</requires>
