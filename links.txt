@@ -1,16 +1,8 @@
-name="WARNING"
-url=""
-img="http://tribeca.xbmchub.com/tools/wizard/thumbs/warning.jpg"
-fanart=""
-description="Configure XBMC with all the Best Goodies Available in Just One Click!
-WARNING: This tool will overwrite your current settings!"
-type="main"
-
-name="ANDROID"
-url="https://www.firedrive.com/file/69F2FC9B269305C8"
-img="http://tribeca.xbmchub.com/tools/wizard/thumbs/android.jpg"
+name="Supabox Media"
+url="http://andersonflagg.com/supabox.zip"
+img="http://andersonflagg.com/256x256.png"
 fanart="http://dl.dropboxusercontent.com/u/24282292/Wizard/fanart.jpg"
-description="Configure XBMC with all the Best Goodies Available in Just One Click!
+description="Configure Supabox with all the Best Goodies Available in Just One Click!
 WARNING: This tool will overwrite your current settings!"
 type="main"
 
