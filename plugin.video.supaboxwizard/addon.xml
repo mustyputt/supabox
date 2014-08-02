@@ -9,9 +9,9 @@
 	<extension point="xbmc.addon.metadata">
 		<summary>The Supabox Wizard</summary>
 		<description>Instantly configure your Supabox experience with all the best add-ons and goodies!  </description>
-		<website>http://www.supabox.com/</website>
+		<website></website>
 		<platform>all</platform>
-		<forum>http://www.supabox.com/forums/official-xbmc-hub-repo/</forum>
-		<website>http://www.supabox.com/</website>
+		<forum></forum>
+		<website></website>
 	</extension>
 </addon>
