@@ -46,7 +46,7 @@ def main_list(params):
                     try:
                         os.remove(os.path.join(root, name))
                     except:
-                        if name not in ["Addons15.db","MyVideos75.db","Textures13.db","xbmc.log"]:
+                        if name not in ["Addons15.db","MyVideos75.db","Textures13.db","xbmc.log","sources.xml"]:
                             failed=True
                         plugintools.log("Error removing "+root+" "+name)
 

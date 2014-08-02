@@ -374,7 +374,7 @@
 
 <addon id="plugin.video.freshstart"
 	name="Supabox Fresh Start"
-	version="1.1"
+	version="1.2"
 	provider-name="Flaggsoft">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
