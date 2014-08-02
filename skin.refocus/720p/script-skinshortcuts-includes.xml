@@ -1,0 +1,941 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<includes>
+	<include name="skinshortcuts-mainmenu">
+		<item id="1">
+			<onclick>ActivateWindow(Videos,Addons,Addons,return)</onclick>
+			<label>Videos</label>
+			<label2>Custom shortcut</label2>
+			<icon>DefaultAddonVideo.png</icon>
+			<thumb />
+			<property name="labelID">videos</property>
+			<property name="group">mainmenu</property>
+			<property name="submenuVisibility">videos</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+		</item>
+		<item id="2">
+			<onclick>PlayPvr</onclick>
+			<label>Live TV</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb />
+			<property name="labelID">livetv</property>
+			<property name="group">mainmenu</property>
+			<property name="submenuVisibility">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+			<property name="hasSubmenu">True</property>
+		</item>
+		<item id="3">
+			<onclick>ActivateWindow(Music)</onclick>
+			<label>Music</label>
+			<label2>Common Shortcut</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicAlbums.png</thumb>
+			<property name="labelID">music</property>
+			<property name="group">mainmenu</property>
+			<property name="submenuVisibility">music</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="hasSubmenu">True</property>
+		</item>
+		<item id="4">
+			<onclick>ActivateWindow(Pictures)</onclick>
+			<label>Pictures</label>
+			<label2>Common Shortcut</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultPicture.png</thumb>
+			<property name="labelID">pictures</property>
+			<property name="group">mainmenu</property>
+			<property name="submenuVisibility">pictures</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="hasSubmenu">True</property>
+		</item>
+		<item id="5">
+			<onclick>ActivateWindow(addonbrowser)</onclick>
+			<label>Add-ons</label>
+			<label2>::LOCAL::10040</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultAddon.png</thumb>
+			<property name="labelID">24001</property>
+			<property name="group">mainmenu</property>
+			<property name="submenuVisibility">$NUMBER[24001]</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="hasSubmenu">True</property>
+		</item>
+		<item id="6">
+			<onclick>RunAddon(script.globalsearch)</onclick>
+			<label>Search</label>
+			<label2>Program</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>Search.png</thumb>
+			<property name="labelID">search</property>
+			<property name="group">mainmenu</property>
+			<property name="submenuVisibility">search</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+		</item>
+		<item id="7">
+			<onclick>ActivateWindow(Settings)</onclick>
+			<label>System</label>
+			<label2>Common Shortcut</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="labelID">system</property>
+			<property name="group">mainmenu</property>
+			<property name="submenuVisibility">system</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="hasSubmenu">True</property>
+		</item>
+	</include>
+	<include />
+	<include name="skinshortcuts-submenu">
+		<item id="1">
+			<onclick>ActivateWindowAndFocus(MyPVR,32,0 ,11,0)</onclick>
+			<label>TV channels</label>
+			<label2>PVR</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">tvchannels</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="2">
+			<onclick>PlayPvr</onclick>
+			<label>Last channel</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">32068</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="3">
+			<onclick>ActivateWindowAndFocus(MyPVR,31,0 ,10,0)</onclick>
+			<label>EPG</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">19069</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="4">
+			<onclick>ActivateWindowAndFocus(MyPVR,34,0 ,13,0)</onclick>
+			<label>Recordings</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">19163</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="5">
+			<onclick>ActivateWindowAndFocus(MyPVR,35,0 ,14,0)</onclick>
+			<label>Timers</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">32023</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="1">
+			<onclick>ActivateWindow(MusicLibrary,Artists,return)</onclick>
+			<label>Artists</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicArtists.png</thumb>
+			<property name="labelID">133</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="2">
+			<onclick>ActivateWindow(MusicLibrary,Albums,return)</onclick>
+			<label>Albums</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicAlbums.png</thumb>
+			<property name="labelID">132</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="3">
+			<onclick>ActivateWindow(MusicLibrary,RecentlyAddedAlbums,return)</onclick>
+			<label>Recently added</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicRecentlyAdded.png</thumb>
+			<property name="labelID">recentlyadded</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="4">
+			<onclick>ActivateWindow(MusicLibrary,RecentlyPlayedAlbums,return)</onclick>
+			<label>Recently played</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicRecentlyPlayed.png</thumb>
+			<property name="labelID">recentlyplayed</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="5">
+			<onclick>ActivateWindow(MusicLibrary,Playlists,return)</onclick>
+			<label>Playlists</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicPlaylists.png</thumb>
+			<property name="labelID">136</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="6">
+			<onclick>ActivateWindow(MusicLibrary,MusicVideos,return)</onclick>
+			<label>Music videos</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicVideos.png</thumb>
+			<property name="labelID">musicvideos</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(MusicVideos)</visible>
+		</item>
+		<item id="7">
+			<onclick>ActivateWindow(MusicLibrary,Addons,return)</onclick>
+			<label>Add-ons</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultAddonMusic.png</thumb>
+			<property name="labelID">add-ons</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="1">
+			<onclick>ActivateWindow(Pictures,Addons,return)</onclick>
+			<label>Add-ons</label>
+			<label2>Pictures</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultAddonPicture.png</thumb>
+			<property name="labelID">add-ons</property>
+			<property name="group">pictures</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),pictures)]</visible>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="1">
+			<onclick>ActivateWindow(Programs,Addons,return)</onclick>
+			<label>Programs</label>
+			<label2>Programs</label2>
+			<icon>DefaultProgram.png</icon>
+			<thumb>DefaultAddonProgram.png</thumb>
+			<property name="labelID">programs</property>
+			<property name="group">24001</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),24001)]</visible>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="1">
+			<onclick>ActivateWindow(SystemInfo)</onclick>
+			<label>System information</label>
+			<label2>Common Shortcut</label2>
+			<icon>DefaultIconInfo.png</icon>
+			<thumb />
+			<property name="labelID">10007</property>
+			<property name="group">system</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),system)]</visible>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="2">
+			<onclick>ActivateWindow(shutdownmenu)</onclick>
+			<label>Quit</label>
+			<label2>Opens the shutdown menu</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>Power-fo.png</thumb>
+			<property name="labelID">quit</property>
+			<property name="group">system</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Container(9110).ListItem.Property(submenuVisibility),system)]</visible>
+			<property name="isSubmenu">True</property>
+		</item>
+	</include>
+	<include name="skinshortcuts-allmenus">
+		<item id="1">
+			<onclick>ActivateWindow(Videos,Addons,Addons,return)</onclick>
+			<label>Videos</label>
+			<label2>Custom shortcut</label2>
+			<icon>DefaultAddonVideo.png</icon>
+			<thumb />
+			<property name="labelID">videos</property>
+			<property name="group">mainmenu</property>
+			<property name="submenuVisibility">videos</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+		</item>
+		<item id="2">
+			<onclick condition="!StringCompare(Window(10000).Property(submenuVisibility),livetv)">SetProperty(submenuVisibility,livetv,10000)</onclick>
+			<label>Live TV</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb />
+			<property name="labelID">livetv</property>
+			<property name="group">mainmenu</property>
+			<property name="submenuVisibility">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+			<property name="hasSubmenu">True</property>
+			<onclick condition="StringCompare(Window(10000).Property(submenuVisibility),livetv)">PlayPvr</onclick>
+		</item>
+		<item id="1">
+			<onclick>ActivateWindowAndFocus(MyPVR,32,0 ,11,0)</onclick>
+			<label>TV channels</label>
+			<label2>PVR</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">tvchannels</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="2">
+			<onclick>PlayPvr</onclick>
+			<label>Last channel</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">32068</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="3">
+			<onclick>ActivateWindowAndFocus(MyPVR,31,0 ,10,0)</onclick>
+			<label>EPG</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">19069</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="4">
+			<onclick>ActivateWindowAndFocus(MyPVR,34,0 ,13,0)</onclick>
+			<label>Recordings</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">19163</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="5">
+			<onclick>ActivateWindowAndFocus(MyPVR,35,0 ,14,0)</onclick>
+			<label>Timers</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">32023</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="3">
+			<onclick condition="!StringCompare(Window(10000).Property(submenuVisibility),music)">SetProperty(submenuVisibility,music,10000)</onclick>
+			<label>Music</label>
+			<label2>Common Shortcut</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicAlbums.png</thumb>
+			<property name="labelID">music</property>
+			<property name="group">mainmenu</property>
+			<property name="submenuVisibility">music</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="hasSubmenu">True</property>
+			<onclick condition="StringCompare(Window(10000).Property(submenuVisibility),music)">ActivateWindow(Music)</onclick>
+		</item>
+		<item id="1">
+			<onclick>ActivateWindow(MusicLibrary,Artists,return)</onclick>
+			<label>Artists</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicArtists.png</thumb>
+			<property name="labelID">133</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="2">
+			<onclick>ActivateWindow(MusicLibrary,Albums,return)</onclick>
+			<label>Albums</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicAlbums.png</thumb>
+			<property name="labelID">132</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="3">
+			<onclick>ActivateWindow(MusicLibrary,RecentlyAddedAlbums,return)</onclick>
+			<label>Recently added</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicRecentlyAdded.png</thumb>
+			<property name="labelID">recentlyadded</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="4">
+			<onclick>ActivateWindow(MusicLibrary,RecentlyPlayedAlbums,return)</onclick>
+			<label>Recently played</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicRecentlyPlayed.png</thumb>
+			<property name="labelID">recentlyplayed</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="5">
+			<onclick>ActivateWindow(MusicLibrary,Playlists,return)</onclick>
+			<label>Playlists</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicPlaylists.png</thumb>
+			<property name="labelID">136</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="6">
+			<onclick>ActivateWindow(MusicLibrary,MusicVideos,return)</onclick>
+			<label>Music videos</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicVideos.png</thumb>
+			<property name="labelID">musicvideos</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(MusicVideos)</visible>
+		</item>
+		<item id="7">
+			<onclick>ActivateWindow(MusicLibrary,Addons,return)</onclick>
+			<label>Add-ons</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultAddonMusic.png</thumb>
+			<property name="labelID">add-ons</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="4">
+			<onclick condition="!StringCompare(Window(10000).Property(submenuVisibility),pictures)">SetProperty(submenuVisibility,pictures,10000)</onclick>
+			<label>Pictures</label>
+			<label2>Common Shortcut</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultPicture.png</thumb>
+			<property name="labelID">pictures</property>
+			<property name="group">mainmenu</property>
+			<property name="submenuVisibility">pictures</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="hasSubmenu">True</property>
+			<onclick condition="StringCompare(Window(10000).Property(submenuVisibility),pictures)">ActivateWindow(Pictures)</onclick>
+		</item>
+		<item id="1">
+			<onclick>ActivateWindow(Pictures,Addons,return)</onclick>
+			<label>Add-ons</label>
+			<label2>Pictures</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultAddonPicture.png</thumb>
+			<property name="labelID">add-ons</property>
+			<property name="group">pictures</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),pictures)]</visible>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="5">
+			<onclick condition="!StringCompare(Window(10000).Property(submenuVisibility),24001)">SetProperty(submenuVisibility,24001,10000)</onclick>
+			<label>Add-ons</label>
+			<label2>::LOCAL::10040</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultAddon.png</thumb>
+			<property name="labelID">24001</property>
+			<property name="group">mainmenu</property>
+			<property name="submenuVisibility">$NUMBER[24001]</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="hasSubmenu">True</property>
+			<onclick condition="StringCompare(Window(10000).Property(submenuVisibility),24001)">ActivateWindow(addonbrowser)</onclick>
+		</item>
+		<item id="1">
+			<onclick>ActivateWindow(Programs,Addons,return)</onclick>
+			<label>Programs</label>
+			<label2>Programs</label2>
+			<icon>DefaultProgram.png</icon>
+			<thumb>DefaultAddonProgram.png</thumb>
+			<property name="labelID">programs</property>
+			<property name="group">24001</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),24001)]</visible>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="6">
+			<onclick>RunAddon(script.globalsearch)</onclick>
+			<label>Search</label>
+			<label2>Program</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>Search.png</thumb>
+			<property name="labelID">search</property>
+			<property name="group">mainmenu</property>
+			<property name="submenuVisibility">search</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+		</item>
+		<item id="7">
+			<onclick condition="!StringCompare(Window(10000).Property(submenuVisibility),system)">SetProperty(submenuVisibility,system,10000)</onclick>
+			<label>System</label>
+			<label2>Common Shortcut</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="labelID">system</property>
+			<property name="group">mainmenu</property>
+			<property name="submenuVisibility">system</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<property name="hasSubmenu">True</property>
+			<onclick condition="StringCompare(Window(10000).Property(submenuVisibility),system)">ActivateWindow(Settings)</onclick>
+		</item>
+		<item id="1">
+			<onclick>ActivateWindow(SystemInfo)</onclick>
+			<label>System information</label>
+			<label2>Common Shortcut</label2>
+			<icon>DefaultIconInfo.png</icon>
+			<thumb />
+			<property name="labelID">10007</property>
+			<property name="group">system</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),system)]</visible>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="2">
+			<onclick>ActivateWindow(shutdownmenu)</onclick>
+			<label>Quit</label>
+			<label2>Opens the shutdown menu</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>Power-fo.png</thumb>
+			<property name="labelID">quit</property>
+			<property name="group">system</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),system)]</visible>
+			<property name="isSubmenu">True</property>
+		</item>
+	</include>
+	<include name="skinshortcuts-group-videos" />
+	<include name="skinshortcuts-group-alt-videos" />
+	<include name="skinshortcuts-group-livetv">
+		<item id="1">
+			<onclick>ActivateWindowAndFocus(MyPVR,32,0 ,11,0)</onclick>
+			<label>TV channels</label>
+			<label2>PVR</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">tvchannels</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="2">
+			<onclick>PlayPvr</onclick>
+			<label>Last channel</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">32068</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="3">
+			<onclick>ActivateWindowAndFocus(MyPVR,31,0 ,10,0)</onclick>
+			<label>EPG</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">19069</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="4">
+			<onclick>ActivateWindowAndFocus(MyPVR,34,0 ,13,0)</onclick>
+			<label>Recordings</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">19163</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="5">
+			<onclick>ActivateWindowAndFocus(MyPVR,35,0 ,14,0)</onclick>
+			<label>Timers</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">32023</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+	</include>
+	<include name="skinshortcuts-group-alt-livetv">
+		<item id="1">
+			<onclick>ActivateWindowAndFocus(MyPVR,32,0 ,11,0)</onclick>
+			<label>TV channels</label>
+			<label2>PVR</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">tvchannels</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="2">
+			<onclick>PlayPvr</onclick>
+			<label>Last channel</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">32068</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="3">
+			<onclick>ActivateWindowAndFocus(MyPVR,31,0 ,10,0)</onclick>
+			<label>EPG</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">19069</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="4">
+			<onclick>ActivateWindowAndFocus(MyPVR,34,0 ,13,0)</onclick>
+			<label>Recordings</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">19163</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+		<item id="5">
+			<onclick>ActivateWindowAndFocus(MyPVR,35,0 ,14,0)</onclick>
+			<label>Timers</label>
+			<label2>PVR</label2>
+			<icon>LiveTV.png</icon>
+			<thumb>DefaultTVShows.png</thumb>
+			<property name="labelID">32023</property>
+			<property name="group">livetv</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),livetv)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>System.GetBool(pvrmanager.enabled)</visible>
+		</item>
+	</include>
+	<include name="skinshortcuts-group-music">
+		<item id="1">
+			<onclick>ActivateWindow(MusicLibrary,Artists,return)</onclick>
+			<label>Artists</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicArtists.png</thumb>
+			<property name="labelID">133</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="2">
+			<onclick>ActivateWindow(MusicLibrary,Albums,return)</onclick>
+			<label>Albums</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicAlbums.png</thumb>
+			<property name="labelID">132</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="3">
+			<onclick>ActivateWindow(MusicLibrary,RecentlyAddedAlbums,return)</onclick>
+			<label>Recently added</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicRecentlyAdded.png</thumb>
+			<property name="labelID">recentlyadded</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="4">
+			<onclick>ActivateWindow(MusicLibrary,RecentlyPlayedAlbums,return)</onclick>
+			<label>Recently played</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicRecentlyPlayed.png</thumb>
+			<property name="labelID">recentlyplayed</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="5">
+			<onclick>ActivateWindow(MusicLibrary,Playlists,return)</onclick>
+			<label>Playlists</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicPlaylists.png</thumb>
+			<property name="labelID">136</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="6">
+			<onclick>ActivateWindow(MusicLibrary,MusicVideos,return)</onclick>
+			<label>Music videos</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicVideos.png</thumb>
+			<property name="labelID">musicvideos</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<visible>Library.HasContent(MusicVideos)</visible>
+		</item>
+		<item id="7">
+			<onclick>ActivateWindow(MusicLibrary,Addons,return)</onclick>
+			<label>Add-ons</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultAddonMusic.png</thumb>
+			<property name="labelID">add-ons</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+	</include>
+	<include name="skinshortcuts-group-alt-music">
+		<item id="1">
+			<onclick>ActivateWindow(MusicLibrary,Artists,return)</onclick>
+			<label>Artists</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicArtists.png</thumb>
+			<property name="labelID">133</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="2">
+			<onclick>ActivateWindow(MusicLibrary,Albums,return)</onclick>
+			<label>Albums</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicAlbums.png</thumb>
+			<property name="labelID">132</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="3">
+			<onclick>ActivateWindow(MusicLibrary,RecentlyAddedAlbums,return)</onclick>
+			<label>Recently added</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicRecentlyAdded.png</thumb>
+			<property name="labelID">recentlyadded</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="4">
+			<onclick>ActivateWindow(MusicLibrary,RecentlyPlayedAlbums,return)</onclick>
+			<label>Recently played</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicRecentlyPlayed.png</thumb>
+			<property name="labelID">recentlyplayed</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="5">
+			<onclick>ActivateWindow(MusicLibrary,Playlists,return)</onclick>
+			<label>Playlists</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicPlaylists.png</thumb>
+			<property name="labelID">136</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+		<item id="6">
+			<onclick>ActivateWindow(MusicLibrary,MusicVideos,return)</onclick>
+			<label>Music videos</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultMusicVideos.png</thumb>
+			<property name="labelID">musicvideos</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(MusicVideos)</visible>
+		</item>
+		<item id="7">
+			<onclick>ActivateWindow(MusicLibrary,Addons,return)</onclick>
+			<label>Add-ons</label>
+			<label2>Music</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultAddonMusic.png</thumb>
+			<property name="labelID">add-ons</property>
+			<property name="group">music</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),music)]</visible>
+			<property name="isSubmenu">True</property>
+			<visible>Library.HasContent(Music)</visible>
+		</item>
+	</include>
+	<include name="skinshortcuts-group-pictures">
+		<item id="1">
+			<onclick>ActivateWindow(Pictures,Addons,return)</onclick>
+			<label>Add-ons</label>
+			<label2>Pictures</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultAddonPicture.png</thumb>
+			<property name="labelID">add-ons</property>
+			<property name="group">pictures</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+		</item>
+	</include>
+	<include name="skinshortcuts-group-alt-pictures">
+		<item id="1">
+			<onclick>ActivateWindow(Pictures,Addons,return)</onclick>
+			<label>Add-ons</label>
+			<label2>Pictures</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>DefaultAddonPicture.png</thumb>
+			<property name="labelID">add-ons</property>
+			<property name="group">pictures</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),pictures)]</visible>
+			<property name="isSubmenu">True</property>
+		</item>
+	</include>
+	<include name="skinshortcuts-group-24001">
+		<item id="1">
+			<onclick>ActivateWindow(Programs,Addons,return)</onclick>
+			<label>Programs</label>
+			<label2>Programs</label2>
+			<icon>DefaultProgram.png</icon>
+			<thumb>DefaultAddonProgram.png</thumb>
+			<property name="labelID">programs</property>
+			<property name="group">24001</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+		</item>
+	</include>
+	<include name="skinshortcuts-group-alt-24001">
+		<item id="1">
+			<onclick>ActivateWindow(Programs,Addons,return)</onclick>
+			<label>Programs</label>
+			<label2>Programs</label2>
+			<icon>DefaultProgram.png</icon>
+			<thumb>DefaultAddonProgram.png</thumb>
+			<property name="labelID">programs</property>
+			<property name="group">24001</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),24001)]</visible>
+			<property name="isSubmenu">True</property>
+		</item>
+	</include>
+	<include name="skinshortcuts-group-search" />
+	<include name="skinshortcuts-group-alt-search" />
+	<include name="skinshortcuts-group-system">
+		<item id="1">
+			<onclick>ActivateWindow(SystemInfo)</onclick>
+			<label>System information</label>
+			<label2>Common Shortcut</label2>
+			<icon>DefaultIconInfo.png</icon>
+			<thumb />
+			<property name="labelID">10007</property>
+			<property name="group">system</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+		</item>
+		<item id="2">
+			<onclick>ActivateWindow(shutdownmenu)</onclick>
+			<label>Quit</label>
+			<label2>Opens the shutdown menu</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>Power-fo.png</thumb>
+			<property name="labelID">quit</property>
+			<property name="group">system</property>
+			<visible>StringCompare(System.ProfileName,Master user)</visible>
+		</item>
+	</include>
+	<include name="skinshortcuts-group-alt-system">
+		<item id="1">
+			<onclick>ActivateWindow(SystemInfo)</onclick>
+			<label>System information</label>
+			<label2>Common Shortcut</label2>
+			<icon>DefaultIconInfo.png</icon>
+			<thumb />
+			<property name="labelID">10007</property>
+			<property name="group">system</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),system)]</visible>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="2">
+			<onclick>ActivateWindow(shutdownmenu)</onclick>
+			<label>Quit</label>
+			<label2>Opens the shutdown menu</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>Power-fo.png</thumb>
+			<property name="labelID">quit</property>
+			<property name="group">system</property>
+			<visible>StringCompare(System.ProfileName,Master user) + [StringCompare(Window(10000).Property(submenuVisibility),system)]</visible>
+			<property name="isSubmenu">True</property>
+		</item>
+	</include>
+</includes>
