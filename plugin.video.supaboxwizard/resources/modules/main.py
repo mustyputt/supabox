@@ -6,7 +6,7 @@ except: from t0mm0_common_addon import Addon
 try: 		from t0mm0.common.net import Net
 except: from t0mm0_common_net import Net
 #Define common.addon
-addon_id='plugin.video.hubwizard'
+addon_id='plugin.video.supaboxwizard'
 addon=Addon(addon_id, sys.argv)
 # Global Stuff
 settings=xbmcaddon.Addon(id=addon_id)
