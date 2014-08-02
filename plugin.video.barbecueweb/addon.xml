@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.barbecueweb"
+	name="BBQ Pit Boys"
+	version="1.0.2"
+	provider-name="xbmchub.com">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="plugin.video.youtube" version="3.0.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">BBQ Pit Boys</summary>
+    <description lang="en">YouTube's #1 Cooking Show for Barbecue and Grilling recipes!</description>
+    <platform>all</platform>
+    <forum>http://www.xbmchub.com/forums/official-xbmc-hub-repo/</forum>
+    <website>http://www.xbmchub.com/</website>
+  </extension>
+</addon>

@@ -1,0 +1,5 @@
+<settings>
+	<category label="Option">
+        <setting id="dev_message" type="text" label="Dev Message" default="true" visible="false"/>
+	</category>
+</settings>
