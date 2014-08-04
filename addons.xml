@@ -2300,6 +2300,23 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
   </extension>
 </addon>
 
+<addon id="plugin.video.quickwizard" version="1.2.1" name="Supabox Config Wizard" provider-name="flaggsoft.com">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>The Supabox Quick Wizard</summary>
+		<description>Quick prep addon</description>
+		<website></website>
+		<platform>all</platform>
+		<forum></forum>
+		<website></website>
+	</extension>
+</addon>
+
 <addon id="plugin.video.solarmovie.so"
        name="S[COLOR goldenrod]o[/COLOR]lar[COLOR yellow]M[/COLOR][COLOR grey]ovie.so[/COLOR]"
        version="0.4.4"
