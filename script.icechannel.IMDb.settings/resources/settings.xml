@@ -1,0 +1,6 @@
+<settings>
+<category label="IMDb SETTINGS">
+<setting id="imdb_user_number" label="User Number" type="text" default="" />
+<setting id="future" type="bool" label="Show Future Episodes" default="false" />
+</category>
+</settings>

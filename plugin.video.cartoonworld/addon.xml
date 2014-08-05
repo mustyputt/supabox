@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="plugin.video.cartoonworld"
+       name="Cartoon World"
+       version="0.0.6"
+       provider-name="[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.urlresolver" version="0.0.1"/>
+	<import addon="script.module.t0mm0.common" version="0.0.1"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Cartoon World (cartoon-world.tv)</summary>
+    <description lang="en">Cartoon World (cartoon-world.tv) - Watch Cartoon Episodes Online, Free English Dub Anime Shows. Watch Cartoon and Anime Streaming English Dub in HD only at Cartoon-World.tv!</description>
+    <platform>all</platform>
+  </extension>
+</addon>

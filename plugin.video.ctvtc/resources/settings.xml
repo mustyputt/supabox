@@ -1,0 +1,8 @@
+<settings>
+	<setting id="textcolor" type="labelenum" label=30003 default="purple" values="Custom|[COLOR purple]purple[/COLOR]|[COLOR pink]pink[/COLOR]|[COLOR=FFE799A3]rose[/COLOR]|[COLOR blue]blue[/COLOR]|[COLOR orange]orange[/COLOR]|[COLOR red]red[/COLOR]|[COLOR yellow]yellow[/COLOR]|white" />
+	<setting id="custom_text_color" type="text" label=30004 default="" enable="eq(-1,0)" />\n
+	<setting type="sep"/>\n
+	<setting id="viewtype" type="labelenum" label=30005 default="Icons" values="Icons|List" />
+	<setting id="viewtypeNumber" type="labelenum" label=30006 default="551" values="551|504|503|508|515|50|51|500|550|560|501|572|573|574|570|571|505|511" enable="eq(-1,0)" />\n
+	
+</settings>

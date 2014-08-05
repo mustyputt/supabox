@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="script.icechannel.extn.cocawe" version="0.6.8" name="Cocawe's iStream Extension" provider-name="Cocawe">
+ <requires>
+  <import addon="xbmc.python" version="2.1.0"/>
+ </requires>
+ <extension library="default.py" point="xbmc.service" />
+ <extension point="xbmc.addon.metadata">
+  <summary lang="en">iStream Extension</summary>
+  <description lang="en">SolarMovies.so, TMDb, Watchseries.lt, Ororo.tv, and Putlocker.bz</description>
+  <platform></platform>
+  <language></language>
+  <license></license>
+  <forum></forum>
+  <website></website>
+  <source></source>
+  <email></email>
+ </extension>
+</addon>

@@ -1162,24 +1162,6 @@ Plus stream or download from over 70,000 live audio bootlegs from www.archive.or
     </extension>
 </addon>
 
-<addon id="plugin.video.hubmaintenance" name=".[COLOR blue]X[/COLOR]unity Maintenance" version="120001.0.3" provider-name=".[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="plugin.video.youtube"/>
-    <import addon="plugin.video.xbmconnect" version="1.0.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video executable</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">Xunity Mainenance</summary>
-    <description lang="en">Xunity Maintenance is your onestop tool for all fixes from xunitytalk.com</description>
-    <disclaimer lang="en">By using This Plugin You will receive sometimes an advert which helps funds the developers developing.....we all thank you!!</disclaimer>
-    <platform>all</platform>
-  </extension>
-  <extension point="xbmc.service" library="service.py" start="login" />
-</addon>
-
 <addon id="plugin.video.icefilms"
        name="Icefilms"
        version="1.5.1"
@@ -2070,23 +2052,6 @@ Turns your XBMC into an instant free on-demand media-center. Stream and download
     </extension>
 </addon>
 
-<addon id="plugin.video.oneclickwatch" version="0.6.0" name="One Click Watch" provider-name="[COLOR blue][B]tcz009[/B][/COLOR] [B][I]TheYid REPO[/B][/I]">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-        <import addon="script.module.TheYid.common" version="0.1.1"/>
-        <import addon="script.module.urlresolver"  version="2.0.9"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary>One Click Watch [COLOR blue][B]THE ORIGINAL[/B][/COLOR] for all scene releases lovers free on demand streaming</summary>
-        <description>Play a wide selection of scene release movies and Tv shows from One Click Watch best hosts are putlocker vidto allmyvideos billionuploads vidbull 180upload movreel vidxden vidbux</description>
-        <platform>all</platform>
-        <disclaimer lang="en">[COLOR red][B][I]SAY NO TO ADVERTISING IN ADDONS please come to XBMCHUB.com and show your support thanks from @TheYid009 [/B][/I][/COLOR]</disclaimer>
-    </extension>
-</addon>
-
 <addon id="plugin.video.ororotv" name="Ororo TV" version="2.2.1" provider-name="lambda">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
@@ -2615,30 +2580,6 @@ Watch all your favorite TV Shows and Movies streamed on constant repeat 24/7 fro
 
 </addon>
 
-<addon id="plugin.video.tvonline.cc"
-       name="TVonline 3.0"
-       version="3.0.0"
-       provider-name="kinkin, art by Marquerite">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-        <import addon="script.module.urlresolver" version="1.0.0"/>
-        <import addon="script.module.metahandler" version="2.4.0"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource"
-               	library="default.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.service"
-             	library="service.py" start="startup">
-	</extension>
-    <extension point="xbmc.addon.metadata">
-        <platform>all</platform>
-        <summary>Stream your favourite TV shows</summary>
-        <description>Stream from thousands of TV shows with one click</description>
-    </extension>
-
-</addon>
-
 <addon id="plugin.video.UFC"
 	name="UFC"
 	version="1.0.2"
@@ -2937,24 +2878,6 @@ Special thanks to Marquerite for the outstanding work on the graphics and To Eld
     <website></website>
     <email></email>
     <source>https://github.com/learningit/plugin.video.wsj</source>
-  </extension>
-</addon>
-
-<addon id="plugin.video.xbmchubmaintenance" name="Maintenance Tool" version="2.1" provider-name="XBMCHUB.COM">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="plugin.video.youtube"/>
-    <import addon="script.module.addon.common" version="2.0.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>executable</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">XBMCHUB Maintenance Tool</summary>
-    <description lang="en">Maintenance Tool is your onestop tool for all fixes and information.</description>
-    <platform>all</platform>
-    <forum>http://www.xbmchub.com/forums/official-xbmc-hub-repo/</forum>
-    <website>http://www.xbmchub.com/</website>
   </extension>
 </addon>
 
