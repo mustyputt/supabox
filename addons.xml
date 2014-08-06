@@ -625,6 +625,40 @@
   </extension>
 </addon>
 
+<addon id="plugin.video.cartoonhd" name="Cartoon HD" version="1.1.2" provider-name=".[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Cartoon HD</summary>
+    <description lang="en">Watch All Your Favourite Cartoons</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.cartoonworld"
+       name="Cartoon World"
+       version="0.0.6"
+       provider-name="[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.urlresolver" version="0.0.1"/>
+	<import addon="script.module.t0mm0.common" version="0.0.1"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Cartoon World (cartoon-world.tv)</summary>
+    <description lang="en">Cartoon World (cartoon-world.tv) - Watch Cartoon Episodes Online, Free English Dub Anime Shows. Watch Cartoon and Anime Streaming English Dub in HD only at Cartoon-World.tv!</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.cbsnews_com" name="CBSnews.com" version="2.0.8" provider-name="AddonScriptorDE">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
@@ -685,6 +719,27 @@
 Plus stream or download from over 70,000 live audio bootlegs from www.archive.org</description>
     </extension>
 
+</addon>
+
+<addon id="plugin.video.ctvtc"
+       name="Candita's TV Time Capsule"
+       version="2.3.9"
+       provider-name="">
+  <requires>
+        <import addon="xbmc.python" version="2.0"/>
+        <import addon="script.module.beautifulsoup"/>
+		<import addon="script.module.addon.common" version="2.0.0"/>
+
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Candita's TV Time Capsule</summary>
+    <description lang="en">We are made wise not by the recollection of our past, but by the responsibility for our future.[CR]George Bernard Shaw</description>
+    <platform>all</platform>
+  </extension>
 </addon>
 
 <addon id="plugin.video.dailymotion_com" name="DailyMotion.com" version="2.1.2" provider-name="AddonScriptorDE">
@@ -978,6 +1033,31 @@ Plus stream or download from over 70,000 live audio bootlegs from www.archive.or
     <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
     <source>https://code.google.com/p/flw-xbmc/</source>
     <forum></forum>
+  </extension>
+</addon>
+
+<addon id="plugin.video.foodnetwork"
+       name="Food Network"
+       version="2.0.2"
+       provider-name="t1m">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Food Network Video Addon</summary>
+    <description lang="en">Play videos from the Food Network</description>
+    <disclaimer lang="en">Feel free to use this script. For information visit the wiki.</disclaimer>
+    <platform>all</platform>
+    <language>en</language>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <forum></forum>
+    <website>www.foodnetwork.com</website>
+    <email></email>
+    <source>https://github.com/learningit/plugin.video.foodnetwork/</source>
   </extension>
 </addon>
 
@@ -2049,6 +2129,23 @@ Turns your XBMC into an instant free on-demand media-center. Stream and download
         <summary>Browse oneclickmoviez</summary>
         <description>Play a wide selection of Movies and TV Shows from www.oneclickmoviez.ag</description>
         <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="plugin.video.oneclickwatch" version="0.6.0" name="One Click Watch" provider-name="[COLOR blue][B]tcz009[/B][/COLOR] [B][I]TheYid REPO[/B][/I]">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.TheYid.common" version="0.1.1"/>
+        <import addon="script.module.urlresolver"  version="2.0.9"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>One Click Watch [COLOR blue][B]THE ORIGINAL[/B][/COLOR] for all scene releases lovers free on demand streaming</summary>
+        <description>Play a wide selection of scene release movies and Tv shows from One Click Watch best hosts are putlocker vidto allmyvideos billionuploads vidbull 180upload movreel vidxden vidbux</description>
+        <platform>all</platform>
+        <disclaimer lang="en">[COLOR red][B][I]SAY NO TO ADVERTISING IN ADDONS please come to XBMCHUB.com and show your support thanks from @TheYid009 [/B][/I][/COLOR]</disclaimer>
     </extension>
 </addon>
 
@@ -3132,6 +3229,24 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
   </extension>
 </addon>
 
+<addon id="plugin.video.youtube.3d"
+	name="YouTube 3D"
+	version="0.0.1"
+	provider-name="xbmc_now">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+		<import addon="plugin.video.youtube" version="4.4.8" />
+	</requires>
+	<extension library="default.py" point="xbmc.python.pluginsource">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+			<summary lang="ja">Youtube 3D</summary>
+			<description lang="ja">youtubeにアップされた映像を3D化して表示します。</description>
+			<platform>all</platform>
+	</extension>
+</addon>
+
 <addon id="plugin.video.youtubeonfire"
        name="YouTube on Fire"
        version="0.6.3"
@@ -3177,6 +3292,19 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 	<extension point="xbmc.addon.metadata">
 		<summary>Bstrdsmkr's Addons</summary>
 		<description>Download and install addons by Bstrdsmkr!</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.cocawe" name="Cocawe's REPO" version="1.3" provider-name="Cocawe">
+	<extension point="xbmc.addon.repository" name="Cocawe's Addon Repository">
+		<info compressed="false">https://raw.github.com/cocawe/My-xbmc-repo/master/addons.xml</info>
+		<checksum>https://raw.github.com/cocawe/My-xbmc-repo/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.github.com/cocawe/My-xbmc-repo/master/zips</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install My Addons</summary>
+		<description>iStream extensions</description>
 		<platform>all</platform>
 	</extension>
 </addon>
@@ -3236,6 +3364,19 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 	</extension>
 </addon>
 
+<addon id="repository.istream" name="iSTREAM XBMC Addons Repository" version="1.0" provider-name="iSTREAM">
+	<extension point="xbmc.addon.repository" name="iSTREAM">
+		<info compressed="false">http://istream-xbmc-repo.googlecode.com/svn/repo/addons.xml</info>
+		<checksum>http://istream-xbmc-repo.googlecode.com/svn/repo/addons.xml.md5</checksum>
+		<datadir zip="true">http://istream-xbmc-repo.googlecode.com/svn/repo/zips</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>iSTREAM XBMC Addons and Extensions</summary>
+		<description>iSTREAM XBMC Addons and Extensions</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
 <addon id="repository.Kinkin" name="Kinkins REPO" version="1.2" provider-name="Kinkin">
 	<extension point="xbmc.addon.repository" name="Kinkin Addon Repository">
 		<info compressed="false">http://kinkin-xbmc-repository.googlecode.com/svn/trunk/addons.xml</info>
@@ -3260,6 +3401,32 @@ Raadpleeg de lokale wetgeving voordat u deze plugin installeert.</disclaimer>
 		<summary lang="el">Εγκαταστήστε τα πρόσθετα του lambda</summary>
 		<description lang="en">Download and install addons by lambda</description>
 		<description lang="el">Λήψη και εγκατάσταση προσθέτων από τον lambda</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.mash2k3" name="All Addons by Mash" version="1.8" provider-name="MashUp">
+	<extension point="xbmc.addon.repository" name="Addons from MashUp">
+		<info compressed="false"> </info>
+		<checksum> </checksum>
+		<datadir zip="true"> </datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Repo for Mash Up</summary>
+		<description>Download and install MashUp.......For OFFICIAL !! Support Visit MASHUPXBMC.COM</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.metalkettle" name="MetalKettles Addon Repository" version="1.4.1" provider-name="MetalKettle">
+	<extension point="xbmc.addon.repository" name="MetalKettles Addon Repository">
+		<info compressed="false">http://raw.github.com/metalkettle/MetalKettles-Addon-Repository/master/addons.xml</info>
+		<checksum>http://raw.github.com/metalkettle/MetalKettles-Addon-Repository/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://raw.github.com/metalkettle/MetalKettles-Addon-Repository/master/zips</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install my Addons</summary>
+		<description>Download and install addons from MetalKettle</description>
 		<platform>all</platform>
 	</extension>
 </addon>
@@ -3433,6 +3600,19 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 	</extension>
 </addon>
 
+<addon id="repository.xunitytalk" name=".[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk Repository" version="1.0.0" provider-name=".[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk">
+	<extension point="xbmc.addon.repository" name="Mikey1234 Addon Repository">
+		<info compressed="false">http://xunitytalk-repository.googlecode.com/svn/addons/addons.xml</info>
+		<checksum>http://xunitytalk-repository.googlecode.com/svn/addons/addons.xml.md5</checksum>
+		<datadir zip="true">http://xunitytalk-repository.googlecode.com/svn/addons</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>The Best Third Party Addons for XBMC, .[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk</summary>
+		<description>The Best Third Party Addons for XBMC, .[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
 <addon id="script.audio.pandora"
        name="Pandora"
        version="2.3.2"
@@ -3583,7 +3763,7 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 	</extension>
 </addon>
 
-<addon id="script.ftvguide" name="FTV Guide" version="1.0.3" provider-name="kinkin,rayw1986">
+<addon id="script.ftvguide" name="FTV Guide" version="1.1.3" provider-name="kinkin,rayw1986">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 		<import addon="script.module.simplejson" version="2.0.10"/>
@@ -3648,6 +3828,454 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 	</extension>
 </addon>
 
+<addon id="script.icechannel" version="1.0.0.1" name="iSTREAM" provider-name="iSTREAM">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+		<import addon="script.module.urlresolver" version="0.0.1"/>
+		<import addon="script.module.universal" version="0.0.1" />
+		<import addon="script.module.beautifulsoup" version="0.0.1"/>
+		<import addon="script.module.metahandler" version="0.0.1"/>
+		<import addon="script.module.feedparser" version="0.0.1"/>
+		<import addon="script.module.pyamf" version="0.0.1"/>
+		<import addon="script.icechannel.extn.common" version="0.0.9"/>
+		<import addon="script.module.unidecode" version="0.0.1"/>
+		<import addon="script.module.socksipy" version="0.0.1"/>
+		<import addon="script.module.dnspython" version="0.0.1"/>
+		<import addon="script.module.f4mproxy" version="0.0.1"/>
+		<import addon="script.istream.dialogs" version="0.0.1"/>
+		<import addon="script.icechannel.extn.xunity.tv.common" version="0.0.1"/>
+    </requires>
+	<extension point="xbmc.python.pluginsource" library="plugin.py" >
+		<provides>video</provides>
+	</extension>
+    <extension point="xbmc.python.module" library="lib" />
+	<extension library="service.py" point="xbmc.service"  start="startup"/>
+    <extension point="xbmc.addon.metadata">
+		<summary lang="en">iSTREAM</summary>
+		<description lang="en">iSTREAM</description>
+		<platform></platform>
+		<language></language>
+		<license></license>
+		<forum></forum>
+		<website></website>
+		<source></source>
+		<email></email>
+    </extension>
+</addon>
+
+<addon id="script.icechannel.directdownload.settings" version="0.0.2" name="iStream - directdownload" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - directdownload - Settings </summary>
+<description lang="en">iStream - directdownload - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.EasyNews.settings" version="0.0.2" name="iStream - EasyNews" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - EasyNews - Settings </summary>
+<description lang="en">iStream - EasyNews - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.extn.cocawe" version="0.6.8" name="Cocawe's iStream Extension" provider-name="Cocawe">
+ <requires>
+  <import addon="xbmc.python" version="2.1.0"/>
+ </requires>
+ <extension library="default.py" point="xbmc.service" />
+ <extension point="xbmc.addon.metadata">
+  <summary lang="en">iStream Extension</summary>
+  <description lang="en">SolarMovies.so, TMDb, Watchseries.lt, Ororo.tv, and Putlocker.bz</description>
+  <platform></platform>
+  <language></language>
+  <license></license>
+  <forum></forum>
+  <website></website>
+  <source></source>
+  <email></email>
+ </extension>
+</addon>
+
+<addon id="script.icechannel.extn.common" version="0.1.2" name="iSTREAM - Common" provider-name="iSTREAM">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+	<extension library="default.py" point="xbmc.service" />
+    <extension point="xbmc.addon.metadata">
+		<summary lang="en">iSTREAM - Common</summary>
+		<description lang="en">iSTREAM - Common</description>
+		<platform></platform>
+		<language></language>
+		<license></license>
+		<forum></forum>
+		<website></website>
+		<source></source>
+		<email></email>
+    </extension>
+</addon>
+
+<addon id="script.icechannel.extn.coolwave" version="9.9.9" name="[COLOR blue]Coolwave[/COLOR] iStream Extensions" provider-name="Coolwave">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="repository.istream" version="1.0"/>
+    </requires>
+	<extension library="default.py" point="xbmc.service" />
+		<summary lang="en">iStream Extensions by [COLOR blue]Coolwave[/COLOR]</summary>
+    <extension point="xbmc.addon.metadata">
+		<description lang="en">iStream Extension by [COLOR blue]Coolwave[/COLOR]</description>
+		<platform></platform>
+		<language></language>
+		<license></license>
+		<forum></forum>
+		<website></website>
+		<source></source>
+		<email></email>
+    </extension>
+</addon>
+
+<addon id="script.icechannel.extn.extra.uk" version="0.0.2" name="iStream Extensions - Extra Uk Channels" provider-name="[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="repository.istream" version="1.0"/>
+    </requires>
+	<extension library="default.py" point="xbmc.service" />
+		<summary lang="en">iStream Extensions by xunitytalk.com</summary>
+    <extension point="xbmc.addon.metadata">
+		<description lang="en">iStream Extensions - Extra Uk Channels</description>
+		<platform></platform>
+		<language></language>
+		<license></license>
+		<forum></forum>
+		<website></website>
+		<source></source>
+		<email></email>
+    </extension>
+</addon>
+
+<addon id="script.icechannel.extn.xunity.tv.common" version="0.0.5" name="Xunity TV - Common" provider-name="xunity.tv">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+	<extension library="default.py" point="xbmc.service" />
+    <extension point="xbmc.addon.metadata">
+		<summary lang="en">Xunity TV - Common</summary>
+		<description lang="en">Xunity TV - Common</description>
+		<platform></platform>
+		<language></language>
+		<license></license>
+		<forum></forum>
+		<website></website>
+		<source></source>
+		<email></email>
+    </extension>
+</addon>
+
+<addon id="script.icechannel.extn.xunitytalk" version="0.3.65" name=".[COLOR blue]X[/COLOR]unity Talk iStream Extensions" provider-name="[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="repository.istream" version="1.0"/>
+    </requires>
+	<extension library="default.py" point="xbmc.service" />
+		<summary lang="en">iStream Extensions by xunitytalk.com</summary>
+    <extension point="xbmc.python.module" library="lib" />
+	<extension library="service.py" point="xbmc.service"  start="startup"/>
+    <extension point="xbmc.addon.metadata">
+		<description lang="en">iStream Extensions by Xunity Talk</description>
+		<platform></platform>
+		<language></language>
+		<license></license>
+		<forum></forum>
+		<website></website>
+		<source></source>
+		<email></email>
+    </extension>
+</addon>
+
+<addon id="script.icechannel.Furk.Net.settings" version="0.0.2" name="iStream - Furk.Net" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - Furk.Net - Settings </summary>
+<description lang="en">iStream - Furk.Net - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.IceFilms.settings" version="0.0.2" name="iStream - IceFilms" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - IceFilms - Settings </summary>
+<description lang="en">iStream - IceFilms - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.IMDb.settings" version="0.0.2" name="iStream - IMDb" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - IMDb - Settings </summary>
+<description lang="en">iStream - IMDb - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.iStream.about.settings" version="0.0.2" name="iStream - About" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - About - Settings </summary>
+<description lang="en">iStream - About - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.iStream.internetconnection.settings" version="0.0.2" name="iStream - Internet Connection" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - Internet Connection - Settings </summary>
+<description lang="en">iStream - Internet Connection - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.iStream.lists.settings" version="0.0.2" name="iStream - iWatch" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - iWatch - Settings </summary>
+<description lang="en">iStream - iWatch - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.iStream.live_tv.settings" version="0.0.2" name="iStream - Live TV" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - Live TV - Settings </summary>
+<description lang="en">iStream - Live TV - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.iStream.movies.settings" version="0.0.2" name="iStream - Movies" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - Movies - Settings </summary>
+<description lang="en">iStream - Movies - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.iStream.sports.settings" version="0.0.2" name="iStream - Sports (Live)" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - Sports (Live) - Settings </summary>
+<description lang="en">iStream - Sports (Live) - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.iStream.tv_shows.settings" version="0.0.2" name="iStream - TV Shows" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - TV Shows - Settings </summary>
+<description lang="en">iStream - TV Shows - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.iStream.xbmcintegration.settings" version="0.0.2" name="iStream - XBMC Integration" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - XBMC Integration - Settings </summary>
+<description lang="en">iStream - XBMC Integration - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.noobroom.settings" version="0.0.2" name="iStream - noobroom" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - noobroom - Settings </summary>
+<description lang="en">iStream - noobroom - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.ororo.settings" version="0.0.2" name="iStream - ororo" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - ororo - Settings </summary>
+<description lang="en">iStream - ororo - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.PrimeWire.settings" version="0.0.2" name="iStream - PrimeWire" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - PrimeWire - Settings </summary>
+<description lang="en">iStream - PrimeWire - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.projectfreetv.settings" version="0.0.2" name="iStream - projectfreetv" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - projectfreetv - Settings </summary>
+<description lang="en">iStream - projectfreetv - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.solarmovie.settings" version="0.0.2" name="iStream - solarmovie" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - solarmovie - Settings </summary>
+<description lang="en">iStream - solarmovie - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.trakt.settings" version="0.0.2" name="iStream - trakt" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - trakt - Settings </summary>
+<description lang="en">iStream - trakt - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
+<addon id="script.icechannel.TvOnline.settings" version="0.0.2" name="iStream - TvOnline" provider-name="iStream">
+<extension point="xbmc.python.pluginsource" library="default.py" />
+<extension point="xbmc.addon.metadata">
+<summary lang="en">iStream - TvOnline - Settings </summary>
+<description lang="en">iStream - TvOnline - Settings </description>
+<platform></platform>
+<language></language>
+<license></license>
+<forum></forum>
+<website></website>
+<source></source>
+<email></email>
+</extension>
+</addon>
+
 <addon id="script.image.bigpictures" name="The Big Picture" version="4.1.2" provider-name="Tristan Fischer (sphere@dersphere.de)">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
@@ -3705,6 +4333,24 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
         <description lang="pt_BR">Este addon oferece belos álbuns e fotos de alguns dos principais sites de fotojornalismo ​​[CR] - Boston.com:. The Big Picture [CR] - The Atlantic: Em Foco [CR] - Sacramento Bee: The Frame [CR] - Wallstreetjournal: A Foto Jornal [CR] - TotallyCoolPix.com [CR] - Time.com: LightBox - Closeup[CR]- NewYorkTimes.com: Lens Blog</description>
         <description lang="sv">Detta tillägg ger tillgång till vackra album och foton från några trevliga fotojournalism webbplatser.[CR]- Boston.com: The Big Picture[CR]- The Atlantic: In Focus[CR]- Sacramento Bee: The Frame[CR]- Wallstreetjournal: The Photo Journal[CR]- TotallyCoolPix.com[CR]- Time.com: LightBox - Closeup[CR]- NewYorkTimes.com: Lens Blog</description>
         <description lang="zh">本插件提供优秀新闻摄影网站的漂亮相册和照片。[CR]- Boston.com: The Big Picture[CR]- The Atlantic: In Focus[CR]- Sacramento Bee: The Frame[CR]- Wallstreetjournal: The Photo Journal[CR]- TotallyCoolPix.com[CR]- Time.com: LightBox - Closeup[CR]- NewYorkTimes.com: Lens Blog</description>
+    </extension>
+</addon>
+
+<addon id="script.istream.dialogs" version="0.0.5" name="iSTREAM Custom Windows and Dialogs" provider-name="iSTREAM">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+	<extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+		<summary lang="en">iSTREAM Custom Windows and Dialogs</summary>
+		<description lang="en">Custom UI (Windows and Dialogs) for iSTREAM</description>
+		<platform></platform>
+		<language></language>
+		<license></license>
+		<forum></forum>
+		<website></website>
+		<source></source>
+		<email></email>
     </extension>
 </addon>
 
@@ -3855,6 +4501,24 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
     </extension>
 </addon>
 
+<addon id="script.module.dnspython" name="DNS Python" version="1.11.1" provider-name="dnspython">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+	<summary>A Pure Python DNS module</summary>
+	<description>A Pure Python DNS module</description>
+    <platform>all</platform>
+	<language></language>
+	<license></license>
+	<forum></forum>
+	<website>http://www.dnspython.org/</website>
+	<source>https://github.com/rthalley/dnspython</source>
+	<email></email>
+  </extension>
+</addon>
+
 <addon id="script.module.elementtree"
        name="Elementtree XML parser"
        version="1.2.8"
@@ -3866,6 +4530,21 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
              library="lib" />
   <extension point="xbmc.addon.metadata">
     <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="script.module.f4mproxy"
+	     name="f4m proxy"
+	     version="1.0.16"
+	     provider-name="Shani">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Proxy for f4m</summary>
+    <description lang="en">Use this addon to play F4m v1 and v2 streams</description>
   </extension>
 </addon>
 
@@ -4139,6 +4818,43 @@ AMF3, the default serialization for ActionScript 3.0, provides various advantage
   </extension>
 </addon>
 
+<addon id="script.module.unidecode" name="unidecode" version="0.4.16" provider-name="Tomaz Solc (Tomaz.solc@tablix.org)">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<language></language>
+		<summary lang="en">ASCII transliterations of Unicode text by Sean M. Burke and Tomaz Solc</summary>
+		<description lang="en">ASCII transliterations of Unicode text by Sean M. Burke and Tomaz Solc</description>
+		<disclaimer lang="en">Code taken from https://pypi.python.org/pypi/Unidecode</disclaimer>
+		<license>GNU General Public License v.2</license>
+		<website>https://pypi.python.org/pypi/Unidecode</website>
+		<source>https://pypi.python.org/pypi/Unidecode</source>
+	</extension>
+</addon>
+
+<addon id="script.module.universal" name="Universal - An Addons Toolkit" version="1.0.5" provider-name="the-one">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.t0mm0.common" version="0.0.1"/>
+  </requires>
+  <extension library="default.py" point="xbmc.service"  start="startup"/>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Universal - An Addons Toolkit</summary>
+    <description lang="en">Collection of common functionality for addons.</description>
+    <platform>all</platform>
+	<language></language>
+	<license>GNU GENERAL PUBLIC LICENSE. Version 3, June 2007</license>
+	<forum>http://www.xunitytalk.com/</forum>
+	<website>https://github.com/the-one-/script.module.universal/wiki</website>
+	<source>https://github.com/the-one-/script.module.universal</source>
+	<email>xs2the1[at]gmail[dot]com</email>
+  </extension>
+</addon>
+
 <addon id="script.module.urlresolver"
      name="urlresolver"
      version="2.2.0"
@@ -4153,6 +4869,23 @@ AMF3, the default serialization for ActionScript 3.0, provides various advantage
     <platform>all</platform>
     <summary lang="en">Resolve common video host URL's to be playable in XBMC.</summary>
     <description lang="en">Resolve common video host URL's to be playable in XBMC, simplify addon development of video plugins requiring multi video hosts.</description>
+  </extension>
+</addon>
+
+<addon id="script.module.watchhistory"
+       name="Watch History Module and Service"
+       version="0.1.1"
+       provider-name="the-one">
+  <requires>
+    <import addon="xbmc.python" version="2.0"/>
+	<import addon="script.module.t0mm0.common" version="0.0.1"/>
+  </requires>
+  <extension library="default.py" point="xbmc.service"  start="startup"/>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Save and load watched items for third-party addons in XBMC.</summary>
+    <description lang="en">Save and load watched items for third-party addons in XBMC, simplify addon development of video plugins requiring to keep track of watched items.</description>
+    <platform>all</platform>
   </extension>
 </addon>
 
@@ -4456,6 +5189,24 @@ Other languages with a great number of subtitles are: Danish, French, Swedish, D
 	</extension>
 </addon>
 
+<addon id="skin.refocus.light" version="1.0.2" name="reFocus light" provider-name="Salem - modded by freem@n">
+	<requires>
+		<import addon="xbmc.gui" version="5.0.1"/>
+		<import addon="script.favourites" version="5.0.0"/>
+		<import addon="script.playlists" version="2.0.0"/>
+		<import addon="script.artwork.downloader" version="12.0.2"/>
+	</requires>
+	<extension point="xbmc.gui.skin" defaultthemename="Textures.xbt" effectslowdown="1.00" debugging="false">
+		<res width="1280" height="720" aspect="16:9" default="true" folder="720p" />
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>reFocus light for Raspberry Pi</summary>
+		<description>lightweight version of the reFocus BIG skin especially for low-power devices like the Raspberry Pi</description>
+		<disclaimer>mouse usage not supported</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
 <addon
   id="skin.xunitymod"
   version="1.0.2"
@@ -4477,5 +5228,229 @@ Other languages with a great number of subtitles are: Danish, French, Swedish, D
     <disclaimer lang="en">Confluence is the default skin for XBMC - Xunity is not, removing Original Confluence may cause issues</disclaimer>
     <platform>all</platform>
   </extension>
+</addon>
+
+<addon id="weather.wunderground" name="Weather Underground" version="3.0.8" provider-name="Team XBMC">
+	<requires>
+		<import addon="xbmc.python" version="2.12.0"/>
+		<import addon="script.module.simplejson" version="3.3.0"/>
+	</requires>
+	<extension point="xbmc.python.weather" library="default.py"/>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="af">Weer voorspelling vanaf wunderground.com</summary>
+		<summary lang="am">የአየር ንብረት ከ wunderground.com</summary>
+		<summary lang="ar">توقعات الطقس من wunderground.com</summary>
+		<summary lang="be">Прагноз надвор'я з wunderground.com</summary>
+		<summary lang="bg">Синоптична прогноза от wunderground.com</summary>
+		<summary lang="ca">Previsió del temps de wunderground.com</summary>
+		<summary lang="cs">Předpověď počasí z wunderground.com</summary>
+		<summary lang="cy">Rhagolygon tywydd gan wunderground.com</summary>
+		<summary lang="da">Vejrudsigt fra wunderground.com</summary>
+		<summary lang="de">Wettervorhersage von wunderground.com</summary>
+		<summary lang="el">Πρόγνωση καιρού από το wunderground.com</summary>
+		<summary lang="en">Weather forecast from wunderground.com</summary>
+		<summary lang="en_NZ">Weather forecast from wunderground.com</summary>
+		<summary lang="en_US">Weather forecast from wunderground.com</summary>
+		<summary lang="es">Predicción meteorológica de wunderground.com</summary>
+		<summary lang="es_AR">Pronóstico meteorológico de wunderground.com</summary>
+		<summary lang="es_MX">Pronóstico de wunderground.com</summary>
+		<summary lang="et">Ilmaennustus portaalist wunderground.com</summary>
+		<summary lang="eu">Eguraldi iragarpena wunderground.com-etik</summary>
+		<summary lang="fi">Sääennusteet wunderground.com-sivustolta</summary>
+		<summary lang="fo">Veðurforsøgn frá wunderground.com</summary>
+		<summary lang="fr">Prévisions météo fournies par wunderground.com</summary>
+		<summary lang="fr_CA">Prévisions météo de wunderground.com</summary>
+		<summary lang="gl">Predición meteorolóxica de wunderground.com</summary>
+		<summary lang="he">תחזית מזג האויר מאת wunderground.com</summary>
+		<summary lang="hr">Prognoza vremena s wunderground.com</summary>
+		<summary lang="hu">Időjárás előrejelzés a wunderground.com-tól</summary>
+		<summary lang="is">Veðurspá frá wunderground.com</summary>
+		<summary lang="it">Meteo fornito da wunderground.com</summary>
+		<summary lang="ja">wunderground.com 天気予報</summary>
+		<summary lang="ka">ამინდის პროგნოზი wunderground.com-გან</summary>
+		<summary lang="ko">wunderground.com 날씨예보</summary>
+		<summary lang="lt">Orų prognozė nuo/iš wunderground.com</summary>
+		<summary lang="lv">Laika prognoze no wunderground.com</summary>
+		<summary lang="mk">Временска прогноза од wunderground.com</summary>
+		<summary lang="ms">Ramalan cuaca dari wunderground.com</summary>
+		<summary lang="my">wunderground.com မှ ရာသီဥတုခန့်မှန်းချက်</summary>
+		<summary lang="nl">Weersvoorspelling van wunderground.com</summary>
+		<summary lang="no">Værvarsel fra wunderground.com</summary>
+		<summary lang="pl">Prognoza pogody serwisu wunderground.com</summary>
+		<summary lang="pt">Previsão meteorológica a partir de wunderground.com</summary>
+		<summary lang="pt_BR">Previsão do tempo por wunderground.com</summary>
+		<summary lang="ro">Starea vremii de la wunderground.com</summary>
+		<summary lang="ru">Прогноз погоды от wunderground.com</summary>
+		<summary lang="sk">Predpoveď počasia z wunderground.com</summary>
+		<summary lang="sl">Vremenska napoved, ki jo zagotavlja wunderground.com</summary>
+		<summary lang="sq">Parashikimi i motit nga wunderground.com</summary>
+		<summary lang="sv">Väderprognos från wunderground.com</summary>
+		<summary lang="ta_IN">Wunderground.com இருந்து வானிலை முன்னறிவிப்பு</summary>
+		<summary lang="th">พยากรณ์อากาศจาก wunderground.com</summary>
+		<summary lang="tr">Hava durumu wunderground.com sitesinden alınır</summary>
+		<summary lang="uk">Прогноз погоди з wunderground.com</summary>
+		<summary lang="uz">wunderground.com dan ob-havo ma'lumoti</summary>
+		<summary lang="vi">Dự báo thời tiết từ wunderground.com</summary>
+		<summary lang="vi_VN">Dự báo thời tiết từ wunderground.com</summary>
+		<summary lang="zh">来自wunderground.com的天气预报</summary>
+		<summary lang="zh_TW">weatherground.com 上的天氣預報</summary>
+		<description lang="af">Weer voorspelling verskaf deur Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="am">የአየር ንብረት የሚቀርበው በ Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="ar">توقعات الطقس من تقديم Weather Underground&#10;(http://www.wunderground.com/)</description>
+		<description lang="be">Прагноз надвор'я створаны Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="bg">Синоптична прогноза с данните от Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="ca">Previsió del temps proporcionada per Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="cs">Předpověď počasí poskytnuta stránkou Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="cy">Rhagolygon tywydd gan Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="da">Vejrudsigten leveres af Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="de">Wettervorhersage bereitgestellt durch Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="el">Η πρόγνωση καιρού παρέχεται από το Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="en">Weather forecast provided by Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="en_NZ">Weather forecast provided by Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="en_US">Weather forecast provided by Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="es">Predicción meteorológica proporcionada por Weather Underground&#10;(http://www.wunderground.com/)</description>
+		<description lang="es_AR">Pronóstico meteorológico proporcionado por Weather Underground&#10;(http://www.wunderground.com/)</description>
+		<description lang="es_MX">Pronóstico del tiempo por Weather Underground&#10;(http://www.wunderground.com/)</description>
+		<description lang="et">Ilma ennustab Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="fi">Sääennusteet Weather Underground -sivuston tarjoamina (http://www.wunderground.com/)</description>
+		<description lang="fo">Veðurforsøgnin er latin av Weather Underground (http://www.wunderground.com)</description>
+		<description lang="fr">Prévisions météo fournies par Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="fr_CA">Prévisions météo fournies par Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="gl">Predición meteorolóxica provista por Weather Underground&#10;(http://www.wunderground.com/)</description>
+		<description lang="he">תחזית מזג האויר ניתנת ע"י Weather Underground (http://www.wunderground.com</description>
+		<description lang="hr">Prognozu vremena omogućava Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="hu">Az előrejelzést a Weather Underground (http://www.wunderground.com/) szolgáltatja </description>
+		<description lang="is">Veðurspá frá Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="it">Meteo fornito da Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="ja">Weather Underground (http://www.wunderground.com/) 提供の天気予報</description>
+		<description lang="ka">ამინდის პროგნოზი მოწოდებულია Weather Underground-ის მიერ (http://www.wunderground.com/)</description>
+		<description lang="ko">Weather Underground (http://www.wunderground.com/)가 제공하는 날씨예보</description>
+		<description lang="lt">Orų prognozė teikiama (pateikiama) iš Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="lv">Laika prognozi piedāvā Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="mk">Временска прогноза обезбедена од Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="ms">Ramalan cuaca disediakan oleh Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="my">ရာသီဥတုခန့်မှန်းချက်ကို Weather Underground (http://www.wunderground.com/) မှထောက်ပံ့ပေးထားပါသည်။</description>
+		<description lang="nl">Weersvoorspelling voorzien door Weather Underground&#10;(http://www.wunderground.com/)</description>
+		<description lang="no">Værvarsel fra Weather Underground (http://www.wunderground.com)</description>
+		<description lang="pl">Prognoza pogody jest dostarczona dzięki uprzejmości serwisu: (http://www.wunderground.com/)</description>
+		<description lang="pt">Previsão meteorológica fornecida por Weather Underground&#10;(http://www.wunderground.com/)</description>
+		<description lang="pt_BR">Previsão do tempo por Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="ro">Starea vremii furnizată de Weather Underground &#10;(http://www.wunderground.com/)</description>
+		<description lang="ru">Прогноз погоды предоставлен компанией Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="sk">Predpoveď počasia poskytovaná od Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="sl">Vremenska napoved, ki jo zagotavlja Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="sq">Parashikimi i motit i pajisur nga Weahter Underground&#10;(http://www.wunderground.com/)</description>
+		<description lang="sv">Väderprognos tillhandahållen av Weather Underground&#10;(http://www.wunderground.com/)</description>
+		<description lang="ta_IN">வானிலை முன்னறிவிப்பு வழங்குபவர் வானிலை அண்டர்கிரவுண்டு (http://www.wunderground.com/)</description>
+		<description lang="th">พยากรณ์อากาศโดย Weather Underground &#10;(http://www.wunderground.com/)</description>
+		<description lang="tr">Hava durumu Weather Underground (http://www.wunderground.com/)  tarafından sağlanır</description>
+		<description lang="uk">Прогноз погоди надано Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="uz">Ob-havo ma'lumoti Weather Underground (http://www.wunderground.com/) tomonidan taqdim etilgan</description>
+		<description lang="vi">Dự báo thời tiết từ Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="vi_VN">Dự báo thời tiết được cung cấp bởi Weather Underground (http://www.wunderground.com/)</description>
+		<description lang="zh">由Weather Underground（http://www.wunderground.com/）提供的天气预报</description>
+		<description lang="zh_TW">天氣預報由 Weather Underground (http://www.wunderground.com/) 所提供</description>
+		<disclaimer lang="af">Die gebruik van hierdie byvoegsel impliseer dat U saamstem met die Terme van Diens uiteengesit op http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="am">ይህን ተጨ-ማሪ ሲጠቀሙ ለ ግልጋሎቱ እና ለ ውሉ ተስማምተው ነው ለሚቀጥለው ድህረ ገጽ http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="ar">استعمالك لهذه الإضافة يعني انك وافقت على شروط الإستخدام الموجودة على الرابط http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="be">Выкарыстаньне гэтага дадатку пацьвярджае што вы згодны з Умовамі Выкарыстаньня што знаходзяцца на http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="bg">Употребявайки добавката Вие се съгласявате с условията за ползване на услугата, които се намират на http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="ca">L'ús d'aquest complement implica que vostè ha acceptat els termes de servei ubicats a http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="cs">Používáním tohoto rozšíření schvalujete podmínky užívání umístěné na http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="cy">Mae defnyddio'r ategyn yma'n awgrymu eich bod yn cytuno i'r Amodau Gwasanaeth sydd yn http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="da">Brug af denne addon indebærer, at du har erklæret dig enig i vilkårene for tjenesten, der findes på http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="de">Mit Benutzung dieses Addons bestätigen Sie die Nutzungsbedingungen, zu finden unter http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="el">Χρήση αυτού του πρόσθετου συνεπάγεται την αποδοχή των Όρων Χρήσης της Υπηρεσίας (Terms of Service) οι οποίοι βρίσκονται στο http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="en">Use of this add-on implies that you have agreed to the Terms of Service located at http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="en_NZ">Use of this add-on implies that you have agreed to the Terms of Service located at http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="en_US">Use of this add-on implies that you have agreed to the Terms of Service located at http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="es">Al usar este complemento, aceptas los términos de uso de http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="es_AR">Al usar este complemento, aceptas los términos de uso de http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="es_MX">El uso de este add-on implica que usted esta de acuerdo con los Términos de Servicio localizados en http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="et">Selle lisamooduli kasutamine viitab sellele, et te olete nõustunud kasutajatingimustega aadressil http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="eu">Gehigarri hau erabiltzeak http://www.wunderground.com/weather/api/d/terms.html -en aurkitzen diren zerbitzu baldintzak onartzen inplikatzen du.</disclaimer>
+		<disclaimer lang="fi">Tämän lisäosan käyttäminen tarkoittaa, että olet hyväksynyt osoitteessa http://www.wunderground.com/weather/api/d/terms.html sijaitsevat käyttöehdot</disclaimer>
+		<disclaimer lang="fo">Nýtsla av hesi víðkan merkir at tú góðtekur treytirnar sum finnast á http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="fr">L'utilisation de cette extension implique votre acceptation des Conditions Générales d'Utilisation disponibles sur http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="fr_CA">L'utilisation de cet addiciel implique que vous avez accepté les conditions générales d'utilisation situées à http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="gl">Empregar este Engadido implica que vostede aceptou os termos de servizo localizados en http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="he">שימוש בתוסף זה משתמע שאישרת את תנאי השימוש אשר ממוקמים בכתובת הבאה http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="hr">Upotreba ovog dodatka podrazumijeva da se slažete s Pravilima korištenja koja se nalaze na http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="hu">A kiegészítő használatával elfogadod a következő feltételeket: http://www.wunderground.com/weather/api/d/terms.html&#10;&#10;    </disclaimer>
+		<disclaimer lang="is">Notkun á þessari viðbót gefur til kynna að þú hafir samþykkt skilmálana sem finna má á http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="it">Usando questo add-on accetti i Termini di Servizio consultabili su http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="ja">このアドオンを使うと、http://www.wunderground.com/weather/api/d/terms.html にある規約に合意したものと見なされます</disclaimer>
+		<disclaimer lang="ka">ამ ჩადგმის გამოყენება ადასტურებს იმას, რომ თქვენ ეთანხმებით  მოხმარების წესებს, რომელიც განთავსებულია მისამართზე http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="ko">이 애드온을 사용하는 것은 http://www.wunderground.com/weather/api/d/terms.html 에 있는 서비스 약관에 동의함을 의미합니다</disclaimer>
+		<disclaimer lang="lt">Naudodami šį priedą jūs sutinate(-kote) su paslaugų teikimo sąlygomis esančiomis http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="lv">Šī pielikuma izmantošana nozīmē, ka esat piekritis servisa noteikumiem, kas atrodas http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="mk">Користење на овој додаток имплицира дека се согласувате со условите за користење кои се наоѓаат на http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="ms">Guna tambahan ini menunjukkan anda setuju dengan Terma Perkhidmatan pada&#10;http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="my">ဒီ add-on ကိုသုံးခြင်းသည် http://www.wunderground.com/weather/api/d/terms.html တွင်ရှိသော Terms of Service ကိုသဘောတူညီဟု သတ်မှတ်သည်</disclaimer>
+		<disclaimer lang="nl">Het gebruik van deze add-on impliceert dat je akkoord gaat met de service-voorwaarden op http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="no">Bruken av dette tillegget betinger at du har godkjent brukervilkårene på http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="pl">Korzystanie z zasobów jest równoważne z akceptacją regulaminu dostępnego pod adresem: http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="pt">O uso deste Add-on implica o seu acordo com os Termos do Serviço. Pode encontrá-los em http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="pt_BR">Usar este add-on implica que você concorda com os termos de uso localizados em http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="ro">Folosirea acestui plugin implică acceptarea Termenilor și Serviciilor aflate la adresa http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="ru">Используя это дополнение, вы соглашаетесь с условиями предоставления услуг, доступными по адресу http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="sk">Používaním tohto doplnku súhlasíte s podmienkami používania služby umiestnenými na http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="sl">Z uporabo vtičnika se strinjate s Pogoji uporabe, ki se nahajajo na http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="sq">Përdorimi i kësaj shtesës nënkupton që ke lexuar Termat e Shërbimit të lokalizuar tek http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="sv">Användning av detta tillägg innebär att ni har accepterat användarvillkoren som går att hitta på&#10;http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="ta_IN">விதிமுறைகள் ஒப்பு கொண்டீர் என்று தெரிகிறது http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="th">ในการใช้บริการโปรแกรมเสริมนี้หมายความว่าคุณได้ยอมรับเงื่อนไขในการให้บริการโดย http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="tr">Bu eklentinin kullanımı aynı zamanda http://www.wunderground.com/weather/api/d/terms.html adresindeki Kullanım Koşullarını da kabul ettiğiniz anlamına gelir.</disclaimer>
+		<disclaimer lang="uk">Скориставшись цією надбудовою, ви тим самим погоджуєтеся з умовами використання: http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="vi">Khi sử dụng add-on này đồng nghĩa với việc bạn đồng ý với các điều khoản sử dụng dịch vụ của nhà cung cấp tại địa chỉ http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="vi_VN">Sử dụng add-on này hàm ý rằng bạn đã đồng ý với các điều khoản của dịch vụ có ở http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="zh">使用此扩展功能意味着你同意此连接下的服务条款：http://www.wunderground.com/weather/api/d/terms.html</disclaimer>
+		<disclaimer lang="zh_TW">使用這個附加元件代表你同意 http://www.wunderground.com/weather/api/d/terms.html 所載之使用者條款</disclaimer>
+		<language></language>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE Version 2</license>
+		<forum>http://forum.xbmc.org/showthread.php?tid=116668</forum>
+		<website></website>
+		<email></email>
+		<source>https://github.com/XBMC-Addons/weather.wunderground/</source>
+	</extension>
+</addon>
+
+<addon id="weather.yahoo" name="Yahoo! Weather" version="2.0.3" provider-name="ronie">
+	<requires>
+		<import addon="xbmc.python" version="2.12.0"/>
+		<import addon="script.module.simplejson" version="3.3.0"/>
+	</requires>
+	<extension point="xbmc.python.weather" library="default.py"/>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="bg">Синоптична прогноза от www.yahoo.com</summary>
+		<summary lang="de">Wettervorhersage von yahoo.com</summary>
+		<summary lang="el">Πρόγνωση καιρού από το yahoo.com</summary>
+		<summary lang="en">Weather forecast from yahoo.com</summary>
+		<summary lang="it">Servizio meteo di yahoo.com</summary>
+		<summary lang="nl">Weersvoorspelling van yahoo.com</summary>
+		<summary lang="pl">Prognoza pogody z serwisu yahoo.com</summary>
+		<summary lang="pt">Previsão do tempo a partir de yahoo.com</summary>
+		<description lang="bg">Синоптична прогноза с данните от Yahoo! Weather (http://www.yahoo.com/)</description>
+		<description lang="de">Wettervorhersage bereitgestellt durch Yahoo! Weather (http://weather.yahoo.com/)</description>
+		<description lang="el">Η πρόγνωση καιρού παρέχεται από το Yahoo! Weather (http://weather.yahoo.com/)</description>
+		<description lang="en">Weather forecast provided by Yahoo! Weather (http://weather.yahoo.com/)</description>
+		<description lang="it">Servizio meteo fornito da Yahoo! Weather (http://weather.yahoo.com/)</description>
+		<description lang="nl">Weersvoorspelling voorzien door Yahoo! (http://weather/yahoo.com)</description>
+		<description lang="pl">Prognoza pogody jest dostarczona dzięki uprzejmości serwisu Yahoo! (http://weather.yahoo.com/)</description>
+		<description lang="pt">Previsão metereológica fornecida por Yahoo! Weather (http://weather.yahoo.com/)</description>
+		<disclaimer lang="bg">Употребявайки добавката Вие се съгласявате с условията за ползване на услугата, които се намират на http://developer.yahoo.com/weather/#terms</disclaimer>
+		<disclaimer lang="de">Die Benutzung der Erweiterung impliziert, das sie den Nutzungsbedingungen unter http://developer.yahoo.com/weather/#terms zugestimmt haben</disclaimer>
+		<disclaimer lang="el">Χρήση αυτού του πρόσθετου συνεπάγεται την αποδοχή των Όρων Χρήσης της Υπηρεσίας (Terms of Service) οι οποίοι βρίσκονται στο http://developer.yahoo.com/weather/#terms</disclaimer>
+		<disclaimer lang="en">Use of this add-on implies that you have agreed to the Terms of Service located at http://developer.yahoo.com/weather/#terms</disclaimer>
+		<disclaimer lang="it">L'uso di questo add-on implica l'accettazione delle Condizioni di Servizio che trovi su http://developer.yahoo.com/weather/#terms</disclaimer>
+		<disclaimer lang="nl">Het gebruik van deze add-on impliceert dat je akkoord gaat met de service-voorwaarden op http://developer.yahoo.com/weather/#terms</disclaimer>
+		<disclaimer lang="pl">Korzystanie z tego dodatku jest równoznaczne z akceptacją regulaminu dostępnego pod adresem: http://developer.yahoo.com/weather/#terms</disclaimer>
+		<disclaimer lang="pt">O uso deste add-on implica o seu acordo com os Termos de Serviço disponíveis em http://developer.yahoo.com/weather/#terms</disclaimer>
+		<language></language>
+		<platform>all</platform>
+		<forum>http://forum.xbmc.org/showthread.php?tid=169410</forum>
+		<source>https://code.google.com/p/ronie/source/</source>
+	</extension>
 </addon>
 </addons>

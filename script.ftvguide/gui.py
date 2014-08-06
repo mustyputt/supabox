@@ -20,6 +20,7 @@
 import datetime
 import threading
 import time
+import pytz
 
 import xbmc
 import xbmcgui
@@ -757,13 +758,13 @@ class TVGuide(xbmcgui.WindowXML):
         if percentageComplete < 1:
             if control:
                 control.setPercent(1)
-            self.progressStartTime = datetime.datetime.now()
+            self.progressStartTime = datetime.datetime.today()
             self.progressPreviousPercentage = percentageComplete
         elif percentageComplete != self.progressPreviousPercentage:
             if control:
                 control.setPercent(percentageComplete)
             self.progressPreviousPercentage = percentageComplete
-            delta = datetime.datetime.now() - self.progressStartTime
+            delta = datetime.datetime.today() - self.progressStartTime
 
             if percentageComplete < 20:
                 self.setControlLabel(self.C_MAIN_LOADING_TIME_LEFT, strings(CALCULATING_REMAINING_TIME))
@@ -782,6 +783,7 @@ class TVGuide(xbmcgui.WindowXML):
 
     def _secondsToXposition(self, seconds):
         return self.epgView.left + (seconds * self.epgView.width / 7200)
+		
 
     def _findControlOnRight(self, point):
         distanceToNearest = 10000
@@ -926,7 +928,7 @@ class TVGuide(xbmcgui.WindowXML):
                     control.setVisible(timeDelta.days == 0)
                 except:
                     pass
-                control.setPosition(self._secondsToXposition(timeDelta.seconds), y)
+                control.setPosition(self._secondsToXposition(timeDelta.seconds)+(3600 * self.epgView.width / 7200), y)
 
             if scheduleTimer and not xbmc.abortRequested and not self.isClosing:
                 threading.Timer(1, self.updateTimebar).start()

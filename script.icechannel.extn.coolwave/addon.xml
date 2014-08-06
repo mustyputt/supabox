@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="script.icechannel.extn.coolwave" version="9.9.9" name="[COLOR blue]Coolwave[/COLOR] iStream Extensions" provider-name="Coolwave">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="repository.istream" version="1.0"/>
+    </requires>
+	<extension library="default.py" point="xbmc.service" />
+		<summary lang="en">iStream Extensions by [COLOR blue]Coolwave[/COLOR]</summary>
+    <extension point="xbmc.addon.metadata">
+		<description lang="en">iStream Extension by [COLOR blue]Coolwave[/COLOR]</description>
+		<platform></platform>
+		<language></language>
+		<license></license>
+		<forum></forum>
+		<website></website>
+		<source></source>
+		<email></email>
+    </extension>
+</addon>
