@@ -916,8 +916,10 @@ class TVGuide(xbmcgui.WindowXML):
             control.setText(text)
 
     def updateTimebar(self, scheduleTimer=True):
+	setforward = ADDON.getSetting('guide.setforward') 
         try:
             # move timebar to current time
+			
             timeDelta = datetime.datetime.today() - self.viewStartDate
             control = self.getControl(self.C_MAIN_TIMEBAR)
             if control:
@@ -928,7 +930,7 @@ class TVGuide(xbmcgui.WindowXML):
                     control.setVisible(timeDelta.days == 0)
                 except:
                     pass
-                control.setPosition(self._secondsToXposition(timeDelta.seconds)+(3600 * self.epgView.width / 7200), y)
+                control.setPosition(self._secondsToXposition(timeDelta.seconds)+((3600*int(setforward)) * self.epgView.width / 7200), y)
 
             if scheduleTimer and not xbmc.abortRequested and not self.isClosing:
                 threading.Timer(1, self.updateTimebar).start()

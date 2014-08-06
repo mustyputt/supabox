@@ -56,6 +56,14 @@ msgctxt "#30009"
 msgid "No program available"
 msgstr "No program available"
 
+msgctxt "#30020"
+msgid "Timebar adjustment"
+msgstr "Time adjustment"
+
+msgctxt "#30021"
+msgid "Amount to set Timebar forward (hours)"
+msgstr "Amount to set Timebar forward (hours)"
+
 msgctxt "#30100"
 msgid "General"
 msgstr "General"

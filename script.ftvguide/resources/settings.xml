@@ -6,6 +6,10 @@
 		<setting id="alternative.playback" label="30120" type="bool" default="false" />
 		<setting label="30121" type="lsep" />
 	</category>
+	
+	<category label="30020">
+		<setting id="guide.setforward" label="30021" type="number" default="1" />
+	</category>
 
 	<category label="30112">
 		<setting id="notifications.enabled" label="30106" type="bool" default="true" />
