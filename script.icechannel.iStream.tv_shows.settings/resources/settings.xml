@@ -1,0 +1,23 @@
+<settings>
+<category label="General">
+<setting type="sep"/>
+<setting id="metadata_tv_shows" type="bool" label="Metadata" default="true"/>
+<setting type="sep"/>
+<setting id="autoplay" type="bool" label="Auto Play" default="false"/>
+<setting id="autoplay_skip_interval" type="labelenum" values="2|5|10|15|20|25|30" label="     Time (in seconds), to skip to next host if STOP pressed" default="5" enable="eq(-1,true)"/>
+<setting type="sep"/>
+<setting id="sort" type="bool" label="Sort" default="true"/>
+<setting id="sort_quality" type="text" enable="eq(-1,true)" label="     Quality" default="1080P,720P,HD,DVD,SD,NA,TS,CAM"/>
+<setting id="sort_hosts_1" type="text" enable="eq(-2,true)" label="     Hosts [COLOR gold][I](1)[/I][/COLOR]" default="FURK.NET,EASYNEWS,SIMPLYMOVIES.NET,MOVIESTORM.EU,TVONLINE.CC"/>
+<setting id="sort_hosts_2" type="text" enable="eq(-3,true)" label="     Hosts [COLOR gold][I](2)[/I][/COLOR]" default="LEMUPLOADS.COM,PUTLOCKER.COM,SOCKSHARE.COM,PLAYED.TO"/>
+<setting id="sort_hosts_3" type="text" enable="eq(-4,true)" label="     Hosts [COLOR gold][I](3)[/I][/COLOR]" default="PROMPTFILE.COM,MIGHTYUPLOAD.COM,GORILLAVID.IN,VIDHOG.COM"/>
+<setting id="sort_hosts_4" type="text" enable="eq(-5,true)" label="     Hosts [COLOR gold][I](4)[/I][/COLOR]" default="NOWVIDEO.CH,NOWVIDEO.SX,NOWVIDEO.EU,WATCHFREEINHD.COM"/>
+<setting id="sort_hosts_5" type="text" enable="eq(-6,true)" label="     Hosts [COLOR gold][I](5)[/I][/COLOR]" default="SHARESIX.COM,ZALAA.COM,MOVREEL.COM,FILENUKE.COM"/>
+</category>
+<category label="Indexers">
+<setting type="sep"/>
+</category>
+<category label="Sources">
+<setting type="sep"/>
+</category>
+</settings>
