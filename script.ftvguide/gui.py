@@ -630,9 +630,10 @@ class TVGuide(xbmcgui.WindowXML):
         for col in range(1, 5):
             if (timebarsetforward):
                 self.setControlLabel(4000 + col, self.formatTime(startTime+datetime.timedelta(seconds=3600)))
+                startTime += HALF_HOUR
             else:
                 self.setControlLabel(4000 + col, self.formatTime(startTime))
-        startTime += HALF_HOUR
+                startTime += HALF_HOUR
 
         if programs is None:
             self.onEPGLoadError()
