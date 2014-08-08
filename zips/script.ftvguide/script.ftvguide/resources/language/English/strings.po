@@ -61,6 +61,10 @@ msgid "Timebar adjustment"
 msgstr "Time adjustment"
 
 msgctxt "#30021"
+msgid "Amount to set Guide forward (hours)"
+msgstr "Amount to set Guide forward (hours)"
+
+msgctxt "#30022"
 msgid "Amount to set Timebar forward (hours)"
 msgstr "Amount to set Timebar forward (hours)"
 

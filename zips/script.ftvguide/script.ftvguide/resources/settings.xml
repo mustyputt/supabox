@@ -9,6 +9,7 @@
 	
 	<category label="30020">
 		<setting id="guide.setforward" label="30021" type="number" default="1" />
+		<setting id="timebar.setforward" label="30022" type="number" default="1" />
 	</category>
 
 	<category label="30112">

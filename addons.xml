@@ -3613,6 +3613,23 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 	</extension>
 </addon>
 
+<addon id="ruuk.addon.repository"
+	name="ruuk's Addon Repo"
+	version="1.0.0"
+	provider-name="Rick Phillips (ruuk)">
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">ruuk's Addon Repo</summary>
+		<description lang="en">ruuk's XBMC addon repository for bleeding edge and likely buggy :) versions.</description>
+	</extension>
+	<extension point="xbmc.addon.repository"
+		name="ruuk's addon repository">
+		<info>https://ruuks-repo.googlecode.com/svn/trunk/repo/addons.xml</info>
+		<checksum>https://ruuks-repo.googlecode.com/svn/trunk/repo/addons.xml.md5</checksum>
+		<datadir zip="true">https://ruuks-repo.googlecode.com/svn/trunk/repo/</datadir>
+	</extension>
+</addon>
+
 <addon id="script.audio.pandora"
        name="Pandora"
        version="2.3.2"
@@ -3763,7 +3780,7 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 	</extension>
 </addon>
 
-<addon id="script.ftvguide" name="FTV Guide" version="2.1.4" provider-name="kinkin,rayw1986">
+<addon id="script.ftvguide" name="FTV Guide" version="1.2.1.5" provider-name="kinkin,rayw1986">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 		<import addon="script.module.simplejson" version="2.0.10"/>
