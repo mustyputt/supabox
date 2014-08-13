@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+
+<category label="General Settings">
+	<setting type="lsep" label="Wallpaper Downloads"/>
+    	<setting id="download-wallpaper" type="folder" label="Wallpaper Download Directory" default=""/>
+	<setting type="lsep" label="Log Uploader Email"/>
+    	<setting id="email" type="text" label="E-Mail Address"/>
+	<setting type="lsep" label="XML Backup Path"/>
+	<setting id="backup_path" type="folder" label="XML Backup Directory" default=""/>
+	<setting type="lsep" label="XBMC Download Path"/>
+	<setting id="xbmc_path" type="folder" label="XBMC Download Path" default=""/>
+
+	<setting id="7icon" type="bool" label="Confluence Check" default="false" visible="false"/>
+	<setting id="opened" type="number" label="How Many times opened" default="0" visible="false"/>
+	<setting id="feed" type="number" label="Check for new news feed" default="0" visible="false"/>
+ 
+</category>		   	
+ </settings>

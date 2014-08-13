@@ -1,0 +1,11 @@
+[v2.1.1]
+- fwallpaper setup and working for wallpapers.
+- initial testing for fwallpaper, tests good.
+- initial testing for freewallpapers.to, tests failed.
+- wallpaperswide is currently broken, and somewhat too troublesome to continue with.
+
+[v2.1]
+- ...
+
+[v1.0]
+- Initial Release
