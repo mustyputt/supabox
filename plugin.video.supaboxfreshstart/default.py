@@ -44,9 +44,10 @@ def main_list(params):
             for root, dirs, files in os.walk(xbmcPath, topdown=False):
                 for name in files:
                     try:
-                        os.remove(os.path.join(root, name))
+                        if name not in ["sources.xml"]:
+							os.remove(os.path.join(root, name))
                     except:
-                        if name not in ["Addons15.db","MyVideos75.db","Textures13.db","xbmc.log","sources.xml"]:
+                        if name not in ["Addons15.db","MyVideos75.db","Textures13.db","xbmc.log"]:
                             failed=True
                         plugintools.log("Error removing "+root+" "+name)
 
