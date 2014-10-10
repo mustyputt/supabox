@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.supaboxfreshclean"
+	name="Supabox Fresh Clean"
+	version="1.2.0.1"
+	provider-name="Flaggsoft">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Supabox Fresh Clean</summary>
+    <description lang="en">Easily clean your Supabox memory in One Simple Click! This tool will clean your Supabox of video thumbnails freeing up memory!</description>
+    <platform>all</platform>
+    <forum></forum>
+    <website></website>
+  </extension>
+</addon>

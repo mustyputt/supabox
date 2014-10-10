@@ -108,12 +108,15 @@ def HELPWIZARD(name,url,description,filetype):
         #xbmc.executebuiltin('Skin.ToggleSetting(ShowBackgroundVideo)') ## Switching from true to false.
         #xbmc.executebuiltin('Skin.ToggleSetting(ShowBackgroundVis)')   ## Switching from true to false.
         xbmc.executebuiltin('Skin.SetString(CustomBackgroundPath,%s)' % (os.path.join('special://','home','media','SKINDEFAULT.jpg')))
+        xbmc.executebuiltin('Skin.SetString(CustomLogoPath,%s)' % (os.path.join('special://','home','media','initlogo.bmp')))      
         xbmc.executebuiltin('Skin.SetBool(UseCustomBackground)')
+        xbmc.executebuiltin('Skin.SetBool(UseCustomLogo)')
         
         time.sleep(2)
         xbmc.executebuiltin('UnloadSkin()'); xbmc.executebuiltin('ReloadSkin()'); xbmc.executebuiltin("LoadProfile(%s)" % proname)
         dialog=xbmcgui.Dialog(); dialog.ok("Success!","Installation Complete","   [COLOR gold]Brought To You By Supabox[/COLOR]")
         ##
+        xbmc.executebuiltin('RestartApp')
 
 def WIZARDSTATUS(url):
     link=OPEN_URL(url).replace('\n','').replace('\r','')
