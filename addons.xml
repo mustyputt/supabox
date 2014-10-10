@@ -2370,7 +2370,7 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
   </extension>
 </addon>
 
-<addon id="plugin.video.supaboxfreshclean"
+<addon id="plugin.video.supaboxclean"
 	name="Supabox Fresh Clean"
 	version="1.2.1"
 	provider-name="Flaggsoft">
