@@ -10,11 +10,11 @@ import os
 import sys
 import plugintools
 
-YOUTUBE_CHANNEL_ID = "worldstarhiphop"
+YOUTUBE_CHANNEL_ID = "WorldStarHipHopTV"
 
 # Entry point
 def run():
-    plugintools.log("worldstarhiphop.run")
+    plugintools.log("WorldStarHipHopTV.run")
     
     # Get params
     params = plugintools.get_params()
@@ -29,7 +29,7 @@ def run():
 
 # Main menu
 def main_list(params):
-    plugintools.log("worldstarhiphop.main_list "+repr(params))
+    plugintools.log("WorldStarHipHopTV.main_list "+repr(params))
 
     # On first page, pagination parameters are fixed
     if params.get("url") is None:
