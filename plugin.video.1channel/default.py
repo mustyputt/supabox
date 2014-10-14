@@ -112,7 +112,7 @@ if not xbmcvfs.exists(_1CH.get_profile()):
 def art(name): art_img = os.path.join(THEME_PATH, name); return art_img
 
 def init_database():
-    try: _1CH.log('Building PrimeWire Database')
+    try: _1CH.log('Building Movie 1 Database')
     except: pass
     if DB == 'mysql':
         db = orm.connect(DB_NAME, DB_USER, DB_PASS, DB_ADDR, buffered=True)
@@ -355,7 +355,7 @@ def get_url(url, cache_limit=8):
     except:
         dialog = xbmcgui.Dialog()
         dialog.ok("Connection failed", "Failed to connect to url", url)
-        print "PrimeWire: Failed to connect to URL %s" % url
+        print "Movie 1: Failed to connect to URL %s" % url
         return ''
 
     response.close()
@@ -470,7 +470,7 @@ def get_sources(url, title, img, year, imdbnum, dialog):
             if sorting:
                 hosters = multikeysort(hosters, sorting, functions={'host': rank_host})
     if not hosters:
-        _1CH.show_ok_dialog(['No sources were found for this item'], title='PrimeWire')
+        _1CH.show_ok_dialog(['No sources were found for this item'], title='Movie 1')
     if dialog and _1CH.get_setting(
             'auto-play') == 'false':  # we're comming from a .strm file and can't create a directory so we have to pop a
         sources = []                  # dialog if auto-play isn't on
@@ -497,7 +497,7 @@ def get_sources(url, title, img, year, imdbnum, dialog):
             if _1CH.get_setting('auto-play') == 'false': raise # skips the next line and goes into the else clause
             dlg = xbmcgui.DialogProgress()
             line1 = 'Trying Sources...'
-            dlg.create('PrimeWire', line1)
+            dlg.create('Movie 1', line1)
             total = len(hosters)
             count = 1
             success = False
@@ -1492,7 +1492,7 @@ def migrate_favs_to_web():
     cur.execute(sql)
     all_favs = cur.fetchall()
     progress = xbmcgui.DialogProgress()
-    ln1 = 'Uploading your favorites to www.primewire.ag...'
+    ln1 = 'Uploading your favorites to www.supaboxtv.com...'
     progress.create('Uploading Favorites', ln1)
     net = Net()
     cookiejar = _1CH.get_profile()

@@ -156,7 +156,7 @@ class Service(xbmc.Player):
             try: xbmc.log('PrimeWire: Service: %s played of %s total = %s%%' % (pTime, tTime, percent))
             except: pass
             if playedTime == 0 and self._totalTime == 999999:
-                raise RuntimeError('XBMC silently failed to start playback')
+                raise RuntimeError('Supabox silently failed to start playback')
             elif ((playedTime / self._totalTime) > min_watched_percent) and (
                         self.video_type == 'movie' or (self.season and self.episode)):
                 try: xbmc.log('PrimeWire: Service: Threshold met. Marking item as watched')

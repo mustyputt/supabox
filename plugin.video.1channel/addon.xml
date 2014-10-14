@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--suppress ALL -->
-<addon id="plugin.video.1channel" version="2.1.2" name="1Channel2" provider-name="Bstrdsmkr">
+<addon id="plugin.video.1channel" version="2.1.2.0" name="Supabox Movie 1" provider-name="Bstrdsmkr">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.urlresolver"/>
@@ -14,9 +14,8 @@
     <extension point="xbmc.service" library="service.py" start="startup">
     </extension>
     <extension point="xbmc.addon.metadata">
-        <summary>Browse 1channel.ch</summary>
-        <description>This addon is supported at [COLOR blue]www.XBMCHub.com[/COLOR], [COLOR white][B]NOT[/B][/COLOR]
-            [COLOR red]xbmc.org[/COLOR]. Play a wide selection of movies and TV shows from 1channel.ch
+        <summary>Browse Movies 1</summary>
+        <description>Play a wide selection of movies and TV shows from SupaboxTv.
         </description>
         <platform>all</platform>
     </extension>
