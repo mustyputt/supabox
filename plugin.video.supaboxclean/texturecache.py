@@ -199,7 +199,7 @@ class MyConfiguration(object):
     self.XBMC_HOST = self.getValue(config, "xbmc.host", "localhost")
     self.WEB_PORT = self.getValue(config, "webserver.port", "8080")
     self.WEB_SINGLESHOT = self.getBoolean(config, "webserver.singleshot", "no")
-    self.RPC_PORT = self.getValue(config, "rpc.port", "9090")
+    self.RPC_PORT = self.getValue(config, "rpc.port", "8080")
     self.RPC_IPVERSION = self.getValue(config, "rpc.ipversion", "")
     self.RPC_RETRY = int(self.getValue(config, "rpc.retry", "12"))
     self.RPC_RETRY = 0 if self.RPC_RETRY < 0 else self.RPC_RETRY
