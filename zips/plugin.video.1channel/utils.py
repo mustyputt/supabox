@@ -150,7 +150,7 @@ class TextBox:
 
     def setControls(self):
         # set heading
-        heading = "Movie 1 v%s" % (addon.get_version())
+        heading = "PrimeWire v%s" % (addon.get_version())
         self.win.getControl(self.CONTROL_LABEL).setLabel(heading)
         # set text
         root = addon.get_path()
