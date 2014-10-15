@@ -10,7 +10,7 @@ import os
 import sys
 import plugintools
 import xbmcaddon
-from texturecache import *
+import texturecache
 
 # Entry point
 def run():
@@ -48,11 +48,13 @@ def main_list(params):
         failed=False
         
         try:
-            row=main("P")
-            row=main("Xd")
+            row=texturecache.main("P")
+            row=texturecache.main("Xd")
         finally:
+            plugintools.log("texturecache failed ")
             pass
-        
+
+        plugintools.log("Error removing: "+xbmcPath1)
         try:
             for root, dirs, files in os.walk(xbmcPath1, topdown=False):
                 for name in files:

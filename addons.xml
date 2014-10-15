@@ -2371,7 +2371,7 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 
 <addon id="plugin.video.supaboxclean"
 	name="Supabox Fresh Clean"
-	version="1.2.5"
+	version="1.0.0.0"
 	provider-name="Flaggsoft">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
