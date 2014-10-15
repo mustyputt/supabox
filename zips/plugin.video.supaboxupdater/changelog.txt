@@ -1,0 +1,31 @@
+V1.1.5 =Blazetamer
+Android Dialog Bug fix
+
+V1.1.4 - TheHighway
+XBMC Version check
+OS Check
+Button Suggestions
+Adjusts a few more skin settings.
+Skin and Background Adjustments.
+
+V1.1.3 - Blazetamer & TheHighway
+File Host Compatibility for FireDrive
+
+V1.1.2 
+
+V1.1.1 - Blazetamer
+Added new link set 
+
+V1.0.9 - TheHighway
+packaged imports
+spacing cleanup
+fixes to addon.xml
+
+V1.0.8 
+New Format allows Shortcuts to be added 
+requiring less input from end user to enjoy XBMC
+to its fullest 
+
+V1.0.0
+Initial Release
+
