@@ -48,8 +48,8 @@ def main_list(params):
         failed=False
         
         try:
-            row=texturecache.main("P")
             row=texturecache.main("Xd")
+            row=texturecache.main("P")
         finally:
             plugintools.log("texturecache failed ")
             pass

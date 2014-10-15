@@ -31,13 +31,13 @@
 ################################################################################
 
 import os, sys, platform, re, datetime, time
-import xbmc
+
 import socket, base64, hashlib
 import threading, random
 import errno, codecs
 import subprocess
 import tempfile
-import plugintools
+
 
 try:
   import json
@@ -201,7 +201,7 @@ class MyConfiguration(object):
     self.XBMC_HOST = self.getValue(config, "xbmc.host", "localhost")
     self.WEB_PORT = self.getValue(config, "webserver.port", "8080")
     self.WEB_SINGLESHOT = self.getBoolean(config, "webserver.singleshot", "no")
-    self.RPC_PORT = self.getValue(config, "rpc.port", "8080")
+    self.RPC_PORT = self.getValue(config, "rpc.port", "9090")
     self.RPC_IPVERSION = self.getValue(config, "rpc.ipversion", "")
     self.RPC_RETRY = int(self.getValue(config, "rpc.retry", "12"))
     self.RPC_RETRY = 0 if self.RPC_RETRY < 0 else self.RPC_RETRY
@@ -5601,15 +5601,15 @@ def pruneCache(remove_nonlibrary_artwork=False):
 
   localfiles = []
   libraryFiles = getAllFiles(keyFunction=getKeyFromFilename)
-  plugintools.log("database in pruncecache: ")
+
   re_search = []
   # addon
   re_search.append(re.compile(r"^.*[/\\]\.xbmc[/\\]addons[/\\].*"))
   # mirror
   re_search.append(re.compile(r"^http://mirrors.xbmc.org/addons/.*"))
-  plugintools.log("database in pruncecache: ")
+
   database = MyDB(gConfig, gLogger)
-  plugintools.log("database in pruncecache: ")
+ 
   if gConfig.CHUNKED:
     pruneCache_chunked(database, libraryFiles, localfiles, re_search)
   else:
@@ -5636,12 +5636,10 @@ def pruneCache(remove_nonlibrary_artwork=False):
         database.deleteItem(row["textureid"], row["cachedurl"], warnmissing=False)
 
   if GOTSIZE:
-    gLogger.out("\nSummary: %s files; Total size: %s KB\n\n" \
-                  % (format(len(localfiles), ",d"),
-                     format(int(FSIZE/1024), ",d")))
+    pass
+    #gLogger.out("\nSummary: %s files; Total size: %s KB\n\n" % (format(len(localfiles), ",d"), format(int(FSIZE/1024), ",d")))
   else:
-    gLogger.out("\nSummary: %s files\n\n" \
-                  % (format(len(localfiles), ",d")))
+    gLogger.out("\nSummary: %s files\n\n" % (format(len(localfiles), ",d")))
 
 
 def pruneCache_fast(database, libraryFiles, localfiles, re_search):
@@ -6744,22 +6742,22 @@ def loadConfig(argv):
   global gConfig, gLogger
 
   DBVERSION = MYWEB = MYSOCKET = MYDB = None
-  plugintools.log("texturecache failed2 ")
+  
   gConfig = MyConfiguration(argv)
   gLogger = MyLogger()
   TOTALS  = MyTotals(gConfig.LASTRUNFILE_DATETIME)
-  plugintools.log("texturecache failed3 ")
+
   gLogger.DEBUG = gConfig.DEBUG
   gLogger.VERBOSE = gConfig.LOGVERBOSE
   gLogger.OPTION = argv[0] if len(argv) != 0 else ""
-  plugintools.log("texturecache failed4 ")
+ 
   gLogger.setLogFile(gConfig)
 
   gLogger.log("Command line args: %s" % sys.argv)
   gLogger.log("Current version #: v%s" % gConfig.VERSION)
   gLogger.log("Current platform : %s" % sys.platform)
   gLogger.log("Python  version #: v%d.%d.%d.%d (%s)" % (sys.version_info[0], sys.version_info[1], sys.version_info[2], sys.version_info[4], sys.version_info[3]))
-  plugintools.log("texturecache failed5 ")
+  
 
 def checkConfig(option):
 
@@ -6817,7 +6815,7 @@ def checkConfig(option):
 
   if needWeb:
     try:
-      plugintools.log("texturecache needWeb ")
+    
       jcomms = MyJSONComms(gConfig, gLogger, connecttimeout=gConfig.WEB_CONNECTTIMEOUT)
       REQUEST = {"method": "JSONRPC.Ping"}
       data = jcomms.sendJSON(REQUEST, "libPing", checkResult=False, useWebServer=True)
@@ -7154,11 +7152,11 @@ def autoUpdate(argv):
 def main(argv):
 
   loadConfig(argv)
-  plugintools.log("after loadconfig in main ")
+
   if len(argv) == 0: usage(1)
 
   if not checkConfig(argv[0]): sys.exit(2)
-  plugintools.log("after checkconfig in main ")
+
   if gConfig.CHECKUPDATE and argv[0] not in ["version", "update", "fupdate"]:
     if gConfig.AUTOUPDATE:
       path = os.path.realpath(__file__)
@@ -7279,7 +7277,7 @@ def main(argv):
     orphanCheck(removeOrphans=True)
 
   elif argv[0] == "p" and len(argv) == 1:
-    plugintools.log("Got to P section: "+argv)
+   
     pruneCache(remove_nonlibrary_artwork=False)
 
   elif argv[0] == "P" and len(argv) == 1:
