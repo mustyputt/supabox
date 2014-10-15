@@ -1,5 +1,0 @@
-<settings>
-<category label="Proxy">
-<setting id="prxy" type="bool" label="Proxy(For people in the USA):" default="false" />
-</category>
-</settings>
