@@ -11,10 +11,8 @@
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">World Star Hiphop</summary>
-    <description lang="en">The official WorldStarHipHop channel featuring exclusive music video premieres, behind the scenes, original series and more.</description>
+    <summary>World Star Hiphop</summary>
+    <description>The official WorldStarHipHop channel featuring exclusive music video premieres, behind the scenes, original series and more.</description>
     <platform>all</platform>
-    <forum></forum>
-    <website></website>
   </extension>
 </addon>
