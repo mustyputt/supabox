@@ -328,6 +328,28 @@
 	</extension>
 </addon>
 
+<addon id="plugin.program.advanced.launcher" name="Advanced Launcher" version="2.5.7" provider-name="Angelscry">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.simplejson" version="2.0.9"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <disclaimer>For XBMC Gotham/Frodo/Eden/Dharma</disclaimer>
+        <summary lang="de">Beliebige Anwendungen aus XBMC starten.</summary>
+        <summary lang="en">Start any applications from XBMC.</summary>
+        <summary lang="fr">Lancer n'importer quelle application depuis XBMC.</summary>
+        <summary lang="fi">Käynnistää sovelluksia XBMC:stä</summary>
+        <description lang="de">Advanced Launcher erlaubt das Starten beliebiger Linux, Windows und OS X Anwendungen (mit oder ohne Kommandozeile) direkt aus der XBMC Oberfläche. Advanced Launcher erlaubt weiterhin das Editieren, Herunterladen und Verwalten der Metadaten (Informationen und Bilder) für diese Anwendungen aus dem Internet.</description>
+        <description lang="en">Advanced Launcher allows you to start any Linux, Windows and OS X applications (with command line support or not) directly from the XBMC GUI. Advanced Launcher also give you the possibility to edit, download (from Internet resources) and manage all the meta-data (informations and images) related to these applications.</description>
+        <description lang="fr">Advanced Launcher permet de lancer toutes les applications Linux, Windows and OS X (avec support des lignes de commandes ou non) directement depuis l'interface d'XBMC. Advanced Launcher offre également la possibilité de modifier, télécharger (depuis les ressoures web) et de gérer toues les meta-donées (informations et images) relatives à ces applications.</description>
+        <description lang="fi">Advanced Launcherilla voit käynnistää XBMC:n käyttöliittymästä mitä tahansa sovelluksia. Käynnistettävistä sovelluksista voi hakea tietoja ja kuvia Internet-tietokannoista.</description>
+    </extension>
+</addon>
+
 <addon id="plugin.program.hubhug.dailyhoroscope" provider-name="The[COLOR tan]Highway[/COLOR]"
        version="0.0.3" name="HUB-HUG Daily Horoscope">
   <requires>
@@ -1022,6 +1044,25 @@ Plus stream or download from over 70,000 live audio bootlegs from www.archive.or
         <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
         <website>http://video.foxnews.com</website>
     </extension>
+</addon>
+
+<addon id="plugin.video.fox.sports"
+       name="Fox Sports"
+       version="1.0.0.2"
+       provider-name="divingmule">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.0.8"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>fox.sports.com/video</summary>
+    <description>With this add-on you can watch videos from msn.fox.sports.com/video</description>
+    <platform>all</platform>
+  </extension>
 </addon>
 
 <addon
@@ -2102,6 +2143,26 @@ Turns your XBMC into an instant free on-demand media-center. Stream and download
 	</extension>
 </addon>
 
+<addon id="plugin.video.outdoortv"
+       name="Outdoors TV"
+       version="1.0.0.1"
+       provider-name="divingmule">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.beautifulsoup" version="3.0.8"/>
+    <import addon="script.module.simplejson" />
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Outdoors TV</summary>
+    <description>Outdoors TV Shows</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.p2p-streams"
        name="p2p-streams"
        version="0.2.9"
@@ -2371,7 +2432,7 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 
 <addon id="plugin.video.supaboxclean"
 	name="Supabox Fresh Clean"
-	version="1.0.0.2"
+	version="1.0.0.3"
 	provider-name="Flaggsoft">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -3882,14 +3943,14 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 
 <addon id="script.module.axel.downloader"
 	     name="Axel Downloader"
-	     version="0.2.0"
+	     version="1.0.2.0"
 	     provider-name="Eldorado">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
     <import addon="script.module.addon.common" version="2.0.0" />
   </requires>
-  <extension point="xbmc.python.script" library="controlpanel.py"/>
   <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.python.script" library="controlpanel.py"/>
   <extension library="default.py" point="xbmc.service" start="startup" />
   <extension point="xbmc.addon.metadata">
     <platform>all</platform>
@@ -4338,7 +4399,7 @@ AMF3, the default serialization for ActionScript 3.0, provides various advantage
 	</extension>
 </addon>
 
-<addon id="script.module.universal" name="Universal - An Addons Toolkit" version="1.0.5" provider-name="the-one">
+<addon id="script.module.universal" name="Universal - An Addons Toolkit" version="1.1.0.5" provider-name="the-one">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.t0mm0.common" version="0.0.1"/>
@@ -4377,10 +4438,10 @@ AMF3, the default serialization for ActionScript 3.0, provides various advantage
 
 <addon id="script.module.watchhistory"
        name="Watch History Module and Service"
-       version="0.1.1"
+       version="1.0.1.1"
        provider-name="the-one">
   <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="xbmc.python" version="2.0"/>
 	<import addon="script.module.t0mm0.common" version="0.0.1"/>
   </requires>
   <extension library="default.py" point="xbmc.service"  start="startup"/>

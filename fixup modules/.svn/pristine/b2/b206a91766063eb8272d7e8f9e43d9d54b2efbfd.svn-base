@@ -1,0 +1,52 @@
+Version 0.1.5
+fix full count, mlb.com playlist
+added "start block" setting as a workaround for when games don't start at the correct time
+
+Version 0.1.4
+fixes for Windows
+
+Version 0.1.3
+fix for website changes
+added setting: "Locate your mlbhls executable" this can be left blank if it is in your $PATH
+added initial support for Windows, thanks to speaker219 for the mlbhls-win32 build
+
+Version 0.1.2
+fix for website changes
+
+Version 0.1.1
+fix mlbtv_player script, bugs with openelec
+fix error handling bug
+added a live option to the list of inning times
+
+Version 0.1.0
+fix bug in settings
+fix canceling the select dialog
+fix bug in mlbtv_player script
+added setting, when using file in / file out, set a buffer size
+added more logging for inning start-time issues
+
+Version 0.0.9
+added mlbtv_player script
+added updating fprt cookie from xml data
+
+Version 0.0.8
+updated to reflect the changes in the official add-on
+
+Version 0.0.7
+added option to show scores in game lists
+added a kind-of calender function for getting game dates, thanks to J_K_M_A_N for the inspiration!
+
+Version 0.0.6
+added support for Openelec, more details at - http://forum.xbmc.org/showthread.php?tid=104391&pid=1113912#pid1113912
+enhanced support for starting mlb.tv games from a specific inning
+
+Version 0.0.3
+fix an issue where pausing would kill mlbhls
+added ability to start games from the begining, and top of innings
+other bug fixes 
+
+Version 0.0.2
+fix for condensed games
+
+Version 0.0.1
+initial

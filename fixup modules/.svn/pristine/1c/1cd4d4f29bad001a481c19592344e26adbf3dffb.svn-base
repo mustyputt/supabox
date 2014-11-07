@@ -1,0 +1,6 @@
+<settings>
+    <setting id="first_run" type="bool" visible="false"  default="true" />
+    <setting id="location" type="text" label="Enter - City, ST or Zip Code - for local forcast and weather maps"  default="" />
+    <setting type="action" label="Clear add-on cache" option="close" action="RunPlugin(plugin://plugin.video.weather.channel/?mode=7)" />
+    <setting id="debug" type="bool" label="Enable Add-on Debugging" default="false"/>
+</settings>
