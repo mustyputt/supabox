@@ -71,6 +71,7 @@ def NINETOOLS():
      #live.addDir('Developer Testing Tester' ,'none ','ninelists','','Dev Testing Mode','')
      #live.addDir('User Playlists From WEB' ,'none','userdatabase','','','')
      live.addDir('Playlist Tester' ,'none','addplaylist','','Test your Playlist','')
+     live.addDir('[COLOR gold]Whats My IP[/COLOR]','none','myip',artwork +'myip.png','','dir')
      main.AUTO_VIEW('movies')
 
      
@@ -103,13 +104,30 @@ def PLAYLISTDATA(url):
      print 'KEYTYPE IS '+ url
      key = url
      regex = '<name>(.+?)</name><link>(.+?)</link><type>(.+?)</type>'
-     print 'REGEX IS '+ regex
-     link=OPEN_URL('http://goo.gl/dR7emd').replace('\n','').replace('\r','')
-     
-     match=re.compile(regex).findall(link)
-     for name,url,keytype in match:
-          if key in keytype:
+     if 'new' in key:
+          link=OPEN_URL('http://cliqaddon.com/cliqpldbnewest.php').replace('\n','').replace('\r','')
+          match=re.compile(regex).findall(link)
+          for name,url,keytype in match:
                live.addDir(name,url,'ninelists','','','')
+
+     if 'other' in key:
+          link=OPEN_URL('http://cliqaddon.com/cliqpldbother.php').replace('\n','').replace('\r','')
+          match=re.compile(regex).findall(link)
+          for name,url,keytype in match:
+               live.addDir(name,url,'ninelists','','','')          
+     else:     
+          print 'REGEX IS '+ regex
+          link=OPEN_URL('http://cliqaddon.com/cliqpldb.php').replace('\n','').replace('\r','')
+          #link=OPEN_URL('cliqaddon.com/cliqpldbtest.php').replace('\n','').replace('\r','')
+          
+          match=re.compile(regex).findall(link)
+          for name,url,keytype in match:
+               if key in keytype:
+                    live.addDir(name,url,'ninelists','','','')
+
+               
+
+
           
 '''def STANDARDDBTYPES():
 
@@ -230,36 +248,80 @@ def NINELISTSOLD(url):
 #=========================================================================               
 def NINELISTS(url):
 
-     link=OPEN_URL(url).replace('\n','').replace('\r','')
+     #link=OPEN_URL(url).replace('\n','').replace('\r','')
+     link=OPEN_URL(url)
                
      #===============Info/Messages========================
                     
-     match=re.compile('<info>(.+?)</info>').findall(link)
+     match=re.compile('<info>(.+?)</info>',re.DOTALL).findall(link)
      for name in match:
           live.addDir(name,'','ninelists','','','')
-     match=re.compile('<name>(.+?)</name><link>(.+?)</link><thumbnail>(.+?)</thumbnail>').findall(link)
+     #     
+     match=re.compile('<name>(.+?)</name>.+?<link>(.+?)</link>.+?<thumbnail>(.+?)</thumbnail>',re.DOTALL).findall(link)
      for name,url,thumb in match:
-          live.addDir(name,url,'ninelists',thumb,'',thumb)     
-     match=re.compile('<name>(.+?)</name><thumbnail>(.+?)</thumbnail><link>(.+?)</link>').findall(link)
-     for name,thumb,url in match:
           live.addDir(name,url,'ninelists',thumb,'',thumb)
-     match=re.compile('<title>(.+?)</title><link>(.+?)</link><thumbnail>(.+?)</thumbnail>').findall(link)
+     #REMOVED BELOW FOR DOUBLE LISTING ERRORS #########################    
+     #match=re.compile('<name>(.+?)</name>.+?<thumbnail>(.+?)</thumbnail>.+?<link>(.+?)</link>',re.DOTALL).findall(link)
+     #for name,thumb,url in match:
+          #live.addDir(name,url,'ninelists',thumb,'',thumb)
+     ###END REMOVAL FOR DOUBLES########################################     
+     match=re.compile('<title>(.+?)</title>.+?<link>(.+?)</link>.+?<thumbnail>(.+?)</thumbnail>',re.DOTALL).findall(link)
      for name,url,thumb in match:
           if 'sublink' in url:
                live.addDir(name,url,'sublinks',thumb,'',thumb)
           if 'sublink' not in url:     
-               live.addSTFavDir(name,url,'nineresolver',thumb,'','',isFolder=False, isPlayable=True)     
+               live.addSTFavDir(name,url,'nineresolver',thumb,'','',isFolder=False, isPlayable=True)
+
      if '<poster>schedule' in link:
           match=re.compile('<message>(.+?)</message>').findall(link)
           for name in match:
-               live.addDir(name,'','ninelists','','','') 
+               live.addDir(name,'','ninelists','','','')          
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#NAVI EXTREME SCraper+++++++++++++++++++++++++++++++++++++++               
+     match=re.compile('\nname=(.+?)\nthumb=(.+?)\nURL=(.+?)\n').findall(link)
+     for name, thumb,url in match:
+       if 'www.navixtreme.com' in url:
+            live.addDir(name,url,'ninelists',thumb,'',thumb)
+       if 'www.navixtreme.com' not in url:
+            live.addSTFavDir(name,url,'nineresolver',thumb,'','',isFolder=False, isPlayable=True)
+
+     
+         
+
+
+     match3=re.compile('\nname=(.+?)\n.+?URL=(.+?)\n').findall(link)
+     for name,url in match3:
+       if 'www.navixtreme.com' in url:
+            thumb = ''
+            live.addDir(name,url,'ninelists',thumb,'',thumb)
+       if 'www.navixtreme.com' not in url:
+            thumb = ''
+            live.addSTFavDir(name,url,'nineresolver',thumb,'','',isFolder=False, isPlayable=True)  
+
+
+     match4=re.compile('\nname=(.+?)\nthumb=(.+?)\n.+?\nURL=(.+?)\n').findall(link)
+     for name, thumb,url in match4:
+       if 'www.navixtreme.com' in url:
+            live.addDir(name,url,'ninelists',thumb,'',thumb)
+       if 'www.navixtreme.com' not in url:
+            live.addSTFavDir(name,url,'nineresolver',thumb,'','',isFolder=False, isPlayable=True)
+#++++++++++++++END NAVI SCRAPE++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                       
 
 def SUBLINKS(url,name):
      name = name
-     submatch=re.compile('<sublink>(.+?)</sublink>').findall(url)
+     submatch=re.compile('<sublink>(.+?)</sublink>',re.DOTALL).findall(url)
      for sublink in submatch:
-          live.addSTFavDir(name,sublink,'nineresolver',thumb,'','',isFolder=False, isPlayable=True)
+          print 'SUBLINK URLIS ' + sublink
+          hmf = urlresolver.HostedMediaFile(sublink)
+          if hmf:
+               
+               host = hmf.get_host()
+               hostname = main.GETHOSTNAME(host)
+               live.addSTFavDir(name+'[COLOR lime]'+hostname+'[/COLOR]',sublink,'nineresolver',thumb,'','',isFolder=False, isPlayable=True)
+
+          else:
+               live.addSTFavDir(name+' [COLOR lime]Unknown Host[/COLOR]',sublink,'nineresolver',thumb,'','',isFolder=False, isPlayable=True)
+               
      
                
 def PREVIOUSMENU(url):
@@ -279,8 +341,6 @@ def NINEPLAYLINK(name,url,thumb,stream):
      playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
      playlist.clear()
        
-       
-     #playable ='rtmp://82.192.95.75/vl/_definst_ playpath=maderoscabrones1 swfUrl=http://www.veemi.com/player/player-licensed.swf live=1 pageUrl=http://www.veemi.com/'
      playable = url
      print 'RTMP IS ' +  playable
      live.LIVERESOLVE(name,playable,thumb)

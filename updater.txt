@@ -1,0 +1,6 @@
+name="Supabox Updater"
+url="http://172.13.128.137/owncloud/public.php?service=files&t=d6be1d5b9491fcba03e74c21288fa98f&download"
+img="http://andersonflagg.com/256x256.png"
+fanart="http://dl.dropboxusercontent.com/u/24282292/Wizard/fanart.jpg"
+description="Update Supabox with all the Best Goodies Available in Just One Click!"
+type="main"

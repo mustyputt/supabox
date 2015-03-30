@@ -8,6 +8,12 @@
 <setting id="pop_time" type="text" label="Last Announcement Shown " default="2000-01-01 00:00:00" visible="true"enable="false"/>
 
 </category>
+<category label="Skin Settings">
+
+<setting id="skin" type="bool" label="Enable Custom Skin *BETA*" default="false"/>
+</category>
+
+
 <category label="Artwork">
 <setting id="theme" type="enum" values="SHOWGUN|CLASSIC BLUE" label="Artwork Theme" default="0" />
 </category>
@@ -51,13 +57,7 @@
 
 <setting id="streams" type="bool" label="Live Streams" default="true"/>
 
-<setting id="addons" type="bool" label="Other Addons" default="false"/>
-
-<setting id="special" type="bool" label="Special Menus" default="false"/>
-
 <setting id="debug" type="bool" label="Enable Advanced Logging" default="false"/>
-
-
 
 <setting id="metadata" type="bool" label="Tv Show Episode MetaData" default="true"/>
 

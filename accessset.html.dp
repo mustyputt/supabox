@@ -1,0 +1,744 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>$SP $SN: $RSTR(SecSet)</title>
+$INC(camvars.dp)
+$INC(oemvars.dp)
+<meta name="Copyright" value="Copyright &copy; 2006 - 2011 IQinVision">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Type" content="text/html; charset=$RCSET">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="expires" content="0">
+
+<link rel="stylesheet" href="style.css">
+
+<script  src="lib.js" ></script>
+<script  src="gui.js" ></script>
+<script>
+
+var DoBlink   = false;
+var BlinkIsOn = true;
+var UpdatingFirmware = false;
+var StatCheck = false;
+
+$INC(vars_nocache.js.dp)
+
+
+$IF($V(IQEYE7),$DEF(IQEYE5, ),)
+
+$DEF(HTTPS, )
+$IF($V(IQ06),$DEF(HTTPS, true),)
+
+
+
+
+
+
+
+var is264Possible = "$O(2.40.7.3)";
+if (is264Possible == "1") is264Possible = 1;
+else is264Possible = 0;
+
+enableJavaAlert();
+
+var PageTitle = "$RSTR(SecSet)";
+var PageHelp = "";
+
+
+function checkSuper(form){
+    var val = form.superPass1.value;
+    var rv = true;
+    if(val != form.superPass2.value){
+	
+       alert("Superuser passwords do not match");
+       rv = false;
+    } else if (! isAPassword(form.superPass1)) {
+	
+	alert("Please enter 1 to 32 printable characters\n" +
+		"Do not include white space characters.\n\n" +
+		"Password not changed.");
+	rv = false;
+    }
+
+    if (rv == false) {
+	form.superPass1.value = " ";
+	form.superPass2.value = " ";
+	form.superPass1.focus();
+	form.superPass1.select();
+	return false;
+    }
+    rv = setEcam2("OidPB2.3", escape(val) ); 
+    if(!rv) {
+
+    } else {
+	
+	alert("failed to set password");
+    }
+    return false;
+}
+
+
+
+
+function setPassword(field) {
+    var val = field.value;
+    if (! isAPassword(field)) {
+	
+	alert("Please enter 1 to 32 printable characters\n" +
+		"Do not include white space characters.\n\n" +
+		"Password not changed.");
+	select(field);
+	return false;
+    }
+
+    setEcam2("OidPB2.2", escape(val)); 
+    return false;
+}
+
+function formatIsValid(field) {
+    if (field.name.match("OidTB1\\.3\\.9\\.[12]") ) { 
+	if (! isATime2(field)) {
+	    
+	    alert("You must enter a military time in the format hh:mm");
+	    select(field);
+	    return false;
+	}
+	return true;
+    }
+    if (field.name == "OidTB1.2.9.1.9.4") { 
+	if (field.value.length >32) {
+	    
+	    alert("Please enter at most 32 alphanumeric characters.");
+	    select(field);
+	    return false;
+	}
+	return true;
+    }
+    return true;
+}
+
+function setAccessDeniedDefaults() {
+    
+    
+    submit('OidSB1.2.9.1.8.4','enabled', 
+	   
+	   
+	   'OidSB1.2.9.1.10.4','white_on_black'); 
+}
+
+function writeIQauth () {
+    var lic = "$O(18.2,R)".toLowerCase();
+    if (lic == "demo")
+	document.write('$RSTR(Demo)');
+    else {
+	if (lic == "false"|| (lic.search("err") > -1))
+	    document.write('$RSTR(NotInst)');
+	else document.write('$RSTR(Inst)');
+    }
+}
+
+function writeIQrec () {
+    var lic = "$O(18.1,R)".toLowerCase();
+    if (lic == "demo")
+	document.write('$RSTR(Demo)');
+    else {
+	if (lic == "false"|| (lic.search("err") > -1))
+	    document.write('$RSTR(NotInst)');
+	else document.write('$RSTR(Inst)');
+    }
+}
+
+function writeIQnight () {
+    var lic = "$O(18.3,R)".toLowerCase();
+    if (lic == "demo")
+	document.write('$RSTR(Demo)');
+    else {
+	if (lic == "false"|| (lic.search("err") > -1))
+	    document.write('$RSTR(NotInst)');
+	else document.write('$RSTR(Inst)');
+    }
+}
+function writeAgentVI () {
+    var lic = "$O(18.4,R)".toLowerCase();
+    if (lic == "demo")
+	document.write('$RSTR(Demo)');
+    else if (lic == "disabled")
+	document.write('$RSTR(Disabled)');
+    else {
+	if (lic == "false" || (lic.search("err") > -1))
+	    document.write('$RSTR(NotInst) ');
+	else document.write('$RSTR(Inst)');
+    }
+}
+function writeViaSys () {
+    if (isIQeye5 && !isIQeye7) return; 
+
+    var lic = "$O(18.5,R)";
+    lic = lic.toLowerCase();
+    
+    if (!(lic == "demo" || lic == "true")) return;
+
+    var out = '<tr><td class="leftg">&nbsp;</td><td class="inputg">ViaSys: ';
+    if (lic.toLowerCase() == "demo")
+	out += '$RSTR(Demo)';
+    else {
+	if (lic.toLowerCase() == "false")
+	    out += '$RSTR(NotInst)';
+	else out += '$RSTR(Inst)';
+    }
+    out += '</td></tr>';
+    document.write (out);
+}
+
+function writeIQacc () {
+    if (!hasAccessSupport) return;
+    var out = '<tr><td class="leftg">&nbsp;</td><td class="inputg">IQaccess: $RSTR(Inst)</td></tr>';
+    document.write (out);
+}
+
+function writeIQaccPlain() {
+    if (!hasAccessSupport) return;
+    var out = 'IQaccess: $RSTR(Inst)';
+    document.write (out);
+}
+
+
+function setAuthenticationMode(index) {
+    
+    if (index==0) submit("OidSB7.6","basic");
+    else submit("OidSB7.6","secure");
+}
+
+function writeAuthenticationModeSelect() {
+    var mode = "$O(7.6)";
+    document.write('<select name="mode" '
+		   + 'onChange="setAuthenticationMode(selectedIndex)">');
+    if (mode.toLowerCase() == "secure")
+	document.write('<option>$RSTR(basic)<option selected>$RSTR(secure)</select>\n');
+    else
+	document.write('<option selected>$RSTR(basic)<option>$RSTR(secure)</select>\n');
+}
+
+
+function writeCommon (status)
+{
+    if (status=='timer') {
+      document.write 
+	  ('<option value="on">$RSTR(on)<option value="off">$RSTR(off)<option selected value="timer">$RSTR(timer) </select>\n');
+    } else if (status=='on') {
+      document.write 
+	  ('<option selected value="on">$RSTR(on) <option value="off">$RSTR(off)<option value="timer">$RSTR(timer)</select>\n');
+    } else {
+      document.write 
+	  ('<option value="on">$RSTR(on)<option selected value="off">$RSTR(off)<option value="timer">$RSTR(timer)</select>\n');
+    }
+}
+
+function writeWeekdaysSelect() {
+    var MonStatus = "$O(1.3.9.3)".toLowerCase();
+    var TueStatus = "$O(1.3.9.4)".toLowerCase();
+    var WedStatus = "$O(1.3.9.5)".toLowerCase();
+    var ThuStatus = "$O(1.3.9.6)".toLowerCase();
+    var FriStatus = "$O(1.3.9.7)".toLowerCase();
+    var status = 'off';
+    
+    
+    var stat='on';
+    if (MonStatus==stat && TueStatus==stat && WedStatus==stat
+	&& ThuStatus==stat && FriStatus==stat) status = stat;
+    stat='timer';
+    if (MonStatus==stat && TueStatus==stat && WedStatus==stat
+	&& ThuStatus==stat && FriStatus==stat) status = stat;
+    document.write
+	( '<select name="weekdays" '
+	  + 'onChange="setWeekdays(this.options[selectedIndex].value)">\n');
+    writeCommon (status);
+}
+
+function writeWeekendsSelect() {
+    var SatStatus = "$O(1.3.9.8)".toLowerCase();
+    var SunStatus = "$O(1.3.9.9)".toLowerCase();
+    var status = 'off';
+    
+    
+    var stat='on';
+    if (SatStatus==stat && SunStatus==stat) status = stat;
+    stat='timer'
+    if (SatStatus==stat && SunStatus==stat) status = stat;
+    document.write
+	( '<select name="weekends" '
+	  + ' onChange="setWeekends(this.options[selectedIndex].value)">\n');
+    writeCommon (status);
+}
+
+function setWeekdays(val) { 
+   submit("OidSB1.3.9.3",val,"OidSB1.3.9.4",val,
+	  "OidSB1.3.9.5",val,"OidSB1.3.9.6",val,
+	  "OidSB1.3.9.7",val);
+}
+
+function setWeekends(val) { 
+   submit("OidSB1.3.9.8",val, "OidSB1.3.9.9",val);
+}
+
+function submitLicense() {
+     if (document.licenseupload.codekey.value.length == 0) {
+        alert ("$RSTR(Sellic)");
+        return false;
+     }
+     document.licenseupload.submit();
+     updateStatusText ("$RSTR(Sublic)");
+     window.setTimeout('updateUploadStatus();', 100);
+     return false;
+}
+
+function submitFirmware() {
+     if (document.firmwareupload.firmware.value.length == 0) {
+        alert ("$RSTR(Selfirm)");
+        return false;
+     }
+     UpdatingFirmware = true;
+     StatCheck = true;
+     document.firmwareupload.submit();
+     updateStatusText ("$RSTR(Subfirm)");
+     
+     startBlinker ();
+     return false;
+}
+
+
+function firmwareStatCheck ()
+{
+    
+
+    if (UpdatingFirmware) {
+	updateStatusText ("$RSTR(Progwait)");
+	
+	setTimeout ('loadIndexPage()', (is264Possible) ? 110000 : 90000);
+    }
+}
+
+function updateUploadStatus () 
+{
+     
+     updateStatusText ("Requesting status, please wait...");
+     
+     if (AjaxGetOid ("7.7.1") == false) {
+	 stopBlinker ();
+	 updateStatusText ("XML error");
+     }
+}
+
+
+function AjaxDone (result_code, http_status, result_text)
+{
+    var stop = true;
+    
+    if (result_code == 4) updateUploadStatus ();
+    else {
+	if (UpdatingFirmware) {
+	    if (result_text.toLowerCase().match("complete")) {
+		
+		result_text = result_text + ".  Please wait while camera reboots...";
+		
+		setTimeout ('loadIndexPage()', (is264Possible) ? 60000 : 40000);
+		
+		stop = false;
+	    }
+	}
+	
+	if (stop)
+	    stopBlinker ();
+	updateStatusText (result_text);
+    }
+}
+
+function updateStatusText (text)
+{
+    if (text.toLowerCase().match("accepted")) {
+	reboot(); 
+	
+    }
+    if (!getObject("recordingtext")) return;
+    getObject("recordingtext").innerHTML = text;
+}
+
+function startBlinker ()
+{
+    if (DoBlink) return;
+    DoBlink = true;
+    BlinkIsOn = false;
+    statusTextBlinker();
+}
+
+function stopBlinker ()
+{
+    DoBlink = false;
+}
+
+function statusTextBlinker ()
+{
+    if (!getObject("recordingtext")) return;
+    if (!DoBlink) {
+	getObject("recordingtext").style.visibility = "visible";
+	return;
+    }
+    if (BlinkIsOn) {
+	getObject("recordingtext").style.visibility = "hidden";
+	BlinkIsOn = false;
+    }
+    else {
+	getObject("recordingtext").style.visibility = "visible";
+	BlinkIsOn = true;
+    }
+    setTimeout ("statusTextBlinker()", 500);
+}
+
+function writeMsg () {
+     var out = '<tr><td colspan=2 class="subtitle" align="right" valign="bottom"><span id="recordingtext">&nbsp</span></td></tr>';
+     document.write (out);
+}
+
+
+function LicFilename () {
+     var hwaddr = "$SH";
+     var newhw;
+     var re = /:/g;
+
+     newhw = hwaddr.replace (re, "");
+     document.write ("($RSTR(expecting): codeauth-" + newhw + ")");
+}
+
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#808080" 
+ link=$V(LINKCOLOR) vlink=$V(LINKCOLOR) alink=$V(LINKCOLOR)> 
+
+<noscript><font color="#FF0000">
+<b>You must enable Javascript for this page to work properly.</b></font>
+</noscript>
+
+<form name="superuser" onSubmit="return checkSuper(this)">
+
+<!-- each row has 3 tds: a border on each side, and the content
+     the overall table has three rows: header, content, footer 
+       header and footer are written with javascript in gui.js
+     content contains a table with 2 rows and 2 cols
+     content topleft has the image
+     content bottomleft is typically empty
+     content right has input fields spanning 2 rows
+-->  
+
+<table class="main" cellspacing=0 cellpadding=0 width=850>
+<script>
+  writeSettingsHeader("access");</script>
+
+<tr>
+  <td class="l"><img src="1pixclear.gif" width=1 height=520></td>
+  <td colspan=2 valign="top" align="left">
+    <table class="content" cellspacing=0 cellpadding=0 width=850>
+    <tr>
+      <!-- the image area -->
+        <script>
+          writeCroppedImage();
+        </script>
+      <td rowspan=2 valign="top" align="right">
+        <table class="input" cellspacing=0  cellpadding=0 width=380 style="margin-right: 10px;">
+        <tr>		    
+          <td class="subtitleleft"><img src="1pixclear.gif" width=8 height=1></td>
+          <td height=20 class="subtitleleft">
+            <span id=sendState name=sendState>&nbsp;</span></td></tr>
+
+
+$IF($V(HTTPS),,<!--)
+<tr>
+  <td class="subtitleleft" colspan=2>
+  <ul id="win">
+  <script>
+      document.write('<li id="current"><a href="accessset.html">$RSTR(basic)</a></li>');
+      document.write('<li><a href="advsec.html">$RSTR(advanced)</a></li>');
+  </script> 
+  </ul></td>
+</tr>
+$IF($V(HTTPS),,-->)
+
+        <tr>
+          <td class=$IF($V(HTTPS),"startsubleft","subtitleleft")>&nbsp;</td>
+          <td class=$IF($V(HTTPS),"startsubw","subtitle") helpanchor="access-security" helpsub="$RSTR(Passwords)" myhelp="$RSTR(Passwords_help)">$RSTR(Passwords)
+             <script>
+              writeHelpIcon("access-security");</script></td></tr>
+
+        <tr> 
+          <td class=$IF($V(HTTPS),"left","startsubleft")>&nbsp;</td>
+          <td class=$IF($V(HTTPS),"input","startsub") helpbold="$RSTR(genprot)" myhelp="$RSTR(genprot_help)">$RSTR(genprot) $O(2.9,JSB)</td></tr>
+
+        $IF($V(IQEYE4),<!--,)
+        $IF($V(IQ06),<!--,)
+        <tr> 
+          <td class="left">&nbsp;</td>
+	    <td class="input">$RSTR(authmode)
+            <script>
+               writeAuthenticationModeSelect();</script></td></tr>
+        $IF($V(IQEYE4),-->,)
+        $IF($V(IQ06),-->,)
+
+       <tr> 
+          <td class="left">&nbsp;</td>
+          <td class="input" helpbold="$RSTR(chgenpwd)" myhelp="$RSTR(chgenpwd_help)">$RSTR(chgenpwd) 
+		<input type="password" name="password" id="password" 
+                value="******" size="32" 
+                onblur="setPassword(this)"></td></tr>
+       <tr> 
+          <td class="left">&nbsp;</td>
+          <td class="input" helpbold="$RSTR(chmgpwd)" myhelp="$RSTR(chmgpwd_help)">$RSTR(chmgpwd)
+            <input type="password" name="superPass1" value="" size="32"></td></tr> 
+       <tr> 
+          <td class=$IF($V(HTTPS),"left","endsubleft")>&nbsp;</td>
+          <td class=$IF($V(HTTPS),"input","endsub") helpbold="$RSTR(retmgpwd)" myhelp="$RSTR(retmgpwd_help)">$RSTR(retmgpwd)
+            <input type="password" name="superPass2" value="" size="32" 
+             onblur="checkSuper(this.form)"></td></tr> 
+
+        $IF($V(IQEYE4),<!--,)
+        $IF($V(IQD3),<!--,)
+        <tr>
+          <td class=$IF($V(HTTPS),"left","subtitleleft")>&nbsp;</td>
+          <td class=$IF($V(HTTPS),"midsubw","subtitle") helpanchor="AccessHours" helpsub="$RSTR(AccHrs)" myhelp="$RSTR(AccHrs_help)">$RSTR(AccHrs)
+             <script>
+              writeHelpIcon("AccessHours");</script></td></tr>
+
+        <tr> 
+          <td class=$IF($V(HTTPS),"left","startsubleft")>&nbsp;</td>
+          <td class=$IF($V(HTTPS),"input","startsub")>$RSTR(weekdays)
+            <script>
+               writeWeekdaysSelect();</script></td></tr>
+        <tr>		   
+          <td class="left">&nbsp;</td>
+          <td class="input">$RSTR(weekends)
+            <script>
+               writeWeekendsSelect();</script></td></tr>
+        <tr> 		   
+          <td class="left">&nbsp;</td>
+          <td class="input">$RSTR(camontm) $O(1.3.9.2,JTB)</td></tr>
+        <tr>		  
+          <td class="left">&nbsp;</td>
+          <td class="input">$RSTR(camofftm) $O(1.3.9.1,JTB)</td></tr>
+
+        $IF($V(IQEYE6),<!--,)
+        $IF($V(IQ06),<!--,)
+             access denied message
+            <input type="text" name="OidTB1.2.9.1.9.4" value="$O(1.2.9.1.9.4)"
+             size="25" 
+             onChange="setAccessDeniedDefaults(); setEcam(this)">
+        $IF($V(IQEYE6),-->,)
+        $IF($V(IQ06),-->,)
+        $IF($V(IQEYE4),<!--,)
+        $IF($V(IQD3),<!--,)
+          </td>
+        </tr>
+        $IF($V(IQEYE4),-->,)
+        $IF($V(IQD3),-->,)
+
+        <tr>		  
+          <td class="endsubleft">&nbsp;</td>
+          <td class="endsub">
+
+	</form>
+
+	<tr>
+          <td class="subtitleleft"><img src="1pixclear.gif" width=1 height=22></td>
+          <td class="subtitle">&nbsp;</td>
+	</tr>
+
+	<iframe style="width:0px;height:0px;" onload="firmwareStatCheck();" name="firmwareuploadframe"></iframe>
+        <script>
+	  if (isMole || isFalcon) {
+	    document.write ('<form method="post" name="firmwareupload" enctype="multipart/form-data" action="reload.cgi?id=0">');
+	  }
+	  else {
+	    document.write ('<form method="post" name="firmwareupload" enctype="multipart/form-data" target="firmwareuploadframe">');
+          }
+	</script>
+	<tr>
+          <td class="subtitleleft">&nbsp;</td>
+          <td class="subtitle" helpanchor="firmware-upload" helpsub="$RSTR(CamFirm)" myhelp="$RSTR(CamFirm_help)">$RSTR(CamFirm)
+             <script>
+		writeHelpIcon("firmware-upload");
+	     </script>
+	  </td>
+	</tr>
+        <tr>
+	  <td class="startsubleft">&nbsp;</td>
+	  <td class="startsub">$RSTR(FirmFile)
+	    <input type="file" name="firmware" style="width:240px;"size=31>
+	  </td>
+        </tr>
+        <tr>
+	  <td class="endsubleft">&nbsp;</td>
+	      <td class="endsub">     
+	    <table style="width: 100%; text-align: left;" cellspacing="2">
+              <tr>
+	        <td style="align: right; color: #333; font-size:
+12px">($RSTR(expecting): $O(4.7))</td>
+	        <td>
+   	          <ul id="buttonp">
+	            <li><a href="" onClick="return submitFirmware();">$RSTR(upload)</a></li>
+                  </ul>
+	        </td>
+              <tr>
+	    </table>
+          </td>
+	</tr>
+	</form>
+
+        $IF($V(IQEYE4),<!--,)
+
+	<iframe style="width:0px;height:0px;" name="fileuploadframe"></iframe>
+     <script>
+	  if (isMole || isFalcon) {
+	    document.write ('<form method="post" name="licenseupload" enctype="multipart/form-data" action="reload.cgi?id=1">');
+	  }
+	  else {
+	    document.write ('<form method="post" name="licenseupload" enctype="multipart/form-data" target="fileuploadframe">');
+      }
+	 </script>
+	<tr>
+          <td class="subtitleleft">&nbsp;</td>
+          <td class="subtitle" helpanchor="license-file" helpsub="$RSTR(CamLic)" myhelp="$RSTR(CamLic_help)">$RSTR(CamLic)
+             <script>
+		writeHelpIcon("license-file");
+	     </script>
+	  </td>
+	</tr>
+        <tr>
+	  <td class="startsubleft">&nbsp;</td>
+	  <td class="startsub">$RSTR(LicFile)
+	    <input type="file" name="codekey" style="width:240px;"size=31>
+	  </td>
+        </tr>
+        <tr>
+	  <td class="endsubleft">&nbsp;</td>
+	  <td class="endsub">
+	    <table style="width: 100%; text-align: left;" cellspacing="2">
+              <tr>
+	        <td style="align: right; color: #333; font-size: 12px"><script>LicFilename();</script></td>
+	        <td>
+	          <ul id="buttonp">
+	            <li><a href="" onClick="return submitLicense();">$RSTR(upload)</a></li>
+                  </ul>
+	        </td>
+              <tr>
+	    </table>
+          </td>
+	</tr>
+	</form>
+
+        $IF($V(IQEYE4),-->,)
+
+<!--
+	<tr>
+          <td class="subtitleleft"><img src="1pixclear.gif" width=1 height=42></td>
+          <td class="subtitle">&nbsp;</td>
+	</tr>
+-->
+        </table> <!-- end description of right column -->
+      </td>
+    </tr>
+
+    <tr> <!-- start bottom left content (below image)  -->
+      <td valign="bottom"  align="left" width=320>
+        <table class="input" cellspacing=0  cellpadding=0  width=335 style="margin: 0 0 8px 32px;">
+        <tr>
+          <td class="subtitleleft">&nbsp
+            <img src="1pixclear.gif" width=8 height=1></td>
+          <td class="subtitle">$RSTR(Info)
+             <!-- <script>
+              writeHelpIcon("tbd");</script>--></td></tr>
+        <tr>
+          <td class="startsubleftg">&nbsp;</td>
+          <td class="startsubg">
+            $RSTR(firmware): $SV</td></tr>
+        <tr> 
+          <td class="leftg">&nbsp;</td>
+          <td class="inputg">$RSTR(filename): $O(4.7,R)</td></tr>
+        <tr> 
+          <td class="endsubleftg">&nbsp;</td>
+          <td class="endsubg">
+            $RSTR(bootcode): $O(2.16)</td></tr>
+
+	$IF($V(IQ06),,<!--)
+	$IF($V(IQD3),<!--,)
+        <tr>
+          <td class="subtitleleft">
+            <img src="1pixclear.gif" width=8 height=1></td>
+          <td class="subtitle">$RSTR(OCIS)</td></tr>
+        <tr> 
+          <td class="startsubleftg">&nbsp;</td>
+          <td class="startsubg"> 
+            <script>writeIQaccPlain();</script>
+          </td>
+        </tr>
+        <tr> 
+          <td class="endsubleftg">&nbsp;</td>
+          <td class="endsubg"></td>
+        </tr>
+	$IF($V(IQD3),-->,)
+	$IF($V(IQ06),,-->)
+
+        $IF($V(IQEYE4),<!--,)
+        $IF($V(IQ06),<!--,)
+        <tr>
+          <td class="subtitleleft">
+            <img src="1pixclear.gif" width=8 height=1></td>
+          <td class="subtitle">$RSTR(OCIS)</td></tr>
+        <tr> 
+          <td class="startsubleftg">&nbsp;</td>
+          <td class="startsubg"> 
+            IQauthenticate: <script>writeIQauth()</script>
+          </td>
+        </tr>
+
+        <tr> 
+          <td class="leftg">&nbsp;</td>
+          <td class="inputg">
+	$IF($V(IQEYE5),,	
+            IQnightlight: <script>writeIQnight()</script>
+	)
+          </td>
+        </tr>
+        <tr> 
+          <td class="leftg">&nbsp;</td>
+          <td class="inputg">
+	$IF($V(IQEYE5),,	
+            Agent VI Analytics: <script>writeAgentVI()</script>
+	)
+          </td>
+        <script>writeViaSys()</script>
+	<script>writeIQacc()</script>
+        <tr> 
+          <td class="endsubleftg">&nbsp;</td>
+          <td class="endsubg">
+            IQrecorder: <script>writeIQrec()</script>
+          </td>
+        </tr>
+        $IF($V(IQ06),-->,)
+        $IF($V(IQEYE4),-->,)
+      </td></tr></table> <!-- end bottom left content -->
+
+     <script>
+	  writeMsg();</script> 
+  </table>
+  </td>
+  <td class="r"><img src="1pixclear.gif" height=1 width=11></td>
+</tr>
+    
+<script>
+  writeFooter('logout','reboot');</script>
+
+<tr>
+  <td class="bl"><img src="1pixclear.gif"  height=1 width=11></td>
+  <td colspan=2 class="b"><img src="1pixclear.gif"  height=11 width=1></td>
+  <td class="br"><img src="1pixclear.gif" width=1 height=1></td>
+</tr>
+</table>
+</form>
+</body>
+</html>

@@ -1,7 +1,8 @@
-# -*- coding: cp1252 -*-
+'''# -*- coding: cp1252 -*-'''
+# -*- coding: utf-8 -*-
 # Main Module by: Blazetamer
 
-import urllib,urllib2,re,xbmcplugin,xbmcgui,sys,urlresolver,xbmc,os,xbmcaddon
+import urllib,urllib2,re,xbmcplugin,xbmcgui,sys,urlresolver,xbmc,os,xbmcaddon,htmlcleaner
 from metahandler import metahandlers
 
 try:
@@ -244,11 +245,12 @@ settings = xbmcaddon.Addon(id=addon_id)
 
 
 def nameCleaner(name):
-          name = name.replace('&#8211;','')
-          name = name.replace("&#8217;","")
-          name = name.replace("&#039;s","'s")
-          #name = unicode(name, errors='ignore')
-          return(name)
+        name = name.replace('&#8211;','')
+        name = name.replace("&#8217;","")
+        name = name.replace("&#039;s","'s")
+        name = unicode(name, errors='ignore')
+        name = htmlcleaner.clean(name,strip=True)
+        return(name)
      
 
 
@@ -256,6 +258,7 @@ def nameCleaner(name):
 grab=metahandlers.MetaData()
 
 def GRABMETA(name,year):
+        
         meta = grab.get_meta('movie',name,year,None,None)
         infoLabels = {'rating': meta['rating'],'duration': meta['duration'],'genre': meta['genre'],'mpaa':"rated %s"%meta['mpaa'],
         'plot': meta['plot'],'title': meta['title'],'writer': meta['writer'],'cover_url': meta['cover_url'],
@@ -266,6 +269,7 @@ def GRABMETA(name,year):
         
 
 def GRABTVMETA(name,year):
+        
         meta = grab.get_meta('tvshow',name,year,None,None)
         infoLabels = {'rating': meta['rating'],'duration': meta['duration'],'genre': meta['genre'],'mpaa':"rated %s"%meta['mpaa'],
         'plot': meta['plot'],'title': meta['title'],'cover_url': meta['cover_url'],
@@ -275,6 +279,7 @@ def GRABTVMETA(name,year):
         
 
 def GRABEPISODEMETA(name,imdb_id,season,episode):
+        
         meta = grab.get_episode_meta('tvshow',name,imdb_id,season,episode)
         infoLabels = {'rating': meta['rating'],'duration': meta['duration'],'genre': meta['genre'],'mpaa':"rated %s"%meta['mpaa'],
         'plot': meta['plot'],'title': meta['title'],'writer': meta['writer'],'cover_url': meta['cover_url'],
@@ -346,6 +351,9 @@ def RESOLVEDL(name,url,thumb):
                     ext = '.flv'
           elif '.avi' in url:
                     ext = '.avi'
+
+          elif '.mkv' in url:
+                    ext = '.mkv'          
           
           
           console = 'Downloads/Movies/'+ dlfoldername
@@ -374,6 +382,9 @@ def SPECIALDL(name,url,thumb):
                     ext = '.flv'
           elif '.avi' in url:
                     ext = '.avi'
+                    
+          elif '.mkv' in url:
+                    ext = '.mkv'          
           
           
           console = 'Downloads/Specials/'+ dlfoldername
@@ -404,6 +415,10 @@ def RESOLVETVDL(name,url,thumb):
                     ext = '.flv'
           elif '.avi' in url:
                     ext = '.avi'
+
+          elif '.mkv' in url:
+                    ext = '.mkv'
+                    
           if not ext == '':
           
                console = 'Downloads/TV Shows/'+ dlfoldername
@@ -433,6 +448,10 @@ def RESOLVESPORTDL(name,url,thumb):
                     ext = '.flv'
           elif '.avi' in url:
                     ext = '.avi'
+
+          elif '.mkv' in url:
+                    ext = '.mkv'
+                    
           if not ext == '':
           
                console = 'Downloads/Sports/'+ dlfoldername
@@ -743,11 +762,11 @@ def addEPNOCLEANDir(name,url,thumb,mode,show,dlfoldername,mainimg,season,episode
         if settings.getSetting('metadata') == 'true':
          contextMenuItems.append(('[COLOR gold]Tv Show Information[/COLOR]', 'XBMC.Action(Info)'))
          if ep_meta==None:
-               fanart = fanart
+               fanart = 'https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/showgunart/images/fanart/fanart.jpg'
                addon.add_directory(params, {'title':name},contextmenu_items=contextMenuItems, img=thumb, fanart=fanart) 
          else:
                if meta['backdrop_url'] == '':
-                    fanart = fanart
+                    fanart = 'https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/showgunart/images/fanart/fanart.jpg'
                else:
                     fanart = meta['backdrop_url']
                ep_meta['title'] = name
@@ -896,7 +915,7 @@ def GETHOSTNAME(host):
           host = host[:-3]
      if host.startswith('www.'):
              host = host[4:]
-     hostname=' *'+host+'*' 
+     hostname=' '+host+'' 
      
      return(hostname)
 

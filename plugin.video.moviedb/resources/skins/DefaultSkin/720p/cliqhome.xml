@@ -1,0 +1,297 @@
+<window>
+	<defaultcontrol always="true">9000</defaultcontrol>
+	<allowoverlay>no</allowoverlay>	
+	 
+	<onunload condition="Container(9000).Hasfocus(10) | Container(9000).Hasfocus(11) | ControlGroup(9010).HasFocus | ControlGroup(9016).HasFocus | ControlGroup(9017).HasFocus">SetProperty(VideosDirectLink,True)</onunload>
+	<onunload condition="Control.HasFocus(9000) + Container(9000).Hasfocus(2)">ClearProperty(VideosDirectLink)</onunload>
+	<controls>
+		<control type="image">
+			<description>Background Image</description>
+			<posx>0</posx>
+			<posy>0</posy>
+			<width>1280</width>
+			<height>720</height>
+			<aspectratio>scale</aspectratio>
+			<texture>background2.jpg</texture>
+			<include>VisibleFadeEffect</include>
+		</control>
+		<control type="image">
+			<description>Background Image</description>
+			<posx>0</posx>
+			<posy>0</posy>
+			<width>1280</width>
+			<height>720</height>
+			<aspectratio>scale</aspectratio>
+			<texture>background2.jpg</texture>
+			<include>VisibleFadeEffect</include>
+		</control>
+
+
+		<control type="image">
+			<posx>0</posx>
+			<posy>90r</posy>
+			<width>1280</width>
+			<height>90</height>
+			<texture>-</texture>
+			<animation effect="fade" time="250" condition="Window.Previous(Home)">WindowOpen</animation>
+			<animation effect="fade" time="250" condition="Window.Next(Home)">WindowClose</animation>
+		</control>
+		<control type="image">
+			<description>LOGO</description>
+			<posx>0</posx>
+			<posy>5</posy>
+			<width>170</width>
+			<height>100</height>
+			<aspectratio aligny="top" align="left">keep</aspectratio>
+			<texture>icon.png</texture>
+			<include>VisibleFadeEffect</include>
+			<include>Window_OpenClose_Animation</include>
+	</control>
+										<control type="group">
+			<posy>400</posy>
+			<animation type="WindowOpen" reversible="false">
+				<effect type="zoom" start="80" end="100" center="640,360" easing="out" tween="back" time="300" />
+				<effect type="fade" start="0" end="100" time="300" />
+			</animation>
+			<animation type="WindowClose" reversible="false">
+				<effect type="zoom" start="100" end="80" center="640,360" easing="in" tween="back" time="300" />
+				<effect type="fade" start="100" end="0" time="300" />
+			</animation>
+			
+			<control type="image">
+				<posx>-100</posx>
+				<posy>0</posy>
+				<width>1480</width>
+				<height>75</height>
+				<texture border="0,6,0,6">CliqHomeBack.png</texture>
+			</control>
+			<control type="image">
+				<posx>0</posx>
+				<posy>5</posy>
+				<width>1280</width>
+				<height>6</height>
+				<texture>HomeOverlay1.png</texture>
+			</control>
+			<control type="fixedlist" id="9000">
+				<posx>-110</posx>
+				<posy>5</posy>
+				<width>1500</width>
+				<height>60</height>
+				<onleft>9000</onleft>
+				<onright>9000</onright>
+								<ondown>9001</ondown>
+				<pagecontrol>-</pagecontrol>
+				<scrolltime>300</scrolltime>
+				<focusposition>2</focusposition>
+				<movement>1</movement>
+				<orientation>Horizontal</orientation>
+				<itemlayout height="60" width="300">
+					<control type="image">
+						<posx>0</posx>
+						<posy>4</posy>
+						<width>1</width>
+						<height>52</height>
+						<texture>HomeSeperator.png</texture>
+					</control>
+					<control type="image">
+						<posx>299</posx>
+						<posy>4</posy>
+						<width>1</width>
+						<height>52</height>
+						<texture>HomeSeperator.png</texture>
+					</control>
+					<control type="label">
+						<posx>150</posx>
+						<posy>0</posy>
+						<width>290</width>
+						<height>60</height>
+						<font>font14</font>
+						<textcolor>grey3</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="60" width="300">
+					<control type="image">
+						<posx>0</posx>
+						<posy>4</posy>
+						<width>1</width>
+						<height>52</height>
+						<texture>HomeSeperator.png</texture>
+					</control>
+					<control type="image">
+						<posx>299</posx>
+						<posy>4</posy>
+						<width>1</width>
+						<height>52</height>
+						<texture>HomeSeperator.png</texture>
+					</control>
+					<control type="label">
+						<posx>150</posx>
+						<posy>0</posy>
+						<width>290</width>
+						<height>60</height>
+						<font>font14</font>
+						<textcolor>grey3</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<posx>150</posx>
+						<posy>0</posy>
+						<width>290</width>
+						<height>60</height>
+						<font>font14</font>
+						<textcolor>lime</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>Control.HasFocus(9000)</visible>
+						<include>VisibleFadeEffect</include>
+					</control>
+				</focusedlayout>
+				<content>
+<item id="17">
+    <label>Movies</label>
+    <onclick>ReplaceWindow(10025,&quot;plugin://plugin.video.moviedb/?mode=moviecat&amp;url=none&quot;,return)</onclick>
+<onclick>XBMC.ReloadSkin()</onclick>
+    <icon>-</icon>
+    <thumb>-</thumb>
+</item>
+
+										<item id="18">
+						<label>TV Shows</label>
+						<onclick>ActivateWindow(10025,&quot;plugin://plugin.video.moviedb/?mode=tvcats&amp;url=none&quot;,return)</onclick>
+<onclick>XBMC.ReloadSkin()</onclick>
+						<icon>-</icon>
+						<thumb>-</thumb>
+						
+					</item>
+															<item id="19">
+    <label>User[CR]Submitted</label>
+    <onclick>ActivateWindow(10025,&quot;plugin://plugin.video.moviedb/?mode=userdatabase&amp;name=User%20Submitted%20Playlists&amp;url=none&quot;,return)</onclick>
+<onclick>XBMC.ReloadSkin()</onclick>
+    <icon>-</icon>
+    <thumb>-</thumb>
+</item>
+
+<item id="20">
+    <label>Live Streams</label>
+    <onclick>ReplaceWindow(10025,&quot;plugin://plugin.video.moviedb/?mode=livecats&amp;url=https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/streams/menus.xml&quot;,return)</onclick>
+<onclick>XBMC.ReloadSkin()</onclick>
+    <icon>-</icon>
+    <thumb>-</thumb>
+</item>
+
+<item id="21">
+    <label>Manage[CR]Downloads</label>
+    <onclick>ReplaceWindow(10025,&quot;plugin://plugin.video.moviedb/?mode=viewQueue&amp;url=none&quot;,return)</onclick>
+<onclick>XBMC.ReloadSkin()</onclick>
+    <icon>-</icon>
+    <thumb>-</thumb>
+</item>
+
+<item id="22">
+    <label>Display[CR]Announcements</label>
+    <onclick>ReplaceWindow(10025,&quot;plugin://plugin.video.moviedb/?mode=addonstatus&amp;url=https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/controls/announcepop.txt&quot;,return)</onclick>
+    <icon>-</icon>
+    <thumb>-</thumb>
+</item>
+<item id="22">
+    <label>Test Window</label>
+    <onclick>ActivateWindow(1234)</onclick>
+    <icon>-</icon>
+    <thumb>-</thumb>
+</item>
+
+
+
+
+														
+									</content>
+			</control>
+<!--CloseButton-->
+<control type="button">
+				<description>Close Window button</description>
+				<posx>1200</posx>
+				<posy>275</posy>
+				<width>64</width>
+				<height>32</height>
+				<label>-</label>
+				<font>-</font>
+				<onclick>PreviousMenu</onclick>
+				<texturefocus>CliqCloseButton-focus.png</texturefocus>
+				<texturenofocus>CliqCloseButton.png</texturenofocus>
+				<visible>system.getbool(input.enablemouse)</visible>
+				<onleft>9000</onleft>
+				<onright>9000</onright>
+				<onup>9000</onup>
+				<ondown>9000</ondown>
+			</control>
+
+			
+		</control>
+		
+		
+		<control type="group" id="10">
+			<posx>20</posx>
+			<posy>55r</posy>
+			<include>Window_OpenClose_Animation</include>
+			<control type="button" id="20">
+				<description>Power push button</description>
+				<posx>55</posx>
+				<posy>0</posy>
+				<width>45</width>
+				<height>45</height>
+				<label>31003</label>
+				<font>-</font>
+				<aligny>-</aligny>
+				<onclick>ActivateWindow(ShutdownMenu)</onclick>
+				<texturefocus border="5">floor_buttonFO.png</texturefocus>
+				<texturenofocus border="5">floor_button.png</texturenofocus>
+				<onleft>21</onleft>
+				<onright>21</onright>
+				<onup>9002</onup>
+				<ondown>9003</ondown>
+			</control>
+			<control type="image">
+				<description>Power Icon</description>
+				<posx>60</posx>
+				<posy>5</posy>
+				<width>35</width>
+				<height>35</height>
+				<aspectratio>keep</aspectratio>
+				<texture>icon_power.png</texture>
+			</control>
+			<control type="button" id="21">
+				<description>Favourites push button</description>
+				<posx>0</posx>
+				<posy>0</posy>
+				<width>45</width>
+				<height>45</height>
+				<label>1036</label>
+				<font>-</font>
+				<aligny>-</aligny>
+				<onclick>ActivateWindow(10025,&quot;plugin://plugin.video.moviedb/?mode=viewstfavs&amp;url=none&quot;,return)</onclick>
+<onclick>XBMC.ReloadSkin()</onclick>
+				<texturefocus border="5">floor_buttonFO.png</texturefocus>
+				<texturenofocus border="5">floor_button.png</texturenofocus>
+				<onleft>20</onleft>
+				<onright>20</onright>
+				<onup>9002</onup>
+				<ondown>9003</ondown>
+			</control>
+			<control type="image">
+				<description>Favourites Icon</description>
+				<posx>5</posx>
+				<posy>5</posy>
+				<width>35</width>
+				<height>35</height>
+				<aspectratio>keep</aspectratio>
+				<texture>icon_favourites.png</texture>
+			</control>
+		</control>
+			</controls>	
+</window>

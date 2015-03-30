@@ -1,0 +1,13 @@
+<window id="1234" type="dialog">
+  <defaultcontrol>2</defaultcontrol>
+  <allowoverlay>yes</allowoverlay>
+  <visible>true</visible>
+  <coordinates>
+    <system>1</system>
+    <posX>200</posX>
+    <posY>100</posY>
+  </coordinates>
+  <controls>
+  ...
+  </controls>
+</window>

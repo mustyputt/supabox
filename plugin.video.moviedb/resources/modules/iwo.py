@@ -1,5 +1,5 @@
 #IWatchOnline Module by : Bazetamer   Thanks to O9 for the basic code setup
-import urllib,urllib2,re,xbmcplugin,xbmcgui,xbmc, xbmcaddon, os, sys
+import urllib,urllib2,re,xbmcplugin,xbmcgui,xbmc, xbmcaddon, os, sys,htmlcleaner
 import urlresolver
 import cookielib
 import downloader
@@ -23,8 +23,30 @@ ADDON = xbmcaddon.Addon(id='plugin.video.moviedb')
 
 base_url = 'http://www.iwatchonline.to'
 
+try:
+     import StorageServer
+except:
+     import storageserverdummy as StorageServer
+
+# Cache  
+cache = StorageServer.StorageServer("MovieDB", 0)
+
+mode = addon.queries['mode']
+url = addon.queries.get('url', '')
+name = addon.queries.get('name', '')
+thumb = addon.queries.get('thumb', '')
+ext = addon.queries.get('ext', '')
+console = addon.queries.get('console', '')
+dlfoldername = addon.queries.get('dlfoldername', '')
+favtype = addon.queries.get('favtype', '')
+mainimg = addon.queries.get('mainimg', '')
+season = addon.queries.get('season', '')
+episode = addon.queries.get('episode', '')
 
 
+# Global Stuff
+cookiejar = addon.get_profile()
+cookiejar = os.path.join(cookiejar,'cookies.lwp')
 
 
 
@@ -38,17 +60,22 @@ else:
     artwork = xbmc.translatePath(os.path.join('https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/images/', ''))
     fanart = xbmc.translatePath(os.path.join('https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/images/fanart/fanart.jpg', ''))
 
-    
+def AFnameCleaner(name):
+        name = name.replace('&#8211;','')
+        name = name.replace("&#8217;","")
+        name = name.replace("&#039;s","'s")
+        name = htmlcleaner.clean(name,strip=True)
+        return(name)    
 
 
 #Main Links 
 
 def CATZEEMOVIES (url):
-        main.addDir('Random Movies ','http://www.zmovie.tw/','zeemovies','','','dir')
-        main.addDir('Genres','http://www.zmovie.tw/search/genre','zeegenres','','','dir')
-        main.addDir('Featured Movies','http://www.zmovie.tw/movies/featured','zeemovies','','','dir')
-        main.addDir('New Movies','http://www.zmovie.tw/movies/new','zeemovies','','','dir')
-        main.addDir('Top Movies All-Time','http://www.zmovie.tw/movies/top','zeemovies','','','dir')
+        addDir('Random Movies ','http://www.zmovie.tw/','zeemovies','','','dir')
+        addDir('Genres','http://www.zmovie.tw/search/genre','zeegenres','','','dir')
+        addDir('Featured Movies','http://www.zmovie.tw/movies/featured','zeemovies','','','dir')
+        addDir('New Movies','http://www.zmovie.tw/movies/new','zeemovies','','','dir')
+        addDir('Top Movies All-Time','http://www.zmovie.tw/movies/top','zeemovies','','','dir')
 
         
         main.AUTO_VIEW('')
@@ -64,7 +91,7 @@ def CATIWO (url):
         main.AUTO_VIEW('')
 
 def CATTVSHOWS (url):
-        main.addDir('Genre','http://www.iwatchonline.to/movies','iwogenres','','','dir')
+        addDir('Genre','http://www.iwatchonline.to/movies','iwogenres','','','dir')
         
         main.AUTO_VIEW('')
 
@@ -74,98 +101,98 @@ def ZEEGENRES(url):
         for url,name in match:
             name = name.replace("&#039;s","'s")
             favtype = 'movie'
-            main.addDir(name,url,'zeemovies','','',favtype)
+            addDir(name,url,'zeemovies','','',favtype)
             main.AUTO_VIEW('movies')
 
 def IWOHD():
-        main.addDir('Recently Added',base_url +'//movies?sort=latest&quality=hd','iwomovies','','','')
-        main.addDir('Popular',base_url + '//movies?sort=popular&quality=hd','iwomovies','','','')
-        main.addDir('A-Z','none','iwohdalph','','','')            
+        addDir('Recently Added',base_url +'//movies?sort=latest&quality=hd','iwomovies','','','')
+        addDir('Popular',base_url + '//movies?sort=popular&quality=hd','iwomovies','','','')
+        addDir('A-Z','none','iwohdalph','','','')            
 
 def IWOGENRES(url):
-        main.addDir('Action','http://www.iwatchonline.to/movies?gener=action','iwomovies','','','dir')
-        main.addDir('Adventure','http://www.iwatchonline.to/movies?gener=adventure','iwomovies','','','dir')
-        main.addDir('Animation','http://www.iwatchonline.to/movies?gener=animation','iwomovies','','','dir')
-        main.addDir('Biography','http://www.iwatchonline.to/movies?gener=biography','iwomovies','','','dir')
-        main.addDir('Comedy','http://www.iwatchonline.to/movies?gener=comedy','iwomovies','','','dir')
-        main.addDir('Crime','http://www.iwatchonline.to/movies?gener=crime','iwomovies','','','dir')
-        main.addDir('Documentary','http://www.iwatchonline.to/movies?gener=documentery','iwomovies','','','dir')
-        main.addDir('Drama','http://www.iwatchonline.to/movies?gener=drama','iwomovies','','','dir')
-        main.addDir('Family','http://www.iwatchonline.to/movies?gener=family','iwomovies','','','dir')
-        main.addDir('Fantasy','http://www.iwatchonline.to/movies?gener=fantasy','iwomovies','','','dir')
-        main.addDir('Film-Noir','http://www.iwatchonline.to/movies?gener=film-noir','iwomovies','','','dir')
-        main.addDir('History','http://www.iwatchonline.to/movies?gener=history','iwomovies','','','dir')
-        main.addDir('Horror','http://www.iwatchonline.to/movies?gener=horror','iwomovies','','','dir')
-        main.addDir('Music','http://www.iwatchonline.to/movies?gener=music','iwomovies','','','dir')
-        main.addDir('Musical','http://www.iwatchonline.to/movies?gener=musical','iwomovies','','','dir')
-        main.addDir('Mystery','http://www.iwatchonline.to/movies?gener=mystery','iwomovies','','','dir')
-        main.addDir('News','http://www.iwatchonline.to/movies?gener=news','iwomovies','','','dir')
-        main.addDir('Romance','http://www.iwatchonline.to/movies?gener=romance','iwomovies','','','dir')
-        main.addDir('Sci-Fi','http://www.iwatchonline.to/movies?gener=sci-fi','iwomovies','','','dir')
-        main.addDir('Short','http://www.iwatchonline.to/movies?gener=short','iwomovies','','','dir')
-        main.addDir('Sport','http://www.iwatchonline.to/movies?gener=sport','iwomovies','','','dir')
-        main.addDir('Thriller','http://www.iwatchonline.to/movies?gener=thriller','iwomovies','','','dir')
-        main.addDir('War','http://www.iwatchonline.to/movies?gener=war','iwomovies','','','dir')
-        main.addDir('Western','http://www.iwatchonline.to/movies?gener=western','iwomovies','','','dir')
+        addDir('Action','http://www.iwatchonline.to/movies?gener=action','iwomovies','','','dir')
+        addDir('Adventure','http://www.iwatchonline.to/movies?gener=adventure','iwomovies','','','dir')
+        addDir('Animation','http://www.iwatchonline.to/movies?gener=animation','iwomovies','','','dir')
+        addDir('Biography','http://www.iwatchonline.to/movies?gener=biography','iwomovies','','','dir')
+        addDir('Comedy','http://www.iwatchonline.to/movies?gener=comedy','iwomovies','','','dir')
+        addDir('Crime','http://www.iwatchonline.to/movies?gener=crime','iwomovies','','','dir')
+        addDir('Documentary','http://www.iwatchonline.to/movies?gener=documentery','iwomovies','','','dir')
+        addDir('Drama','http://www.iwatchonline.to/movies?gener=drama','iwomovies','','','dir')
+        addDir('Family','http://www.iwatchonline.to/movies?gener=family','iwomovies','','','dir')
+        addDir('Fantasy','http://www.iwatchonline.to/movies?gener=fantasy','iwomovies','','','dir')
+        addDir('Film-Noir','http://www.iwatchonline.to/movies?gener=film-noir','iwomovies','','','dir')
+        addDir('History','http://www.iwatchonline.to/movies?gener=history','iwomovies','','','dir')
+        addDir('Horror','http://www.iwatchonline.to/movies?gener=horror','iwomovies','','','dir')
+        addDir('Music','http://www.iwatchonline.to/movies?gener=music','iwomovies','','','dir')
+        addDir('Musical','http://www.iwatchonline.to/movies?gener=musical','iwomovies','','','dir')
+        addDir('Mystery','http://www.iwatchonline.to/movies?gener=mystery','iwomovies','','','dir')
+        addDir('News','http://www.iwatchonline.to/movies?gener=news','iwomovies','','','dir')
+        addDir('Romance','http://www.iwatchonline.to/movies?gener=romance','iwomovies','','','dir')
+        addDir('Sci-Fi','http://www.iwatchonline.to/movies?gener=sci-fi','iwomovies','','','dir')
+        addDir('Short','http://www.iwatchonline.to/movies?gener=short','iwomovies','','','dir')
+        addDir('Sport','http://www.iwatchonline.to/movies?gener=sport','iwomovies','','','dir')
+        addDir('Thriller','http://www.iwatchonline.to/movies?gener=thriller','iwomovies','','','dir')
+        addDir('War','http://www.iwatchonline.to/movies?gener=war','iwomovies','','','dir')
+        addDir('Western','http://www.iwatchonline.to/movies?gener=western','iwomovies','','','dir')
         main.AUTO_VIEW('')
 
         
 def IWOALPH():
-        main.addDir('#',base_url + '/movies?startwith=09','iwomovies','','','dir')
-        main.addDir('A',base_url + '/movies?startwith=a','iwomovies','','','dir')
-        main.addDir('B',base_url + '/movies?startwith=b','iwomovies','','','dir')
-        main.addDir('C',base_url + '/movies?startwith=c','iwomovies','','','dir')
-        main.addDir('D',base_url + '/movies?startwith=d','iwomovies','','','dir')
-        main.addDir('E',base_url + '/movies?startwith=e','iwomovies','','','dir')
-        main.addDir('F',base_url + '/movies?startwith=f','iwomovies','','','dir')
-        main.addDir('G',base_url + '/movies?startwith=g','iwomovies','','','dir')
-        main.addDir('H',base_url + '/movies?startwith=h','iwomovies','','','dir')
-        main.addDir('I',base_url + '/movies?startwith=i','iwomovies','','','dir')
-        main.addDir('J',base_url + '/movies?startwith=j','iwomovies','','','dir')
-        main.addDir('K',base_url + '/movies?startwith=k','iwomovies','','','dir')
-        main.addDir('L',base_url + '/movies?startwith=l','iwomovies','','','dir')
-        main.addDir('M',base_url + '/movies?startwith=m','iwomovies','','','dir')
-        main.addDir('N',base_url + '/movies?startwith=n','iwomovies','','','dir')
-        main.addDir('O',base_url + '/movies?startwith=o','iwomovies','','','dir')
-        main.addDir('P',base_url + '/movies?startwith=p','iwomovies','','','dir')
-        main.addDir('Q',base_url + '/movies?startwith=q','iwomovies','','','dir')
-        main.addDir('R',base_url + '/movies?startwith=r','iwomovies','','','dir')
-        main.addDir('S',base_url + '/movies?startwith=s','iwomovies','','','dir')
-        main.addDir('T',base_url + '/movies?startwith=t','iwomovies','','','dir')
-        main.addDir('U',base_url + '/movies?startwith=u','iwomovies','','','dir')
-        main.addDir('V',base_url + '/movies?startwith=v','iwomovies','','','dir')
-        main.addDir('W',base_url + '/movies?startwith=w','iwomovies','','','dir')
-        main.addDir('X',base_url + '/movies?startwith=x','iwomovies','','','dir')
-        main.addDir('Y',base_url + '/movies?startwith=y','iwomovies','','','dir')
-        main.addDir('Z',base_url + '/movies?startwith=z','iwomovies','','','dir')    
+        addDir('#',base_url + '/movies?startwith=09','iwomovies','','','dir')
+        addDir('A',base_url + '/movies?startwith=a','iwomovies','','','dir')
+        addDir('B',base_url + '/movies?startwith=b','iwomovies','','','dir')
+        addDir('C',base_url + '/movies?startwith=c','iwomovies','','','dir')
+        addDir('D',base_url + '/movies?startwith=d','iwomovies','','','dir')
+        addDir('E',base_url + '/movies?startwith=e','iwomovies','','','dir')
+        addDir('F',base_url + '/movies?startwith=f','iwomovies','','','dir')
+        addDir('G',base_url + '/movies?startwith=g','iwomovies','','','dir')
+        addDir('H',base_url + '/movies?startwith=h','iwomovies','','','dir')
+        addDir('I',base_url + '/movies?startwith=i','iwomovies','','','dir')
+        addDir('J',base_url + '/movies?startwith=j','iwomovies','','','dir')
+        addDir('K',base_url + '/movies?startwith=k','iwomovies','','','dir')
+        addDir('L',base_url + '/movies?startwith=l','iwomovies','','','dir')
+        addDir('M',base_url + '/movies?startwith=m','iwomovies','','','dir')
+        addDir('N',base_url + '/movies?startwith=n','iwomovies','','','dir')
+        addDir('O',base_url + '/movies?startwith=o','iwomovies','','','dir')
+        addDir('P',base_url + '/movies?startwith=p','iwomovies','','','dir')
+        addDir('Q',base_url + '/movies?startwith=q','iwomovies','','','dir')
+        addDir('R',base_url + '/movies?startwith=r','iwomovies','','','dir')
+        addDir('S',base_url + '/movies?startwith=s','iwomovies','','','dir')
+        addDir('T',base_url + '/movies?startwith=t','iwomovies','','','dir')
+        addDir('U',base_url + '/movies?startwith=u','iwomovies','','','dir')
+        addDir('V',base_url + '/movies?startwith=v','iwomovies','','','dir')
+        addDir('W',base_url + '/movies?startwith=w','iwomovies','','','dir')
+        addDir('X',base_url + '/movies?startwith=x','iwomovies','','','dir')
+        addDir('Y',base_url + '/movies?startwith=y','iwomovies','','','dir')
+        addDir('Z',base_url + '/movies?startwith=z','iwomovies','','','dir')    
 def IWOHDALPH():
-        main.addDir('#',base_url + '/movies?quality=hd&startwith=09','iwomovies','','','dir')
-        main.addDir('A',base_url + '/movies?quality=hd&startwith=a','iwomovies','','','dir')
-        main.addDir('B',base_url + '/movies?quality=hd&startwith=b','iwomovies','','','dir')
-        main.addDir('C',base_url + '/movies?quality=hd&startwith=c','iwomovies','','','dir')
-        main.addDir('D',base_url + '/movies?quality=hd&startwith=d','iwomovies','','','dir')
-        main.addDir('E',base_url + '/movies?quality=hd&startwith=e','iwomovies','','','dir')
-        main.addDir('F',base_url + '/movies?quality=hd&startwith=f','iwomovies','','','dir')
-        main.addDir('G',base_url + '/movies?quality=hd&startwith=g','iwomovies','','','dir')
-        main.addDir('H',base_url + '/movies?quality=hd&startwith=h','iwomovies','','','dir')
-        main.addDir('I',base_url + '/movies?quality=hd&startwith=i','iwomovies','','','dir')
-        main.addDir('J',base_url + '/movies?quality=hd&startwith=j','iwomovies','','','dir')
-        main.addDir('K',base_url + '/movies?quality=hd&startwith=k','iwomovies','','','dir')
-        main.addDir('L',base_url + '/movies?quality=hd&startwith=l','iwomovies','','','dir')
-        main.addDir('M',base_url + '/movies?quality=hd&startwith=m','iwomovies','','','dir')
-        main.addDir('N',base_url + '/movies?quality=hd&startwith=n','iwomovies','','','dir')
-        main.addDir('O',base_url + '/movies?quality=hd&startwith=o','iwomovies','','','dir')
-        main.addDir('P',base_url + '/movies?quality=hd&startwith=p','iwomovies','','','dir')
-        main.addDir('Q',base_url + '/movies?quality=hd&startwith=q','iwomovies','','','dir')
-        main.addDir('R',base_url + '/movies?quality=hd&startwith=r','iwomovies','','','dir')
-        main.addDir('S',base_url + '/movies?quality=hd&startwith=s','iwomovies','','','dir')
-        main.addDir('T',base_url + '/movies?quality=hd&startwith=t','iwomovies','','','dir')
-        main.addDir('U',base_url + '/movies?quality=hd&startwith=u','iwomovies','','','dir')
-        main.addDir('V',base_url + '/movies?quality=hd&startwith=v','iwomovies','','','dir')
-        main.addDir('W',base_url + '/movies?quality=hd&startwith=w','iwomovies','','','dir')
-        main.addDir('X',base_url + '/movies?quality=hd&startwith=x','iwomovies','','','dir')
-        main.addDir('Y',base_url + '/movies?quality=hd&startwith=y','iwomovies','','','dir')
-        main.addDir('Z',base_url + '/movies?quality=hd&startwith=z','iwomovies','','','dir')
+        addDir('#',base_url + '/movies?quality=hd&startwith=09','iwomovies','','','dir')
+        addDir('A',base_url + '/movies?quality=hd&startwith=a','iwomovies','','','dir')
+        addDir('B',base_url + '/movies?quality=hd&startwith=b','iwomovies','','','dir')
+        addDir('C',base_url + '/movies?quality=hd&startwith=c','iwomovies','','','dir')
+        addDir('D',base_url + '/movies?quality=hd&startwith=d','iwomovies','','','dir')
+        addDir('E',base_url + '/movies?quality=hd&startwith=e','iwomovies','','','dir')
+        addDir('F',base_url + '/movies?quality=hd&startwith=f','iwomovies','','','dir')
+        addDir('G',base_url + '/movies?quality=hd&startwith=g','iwomovies','','','dir')
+        addDir('H',base_url + '/movies?quality=hd&startwith=h','iwomovies','','','dir')
+        addDir('I',base_url + '/movies?quality=hd&startwith=i','iwomovies','','','dir')
+        addDir('J',base_url + '/movies?quality=hd&startwith=j','iwomovies','','','dir')
+        addDir('K',base_url + '/movies?quality=hd&startwith=k','iwomovies','','','dir')
+        addDir('L',base_url + '/movies?quality=hd&startwith=l','iwomovies','','','dir')
+        addDir('M',base_url + '/movies?quality=hd&startwith=m','iwomovies','','','dir')
+        addDir('N',base_url + '/movies?quality=hd&startwith=n','iwomovies','','','dir')
+        addDir('O',base_url + '/movies?quality=hd&startwith=o','iwomovies','','','dir')
+        addDir('P',base_url + '/movies?quality=hd&startwith=p','iwomovies','','','dir')
+        addDir('Q',base_url + '/movies?quality=hd&startwith=q','iwomovies','','','dir')
+        addDir('R',base_url + '/movies?quality=hd&startwith=r','iwomovies','','','dir')
+        addDir('S',base_url + '/movies?quality=hd&startwith=s','iwomovies','','','dir')
+        addDir('T',base_url + '/movies?quality=hd&startwith=t','iwomovies','','','dir')
+        addDir('U',base_url + '/movies?quality=hd&startwith=u','iwomovies','','','dir')
+        addDir('V',base_url + '/movies?quality=hd&startwith=v','iwomovies','','','dir')
+        addDir('W',base_url + '/movies?quality=hd&startwith=w','iwomovies','','','dir')
+        addDir('X',base_url + '/movies?quality=hd&startwith=x','iwomovies','','','dir')
+        addDir('Y',base_url + '/movies?quality=hd&startwith=y','iwomovies','','','dir')
+        addDir('Z',base_url + '/movies?quality=hd&startwith=z','iwomovies','','','dir')
 
 def ZEEMOVIES(url):
         link = net.http_GET(url).content
@@ -188,7 +215,7 @@ def ZEEMOVIES(url):
                 
 
                 favtype = 'movie'
-                main.addDir(name,url,'zeevidpage',thumb,data,favtype)
+                addDir(name,url,'zeevidpage',thumb,data,favtype)
 
                 main.AUTO_VIEW('movies')
 
@@ -207,12 +234,12 @@ def IWOMOVIES(url):
                 movie_name = movie_name.decode('UTF-8','ignore')               
                 data = main.GRABMETA(movie_name,year)
                 favtype = 'movie'
-                main.addDir(name,url,'iwovidpage',thumbnail,data,favtype)
+                addDir(name,url,'iwovidpage',thumbnail,data,favtype)
                 match=re.compile('<li class="next pagea"><a href="(.+?)">Next &rarr;</a>').findall(link)
          for url in match:       
           if len(match) > 0:
                   url = url.replace('&amp;','&')
-                  main.addDir('Next Page',url,'iwomovies','','','dir')
+                  addDir('Next Page',url,'iwomovies','','','dir')
 
                   main.AUTO_VIEW('movies')
 
@@ -233,7 +260,7 @@ def LATESTO(url):
                 movie_name = movie_name.decode('UTF-8','ignore') 
                 data = main.GRABMETA(movie_name,year)
                 favtype = 'movie'
-                main.addDir(name,url,'linkpage',thumb,data,favtype)
+                addDir(name,url,'linkpage',thumb,data,favtype)
 
                 main.AUTO_VIEW('movies')
 
@@ -242,7 +269,7 @@ def LINKPAGE(url,name):
         link = net.http_GET(url).content
         match=re.compile('target="_blank"   href="(.+?)"> <b> Watch Full </b></a> </td>').findall(link)
         for url in match:
-                main.addDir(name,url,'vidpage',thumb,data,favtype)
+                addDir(name,url,'vidpage',thumb,data,favtype)
                     
                 favtype = 'movie'
                 main.AUTO_VIEW('movies')
@@ -265,7 +292,7 @@ def ZEEVIDPAGE(url,name):
                                     hthumb = main.GETHOSTTHUMB(host)  
                                     favtype = 'movie'
                                     hostname = main.GETHOSTNAME(host)
-                                    main.addDLDir(titlename+'[COLOR lime]'+hostname+'[/COLOR]',urls,'vidpage',hthumb,'',dlfoldername,favtype,'')
+                                    main.addDLDir(titlename+hostname,urls,'vidpage',hthumb,'',dlfoldername,favtype,'')
                                     favtype = 'movie'
                                     main.AUTO_VIEW('')
 
@@ -294,7 +321,7 @@ def IWOVIDPAGE(url,name):
                                     favtype = 'movie'
                                     hostname = main.GETHOSTNAME(host)
                                     #main.addDLDir(titlename,urls,'vidpage',hthumb,'',dlfoldername,favtype,thumb)
-                                    main.addDir(titlename+'[COLOR lime]'+hostname+'[/COLOR]',urls,'vidpage',hthumb,'','')
+                                    addDir(titlename+hostname,urls,'vidpage',hthumb,'','')
                                     main.AUTO_VIEW('')                
                  
 
@@ -342,7 +369,44 @@ def SEARCH(url):
         
 
 
-
+def addDir(name,url,mode,thumb,labels,favtype):
+        name = AFnameCleaner(name)
+        params = {'url':url, 'mode':mode, 'name':name, 'thumb':thumb,  'dlfoldername':dlfoldername, 'mainimg':mainimg}
+        contextMenuItems = []
+        gomode=mode
+        contextMenuItems.append(('[COLOR red]Add to CLIQ Favorites[/COLOR]', 'XBMC.RunPlugin(%s)' % addon.build_plugin_url({'mode': 'addsttofavs', 'name': name,'url': url,'thumb': thumb,'gomode': gomode})))
+        contextMenuItems.append(('[COLOR red]Remove From CLIQ Favorites[/COLOR]', 'XBMC.RunPlugin(%s)' % addon.build_plugin_url({'mode': 'removestfromfavs', 'name': name,'url': url,'thumb': thumb,'gomode': gomode})))
+        sitethumb = thumb
+        sitename = name
+        fanart = 'https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/showgunart/images/fanart/fanart.jpg'
+       
+        try:
+                name = data['title']
+                thumb = data['cover_url']
+                fanart = data['backdrop_url']
+        except:
+                name = sitename
+                
+        if thumb == '':
+                thumb = sitethumb       
+        u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
+        ok=True
+        liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=thumb)
+        liz.setInfo( type="Video", infoLabels=labels )
+        if favtype == 'movie':
+                contextMenuItems.append(('[COLOR gold]Movie Information[/COLOR]', 'XBMC.Action(Info)'))
+        elif favtype == 'tvshow':
+                contextMenuItems.append(('[COLOR gold]TV Show  Information[/COLOR]', 'XBMC.Action(Info)'))
+        elif favtype == 'episode':
+                contextMenuItems.append(('[COLOR gold]Episode  Information[/COLOR]', 'XBMC.Action(Info)'))       
+                
+        liz.addContextMenuItems(contextMenuItems, replaceItems=False)
+        try:
+             liz.setProperty( "Fanart_Image", labels['backdrop_url'] )
+        except:
+             liz.setProperty( "Fanart_Image", fanart )
+        ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
+        return ok
 
               
 

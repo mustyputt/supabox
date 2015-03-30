@@ -19,7 +19,7 @@ else:
 
 def UPDATEFILES():
         #https://raw.githubusercontent.com/Blazetamer/cliqupdate/master/
-        url='https://raw.githubusercontent.com/Blazetamer/cliqupdate/master/plugin.video.moviedb.zip'
+        url='https://offshoregit.com/Blazetamer/cliqupdate/raw/master/plugin.video.moviedb.zip'
         path=xbmc.translatePath(os.path.join('special://home/addons','packages'))
         addonpath=xbmc.translatePath(os.path.join('special://','home/addons'))
         name= 'cliqupdatepackage.zip'
@@ -30,6 +30,20 @@ def UPDATEFILES():
         extract.all(lib,addonpath,'')
         LogNotify('Update Complete', 'Resetting Menus', '5000', artwork+'/icon.png')
         return
+
+def UPDATEREPO():
+        
+        url='https://offshoregit.com/Blazetamer/repo/raw/master/repository.BlazeRepo.zip'
+        path=xbmc.translatePath(os.path.join('special://home/addons','packages'))
+        addonpath=xbmc.translatePath(os.path.join('special://','home/addons'))
+        name= 'blazerepoupdatepackage.zip'
+        lib=os.path.join(path,name)
+        try: os.remove(lib)
+        except: pass
+        downloader.download(url, lib, '')
+        extract.all(lib,addonpath,'')
+        LogNotify('Repo Update Complete', 'Thanks for Updating', '5000', 'https://offshoregit.com/Blazetamer/repo/raw/master/repository.BlazeRepo/icon.png')
+        return    
         
 
 

@@ -1,7 +1,6 @@
 
 #Default moviedb - Blazetamer
 
-
 import urllib,urllib2,re,xbmcplugin,xbmcgui,xbmc, xbmcaddon, os, sys, os.path
 import urlresolver
 import cookielib
@@ -11,9 +10,9 @@ import extract
 import time,re
 import datetime
 import shutil
-from resources.modules import tvshow, ninestreams
+from resources.modules import tvshow, ninestreams, dochub
 from metahandler import metahandlers
-from resources.modules import main,flix,sgmovie
+from resources.modules import main,flix,sgmovie,frightpix
 from resources.modules import moviedc, afdah
 from resources.modules import sgate,streamlic
 from resources.modules import chia, supertoons, phub
@@ -50,6 +49,9 @@ base_url = 'http://www.merdb.ru/'
 #PATHS
 buggalo.GMAIL_RECIPIENT ='blazetamer@gmail.com'
 datapaths = xbmc.translatePath(ADDON.getAddonInfo('profile'))
+PlaylistPath=os.path.join(datapaths,'Playlists')
+try: os.makedirs(PlaylistPath)
+except: pass
 UpdatePath=os.path.join(datapaths,'Update')
 try: os.makedirs(UpdatePath)
 except: pass
@@ -131,36 +133,66 @@ def STARTUP():
         CHECK_POPUP()
         
 def CheckVersion():
-   try:        
-    curver=xbmc.translatePath(os.path.join('special://home/addons/plugin.video.moviedb/','addon.xml'))    
-    source= open( curver, mode = 'r' )
-    link = source . read( )
-    source . close ( )
-    match=re.compile('" version="(.+?)" name="Cliq!"').findall(link)
-    for vernum in match:
-            print 'Original Version is ' + vernum
-    try:
-        link=OPEN_URL('https://raw.githubusercontent.com/Blazetamer/cliqupdate/master/addon.xml')
-    except:
-        link='nill'
+#Check Repo Version
 
-    link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
-    match=re.compile('" version="(.+?)" name="Cliq!"').findall(link)
-    if len(match)>0:
-        if vernum != str(match[0]):
-                dialog = xbmcgui.Dialog()
-                confirm=xbmcgui.Dialog().yesno('[B]CLIQ Update Available![/B]', "                              Your version is outdated." ,'                    The current available version is '+str(match[0]),'                         Would you like to update now?',"Cancel","Update")
-                #return False
-                if confirm:
-                        autoupdate.UPDATEFILES()
-                return False
-        else:
-                return True
-    
-    else:
-        return False
-   except Exception:
-        buggalo.onExceptionRaised()
+     try:     
+         repover=xbmc.translatePath(os.path.join('special://home/addons/repository.BlazeRepo/','addon.xml'))
+         source= open( repover, mode = 'r' )
+         link = source . read( )
+         source . close ( )
+         match=re.compile('" version="(.+?)" provider-name="Blazetamer"').findall(link)
+         for repovernum in match:
+                  print 'Original Repo is ' + repovernum
+         try:
+             link=OPEN_URL('https://offshoregit.com/Blazetamer/repo/raw/master/repository.BlazeRepo/addon.xml')
+         except:
+             link='nill'
+
+         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
+         match=re.compile('" version="(.+?)" provider-name="Blazetamer"').findall(link)
+         if len(match)>0:
+             if repovernum != str(match[0]):
+                     dialog = xbmcgui.Dialog()
+                     confirm=xbmcgui.Dialog().yesno('[B]Blazetamers Repo Update Available![/B]', "                              Your Repo is outdated." ,'                    The current available version is '+str(match[0]),'                         Would you like to update now?',"Cancel","Update")
+                     
+                     if confirm:
+                             autoupdate.UPDATEREPO()
+     except Exception:
+        print 'Attempt to find addon.xml failed, Installing Blazetamers Repo'
+        autoupdate.UPDATEREPO()                          
+                             
+#END REPO CHECK
+     try:        
+         curver=xbmc.translatePath(os.path.join('special://home/addons/plugin.video.moviedb/','addon.xml'))    
+         source= open( curver, mode = 'r' )
+         link = source . read( )
+         source . close ( )
+         match=re.compile('" version="(.+?)" name="Cliq!"').findall(link)
+         for vernum in match:
+                 print 'Original Version is ' + vernum
+         try:
+             link=OPEN_URL('https://offshoregit.com/Blazetamer/cliqupdate/raw/master/addon.xml')
+         except:
+             link='nill'
+
+         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
+         match=re.compile('" version="(.+?)" name="Cliq!"').findall(link)
+         if len(match)>0:
+             if vernum != str(match[0]):
+                     dialog = xbmcgui.Dialog()
+                     confirm=xbmcgui.Dialog().yesno('[B]CLIQ Update Available![/B]', "                              Your version is outdated." ,'                    The current available version is '+str(match[0]),'                         Would you like to update now?',"Cancel","Update")
+                     #return False
+                     if confirm:
+                             autoupdate.UPDATEFILES()
+                     return False
+             else:
+                     return True
+         
+         else:
+             return False
+     except Exception:
+        print 'Attempt to find addon.xml failed, Please install CLIQ from repo'
+        return True
 
 
 
@@ -184,17 +216,28 @@ def SPECIALANN():
 
                                doUpdate = (nDays > threshold)
                                if  not doUpdate:
-                                       CATEGORIES('false')
+                                    if settings.getSetting('skin') == 'true':
+                                       TESTFUNCTION()
+                                    else:   CATEGORIES('false')
                                elif doUpdate:        
                                       settings.setSetting('pop_time', str(now).split('.')[0])
                                       status.ADDONSTATUS('https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/controls/announcepop.txt')
-                                      CATEGORIES('false')
-                         else:CATEGORIES('false')        
+                                      if settings.getSetting('skin') == 'true':
+                                            TESTFUNCTION()
+                                      else:   CATEGORIES('false')
+                         else:
+                              if settings.getSetting('skin') == 'true':
+                                       TESTFUNCTION()
+                              else:   CATEGORIES('false')
               
-                else :CATEGORIES('false')
+                else :
+                     if settings.getSetting('skin') == 'true':
+                                       TESTFUNCTION()
+                     else:   CATEGORIES('false')
    except Exception:
-        CATEGORIES('false')
-        #buggalo.onExceptionRaised()
+        if settings.getSetting('skin') == 'true':
+                TESTFUNCTION()
+        else:   CATEGORIES('false')
         
 
 def CHECK_POPUP():
@@ -236,13 +279,13 @@ def CATEGORIES(loggedin):
                 
         live.addDir('Movies','none','moviecat',artwork +'movies.jpg','Movies from several popular source sites such as MerDb and Datacenter movies',fanart)
         live.addDir('TV Shows','none','tvcats',artwork +'tvshows.jpg','TV Shows from several popular source sites such as MerDb and Series Gate',fanart)
+        live.addDir('*BETA* Documentary Films','none','doccatagories',artwork +'docuhub.jpg','',fanart)  
         if settings.getSetting('toons') == 'true':
                 live.addDir('Cartoons','none','cartooncats',artwork +'cartoons.jpg','Cartoons galore, Includes Anime from Chia-Anime and Cartoons from SuperToons',fanart)
         if settings.getSetting('sports') == 'true':        
                 live.addDir('Sports','none','sportcats',artwork +'sports.jpg','Sports such as UFC and more!',fanart)
         if settings.getSetting('streams') == 'true':        
                 live.addDir('Live Streams','https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/streams/menus.xml','livecats',artwork +'live.jpg','Live streams from around the globe, User Sumbitted streams are also available, Be sure to check the special events section!!',fanart)        
-        #live.addDir('User Submitted Playlists' ,'http://goo.gl/JQzOhw','database',artwork +'submitted.jpg','User Submitted Playlists ',fanart)
         #==============Custom Menu Creation======================================
         try:        
              link=OPEN_URL('https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/controls/mainmenu.xml').replace('\n','').replace('\r','')
@@ -258,22 +301,26 @@ def CATEGORIES(loggedin):
         live.addDir('Display Latest Announcement(s)','https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/controls/announcepop.txt','addonstatus',artwork +'announcements.jpg','In case you missed the latest announcements, You can view them manually here.',fanart)
         if settings.getSetting('resolver') == 'true':
                 live.addDir('Resolver Settings','none','resolverSettings',artwork +'resolversettings.jpg','Adjust your resolver settings here',fanart)
-        if settings.getSetting('addons') == 'true':        
-                live.addDir('More Addons by Blazetamer','http://addons.xbmchub.com/author/Blazetamer/','addonlist',artwork +'moreaddons.jpg','Check out and install more of my add-ons here.',fanart)
-                #live.addDir('[COLOR blue]Get the Addon Browser Here[/COLOR]','http://addons.xbmchub.com/search/?keyword=browser','addonlist',artwork +'addonbrowser.jpg','Need the legendary Addon Browser?  Get it now!!',fanart)
-        #if settings.getSetting('special') == 'true':        
-                #live.addDir('[COLOR blue]Special Menus/Extras[/COLOR]','none','pop',artwork +'specialmenu.jpg','View Special Menus and more',fanart)
+        live.addDir('[COLOR gold]My Custom Streams[/COLOR]','none','nineindex',artwork +'customs.png','','dir')        
+        live.addDir('[COLORgold]Testing Tools[/COLOR]','none','ninetools',artwork +'tools.png','','dir')
 #======================Developer Testing Section========================================================================
         #live.addDir('[COLOR blue]Test Update[/COLOR]','none','updatefiles','','','')
         #live.addDir('[COLOR blue]Test Functions[/COLOR]','none','testfunction',artwork +'shutdown.png','','dir')
-        #live.addDir('[COLOR blue]Whats My IP[/COLOR]','none','myip',artwork +'myip.png','','dir')      
-        live.addDir('[COLOR gold]My Custom Streams[/COLOR]','none','nineindex',artwork +'customs.png','','dir')        
-        live.addDir('[COLORgold]Testing Tools[/COLOR]','none','ninetools',artwork +'tools.png','','dir')
+        #live.addDir('[COLOR gold]Whats My IP[/COLOR]','none','myip',artwork +'myip.png','','dir')      
+        
         main.AUTO_VIEW('')
    except Exception:
         buggalo.onExceptionRaised()
 
-        
+def OTHERMENUS():
+     live.addDir('CLIQ Favorites','none','viewstfavs',artwork +'mdbfavs.jpg','Manage and View your  Favorite Lists Here',fanart)        
+     live.addDir('Manage Downloads','none','viewQueue',artwork +'downloadsmanage.jpg','Manage your download queue, Start, stop and or remove items from the Queue',fanart)
+     live.addDir('Upload Logfile','none','uploadlogfile',artwork +'uploadlog.jpg','Need to upload a logfile? Here is the place to do it, Set your email from the addon settings area if you want a link emailed to you. .',fanart)
+     live.addDir('Display Latest Announcement(s)','https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/controls/announcepop.txt','addonstatus',artwork +'announcements.jpg','In case you missed the latest announcements, You can view them manually here.',fanart)
+     if settings.getSetting('resolver') == 'true':
+           live.addDir('Resolver Settings','none','resolverSettings',artwork +'resolversettings.jpg','Adjust your resolver settings here',fanart)
+
+     
 ################################
 ###          My IP           ###
 ################################
@@ -292,10 +339,14 @@ def MYIP():
 ###        End My IP         ###
 ################################
 
+        
+
 def TESTFUNCTION():
      
      #testwin = MyClass('skin.xml','https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/','DefaultSkin')
-     testwin = MyClass('skin.xml',ADDON.getAddonInfo('path'),'DefaultSkin')    
+     testwin = MyClass('cliqhome2.xml',ADDON.getAddonInfo('path'),'DefaultSkin')
+     #testwin = splash.MyWindowCountDown('','','','')
+     #testwin = splash.do_My_Splash('','','','')
      testwin.doModal()
      del testwin
      
@@ -305,34 +356,28 @@ class MyClass( xbmcgui.WindowXMLDialog ):
         #self.shut = kwargs['close_time'] 
         xbmc.executebuiltin( "Skin.Reset(AnimeWindowXMLDialogClose)" )
         xbmc.executebuiltin( "Skin.SetBool(AnimeWindowXMLDialogClose)" )
-                                       
-    '''def onInit( self ):
-        #xbmc.Player().play('https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/getit.mp3'%ADDON.getAddonInfo('path'))# Music.
-        #xbmc.Player().play('https://ia700200.us.archive.org/1/items/testmp3testfile/mpthreetest.mp3')# Music.
-        while self.shut > 0:
-            xbmc.sleep(1000)
-            self.shut = 10
-        xbmc.Player().stop()
-        self._close_dialog()
-                
+        pass                               
+    
     def onFocus( self, controlID ): pass
     
     def onClick( self, controlID ): 
-        if controlID == 12:
-            xbmc.Player().stop()
-            self._close_dialog() 
+        def onClick( self, controlId ):
+            if controlId == BUTTON_LEFT:          
+                self.onAction1(ACTION_PREVIOUS_MENU)
+            elif controlId == BUTTON_RIGHT:  
+                self.onAction1(ACTION_CONTEXT_MENU)
+                #self.setFocus(self.list4)
+            else:
+                self.onAction1(ACTION_SELECT_ITEM)  
 
     def onAction( self, action ):
-        if action in [ 5, 6, 7, 9, 10, 92, 117 ] or action.getButtonCode() in [ 275, 257, 261 ]:
-            xbmc.Player().stop()
-            self._close_dialog()
-        if action == ACTION_PREVIOUS_MENU:
-           self.close() '''   
+        if not action.getId() == ACTION_SELECT_ITEM:
+                self.onAction1(action)
 
     def _close_dialog( self ):
         xbmc.executebuiltin( "Skin.Reset(AnimeWindowXMLDialogClose)" )
         time.sleep( .4 )
-        self.close()     
+        self.close()
                         
                      
             
@@ -365,10 +410,11 @@ def MOVIECAT():
         live.addDir('Afdah Movies','none','afdahcats',artwork +'afdahmovies.jpg','',fanart)
         live.addDir('MerDB ','none','merdbmovies',artwork +'merdbmovies.jpg','',fanart)
         live.addDir('SeriesGate Movies ','none','sgmoviecats',artwork +'sgatetv.jpg','',fanart)
-        live.addDir('Movie DataCenter[COLOR red]OFFLINE[/COLOR]','none','moviedccats',artwork +'moviedcmovies.jpg','',fanart)
+        #live.addDir('Movie DataCenter[COLOR red]OFFLINE[/COLOR]','none','moviedccats',artwork +'moviedcmovies.jpg','',fanart)
         live.addDir('IWatchOnline','none','catiwo',artwork +'iwatchonline.jpg','',fanart)
         live.addDir('ZMovies','none','catzeemovies',artwork +'zmovies.jpg','',fanart)
         live.addDir('PopcornFlix','none','popcats',artwork +'popcornflix.jpg','',fanart)
+        live.addDir('FrightPix','none','frightcats',artwork +'frightpix.jpg','',fanart)
         #==============Custom Menu Creation======================================
         try:
              link=OPEN_URL('https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/controls/moviemenu.xml').replace('\n','').replace('\r','')
@@ -456,7 +502,7 @@ def GENRES():
 def MOVIEINDEX(url):
    try:        
         link = net.http_GET(url).content
-        match=re.compile('<img src="(.+?)" class=".+?" alt=".+?"/></a><div class=".+?"><a href="(.+?)" title="Watch(.+?)">.+?</a>').findall(link)
+        match=re.compile('<img src="(.+?)" class=".+?" alt=".+?"/></a><div class=".+?"><a href="(.+?)" title="(.+?)">.+?</a>').findall(link)
         if len(match) > 0:
          for sitethumb,url,name in match:
                 
@@ -1436,6 +1482,9 @@ elif mode=='advert':ADVERT()
 elif mode=='updatefiles':
         autoupdate.UPDATEFILES()
 
+elif mode=='updaterepo':
+        autoupdate.UPDATEREPO()
+
 #===============IwatchOnline=========================
 elif mode=='catiwo':
         print ""+url
@@ -1502,7 +1551,7 @@ elif mode=='espnlist':
 elif mode=='espnlink':
         espn.ESPNLINK(name,url,thumb)
 
-#===================FLIXSERIES======================
+#===================PopCorn Flix======================
 
 elif mode=='popcats':
         print ""+url
@@ -1526,6 +1575,14 @@ elif mode=='flixindexdeep':
         print ""+url
         flix.FLIXINDEX_DEEP(url,favtype)
 
+elif mode=='flixindexdeeplarge':
+        print ""+url
+        flix.FLIXINDEX_DEEPLARGE(url,favtype)
+
+elif mode=='flixindexdeeplarger':
+        print ""+url
+        flix.FLIXINDEX_DEEPLARGER(url,favtype)        
+
 elif mode=='popcornsearch':
         print ""+url
         flix.POPCORNSEARCH(url)
@@ -1533,6 +1590,46 @@ elif mode=='popcornsearch':
 elif mode=='frightpxsearch':
         print ""+url
         flix.FRIGHTPXSEARCH(url)
+
+#===================FRIGHTPIX======================
+
+elif mode=='frightcats':
+        print ""+url
+        frightpix.FRIGHTCATS()
+       
+elif mode=='frightindex':
+        print ""+url
+        frightpix.FRIGHTINDEX(url,favtype)
+        
+
+elif mode=='frightvideolinks':
+        print ""+url
+        frightpix.FRIGHTVIDEOLINKS(name,url,thumb,favtype)
+
+elif mode=='frightaddlink':
+        print ""+url
+        frightpix.FRIGHTADDLINK(name,url,thumb)                                   
+
+
+elif mode=='frightindexdeep':
+        print ""+url
+        frightpix.FRIGHTINDEX_DEEP(url,favtype)
+
+elif mode=='frightindexdeeplarge':
+        print ""+url
+        frightpix.FRIGHTINDEX_DEEPLARGE(url,favtype)
+
+elif mode=='frightindexdeeplarger':
+        print ""+url
+        frightpix.FRIGHTINDEX_DEEPLARGER(url,favtype)        
+
+elif mode=='frightsearch':
+        print ""+url
+        frightpix.FRIGHTSEARCH(url)
+
+elif mode=='frightpxsearch':
+        print ""+url
+        frightpix.FRIGHTPXSEARCH(url)        
 
 #==================StreamLicensing=====================
 
@@ -1648,12 +1745,98 @@ elif mode=='searchmovieafdah':
 
 elif mode=='afdahgenre':
         print ""+url
-        afdah.AFDAHGENRE(url)        
+        afdah.AFDAHGENRE(url)
+
+#=============DOCUHUB IMPORTS=============
+elif mode=='doccatagories':
+        print ""+url
+        dochub.DOCCATEGORIES()
+
+        
+elif mode=='topdoc':
+        print ""+url
+        dochub.TOPDOC()
+        
+elif mode=='docnetcat':
+        print ""+url
+        dochub.DOCNETCAT(url)
+
+elif mode=='doclogcat':
+        print ""+url
+        dochub.DOCLOGCAT(url)        
+        
+elif mode=='docnet':
+        print ""+url
+        dochub.DOCNET()        
+       
+elif mode=='doclog':
+        print ""+url
+        dochub.DOCLOG()       
+               
+       
+        
+       
+elif mode=='tdindex':
+        print ""+url
+        dochub.TDINDEX(url)
+
+elif mode=='docstorm':
+        print ""+url
+        dochub.DOCSTORM()        
+
+elif mode=='stormindex':
+        print ""+url
+        dochub.STORMINDEX(url)
+
+elif mode=='stormvidpage':
+        print ""+url
+        dochub.STORMVIDPAGE(url,name)
+
+elif mode=='stormlatest':
+        print ""+url
+        dochub.STORMLATEST(url)
+
+elif mode=='stormcat':
+        print ""+url
+        dochub.STORMCAT(url)        
+        
+
+elif mode=='tdvidpage':
+        print ""+url
+        dochub.TDVIDPAGE(url,name)
+
+elif mode=='docnetindex':
+        print ""+url
+        dochub.DOCNETINDEX(url)
+
+elif mode=='doclogvidpage':
+        print ""+url
+        dochub.DOCLOGVIDPAGE(url)        
+
+elif mode=='docnetlatest':
+        print ""+url
+        dochub.DOCNETLATEST(url)
+
+elif mode=='docloglatest':
+        print ""+url
+        dochub.DOCLOGLATEST(url)        
+
+elif mode=='docnetvidpage':
+        print ""+url
+        dochub.DOCNETVIDPAGE(url,name)        
+
+elif mode=='videolinksyt':
+        print ""+url
+        dochub.VIDEOLINKSYT(url,name)        
 
 #===========TEST FUNCTIONS================
 elif mode=='testfunction':
         print ""+url
         TESTFUNCTION()
+
+elif mode=='othermenus':
+        print ""+url
+        OTHERMENUS()        
 
 elif mode=='myclass':
         print ""+url
@@ -1667,4 +1850,4 @@ xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 
 #CHECK_POPUP()
-
+#TESTFUNCTION()

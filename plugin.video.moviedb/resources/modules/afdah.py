@@ -1,8 +1,8 @@
-
+# -*- coding: utf-8 -*-
 # AFDAH Module by: Blazetamer
 
 
-import urllib,urllib2,re,xbmcplugin,xbmcgui,sys,urlresolver,xbmc,os,xbmcaddon,main
+import urllib,urllib2,re,xbmcplugin,xbmcgui,sys,urlresolver,xbmc,os,xbmcaddon,main,htmlcleaner
 
 from metahandler import metahandlers
 
@@ -65,20 +65,26 @@ base_genre ='http://afdah.com/genre/'
 def LogNotify(title,message,times,icon):
         xbmc.executebuiltin("XBMC.Notification("+title+","+message+","+times+","+icon+")")
 
+def AFnameCleaner(name):
+        name = name.replace('&#8211;','')
+        name = name.replace("&#8217;","")
+        name = name.replace("&#039;s","'s")
+        name = htmlcleaner.clean(name,strip=True)
+        return(name)
 
 def AFDAHCATS():
 
             
-          main.addMDCDir('All Movies','http://afdah.com/category/watch-movies/','afdahindex',artwork + 'allmovies.jpg','','dir')
-          main.addMDCDir('Featured Movies','http://afdah.com/category/featured/','afdahindex',artwork + 'featured.jpg','','dir')
-          main.addMDCDir('Cinema Movies *Mostly Cams*','http://afdah.com/category/cinema/','afdahindex',artwork + 'cinema.jpg','','dir')
-          main.addMDCDir('HD Movies','http://afdah.com/category/hd/','afdahindex',artwork + 'hdmovies.jpg','','dir')
-          main.addMDCDir('Movies by Year','http://afdah.com/years/','afdahindexsec',artwork + 'years.jpg','','dir')
-          main.addMDCDir('Movies by Country','http://afdah.com/country/','afdahindexsec',artwork + 'country.jpg','','dir')
-          main.addMDCDir('Movies by Language','http://afdah.com/language/','afdahindexsec',artwork + 'language.jpg','','dir')
-          main.addMDCDir('Movies by Genre','http://afdah.com/','afdahgenre',artwork + 'genre.jpg','','dir')
-          main.addMDCDir('Search Movies','http://afdah.com/?s=','searchmovieafdah',artwork + 'search.jpg','','dir')
-          main.AUTO_VIEW('')    
+         addMDCDir('All Movies','http://afdah.com/category/watch-movies/','afdahindex',artwork + 'allmovies.jpg','','dir')
+         addMDCDir('Featured Movies','http://afdah.com/category/featured/','afdahindex',artwork + 'featured.jpg','','dir')
+         addMDCDir('Cinema Movies *Mostly Cams*','http://afdah.com/category/cinema/','afdahindex',artwork + 'cinema.jpg','','dir')
+         addMDCDir('HD Movies','http://afdah.com/category/hd/','afdahindex',artwork + 'hdmovies.jpg','','dir')
+         addMDCDir('Movies by Year','http://afdah.com/years/','afdahindexsec',artwork + 'years.jpg','','dir')
+         addMDCDir('Movies by Country','http://afdah.com/country/','afdahindexsec',artwork + 'country.jpg','','dir')
+         addMDCDir('Movies by Language','http://afdah.com/language/','afdahindexsec',artwork + 'language.jpg','','dir')
+         addMDCDir('Movies by Genre','http://afdah.com/','afdahgenre',artwork + 'genre.jpg','','dir')
+         addMDCDir('Search Movies','http://afdah.com/?s=','searchmovieafdah',artwork + 'search.jpg','','dir')
+         main.AUTO_VIEW('')    
 
 
         
@@ -90,19 +96,20 @@ def AFDAHINDEX (url):
                 movie_name = name[:-6]
                 year = name[-6:]
                 movie_name = movie_name.decode('UTF-8','ignore')
-              
-                data = main.GRABMETA(movie_name,year)
+                try:      
+                        data = main.GRABMETA(movie_name,year)
+                except: continue        
                 thumb = data['cover_url']               
                 yeargrab = data['year']
                 year = str(yeargrab)
                            
                 favtype = 'movie'
-                main.addDir(name,url,'afdahlinkpage',thumb,data,favtype)
+                addDir(name,url,'afdahlinkpage',thumb,data,favtype)
         nmatch=re.compile('<link rel=\'next\' href=\'(.+?)\'').findall(link)
         if len(nmatch) > 0: 
           for pageurl in nmatch:
                      
-                main.addDir('Next Page',pageurl,'afdahindex',artwork +'nextpage.jpg','','dir')        
+               addDir('Next Page',pageurl,'afdahindex',artwork +'nextpage.jpg','','dir')        
         main.AUTO_VIEW('movies')
 
         
@@ -111,7 +118,7 @@ def AFDAHINDEXSEC (url):
         match=re.compile('<td><a href="(.+?)">(.+?)</a>').findall(link)
         for url,name in match:        
             favtype = 'movie'
-            main.addDir(name,base_url + url,'afdahindex','','',dir)
+            addDir(name,base_url + url,'afdahindex','','',dir)
              
         main.AUTO_VIEW('movies')
         
@@ -123,7 +130,7 @@ def AFDAHGENRE(url):
         match=re.compile('<a href="/genre/(.+?)"><span>(.+?)<').findall(link)
         for url,name in match:        
             favtype = 'movie'
-            main.addDir(name,base_genre + url,'afdahindex','','',dir)
+            addDir(name,base_genre + url,'afdahindex','','',dir)
 
 
 def AFDAHLINKPAGE(url,name,thumb,mainimg):
@@ -151,7 +158,7 @@ def AFDAHLINKPAGE(url,name,thumb,mainimg):
                                   favtype = 'movie'
                                   hostname = main.GETHOSTNAME(host)
                                   try:    
-                                        main.addDLDir(name+'[COLOR lime]'+hostname+'[/COLOR]',urls,'vidpage',hthumb,data,dlfoldername,favtype,mainimg)
+                                        main.addDLDir(name+hostname,urls,'vidpage',hthumb,data,dlfoldername,favtype,mainimg)
                                         inc +=1
                                   except:
                                         continue
@@ -181,5 +188,80 @@ def SEARCHMOVIEAFDAH(url):
 
 	main.AUTO_VIEW('movies')
 
+def addDir(name,url,mode,thumb,labels,favtype):
+        name = AFnameCleaner(name)
+        params = {'url':url, 'mode':mode, 'name':name, 'thumb':thumb,  'dlfoldername':dlfoldername, 'mainimg':mainimg}
+        contextMenuItems = []
+        gomode=mode
+        contextMenuItems.append(('[COLOR red]Add to CLIQ Favorites[/COLOR]', 'XBMC.RunPlugin(%s)' % addon.build_plugin_url({'mode': 'addsttofavs', 'name': name,'url': url,'thumb': thumb,'gomode': gomode})))
+        contextMenuItems.append(('[COLOR red]Remove From CLIQ Favorites[/COLOR]', 'XBMC.RunPlugin(%s)' % addon.build_plugin_url({'mode': 'removestfromfavs', 'name': name,'url': url,'thumb': thumb,'gomode': gomode})))
+        sitethumb = thumb
+        sitename = name
+        fanart = 'https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/showgunart/images/fanart/fanart.jpg'
+       
+        try:
+                name = data['title']
+                thumb = data['cover_url']
+                fanart = data['backdrop_url']
+        except:
+                name = sitename
+                
+        if thumb == '':
+                thumb = sitethumb       
+        u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
+        ok=True
+        liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=thumb)
+        liz.setInfo( type="Video", infoLabels=labels )
+        if favtype == 'movie':
+                contextMenuItems.append(('[COLOR gold]Movie Information[/COLOR]', 'XBMC.Action(Info)'))
+        elif favtype == 'tvshow':
+                contextMenuItems.append(('[COLOR gold]TV Show  Information[/COLOR]', 'XBMC.Action(Info)'))
+        elif favtype == 'episode':
+                contextMenuItems.append(('[COLOR gold]Episode  Information[/COLOR]', 'XBMC.Action(Info)'))       
+                
+        liz.addContextMenuItems(contextMenuItems, replaceItems=False)
+        try:
+             liz.setProperty( "Fanart_Image", labels['backdrop_url'] )
+        except:
+             liz.setProperty( "Fanart_Image", fanart )
+        ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
+        return ok
 
 
+def addMDCDir(name,url,mode,thumb,labels,favtype):
+        params = {'url':url, 'mode':mode, 'name':name, 'thumb':thumb,  'dlfoldername':dlfoldername, 'mainimg':mainimg}
+        contextMenuItems = []
+        gomode=mode
+        contextMenuItems.append(('[COLOR red]Add to CLIQ Favorites[/COLOR]', 'XBMC.RunPlugin(%s)' % addon.build_plugin_url({'mode': 'addsttofavs', 'name': name,'url': url,'thumb': thumb,'gomode': gomode})))
+        contextMenuItems.append(('[COLOR red]Remove From CLIQ Favorites[/COLOR]', 'XBMC.RunPlugin(%s)' % addon.build_plugin_url({'mode': 'removestfromfavs', 'name': name,'url': url,'thumb': thumb,'gomode': gomode})))
+        sitethumb = thumb
+        sitename = name
+        fanart = 'https://raw.githubusercontent.com/Blazetamer/commoncore/master/xbmchub/moviedb/showgunart/images/fanart/fanart.jpg'
+       
+        try:
+                name = data['title']
+                thumb = data['cover_url']
+                fanart = data['backdrop_url']
+        except:
+                name = sitename
+                
+        if thumb == '':
+                thumb = sitethumb       
+        u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
+        ok=True
+        liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=thumb)
+        liz.setInfo( type="Video", infoLabels=labels )
+        if favtype == 'movie':
+                contextMenuItems.append(('[COLOR gold]Movie Information[/COLOR]', 'XBMC.Action(Info)'))
+        elif favtype == 'tvshow':
+                contextMenuItems.append(('[COLOR gold]TV Show  Information[/COLOR]', 'XBMC.Action(Info)'))
+        elif favtype == 'episode':
+                contextMenuItems.append(('[COLOR gold]Episode  Information[/COLOR]', 'XBMC.Action(Info)'))       
+                
+        liz.addContextMenuItems(contextMenuItems, replaceItems=False)
+        try:
+             liz.setProperty( "Fanart_Image", labels['backdrop_url'] )
+        except:
+             liz.setProperty( "Fanart_Image", fanart )
+        ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
+        return ok

@@ -1,0 +1,7 @@
+name="Supabox Installer"
+url="http://supaboxtv.ddns.net/owncloud/public.php?service=files&t=1be84ab4f1b196c5a3f9ff4291200453&download"
+img="http://andersonflagg.com/256x256.png"
+fanart="http://dl.dropboxusercontent.com/u/24282292/Wizard/fanart.jpg"
+description="Configure Supabox with all the Best Goodies Available in Just One Click!
+WARNING: This tool will overwrite your current settings!"
+type="main"

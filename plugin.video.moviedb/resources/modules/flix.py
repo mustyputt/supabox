@@ -42,15 +42,29 @@ popartpath = xbmc.translatePath(os.path.join('https://raw.githubusercontent.com/
 settings = xbmcaddon.Addon(id='plugin.video.moviedb')
 
 
-
+def OPEN_URL(url):
+  req=urllib2.Request(url)
+  req.add_header('User-Agent','Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+  response=urllib2.urlopen(req)
+  link=response.read()
+  response.close()
+  return link
 
 
 
 def POPCATS():
+    main.addDir('New Arrivals','http://popcornflix.com/New-Arrivals-movies/','flixindex',popartpath+'newarrival.png','','movies')
+    main.addDir('Most Popular','http://popcornflix.com/most-popular-movies/','flixindex',popartpath+'mostpopular.png','','movies')
+    link=OPEN_URL('http://www.popcornflix.com').replace('\n','').replace('\r','').replace('\t','')
+    match=re.compile('Genres(.+?)<div class="copyright">').findall(link)
+    genres = match[0]
+    gmatch=re.compile('<a href="(.+?)">(.+?)</a>').findall(genres)
+    for genre, name in gmatch:
+        print 'Genres is ' +genre
+      
+        main.addDir(name,'http://popcornflix.com'+genre,'flixindexdeep','','','movies')
     
-    main.addDir('[COLOR blue]New Arrivals[/COLOR]','http://popcornflix.com/New-Arrivals-movies/','flixindex',popartpath+'newarrival.png','','movies')
-    main.addDir('[COLOR orange]Most Popular[/COLOR]','http://popcornflix.com/most-popular-movies/','flixindex',popartpath+'mostpopular.png','','movies')
-    main.addDir('[COLOR blue]Rock Stars[/COLOR]','http://popcornflix.com/Rock-Star-movies','flixindexdeep',popartpath+'rockstars.png','','other')
+    '''main.addDir('[COLOR blue]Rock Stars[/COLOR]','http://popcornflix.com/Rock-Star-movies','flixindexdeep',popartpath+'rockstars.png','','other')
     main.addDir('[COLOR orange]Action/Thriller[/COLOR]','http://popcornflix.com/Action/Thriller-movies','flixindexdeep',popartpath+'thriller.png','','movies')
     main.addDir('[COLOR blue]Comedy[/COLOR]','http://www.popcornflix.com/Comedy-movies','flixindexdeep',popartpath+'comedy.png','','movies')
     main.addDir('[COLOR orange]Horror Movies[/COLOR]','http://popcornflix.com/Horror-movies','flixindexdeep',popartpath+'horror.png','','movies')
@@ -61,7 +75,7 @@ def POPCATS():
     main.addDir('[COLOR blue]Urban Movies[/COLOR]','http://popcornflix.com/Urban-movies','flixindexdeep',popartpath+'urbanmovies.png','','movies')
     main.addDir('[COLOR orange]Documentary/Shorts[/COLOR]','http://popcornflix.com/Documentary/Shorts-movies','flixindexdeep',popartpath+'documentary.png','','movies')
     main.addDir('[COLOR blue]Bollywood[/COLOR]','http://popcornflix.com/Bollywood-movies','flixindexdeep',popartpath+'bollywood.png','','movies')
-    main.addDir('[COLOR red][B]Search[/B] >>>[/COLOR]','http://www.popcornflix.com/search?query=','popcornsearch',popartpath+'search.png','','')
+    main.addDir('[COLOR red][B]Search[/B] >>>[/COLOR]','http://www.popcornflix.com/search?query=','popcornsearch',popartpath+'search.png','','')'''
     main.AUTO_VIEW('')
         
 def FLIXINDEX(url,favtype):
@@ -80,10 +94,11 @@ def FLIXINDEX(url,favtype):
 
                 
 def FLIXVIDEOLINKS(name,url,thumb,favtype):
-        params = {'url':url, 'name':name, 'thumb':thumb, 'favtype':favtype}  
-        link = net.http_GET(url).content
-        match=re.compile('id="flashContent" data-videosrc="(.+?)"\n         data-videodata="(.+?)"></div>').findall(link)
-        matchyear=re.compile('<span class="year">(.+?)</span>').findall(link)
+        params = {'url':url, 'name':name, 'thumb':thumb, 'favtype':favtype}
+        link=OPEN_URL(url).replace('\n','').replace('\r','').replace(' ','')
+        #link = net.http_GET(url).content.replace('\n','').replace('\r','').replace(' ','')
+        match=re.compile('id="flashContent"data-videosrc="(.+?)"data-videodata="(.+?)"></div>').findall(link)
+        matchyear=re.compile('<spanclass="year">(.+?)</span>').findall(link)
         for url,url2 in match:
              #if 'undefined' in url:
                   url = url2
@@ -106,15 +121,59 @@ def FLIXVIDEOLINKS(name,url,thumb,favtype):
 
 
 def FLIXINDEX_DEEP(url,favtype):
+        mainurl = url
         params = {'url':url,'favtype':favtype}  
-        link = net.http_GET(url).content
-        match=re.compile('<a href="(.+?)"><img width="184" height="256" src="(.+?)" alt="(.+?)"></a>').findall(link)
-        for url,thumb,name in match:
+        link=OPEN_URL(url)
+        match=re.compile('<a href="(.+?)"><img width="184" height="256" src="(.+?)"\n.+?alt="(.+?)"></a>\n\n').findall(link)
+        #for url,thumb,name in match:
+        for url,thumb,name in match[0:100]:
+            
+            
                     url = URL + url
                     data = main.GRABMETA(name,'')
                     thumb = data['cover_url'] 
                     main.addMDCDir(name,url,'flixvideolinks',thumb,data,favtype)
-                    main.AUTO_VIEW('movies')
+        if len(match) >=100:
+                        
+            main.addMDCDir('Next Page',mainurl,'flixindexdeeplarge','','',favtype)
+                         
+        main.AUTO_VIEW('movies')
+
+def FLIXINDEX_DEEPLARGE(url,favtype):
+        mainurl = url
+        params = {'url':url,'favtype':favtype}  
+        link=OPEN_URL(url)
+        match=re.compile('<a href="(.+?)"><img width="184" height="256" src="(.+?)"\n.+?alt="(.+?)"></a>\n\n').findall(link)
+        #for url,thumb,name in match:
+        for url,thumb,name in match[100:200]:
+            
+            
+                    url = URL + url
+                    data = main.GRABMETA(name,'')
+                    thumb = data['cover_url'] 
+                    main.addMDCDir(name,url,'flixvideolinks',thumb,data,favtype)
+        if len(match) >=200:
+                        
+            main.addMDCDir('Next Page',mainurl,'flixindexdeeplarger','','',favtype)                 
+        main.AUTO_VIEW('movies')
+
+def FLIXINDEX_DEEPLARGER(url,favtype):
+        mainurl = url
+        params = {'url':url,'favtype':favtype}  
+        link=OPEN_URL(url)
+        match=re.compile('<a href="(.+?)"><img width="184" height="256" src="(.+?)"\n.+?alt="(.+?)"></a>\n\n').findall(link)
+        #for url,thumb,name in match:
+        for url,thumb,name in match[200:300]:
+            
+            
+                    url = URL + url
+                    data = main.GRABMETA(name,'')
+                    thumb = data['cover_url'] 
+                    main.addMDCDir(name,url,'flixvideolinks',thumb,data,favtype)
+        if len(match) >=300:
+                        
+            main.addMDCDir('Next Page',mainurl,'flixindexdeeplarger','','',favtype)                 
+        main.AUTO_VIEW('movies')                
                
 	
 #Start Ketboard Function                

@@ -1,3 +1,31 @@
+V2.5.0
+Auto Repo installer set up Complete to 
+avert failure to launch on Android Device 
+
+V2.4.7
+Reduced  Loading times for iLive Menus
+and added redundencies  
+
+
+V2.4.6
+ALL KINDS OF REPAIRS
+Testing new iLive playables
+
+V 2.4.4
+Quick Fix
+
+V2.4.2
+Added FrightPix to Movie Section
+
+V2.4.1
+Added Custom Skin BETA USE AT YOUR OWN RISK
+Added Sublink routine to User Streams
+Code Clean up
+
+V2.4.0
+Activated PopcornFlix as internal addon
+Prep for Skinning  "No idea when it will be ready"
+
 V2.3.9
 Added Sublink capabilities to User Submissions
 Fixed Iwatchonline Movies

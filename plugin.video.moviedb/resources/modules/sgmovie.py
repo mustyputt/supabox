@@ -161,7 +161,7 @@ def SGMOVIELINKPAGE(url,name,thumb,mainimg):
                                   hostname = main.GETHOSTNAME(host)
 
                                   try:    
-                                        main.addDLDir(name+'[COLOR lime]'+hostname+'[/COLOR]',urls,'vidpage',hthumb,data,dlfoldername,favtype,mainimg)
+                                        main.addDLDir(name+hostname,urls,'vidpage',hthumb,data,dlfoldername,favtype,mainimg)
                                         inc +=1
                                   except:
                                         continue

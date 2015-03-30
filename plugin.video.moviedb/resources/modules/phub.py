@@ -109,8 +109,9 @@ def PHVIDEOLINKS(url,name):
         
 def EMBED(url,name):
    try:        
-        link=OPEN_URL(url)
-        match=re.compile('data-src="(.+?)" poster="(.+?)"').findall(link)
+        link=OPEN_URL(url).replace('\r','').replace('\n','').replace('\t','')
+        #match=re.compile('data-src="(.+?)" poster="(.+?)"').findall(link)
+        match=re.compile("video : {src: \'(.+?)',poster: \'(.+?)'").findall(link)
         for url,iconimage in match:
                  addLink(name,url,iconimage)
    except Exception:
