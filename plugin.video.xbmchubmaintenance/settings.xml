@@ -1,9 +1,0 @@
-<settings>
-    <setting id="7icon" value="true" />
-    <setting id="backup_path" value="/mnt/sdcard/Download/" />
-    <setting id="download-wallpaper" value="" />
-    <setting id="email" value="" />
-    <setting id="feed" value="7" />
-    <setting id="opened" value="5" />
-    <setting id="xbmc_path" value="" />
-</settings>

@@ -2488,7 +2488,7 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 	</extension>
 </addon>
 
-<addon id="plugin.video.supaboxwizard" version="1.2.0" name="Supabox Config Wizard" provider-name="flaggsoft.com">
+<addon id="plugin.video.supaboxwizard" version="1.2.1" name="Supabox Config Wizard" provider-name="flaggsoft.com">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 	</requires>
@@ -3008,24 +3008,6 @@ Special thanks to Marquerite for the outstanding work on the graphics and To Eld
     <website></website>
     <email></email>
     <source>https://github.com/learningit/plugin.video.wsj</source>
-  </extension>
-</addon>
-
-<addon id="plugin.video.xbmchubmaintenance" name="Maintenance Tool" version="2.1.1" provider-name="XBMCHUB.COM">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="plugin.video.youtube" />
-    <import addon="script.module.addon.common" />
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>executable</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">XBMCHUB Maintenance Tool</summary>
-    <description lang="en">Maintenance Tool is your onestop tool for all fixes and information.</description>
-    <platform>all</platform>
-    <forum>http://www.xbmchub.com/forums/official-xbmc-hub-repo/</forum>
-    <website>http://www.xbmchub.com/</website>
   </extension>
 </addon>
 
@@ -3582,6 +3564,20 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 		<platform>all</platform>
                 <forum>http://www.xbmchub.com/forums/official-xbmc-hub-repo/</forum>
                 <website>http://www.xbmchub.com/</website>
+	</extension>
+</addon>
+
+<addon id="repository.xbmcplus.xbmc-plugins" name="xbmcplus Add-on Repository" version="1.3" provider-name="moneymaker">
+	<extension point="xbmc.addon.repository" name="xbmcplus Add-on Repository">
+        <info>https://raw.githubusercontent.com/moneymaker365/xbmc-xbmcplus-plugins/master/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/moneymaker365/xbmc-xbmcplus-plugins/master/addons.xml.md5</checksum>
+        <datadir zip="true">https://github.com/moneymaker365/xbmc-xbmcplus-plugins/raw/master/download/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Add-ons from xbmcplus Repository</summary>
+		<description>Add-ons for XBMC</description>
+		<disclaimer>by moneymaker</disclaimer>
+		<platform>all</platform>
 	</extension>
 </addon>
 
@@ -4599,7 +4595,7 @@ Other languages with a great number of subtitles are: Danish, French, Swedish, D
 
 <addon id="service.xbmc.versioncheck"
        name="XBMC Version Check"
-      version="0.1.21"
+      version="1.1.21"
       provider-name="Team XBMC">
     <requires>
         <import addon="xbmc.addon" version="12.0.0"/>
