@@ -163,7 +163,7 @@
 					<width>220</width>
 					<height>80</height>
 					<aspectratio>keep</aspectratio>
-					<texture></texture>
+					<texture>Confluence_Logo.png</texture>
 				</control>
 				<control type="list" id="9000">
 					<posx>10</posx>

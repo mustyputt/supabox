@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="LiveTVView1">
 		<control type="group">
 			<visible>Control.IsVisible(560)</visible>
 			<include>VisibleFadeEffect</include>
 			<control type="list" id="560">
-				<left>70</left>
-				<top>75</top>
+				<posx>70</posx>
+				<posy>75</posy>
 				<width>760</width>
 				<height>561</height>
 				<onleft>2</onleft>
@@ -19,15 +18,15 @@
 				<visible>Container.Content(LiveTV)</visible>
 				<itemlayout height="40" width="760">
 					<control type="image">
-						<left>0</left>
-						<top>0</top>
+						<posx>0</posx>
+						<posy>0</posy>
 						<width>760</width>
 						<height>41</height>
 						<texture border="0,2,0,2">MenuItemNF.png</texture>
 					</control>
 					<control type="label">
-						<left>10</left>
-						<top>0</top>
+						<posx>10</posx>
+						<posy>0</posy>
 						<width>730</width>
 						<height>40</height>
 						<font>font13</font>
@@ -38,8 +37,8 @@
 						<label>$INFO[ListItem.Label]</label>
 					</control>
 					<control type="label">
-						<left>50</left>
-						<top>0</top>
+						<posx>750</posx>
+						<posy>0</posy>
 						<width>700</width>
 						<height>40</height>
 						<font>font12</font>
@@ -52,8 +51,8 @@
 				</itemlayout>
 				<focusedlayout height="40" width="760">
 					<control type="image">
-						<left>0</left>
-						<top>0</top>
+						<posx>0</posx>
+						<posy>0</posy>
 						<width>760</width>
 						<height>41</height>
 						<texture border="0,2,0,2">MenuItemNF.png</texture>
@@ -61,25 +60,25 @@
 						<include>VisibleFadeEffect</include>
 					</control>
 					<control type="image">
-						<left>0</left>
-						<top>0</top>
+						<posx>0</posx>
+						<posy>0</posy>
 						<width>760</width>
 						<height>41</height>
-						<texture colordiffuse="blue" border="0,2,0,2">buttonfocus2.png</texture>
+						<texture border="0,2,0,2">MenuItemFO.png</texture>
 						<visible>Control.HasFocus(560)</visible>
 						<include>VisibleFadeEffect</include>
 					</control>
 					<control type="image">
-						<left>560</left>
-						<top>5</top>
+						<posx>560</posx>
+						<posy>5</posy>
 						<width>200</width>
 						<height>31</height>
-						<texture colordiffuse="blue" border="0,0,14,0">MediaItemDetailBG.png</texture>
+						<texture border="0,0,14,0">MediaItemDetailBG.png</texture>
 						<visible>Control.HasFocus(560) + !IsEmpty(ListItem.Label2)</visible>
 					</control>
 					<control type="label">
-						<left>10</left>
-						<top>0</top>
+						<posx>10</posx>
+						<posy>0</posy>
 						<width>730</width>
 						<height>40</height>
 						<font>font13</font>
@@ -90,8 +89,8 @@
 						<label>$INFO[ListItem.Label]</label>
 					</control>
 					<control type="label">
-						<left>50</left>
-						<top>0</top>
+						<posx>750</posx>
+						<posy>0</posy>
 						<width>700</width>
 						<height>40</height>
 						<font>font12</font>
@@ -104,13 +103,13 @@
 				</focusedlayout>
 			</control>
 			<control type="scrollbar" id="60">
-				<left>850</left>
-				<top>78</top>
+				<posx>850</posx>
+				<posy>78</posy>
 				<width>25</width>
 				<height>560</height>
 				<texturesliderbackground border="0,14,0,14">ScrollBarV.png</texturesliderbackground>
 				<texturesliderbar border="2,16,2,16">ScrollBarV_bar.png</texturesliderbar>
-				<texturesliderbarfocus colordiffuse="blue" border="2,16,2,16">ScrollBarV_bar_focus.png</texturesliderbarfocus>
+				<texturesliderbarfocus border="2,16,2,16">ScrollBarV_bar_focus.png</texturesliderbarfocus>
 				<textureslidernib>ScrollBarNib.png</textureslidernib>
 				<textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
 				<onleft>560</onleft>
@@ -121,22 +120,22 @@
 			</control>
 			<control type="group">
 				<visible>Control.IsVisible(560)</visible>
-				<left>910</left>
-				<top>80</top>
+				<posx>910</posx>
+				<posy>80</posy>
 				<control type="image">
-					<left>10</left>
-					<top>0</top>
+					<posx>10</posx>
+					<posy>0</posy>
 					<width>290</width>
 					<height>290</height>
 					<aspectratio aligny="bottom">keep</aspectratio>
 					<fadetime>IconCrossfadeTime</fadetime>
 					<texture background="true">$INFO[ListItem.Icon]</texture>
-					<bordertexture colordiffuse="blue" border="8">ThumbShadow.png</bordertexture>
+					<bordertexture border="8">ThumbShadow.png</bordertexture>
 					<bordersize>8</bordersize>
 				</control>
 				<control type="fadelabel">
-					<left>10</left>
-					<top>300</top>
+					<posx>10</posx>
+					<posy>300</posy>
 					<width>290</width>
 					<height>25</height>
 					<label>$INFO[ListItem.Label2]</label>
@@ -150,11 +149,11 @@
 				</control>
 				<control type="textbox">
 					<description>Description Value for TV Show</description>
-					<left>10</left>
-					<top>330</top>
+					<posx>10</posx>
+					<posy>330</posy>
 					<width>290</width>
 					<height>220</height>
-					<font>font13</font>
+					<font>font12</font>
 					<align>justify</align>
 					<textcolor>white</textcolor>
 					<label>$INFO[ListItem.Plot]</label>
