@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon
   id="skin.xunitymod"
-  version="1.0.2"
+  version="1.0.5"
   name="Xunity - Confluence Mod"
   provider-name="Xunity Team, Voinage, Additions to the hard work of Jezz_X, Team XBMC">
   <requires>
-    <import addon="xbmc.gui" version="4.0.0"/>
+    <import addon="xbmc.gui" version="5.3.0"/>
   </requires>
   <extension
     point="xbmc.gui.skin"
