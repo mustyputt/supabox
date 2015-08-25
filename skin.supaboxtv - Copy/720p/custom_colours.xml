@@ -1,0 +1,655 @@
+<window id="1113" type="dialog">
+	<defaultcontrol always="true">100</defaultcontrol>
+	<coordinates>
+		<system>1</system>
+		<posx>240</posx>
+		<posy>60</posy>
+	</coordinates>
+	<animation type="WindowOpen" reversible="false">
+			<effect type="zoom" start="80" end="100" center="640,360" easing="out" tween="back" time="300" />
+			<effect type="fade" start="0" end="100" time="300" />
+	</animation>
+	<animation type="WindowClose" reversible="false">
+			<effect type="zoom" start="100" end="80" center="640,360" easing="in" tween="back" time="300" />
+			<effect type="fade" start="100" end="0" time="300" />
+	</animation>
+	<controls>
+		<control type="image">
+			<description>background image</description>
+			<posx>0</posx>
+			<posy>0</posy>
+			<width>800</width>
+			<height>400</height>
+			<texture border="40">DialogBack2.png</texture>
+		</control>
+		<control type="image">
+			<description>Dialog Header image</description>
+			<posx>40</posx>
+			<posy>16</posy>
+			<width>720</width>
+			<height>40</height>
+			<texture>dialogheader.png</texture>
+		</control>
+		<control type="label" id="20">
+			<description>header label</description>
+			<posx>40</posx>
+			<posy>20</posy>
+			<width>720</width>
+			<height>30</height>
+			<font>font13_title</font>
+			<label>[COLOR blue]X[/COLOR][COLOR white]unity Colour Selector[/COLOR]</label>
+			<align>center</align>
+			<aligny>center</aligny>
+			<textcolor>selected</textcolor>
+			<shadowcolor>black</shadowcolor>
+		</control>
+		<control type="button">
+			<description>Close Window button</description>
+			<posx>710</posx>
+			<posy>15</posy>
+			<width>64</width>
+			<height>32</height>
+			<label>-</label>
+			<font>-</font>
+			<onclick>PreviousMenu</onclick>
+			<texturefocus>DialogCloseButton-focus.png</texturefocus>
+			<texturenofocus>DialogCloseButton.png</texturenofocus>
+			<onleft>3</onleft>
+			<onright>3</onright>
+			<onup>3</onup>
+			<ondown>3</ondown>
+			<visible>system.getbool(input.enablemouse)</visible>
+		</control>
+		<control type="grouplist" id="100">
+			<posx>45</posx>
+			<posy>80</posy>
+			<width>800</width>
+			<height>50</height>
+			<itemgap>10</itemgap>
+			<orientation>horizontal</orientation>
+			<control type="button" id="101">
+				<texturenofocus>no_colour_button.png</texturenofocus>
+				<texturefocus>no_colour_selected_button.png</texturefocus>
+				<include>ButtonColorDimensions</include>
+				<label>No Colour</label>
+				<onclick>Skin.SetString(colortexture,FFFFFFFF)</onclick>
+				<onup>153</onup>
+				<onleft>163</onleft>
+				<ondown>114</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="102">
+				<include>ButtonColorDimensions</include>
+				<label>Yellow</label>
+				<colordiffuse>yellow</colordiffuse>
+				<onclick>Skin.SetString(colortexture,yellow)</onclick>
+				<onup>153</onup>
+				<ondown>114</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="103">
+				<include>ButtonColorDimensions</include>
+				<label>Green</label>
+				<colordiffuse>green</colordiffuse>
+				<onclick>Skin.SetString(colortexture,green)</onclick>
+				<onup>153</onup>
+				<ondown>114</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="104">
+				<include>ButtonColorDimensions</include>
+				<label>Orange</label>
+				<colordiffuse>orange</colordiffuse>
+				<onclick>Skin.SetString(colortexture,orange)</onclick>
+				<onup>153</onup>
+				<ondown>114</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="105">
+				<include>ButtonColorDimensions</include>
+				<label>Red</label>
+				<colordiffuse>red</colordiffuse>
+				<onclick>Skin.SetString(colortexture,red)</onclick>
+				<onup>153</onup>
+				<ondown>114</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="106">
+				<include>ButtonColorDimensions</include>
+				<label>Blue</label>
+				<colordiffuse>blue</colordiffuse>
+				<onclick>Skin.SetString(colortexture,blue)</onclick>
+				<onup>153</onup>
+				<ondown>114</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="107">
+				<include>ButtonColorDimensions</include>
+				<label>Purple</label>
+				<colordiffuse>purple</colordiffuse>
+				<onclick>Skin.SetString(colortexture,purple)</onclick>
+				<onup>153</onup>
+				<ondown>114</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="108">
+				<include>ButtonColorDimensions</include>
+				<label>Pink</label>
+				<colordiffuse>pink</colordiffuse>
+				<onclick>Skin.SetString(colortexture,pink)</onclick>
+				<onup>153</onup>
+				<ondown>114</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="109">
+				<include>ButtonColorDimensions</include>
+				<label>Grey</label>
+				<colordiffuse>grey</colordiffuse>
+				<onclick>Skin.SetString(colortexture,grey)</onclick>
+				<onup>153</onup>
+				<ondown>114</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="110">
+				<include>ButtonColorDimensions</include>
+				<label>Brown</label>
+				<colordiffuse>brown</colordiffuse>
+				<onclick>Skin.SetString(colortexture,brown)</onclick>
+				<onup>153</onup>
+				<ondown>114</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="111">
+				<include>ButtonColorDimensions</include>
+				<label>Air Force Blue</label>
+				<colordiffuse>ff5d8aa8</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff5d8aa8)</onclick>
+				<onup>153</onup>
+				<ondown>114</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="112">
+				<include>ButtonColorDimensions</include>
+				<label>Alice Blue</label>
+				<colordiffuse>fff0f8ff</colordiffuse>
+				<onclick>Skin.SetString(colortexture,fff0f8ff)</onclick>
+				<onup>153</onup>
+				<onright>114</onright>
+				<ondown>114</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+		</control>
+		<control type="grouplist" id="113">
+			<posx>45</posx>
+			<posy>140</posy>
+			<width>800</width>
+			<height>50</height>
+			<itemgap>10</itemgap>
+			<orientation>horizontal</orientation>
+			<control type="button" id="114">
+				<include>ButtonColorDimensions</include>
+				<label>Charcoal</label>
+				<colordiffuse>grey3</colordiffuse>
+				<onclick>Skin.SetString(colortexture,grey3)</onclick>
+				<onup>100</onup>
+				<onleft>112</onleft>
+				<ondown>126</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="115">
+				<include>ButtonColorDimensions</include>
+				<label>Medium grey</label>
+				<colordiffuse>grey2</colordiffuse>
+				<onclick>Skin.SetString(colortexture,grey2)</onclick>
+				<onup>100</onup>
+				<ondown>126</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="116">
+				<include>ButtonColorDimensions</include>
+				<label>Crimson</label>
+				<colordiffuse>ffe32636</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffe32636)</onclick>
+				<onup>100</onup>
+				<ondown>126</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="117">
+				<include>ButtonColorDimensions</include>
+				<label>Khaki</label>
+				<colordiffuse>fff0e68c</colordiffuse>
+				<onclick>Skin.SetString(colortexture,fff0e68c)</onclick>
+				<onup>100</onup>
+				<ondown>126</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="118">
+				<include>ButtonColorDimensions</include>
+				<label>Sky</label>
+				<colordiffuse>FF00AFFF</colordiffuse>
+				<onclick>Skin.SetString(colortexture,sky)</onclick>
+				<onup>100</onup>
+				<ondown>126</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="119">
+				<include>ButtonColorDimensions</include>
+				<label>Deep Blue</label>
+				<colordiffuse>FF007399</colordiffuse>
+				<onclick>Skin.SetString(colortexture,deepblue)</onclick>
+				<onup>100</onup>
+				<ondown>126</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="120">
+				<include>ButtonColorDimensions</include>
+				<label>Royal Blue</label>
+				<colordiffuse>FF4169E1</colordiffuse>
+				<onclick>Skin.SetString(colortexture,royal)</onclick>
+				<onup>100</onup>
+				<ondown>126</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="121">
+				<include>ButtonColorDimensions</include>
+				<label>Turquoise</label>
+				<colordiffuse>FF00A5A7</colordiffuse>
+				<onclick>Skin.SetString(colortexture,turquoise)</onclick>
+				<onup>100</onup>
+				<ondown>126</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="122">
+				<include>ButtonColorDimensions</include>
+				<label>Digital</label>
+				<colordiffuse>FF90AEAE</colordiffuse>
+				<onclick>Skin.SetString(colortexture,digital)</onclick>
+				<onup>100</onup>
+				<ondown>126</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="123">
+				<include>ButtonColorDimensions</include>
+				<label>Olive</label>
+				<colordiffuse>FF556B2F</colordiffuse>
+				<onclick>Skin.SetString(colortexture,olive)</onclick>
+				<onup>100</onup>
+				<ondown>126</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="124">
+				<include>ButtonColorDimensions</include>
+				<label>Amaranth</label>
+				<colordiffuse>ffe52b50</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffe52b50)</onclick>
+				<onup>100</onup>
+				<ondown>126</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="125">
+				<include>ButtonColorDimensions</include>
+				<label>Amber</label>
+				<colordiffuse>ffffbf00</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffffbf00)</onclick>
+				<onup>100</onup>
+				<ondown>126</ondown>
+				<onright>127</onright>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+		</control>
+		<control type="grouplist" id="126">
+			<posx>45</posx>
+			<posy>200</posy>
+			<width>800</width>
+			<height>50</height>
+			<itemgap>10</itemgap>
+			<orientation>horizontal</orientation>
+			<control type="button" id="127">
+				<include>ButtonColorDimensions</include>
+				<label>Malachite</label>
+				<colordiffuse>ff0bda51</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff0bda51)</onclick>
+				<onup>113</onup>
+				<onleft>125</onleft>
+				<ondown>139</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="128">
+				<include>ButtonColorDimensions</include>
+				<label>Amethyst</label>
+				<colordiffuse>ff9966cc</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff9966cc)</onclick>
+				<onup>113</onup>
+				<ondown>139</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="129">
+				<include>ButtonColorDimensions</include>
+				<label>Aqua</label>
+				<colordiffuse>FF66ccc4</colordiffuse>
+				<onclick>Skin.SetString(colortexture,aqua)</onclick>
+				<onup>113</onup>
+				<ondown>139</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="130">
+				<include>ButtonColorDimensions</include>
+				<label>Android Green</label>
+				<colordiffuse>ffa4c639</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffa4c639)</onclick>
+				<onup>113</onup>
+				<ondown>139</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="131">
+				<include>ButtonColorDimensions</include>
+				<label>Anti-Flash White</label>
+				<colordiffuse>fff2f3f4</colordiffuse>
+				<onclick>Skin.SetString(colortexture,fff2f3f4)</onclick>
+				<onup>113</onup>
+				<ondown>139</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="132">
+				<include>ButtonColorDimensions</include>
+				<label>Antique Brass</label>
+				<colordiffuse>ffcd9575</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffcd9575)</onclick>
+				<onup>113</onup>
+				<ondown>139</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="133">
+				<include>ButtonColorDimensions</include>
+				<label>Mahogany</label>
+				<colordiffuse>ffc04000</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffc04000)</onclick>
+				<onup>113</onup>
+				<ondown>139</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="134">
+				<include>ButtonColorDimensions</include>
+				<label>Chrome Yellow</label>
+				<colordiffuse>ffffa700</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffffa700)</onclick>
+				<onup>113</onup>
+				<ondown>139</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="135">
+				<include>ButtonColorDimensions</include>
+				<label>Fuschia</label>
+				<colordiffuse>ff915c83</colordiffuse>
+				<onclick>Skin.SetString(colortexture,fffff700)</onclick>
+				<onup>113</onup>
+				<ondown>139</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="136">
+				<include>ButtonColorDimensions</include>
+				<label>Jazzberry</label>
+				<colordiffuse>ffa50b5e</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffa50b5e)</onclick>
+				<onup>113</onup>
+				<ondown>139</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="137">
+				<include>ButtonColorDimensions</include>
+				<label>Bungle</label>
+				<colordiffuse>ff3fff00</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff3fff00)</onclick>
+				<onup>113</onup>
+				<ondown>139</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="138">
+				<include>ButtonColorDimensions</include>
+				<label>Dark Green</label>
+				<colordiffuse>ff03c03c</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff03c03c)</onclick>
+				<onup>113</onup>
+				<onright>140</onright>
+				<ondown>140</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+		</control>
+		<control type="grouplist" id="139">
+			<posx>45</posx>
+			<posy>260</posy>
+			<width>800</width>
+			<height>50</height>
+			<itemgap>10</itemgap>
+			<orientation>horizontal</orientation>
+			<control type="button" id="140">
+				<include>ButtonColorDimensions</include>
+				<label>Dark Scarlet</label>
+				<colordiffuse>ff560319</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff560319)</onclick>
+				<onup>126</onup>
+				<onleft>138</onleft>
+				<ondown>152</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="141">
+				<include>ButtonColorDimensions</include>
+				<label>Bazaar</label>
+				<colordiffuse>ff98777b</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff98777b)</onclick>
+				<onup>126</onup>
+				<ondown>152</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="142">
+				<include>ButtonColorDimensions</include>
+				<label>Black</label>
+				<colordiffuse>ff000000</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff000000)</onclick>
+				<onup>126</onup>
+				<ondown>152</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="143">
+				<include>ButtonColorDimensions</include>
+				<label>Chocolate</label>
+				<colordiffuse>ff7b3f00</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff7b3f00)</onclick>
+				<onup>126</onup>
+				<ondown>152</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="144">
+				<include>ButtonColorDimensions</include>
+				<label>Candy Apple Red</label>
+				<colordiffuse>ffa40000</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffa40000)</onclick>
+				<onup>126</onup>
+				<ondown>152</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="145">
+				<include>ButtonColorDimensions</include>
+				<label>Corn</label>
+				<colordiffuse>fffbec5d</colordiffuse>
+				<onclick>Skin.SetString(colortexture,fffbec5d)</onclick>
+				<onup>126</onup>
+				<ondown>152</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="146">
+				<include>ButtonColorDimensions</include>
+				<label>Cream</label>
+				<colordiffuse>fffffdd0</colordiffuse>
+				<onclick>Skin.SetString(colortexture,fffffdd0)</onclick>
+				<onup>126</onup>
+				<ondown>152</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="147">
+				<include>ButtonColorDimensions</include>
+				<label>Slate</label>
+				<colordiffuse>ff483d8b</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff483d8b)</onclick>
+				<onup>126</onup>
+				<ondown>152</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="148">
+				<include>ButtonColorDimensions</include>
+				<label>Buff</label>
+				<colordiffuse>fff0dc82</colordiffuse>
+				<onclick>Skin.SetString(colortexture,fff0dc82)</onclick>
+				<onup>126</onup>
+				<ondown>152</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="149">
+				<include>ButtonColorDimensions</include>
+				<label>Burnt Sienna Miller</label>
+				<colordiffuse>ffe97451</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffe97451)</onclick>
+				<onup>126</onup>
+				<ondown>152</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="150">
+				<include>ButtonColorDimensions</include>
+				<label>Candy the Mod</label>
+				<colordiffuse>ffe4717a</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffe4717a)</onclick>
+				<onup>126</onup>
+				<ondown>152</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="151">
+				<include>ButtonColorDimensions</include>
+				<label>Raster Green</label>
+				<colordiffuse>ff00cc99</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff00cc99)</onclick>
+				<onup>126</onup>
+				<onright>153</onright>
+				<ondown>152</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+		</control>
+		<control type="grouplist" id="152">
+			<posx>45</posx>
+			<posy>320</posy>
+			<width>800</width>
+			<height>50</height>
+			<itemgap>10</itemgap>
+			<orientation>horizontal</orientation>
+			<control type="button" id="153">
+				<include>ButtonColorDimensions</include>
+				<label>Chestnut</label>
+				<colordiffuse>ff986960</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff986960)</onclick>
+				<onup>139</onup>
+				<onleft>151</onleft>
+				<ondown>100</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="154">
+				<include>ButtonColorDimensions</include>
+				<label>Electric Avenue</label>
+				<colordiffuse>ff536878</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff536878)</onclick>
+				<onup>139</onup>
+				<ondown>100</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="155">
+				<include>ButtonColorDimensions</include>
+				<label>Midnight Blue</label>
+				<colordiffuse>ff003366</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff003366)</onclick>
+				<onup>139</onup>
+				<ondown>100</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="156">
+				<include>ButtonColorDimensions</include>
+				<label>Spring</label>
+				<colordiffuse>ff177245</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff177245)</onclick>
+				<onup>139</onup>
+				<ondown>100</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="157">
+				<include>ButtonColorDimensions</include>
+				<label>Magenta</label>
+				<colordiffuse>ff8b008b</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff8b008b)</onclick>
+				<onup>139</onup>
+				<ondown>100</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="158">
+				<include>ButtonColorDimensions</include>
+				<label>Carrot</label>
+				<colordiffuse>ffe9692c</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffe9692c)</onclick>
+				<onup>139</onup>
+				<ondown>100</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="159">
+				<include>ButtonColorDimensions</include>
+				<label>Electric Crimson</label>
+				<colordiffuse>ff6f00ff</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff6f00ff)</onclick>
+				<onup>139</onup>
+				<ondown>100</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="160">
+				<include>ButtonColorDimensions</include>
+				<label>Lime</label>
+				<colordiffuse>ffccff00</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffccff00)</onclick>
+				<onup>139</onup>
+				<ondown>100</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="161">
+				<include>ButtonColorDimensions</include>
+				<label>Cadmium Red</label>
+				<colordiffuse>ffe30022</colordiffuse>
+				<onup>139</onup>
+				<ondown>100</ondown>
+				<onclick>Skin.SetString(colortexture,ffe30022)</onclick>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="162">
+				<include>ButtonColorDimensions</include>
+				<label>Flourescent Pink</label>
+				<colordiffuse>ffff1493</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffff1493)</onclick>
+				<onup>139</onup>
+				<ondown>100</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="163">
+				<include>ButtonColorDimensions</include>
+				<label>Cafe</label>
+				<colordiffuse>ff4b3621</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ff4b3621)</onclick>
+				<onup>139</onup>
+				<ondown>100</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+			<control type="button" id="164">
+				<include>ButtonColorDimensions</include>
+				<label>Metallic Gold</label>
+				<colordiffuse>ffd4af37</colordiffuse>
+				<onclick>Skin.SetString(colortexture,ffd4af37)</onclick>
+				<onup>139</onup>
+				<onright>101</onright>
+				<ondown>101</ondown>
+				<onclick>SetFocus(1113)</onclick>
+			</control>
+		</control>
+	</controls>
+</window>
