@@ -1,19 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">52</defaultcontrol>
 	<allowoverlay>no</allowoverlay>
 	<coordinates>
 		<system>1</system>
-		<left>0</left>
-		<top>0</top>
+		<posx>0</posx>
+		<posy>0</posy>
 	</coordinates>
 	<controls>
 		<include>CommonBackground</include>
 		<control type="group">
 			<include>Window_OpenClose_Animation</include>		
 			<control type="image">
-				<left>0</left>
-				<top>100r</top>
+				<posx>0</posx>
+				<posy>100r</posy>
 				<width>1280</width>
 				<height>100</height>
 				<texture>floor.png</texture>
@@ -22,31 +21,31 @@
 			</control>
 			<control type="image">
 				<description>LOGO</description>
-				<left>10</left>
-				<top>10</top>
-				<width>100</width>
-				<height>50</height>
+				<posx>0</posx>
+				<posy>5</posy>
+				<width>170</width>
+				<height>100</height>
 				<aspectratio aligny="top" align="left">keep</aspectratio>
-				<texture colordiffuse="blue">kodi-logo.png</texture>
+				<texture>xbmc-logo.png</texture>
 				<include>Window_OpenClose_Animation</include>
 			</control>
 			<control type="image">
-				<left>265</left>
-				<top>60</top>
+				<posx>265</posx>
+				<posy>60</posy>
 				<width>750</width>
 				<height>600</height>
-				<texture colordiffuse="blue" border="10">ContentPanel.png</texture>
+				<texture border="10">ContentPanel.png</texture>
 			</control>
 			<control type="image">
-				<left>265</left>
-				<top>652</top>
+				<posx>265</posx>
+				<posy>652</posy>
 				<width>750</width>
 				<height>64</height>
-				<texture colordiffuse="blue" border="10">ContentPanelMirror.png</texture>
+				<texture border="10">ContentPanelMirror.png</texture>
 			</control>
 			<control type="label">
-				<left>295</left>
-				<top>100</top>
+				<posx>295</posx>
+				<posy>100</posy>
 				<width>690</width>
 				<height>40</height>
 				<font>font13</font>
@@ -56,8 +55,8 @@
 				<label>$LOCALIZE[31421]</label>
 			</control>
 			<control type="list" id="52">
-				<left>295</left>
-				<top>170</top>
+				<posx>295</posx>
+				<posy>170</posy>
 				<width>690</width>
 				<height>401</height>
 				<onleft>20</onleft>
@@ -69,23 +68,22 @@
 				<scrolltime>200</scrolltime>
 				<itemlayout height="100" width="690">
 					<control type="image">
-						<left>0</left>
-						<top>0</top>
+						<posx>0</posx>
+						<posy>0</posy>
 						<width>690</width>
 						<height>95</height>
 						<texture border="5">button-nofocus.png</texture>
 					</control>
 					<control type="image">
-						<left>10</left>
-						<top>10</top>
+						<posx>10</posx>
+						<posy>10</posy>
 						<width>80</width>
 						<height>75</height>
 						<texture>$INFO[ListItem.Icon]</texture>
-						<aspectratio>keep</aspectratio>
 					</control>
 					<control type="label">
-						<left>110</left>
-						<top>10</top>
+						<posx>110</posx>
+						<posy>10</posy>
 						<width>580</width>
 						<height>40</height>
 						<font>font24_title</font>
@@ -96,8 +94,8 @@
 						<label>$INFO[ListItem.Label]</label>
 					</control>
 					<control type="label">
-						<left>110</left>
-						<top>50</top>
+						<posx>110</posx>
+						<posy>50</posy>
 						<width>580</width>
 						<height>25</height>
 						<font>font13</font>
@@ -110,8 +108,8 @@
 				</itemlayout>
 				<focusedlayout height="100" width="580">
 					<control type="image">
-						<left>0</left>
-						<top>0</top>
+						<posx>0</posx>
+						<posy>0</posy>
 						<width>690</width>
 						<height>95</height>
 						<texture border="5">button-nofocus.png</texture>
@@ -119,25 +117,24 @@
 						<include>VisibleFadeEffect</include>
 					</control>
 					<control type="image">
-						<left>0</left>
-						<top>0</top>
+						<posx>0</posx>
+						<posy>0</posy>
 						<width>690</width>
 						<height>95</height>
-						<texture colordiffuse="blue" border="5">button-focus2.png</texture>
+						<texture border="5">button-focus2.png</texture>
 						<visible>Control.HasFocus(52)</visible>
 						<include>VisibleFadeEffect</include>
 					</control>
 					<control type="image">
-						<left>10</left>
-						<top>10</top>
+						<posx>10</posx>
+						<posy>10</posy>
 						<width>80</width>
 						<height>75</height>
 						<texture>$INFO[ListItem.Icon]</texture>
-						<aspectratio>keep</aspectratio>
 					</control>
 					<control type="label">
-						<left>110</left>
-						<top>10</top>
+						<posx>110</posx>
+						<posy>10</posy>
 						<width>580</width>
 						<height>40</height>
 						<font>font24_title</font>
@@ -148,8 +145,8 @@
 						<label>$INFO[ListItem.Label]</label>
 					</control>
 					<control type="label">
-						<left>110</left>
-						<top>50</top>
+						<posx>110</posx>
+						<posy>50</posy>
 						<width>580</width>
 						<height>25</height>
 						<font>font13</font>
@@ -163,19 +160,19 @@
 			</control>
 			<control type="image">
 				<description>LOGO</description>
-				<left>265</left>
-				<top>580</top>
+				<posx>265</posx>
+				<posy>580</posy>
 				<width>220</width>
 				<height>80</height>
 				<aspectratio>keep</aspectratio>
-				<texture colordiffuse="blue">Confluence_Logo.png</texture>
+				<texture>Confluence_Logo.png</texture>
 			</control>
 			<control type="group">
-				<left>940</left>
-				<top>600</top>
+				<posx>940</posx>
+				<posy>600</posy>
 				<control type="label">
-					<left>-580</left>
-					<top>0</top>
+					<posx>0</posx>
+					<posy>0</posy>
 					<width>580</width>
 					<height>45</height>
 					<font>font12</font>
@@ -186,14 +183,15 @@
 				</control>
 				<control type="button" id="20">
 					<description>Power push button</description>
-					<left>10</left>
-					<top>0</top>
+					<posx>10</posx>
+					<posy>0</posy>
 					<width>45</width>
 					<height>45</height>
 					<label>-</label>
 					<font>-</font>
+					<aligny>-</aligny>
 					<onclick>ActivateWindow(ShutdownMenu)</onclick>
-					<texturefocus colordiffuse="blue" border="5">floor_buttonFOB.png</texturefocus>
+					<texturefocus border="5">floor_buttonFO.png</texturefocus>
 					<texturenofocus border="5">floor_button.png</texturenofocus>
 					<onleft>52</onleft>
 					<onright>52</onright>
@@ -203,20 +201,28 @@
 				</control>
 				<control type="image">
 					<description>Power Icon</description>
-					<left>15</left>
-					<top>5</top>
+					<posx>15</posx>
+					<posy>5</posy>
 					<width>35</width>
 					<height>35</height>
 					<aspectratio>keep</aspectratio>
-					<texture colordiffuse="blue">icon_power.png</texture>
+					<texture>icon_power.png</texture>
+				</control>
+				<control type="image">
+					<posx>13</posx>
+					<posy>3</posy>
+					<width>30</width>
+					<height>29</height>
+					<texture>home-power-focus.gif</texture>
+					<visible>Control.HasFocus(20)</visible>
 				</control>
 			</control>
 		</control>
 		<include>Clock</include>
 		<control type="label">
 			<description>Date label</description>
-			<right>20</right>
-			<top>35</top>
+			<posx>20r</posx>
+			<posy>35</posy>
 			<width>200</width>
 			<height>15</height>
 			<align>right</align>

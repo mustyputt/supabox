@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<variable name="typehackflagging">
 		<value condition="[substring(ListItem.FilenameAndPath,bluray) | substring(ListItem.FilenameAndPath,bdrip) | substring(ListItem.FilenameAndPath,bd25) | substring(ListItem.FilenameAndPath,bd50)]">bluray</value>
@@ -14,7 +13,7 @@
 		<value condition="substring(Listitem.mpaa,Rated R)">mpaa_restricted</value>
 		<value condition="substring(Listitem.mpaa,Rated NC)">mpaa_nc17</value>
 	</variable>
-	<variable name="videocodec">
+		<variable name="videocodec">
 		<value condition="[substring(ListItem.VideoCodec,div,left) | stringcompare(ListItem.VideoCodec,dx50)]">divx</value>
 		<value>$INFO[ListItem.VideoCodec]</value>
 	</variable>
@@ -24,24 +23,14 @@
 			<width>55</width>
 			<height>35</height>
 			<aspectratio align="right">keep</aspectratio>
-			<texture colordiffuse="codec1">$INFO[ListItem.VideoResolution,flagging/video/,.png]</texture>
+			<texture>$INFO[ListItem.VideoResolution,flagging/video/,.png]</texture>
 		</control>
 		<control type="image">
 			<description>Codec Image</description>
 			<width>80</width>
 			<height>35</height>
 			<aspectratio align="left">keep</aspectratio>
-			<texture colordiffuse="codec1">$VAR[videocodec,flagging/video/,.png]</texture>
-		</control>
-	</include>
-	<include name="VideoStereoscopicsFlaggingConditions">
-		<control type="image">
-			<description>Video stereoscopics flagging image</description>
-			<width>55</width>
-			<height>35</height>
-			<aspectratio align="right">keep</aspectratio>
-			<texture colordiffuse="codec1">flagging/video/3D.png</texture>
-			<visible>ListItem.IsStereoscopic</visible>
+			<texture>$VAR[videocodec,flagging/video/,.png]</texture>
 		</control>
 	</include>
 	<include name="VideoTypeHackFlaggingConditions">
@@ -50,7 +39,7 @@
 			<width>80</width>
 			<height>35</height>
 			<aspectratio align="left">keep</aspectratio>
-			<texture colordiffuse="codec1">$VAR[typehackflagging,flagging/video/,.png]</texture>
+			<texture>$VAR[typehackflagging,flagging/video/,.png]</texture>
 			<visible>!Skin.HasSetting(HideFilenameFlagging)</visible>
 		</control>
 	</include>
@@ -60,7 +49,7 @@
 			<width>80</width>
 			<height>35</height>
 			<aspectratio>keep</aspectratio>
-			<texture colordiffuse="codec1">$VAR[rating,flagging/ratings/,.png]</texture>
+			<texture>$VAR[rating,flagging/ratings/,.png]</texture>
 		</control>
 	</include>
 	<include name="AudioCodecFlaggingConditions">
@@ -69,7 +58,7 @@
 			<width>80</width>
 			<height>35</height>
 			<aspectratio align="right">keep</aspectratio>
-			<texture colordiffuse="codec1">$INFO[ListItem.AudioCodec,flagging/audio/,.png]</texture>
+			<texture>$INFO[ListItem.AudioCodec,flagging/audio/,.png]</texture>
 		</control>
 	</include>
 	<include name="AudioChannelsFlaggingConditions">
@@ -78,7 +67,7 @@
 			<width>55</width>
 			<height>35</height>
 			<aspectratio align="left">keep</aspectratio>
-			<texture colordiffuse="codec1">$INFO[ListItem.AudioChannels,flagging/audio/,.png]</texture>
+			<texture>$INFO[ListItem.AudioChannels,flagging/audio/,.png]</texture>
 		</control>
 	</include>
 	<include name="AspectCodecFlaggingConditions">
@@ -87,7 +76,7 @@
 			<width>55</width>
 			<height>35</height>
 			<aspectratio align="right">keep</aspectratio>
-			<texture colordiffuse="codec1">$INFO[ListItem.VideoAspect,flagging/aspectratio/,.png]</texture>
+			<texture>$INFO[ListItem.VideoAspect,flagging/aspectratio/,.png]</texture>
 		</control>
 	</include>
 </includes>

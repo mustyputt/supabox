@@ -1,32 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">11</defaultcontrol>
 	<coordinates>
 		<system>1</system>
-		<left>780</left>
-		<top>30</top>
+		<posx>780</posx>
+		<posy>30</posy>
 	</coordinates>
 	<include>dialogeffect</include>
 	<controls>
 		<control type="group">
 			<control type="image">
 				<description>background image</description>
-				<left>0</left>
-				<top>0</top>
+				<posx>0</posx>
+				<posy>0</posy>
 				<width>480</width>
 				<height>660</height>
 				<texture border="40">DialogBack2.png</texture>
 			</control>
 			<control type="button">
 				<description>Close Window button</description>
-				<left>390</left>
-				<top>15</top>
+				<posx>390</posx>
+				<posy>15</posy>
 				<width>64</width>
 				<height>32</height>
 				<label>-</label>
 				<font>-</font>
 				<onclick>PreviousMenu</onclick>
-				<texturefocus colordiffuse="blue">DialogCloseButton.png</texturefocus>
+				<texturefocus>DialogCloseButton-focus.png</texturefocus>
 				<texturenofocus>DialogCloseButton.png</texturenofocus>
 				<onleft>2</onleft>
 				<onright>2</onright>
@@ -36,16 +35,16 @@
 			</control>
 			<control type="image">
 				<description>Dialog Header image</description>
-				<left>40</left>
-				<top>16</top>
+				<posx>40</posx>
+				<posy>16</posy>
 				<width>400</width>
 				<height>40</height>
 				<texture>dialogheader.png</texture>
 			</control>
 			<control type="label">
 				<description>header label</description>
-				<left>40</left>
-				<top>16</top>
+				<posx>40</posx>
+				<posy>16</posy>
 				<width>430</width>
 				<height>40</height>
 				<font>font12_title</font>
@@ -57,8 +56,8 @@
 			</control>
 			<control type="label">
 				<description>Selected item's date</description>
-				<left>40</left>
-				<top>60</top>
+				<posx>40</posx>
+				<posy>60</posy>
 				<width>430</width>
 				<height>30</height>
 				<font>font11</font>
@@ -68,8 +67,8 @@
 				<aligny>center</aligny>
 			</control>
 			<control type="list" id="11">
-				<left>30</left>
-				<top>100</top>
+				<posx>30</posx>
+				<posy>100</posy>
 				<width>410</width>
 				<height>490</height>
 				<onleft>60</onleft>
@@ -81,16 +80,16 @@
 				<scrolltime>200</scrolltime>
 				<itemlayout height="35" width="410">
 					<control type="image">
-						<left>0</left>
-						<top>0</top>
+						<posx>0</posx>
+						<posy>0</posy>
 						<width>410</width>
 						<height>30</height>
 						<texture border="5">button-nofocus.png</texture>
 						<include>VisibleFadeEffect</include>
 					</control>
 					<control type="label">
-						<left>10</left>
-						<top>0</top>
+						<posx>10</posx>
+						<posy>0</posy>
 						<width>100</width>
 						<height>30</height>
 						<font>font13</font>
@@ -101,32 +100,24 @@
 						<label>$INFO[ListItem.StartTime]</label>
 					</control>
 					<control type="image">
-						<left>120</left>
-						<top>5</top>
+						<posx>120</posx>
+						<posy>5</posy>
 						<width>30</width>
 						<height>20</height>
 						<texture>PVR-IsRecording.png</texture>
 						<visible>ListItem.IsRecording</visible>
 					</control>
 					<control type="image">
-						<left>120</left>
-						<top>5</top>
+						<posx>120</posx>
+						<posy>5</posy>
 						<width>20</width>
 						<height>20</height>
 						<texture>PVR-HasTimer.png</texture>
 						<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
 					</control>
-					<control type="image">
-						<left>60</left>
-						<top>7</top>
-						<width>16</width>
-						<height>16</height>
-						<texture>PVR-HasRecording.png</texture>
-						<visible>ListItem.HasRecording + !ListItem.IsRecording + !ListItem.HasTimer</visible>
-					</control>
 					<control type="label">
-						<left>100</left>
-						<top>0</top>
+						<posx>400</posx>
+						<posy>0</posy>
 						<width>300</width>
 						<height>30</height>
 						<font>font12</font>
@@ -138,8 +129,8 @@
 						<visible>![ListItem.IsRecording | ListItem.HasTimer]</visible>
 					</control>
 					<control type="label">
-						<left>150</left>
-						<top>0</top>
+						<posx>400</posx>
+						<posy>0</posy>
 						<width>250</width>
 						<height>30</height>
 						<font>font12</font>
@@ -153,8 +144,8 @@
 				</itemlayout>
 				<focusedlayout height="35" width="410">
 					<control type="image">
-						<left>0</left>
-						<top>0</top>
+						<posx>0</posx>
+						<posy>0</posy>
 						<width>410</width>
 						<height>30</height>
 						<texture border="5">button-nofocus.png</texture>
@@ -162,8 +153,8 @@
 						<include>VisibleFadeEffect</include>
 					</control>
 					<control type="image">
-						<left>0</left>
-						<top>0</top>
+						<posx>0</posx>
+						<posy>0</posy>
 						<width>410</width>
 						<height>30</height>
 						<texture border="5">button-focus2.png</texture>
@@ -171,8 +162,8 @@
 						<include>VisibleFadeEffect</include>
 					</control>
 					<control type="label">
-						<left>10</left>
-						<top>0</top>
+						<posx>10</posx>
+						<posy>0</posy>
 						<width>100</width>
 						<height>30</height>
 						<font>font13</font>
@@ -183,32 +174,24 @@
 						<label>$INFO[ListItem.StartTime]</label>
 					</control>
 					<control type="image">
-						<left>120</left>
-						<top>5</top>
+						<posx>120</posx>
+						<posy>5</posy>
 						<width>30</width>
 						<height>20</height>
 						<texture>PVR-IsRecording.png</texture>
 						<visible>ListItem.IsRecording</visible>
 					</control>
 					<control type="image">
-						<left>120</left>
-						<top>5</top>
+						<posx>120</posx>
+						<posy>5</posy>
 						<width>20</width>
 						<height>20</height>
 						<texture>PVR-HasTimer.png</texture>
 						<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
 					</control>
-					<control type="image">
-						<left>60</left>
-						<top>7</top>
-						<width>16</width>
-						<height>16</height>
-						<texture>PVR-HasRecording.png</texture>
-						<visible>ListItem.HasRecording + !ListItem.IsRecording + !ListItem.HasTimer</visible>
-					</control>
 					<control type="label">
-						<left>100</left>
-						<top>0</top>
+						<posx>400</posx>
+						<posy>0</posy>
 						<width>300</width>
 						<height>30</height>
 						<font>font12</font>
@@ -220,8 +203,8 @@
 						<visible>![ListItem.IsRecording | ListItem.HasTimer]</visible>
 					</control>
 					<control type="label">
-						<left>150</left>
-						<top>0</top>
+						<posx>400</posx>
+						<posy>0</posy>
 						<width>250</width>
 						<height>30</height>
 						<font>font12</font>
@@ -235,13 +218,13 @@
 				</focusedlayout>
 			</control>
 			<control type="scrollbar" id="60">
-				<left>440</left>
-				<top>100</top>
+				<posx>440</posx>
+				<posy>100</posy>
 				<width>25</width>
 				<height>490</height>
 				<texturesliderbackground border="0,14,0,14">ScrollBarV.png</texturesliderbackground>
 				<texturesliderbar border="0,14,0,14">ScrollBarV_bar.png</texturesliderbar>
-				<texturesliderbarfocus colordiffuse="blue" border="0,14,0,14">ScrollBarV_bar_focus.png</texturesliderbarfocus>
+				<texturesliderbarfocus border="0,14,0,14">ScrollBarV_bar_focus.png</texturesliderbarfocus>
 				<textureslidernib>ScrollBarNib.png</textureslidernib>
 				<textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
 				<onleft>11</onleft>
@@ -253,8 +236,8 @@
 			</control>
 			<control type="label">
 				<description>Page Count Label</description>
-				<left>50</left>
-				<top>610</top>
+				<posx>450</posx>
+				<posy>610</posy>
 				<width>400</width>
 				<height>20</height>
 				<font>font12</font>

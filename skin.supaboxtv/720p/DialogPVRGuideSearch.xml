@@ -1,33 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">9</defaultcontrol>
 	<coordinates>
 		<system>1</system>
-		<left>210</left>
-		<top>65</top>
+		<posx>210</posx>
+		<posy>65</posy>
 	</coordinates>
 	<include>dialogeffect</include>
 	<controls>
 		<control type="image">
 			<description>background image</description>
-			<left>0</left>
-			<top>0</top>
+			<posx>0</posx>
+			<posy>0</posy>
 			<width>865</width>
 			<height>605</height>
 			<texture border="40">DialogBack.png</texture>
 		</control>
 		<control type="image">
 			<description>Dialog Header image</description>
-			<left>40</left>
-			<top>16</top>
+			<posx>40</posx>
+			<posy>16</posy>
 			<width>785</width>
 			<height>40</height>
 			<texture>dialogheader.png</texture>
 		</control>
 		<control type="label">
 			<description>header label</description>
-			<left>40</left>
-			<top>20</top>
+			<posx>40</posx>
+			<posy>20</posy>
 			<width>785</width>
 			<height>30</height>
 			<font>font13_title</font>
@@ -40,14 +39,14 @@
 		</control>
 		<control type="button">
 			<description>Close Window button</description>
-			<left>775</left>
-			<top>15</top>
+			<posx>775</posx>
+			<posy>15</posy>
 			<width>64</width>
 			<height>32</height>
 			<label>-</label>
 			<font>-</font>
 			<onclick>PreviousMenu</onclick>
-			<texturefocus colordiffuse="blue">DialogCloseButton.png</texturefocus>
+			<texturefocus>DialogCloseButton-focus.png</texturefocus>
 			<texturenofocus>DialogCloseButton.png</texturenofocus>
 			<onleft>3</onleft>
 			<onright>3</onright>
@@ -57,8 +56,8 @@
 		</control>
 		<control type="label">
 			<description>Search string</description>
-			<left>30</left>
-			<top>60</top>
+			<posx>30</posx>
+			<posy>60</posy>
 			<width>320</width>
 			<height>40</height>
 			<font>font12caps</font>
@@ -69,8 +68,8 @@
 			<shadowcolor>black</shadowcolor>
 		</control>
 		<control type="image">
-			<left>30</left>
-			<top>100</top>
+			<posx>30</posx>
+			<posy>100</posy>
 			<width>800</width>
 			<height>50</height>
 			<aspectratio>stretch</aspectratio>
@@ -78,8 +77,8 @@
 		</control>
 		<control type="edit" id="9">
 			<description>Search string</description>
-			<left>35</left>
-			<top>105</top>
+			<posx>35</posx>
+			<posy>105</posy>
 			<width>790</width>
 			<height>40</height>
 			<font>font13</font>
@@ -95,8 +94,8 @@
 		</control>
 		<control type="textbox">
 			<description>Search help</description>
-			<left>30</left>
-			<top>155</top>
+			<posx>30</posx>
+			<posy>155</posy>
 			<width>800</width>
 			<height>70</height>
 			<align>left</align>
@@ -105,19 +104,19 @@
 			<label>$LOCALIZE[19001] $LOCALIZE[19002]</label>
 		</control>
 		<control type="group">
-			<left>30</left>
-			<top>230</top>
+			<posx>30</posx>
+			<posy>230</posy>
 			<control type="radiobutton" id="10">
 				<description>Include Description</description>
-				<left>0</left>
-				<top>0</top>
+				<posx>0</posx>
+				<posy>0</posy>
 				<height>35</height>
 				<width>400</width>
 				<font>font12</font>
 				<textcolor>white</textcolor>
 				<focusedcolor>white</focusedcolor>
 				<shadowcolor>black</shadowcolor>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<align>left</align>
 				<aligny>center</aligny>
@@ -129,15 +128,15 @@
 			</control>
 			<control type="radiobutton" id="11">
 				<description>Case Sensitive</description>
-				<left>0</left>
-				<top>35</top>
+				<posx>0</posx>
+				<posy>35</posy>
 				<height>35</height>
 				<width>400</width>
 				<font>font12</font>
 				<textcolor>white</textcolor>
 				<focusedcolor>white</focusedcolor>
 				<shadowcolor>black</shadowcolor>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<align>left</align>
 				<aligny>center</aligny>
@@ -149,15 +148,15 @@
 			</control>
 			<control type="edit" id="14">
 				<description>Start Date</description>
-				<left>0</left>
-				<top>70</top>
+				<posx>0</posx>
+				<posy>70</posy>
 				<width>400</width>
 				<height>35</height>
 				<font>font12</font>
 				<textcolor>white</textcolor>
 				<focusedcolor>white</focusedcolor>
 				<shadowcolor>black</shadowcolor>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<label>19128</label>
 				<onright>16</onright>
@@ -167,15 +166,15 @@
 			</control>
 			<control type="edit" id="15">
 				<description>Stop Date</description>
-				<left>0</left>
-				<top>105</top>
+				<posx>0</posx>
+				<posy>105</posy>
 				<width>400</width>
 				<height>35</height>
 				<font>font12</font>
 				<textcolor>white</textcolor>
 				<focusedcolor>white</focusedcolor>
 				<shadowcolor>black</shadowcolor>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<label>19129</label>
 				<onright>17</onright>
@@ -185,12 +184,12 @@
 			</control>
 			<control type="spincontrolex" id="18">
 				<description>Genre</description>
-				<left>0</left>
-				<top>140</top>
+				<posx>0</posx>
+				<posy>140</posy>
 				<width>400</width>
 				<height>35</height>
 				<font>font12</font>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<label>515</label>
 				<onright>19</onright>
@@ -200,8 +199,8 @@
 			</control>
 			<control type="radiobutton" id="20">
 				<description>Include unknown Genres</description>
-				<left>0</left>
-				<top>175</top>
+				<posx>0</posx>
+				<posy>175</posy>
 				<height>35</height>
 				<width>400</width>
 				<font>font12</font>
@@ -210,7 +209,7 @@
 				<shadowcolor>black</shadowcolor>
 				<align>left</align>
 				<aligny>center</aligny>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<pulseonselect>no</pulseonselect>
 				<label>19132</label>
@@ -221,8 +220,8 @@
 			</control>
 			<control type="radiobutton" id="22">
 				<description>FTA only</description>
-				<left>0</left>
-				<top>210</top>
+				<posx>0</posx>
+				<posy>210</posy>
 				<height>35</height>
 				<width>400</width>
 				<font>font12</font>
@@ -231,7 +230,7 @@
 				<shadowcolor>black</shadowcolor>
 				<align>left</align>
 				<aligny>center</aligny>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<pulseonselect>no</pulseonselect>
 				<label>19123</label>
@@ -242,8 +241,8 @@
 			</control>
 			<control type="radiobutton" id="24">
 				<description>Ignore Timers</description>
-				<left>0</left>
-				<top>245</top>
+				<posx>0</posx>
+				<posy>245</posy>
 				<height>35</height>
 				<width>400</width>
 				<font>font12</font>
@@ -252,7 +251,7 @@
 				<shadowcolor>black</shadowcolor>
 				<align>left</align>
 				<aligny>center</aligny>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<pulseonselect>no</pulseonselect>
 				<label>19124</label>
@@ -263,16 +262,16 @@
 			</control>
 		</control>
 		<control type="group">
-			<left>440</left>
-			<top>230</top>
+			<posx>440</posx>
+			<posy>230</posy>
 			<control type="spincontrolex" id="12">
 				<description>Min Duration</description>
-				<left>0</left>
-				<top>0</top>
+				<posx>0</posx>
+				<posy>0</posy>
 				<width>400</width>
 				<height>35</height>
 				<font>font12</font>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<label>19130</label>
 				<onright>10</onright>
@@ -282,12 +281,12 @@
 			</control>
 			<control type="spincontrolex" id="13">
 				<description>Max Duration</description>
-				<left>0</left>
-				<top>35</top>
+				<posx>0</posx>
+				<posy>35</posy>
 				<width>400</width>
 				<height>35</height>
 				<font>font12</font>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<label>19131</label>
 				<onright>11</onright>
@@ -297,15 +296,15 @@
 			</control>
 			<control type="edit" id="16">
 				<description>Start time</description>
-				<left>0</left>
-				<top>70</top>
+				<posx>0</posx>
+				<posy>70</posy>
 				<width>400</width>
 				<height>35</height>
 				<font>font12</font>
 				<textcolor>white</textcolor>
 				<focusedcolor>white</focusedcolor>
 				<shadowcolor>black</shadowcolor>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<label>19126</label>
 				<onright>14</onright>
@@ -315,15 +314,15 @@
 			</control>
 			<control type="edit" id="17">
 				<description>Stop time</description>
-				<left>0</left>
-				<top>105</top>
+				<posx>0</posx>
+				<posy>105</posy>
 				<width>400</width>
 				<height>35</height>
 				<font>font12</font>
 				<textcolor>white</textcolor>
 				<focusedcolor>white</focusedcolor>
 				<shadowcolor>black</shadowcolor>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<label>19127</label>
 				<onright>15</onright>
@@ -333,8 +332,8 @@
 			</control>
 			<control type="radiobutton" id="19">
 				<description>avoid repeats</description>
-				<left>0</left>
-				<top>140</top>
+				<posx>0</posx>
+				<posy>140</posy>
 				<width>400</width>
 				<height>35</height>
 				<font>font12</font>
@@ -343,7 +342,7 @@
 				<shadowcolor>black</shadowcolor>
 				<align>left</align>
 				<aligny>center</aligny>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<pulseonselect>no</pulseonselect>
 				<label>19121</label>
@@ -354,12 +353,12 @@
 			</control>
 			<control type="spincontrolex" id="21">
 				<description>Groups</description>
-				<left>0</left>
-				<top>175</top>
+				<posx>0</posx>
+				<posy>175</posy>
 				<width>400</width>
 				<height>35</height>
 				<font>font12</font>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<label>19141</label>
 				<onright>20</onright>
@@ -369,12 +368,12 @@
 			</control>
 			<control type="spincontrolex" id="23">
 				<description>Channels</description>
-				<left>0</left>
-				<top>210</top>
+				<posx>0</posx>
+				<posy>210</posy>
 				<width>400</width>
 				<height>35</height>
 				<font>font12</font>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<label>19148</label>
 				<onleft>22</onleft>
@@ -384,8 +383,8 @@
 			</control>
 			<control type="radiobutton" id="27">
 				<description>Ignore Recordings</description>
-				<left>0</left>
-				<top>245</top>
+				<posx>0</posx>
+				<posy>245</posy>
 				<height>35</height>
 				<width>400</width>
 				<font>font12</font>
@@ -394,7 +393,7 @@
 				<shadowcolor>black</shadowcolor>
 				<align>left</align>
 				<aligny>center</aligny>
-				<texturefocus colordiffuse="blue" border="5">button-focus2.png</texturefocus>
+				<texturefocus border="5">button-focus2.png</texturefocus>
 				<texturenofocus border="5">button-nofocus.png</texturenofocus>
 				<pulseonselect>no</pulseonselect>
 				<label>19125</label>
@@ -405,18 +404,18 @@
 			</control>
 		</control>
 		<control type="group" id="9000">
-			<top>540</top>
-			<left>125</left>
+			<posy>540</posy>
+			<posx>125</posx>
 			<control type="button" id="28">
 				<description>Defaults Button</description>
-				<left>0</left>
-				<top>0</top>
+				<posx>0</posx>
+				<posy>0</posy>
 				<width>200</width>
 				<height>40</height>
 				<align>center</align>
 				<aligny>center</aligny>
 				<font>font12_title</font>
-				<label>10035</label>
+				<label>409</label>
 				<onleft>26</onleft>
 				<onright>25</onright>
 				<onup>24</onup>
@@ -424,8 +423,8 @@
 			</control>
 			<control type="button" id="25">
 				<description>Cancel Button</description>
-				<left>210</left>
-				<top>0</top>
+				<posx>210</posx>
+				<posy>0</posy>
 				<width>200</width>
 				<height>40</height>
 				<align>center</align>
@@ -439,8 +438,8 @@
 			</control>
 			<control type="button" id="26">
 				<description>Search Button</description>
-				<left>420</left>
-				<top>0</top>
+				<posx>420</posx>
+				<posy>0</posy>
 				<width>200</width>
 				<height>40</height>
 				<align>center</align>
