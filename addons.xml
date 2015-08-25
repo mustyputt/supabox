@@ -2338,6 +2338,26 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 	</extension>
 </addon>
 
+<addon id="plugin.video.ratchetvideo"
+	name="Ratchet Video Weekly"
+	version="1.0.2"
+	provider-name="xbmchub.com">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="plugin.video.youtube" version="3.0.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Ratchet Video Weekly</summary>
+    <description lang="en">This channel features some of the most ratchet videos on the internet.</description>
+    <platform>all</platform>
+    <forum></forum>
+    <website></website>
+  </extension>
+</addon>
+
 <addon id="plugin.video.solarmovie.so"
        name="S[COLOR goldenrod]o[/COLOR]lar[COLOR yellow]M[/COLOR][COLOR grey]ovie.so[/COLOR]"
        version="0.4.4"
@@ -4746,11 +4766,11 @@ Other languages with a great number of subtitles are: Danish, French, Swedish, D
 
 <addon
   id="skin.supaboxtv"
-  version="1.0.9"
+  version="1.0.10"
   name="SupaboxTV"
-  provider-name="Flaggsoft">
+  provider-name="SupaboxTV Team">
   <requires>
-    <import addon="xbmc.gui" version="4.0.0"/>
+    <import addon="xbmc.gui" version="5.3.0"/>
   </requires>
   <extension
     point="xbmc.gui.skin"
@@ -4760,33 +4780,12 @@ Other languages with a great number of subtitles are: Danish, French, Swedish, D
     <res width="1280" height="720" aspect="16:9" default="true" folder="720p" />
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">SupbaboxTV Skin</summary>
-    <description lang="en">SupaboxTV Skin for best use.</description>
-    <disclaimer lang="en">Use for best effect.</disclaimer>
+    <summary></summary>
+    <description></description>
+  	<disclaimer></disclaimer>
     <platform>all</platform>
-  </extension>
-</addon>
-
-<addon
-  id="skin.supaboxtv"
-  version="1.0.9"
-  name="SupaboxTV"
-  provider-name="Flaggsoft">
-  <requires>
-    <import addon="xbmc.gui" version="4.0.0"/>
-  </requires>
-  <extension
-    point="xbmc.gui.skin"
-    defaultthemename="textures.xbt"
-    debugging="false"
-    effectslowdown="0.75">
-    <res width="1280" height="720" aspect="16:9" default="true" folder="720p" />
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">SupbaboxTV Skin</summary>
-    <description lang="en">SupaboxTV Skin for best use.</description>
-    <disclaimer lang="en">Use for best effect.</disclaimer>
-    <platform>all</platform>
+    <forum></forum>
+    <website></website>
   </extension>
 </addon>
 
