@@ -2358,6 +2358,27 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
   </extension>
 </addon>
 
+<addon id="plugin.video.ratchetvideoweekly"
+	name="Ratchet Video Weekly"
+	version="1.0.9"
+	provider-name="tvaddons.ag">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.addon.common" version="2.0.0"/>
+    <import addon="plugin.video.youtube" version="5.0.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Ratchet Video Weekly</summary>
+    <description lang="en">Betty, a retired math professor, demonstrates her favorite recipes. Most of the recipes are Southern homestyle cooking.</description>
+    <platform>all</platform>
+    <forum>http://forums.tvaddons.ag/forums/113-TVADDONS-AG-ADDON-REPOSITORY</forum>
+    <website>http://www.tvaddons.ag/</website>
+  </extension>
+</addon>
+
 <addon id="plugin.video.solarmovie.so"
        name="S[COLOR goldenrod]o[/COLOR]lar[COLOR yellow]M[/COLOR][COLOR grey]ovie.so[/COLOR]"
        version="0.4.4"
