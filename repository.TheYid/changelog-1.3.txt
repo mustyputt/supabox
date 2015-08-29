@@ -1,8 +1,0 @@
-[B]Version 1.1[/B]
-- Initial version
-
-[B]Version 1.2[/B]
-- github fix
-
-[B]Version 1.3[/B]
-- github fix

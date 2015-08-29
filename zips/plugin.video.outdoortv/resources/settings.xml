@@ -1,3 +1,0 @@
-<settings>
-   <setting id="videos" type="bool" lvalues="mysettings" label="setting" default="true"/>
-</settings>
