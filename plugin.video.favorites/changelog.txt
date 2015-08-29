@@ -1,5 +1,0 @@
-[B]v0.0.2[/B]
-Minor Fixes
-
-[B]v0.0.1[/B]
-Initial Release

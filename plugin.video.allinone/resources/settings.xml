@@ -1,8 +1,0 @@
-<settings>
-   <category label="Auto-View">
-   	<setting id="auto-view" type="bool" label="Enable Automatic View" default="true"/>
-   	<setting id="tvshows-view" type="number" label="Movie View" default="500" enable="!eq(-2,false)"/>
-   	<setting id="default-view" type="number" label="Default View" default="50" enable="!eq(-3,false)"/>
-   	<setting id="radio-view" type="number" label="Radio View" default="150" enable="!eq(-2,false)"/>
-   </category>
-</settings>

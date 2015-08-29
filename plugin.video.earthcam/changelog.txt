@@ -1,3 +1,0 @@
-V1.0.7
-Code updated by Blazetamer
-to fix no items in USA & Worldwide

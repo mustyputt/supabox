@@ -1,4 +1,0 @@
-Version 1.1.1 Improved bitrate speeds for videos
-
-Version 1.0.1 Initial release
-

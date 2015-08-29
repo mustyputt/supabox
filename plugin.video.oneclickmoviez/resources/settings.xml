@@ -1,6 +1,0 @@
-<settings>
-   <category label="General">
-        <setting type="sep" />
-        <setting id="download_path" type="folder" enable="eq(-1,true)" source="video" label="30001"  option="writeable" default=""/>
-   </category>
-</settings>
