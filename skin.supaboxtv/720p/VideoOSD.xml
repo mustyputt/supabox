@@ -139,64 +139,13 @@
 				<texturefocus colordiffuse="btnfo">OSDNextTrackFO.png</texturefocus>
 				<texturenofocus colordiffuse="btnnf">OSDNextTrackNF.png</texturenofocus>
 				<onleft>204</onleft>
-				<onright>206</onright>
+				<onright>250</onright>
 				<onup>1000</onup>
 				<ondown>1000</ondown>
 				<onclick>PlayerControl(Next)</onclick>
 			</control>
-			<control type="button" id="206">
-				<posx>330</posx>
-				<posy>0</posy>
-				<width>55</width>
-				<height>55</height>
-				<label>Download</label>
-				<font>-</font>
-				<!--texturefocus colordiffuse="btnfo">OSDRecordOnFO.png</texturefocus>
-				<texturenofocus colordiffuse="btnnf">OSDRecordOnNF.png</texturenofocus-->
-				<!--texturefocus colordiffuse="btnfo">overlayrar.png</texturefocus>
-				<texturenofocus colordiffuse="btnnf">overlayrar.png</texturenofocus-->
-				<texturefocus colordiffuse="btnfo">dream-33.png</texturefocus>
-				<texturenofocus colordiffuse="btnnf">dream-33.png</texturenofocus>
-				<onleft>205</onleft>
-				<onright>207</onright>
-				<onup>1000</onup>
-				<ondown>1000</ondown>
-				<onclick>XBMC.RunPlugin(plugin://plugin.program.dreamcatcher/?mode=Record)</onclick>
-			</control>
-			<control type="button" id="207">
-				<posx>385</posx>
-				<posy>0</posy>
-				<width>55</width>
-				<height>55</height>
-				<label>AxelPlay</label>
-				<font>-</font>
-				<texturefocus colordiffuse="btnfo">OSDPlayFO.png</texturefocus>
-				<texturenofocus colordiffuse="btnnf">OSDPlayNF.png</texturenofocus>
-				<onleft>206</onleft>
-				<onright>208</onright>
-				<onup>1000</onup>
-				<ondown>1000</ondown>
-				<onclick>XBMC.RunPlugin(plugin://plugin.program.sendtoaxel/?mode=AxelPlay)</onclick>
-			</control>
-			<control type="button" id="208">
-				<posx>440</posx>
-				<posy>0</posy>
-				<width>55</width>
-				<height>55</height>
-				<label>Download with Axel</label>
-				<font>-</font>
-				<!--texturefocus colordiffuse="btnfo">OSDRecordOffFO.png</texturefocus>
-				<texturenofocus colordiffuse="btnnf">OSDRecordOffNF.png</texturenofocus-->
-				<texturefocus colordiffuse="btnfo">overlayrar.png</texturefocus>
-				<texturenofocus colordiffuse="btnnf">overlayrar.png</texturenofocus>
-				<!--texturefocus colordiffuse="btnfo">OSDRecordOnFO.png</texturefocus>
-				<texturenofocus colordiffuse="btnnf">OSDRecordOnNF.png</texturenofocus-->
-				<onleft>207</onleft>
-				<onright>250</onright>
-				<onup>1000</onup>
-				<ondown>1000</ondown>
-				<onclick>XBMC.RunPlugin(plugin://plugin.program.sendtoaxel/?mode=AxelDownload)</onclick>
-			</control>
+		
+			
 		</control>
 
 		<!-- LiveTV -->
@@ -431,7 +380,7 @@
 				<font>-</font>
 				<texturefocus colordiffuse="btnfo">OSDDvdFO.png</texturefocus>
 				<texturenofocus colordiffuse="btnnf">OSDDvdNF.png</texturenofocus>
-				<onleft>253</onleft>
+				<onleft>200</onleft>
 				<onright>200</onright>
 				<onup>1000</onup>
 				<ondown>1000</ondown>

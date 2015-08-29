@@ -270,7 +270,7 @@
 
 <addon
   id="skin.supaboxtv"
-  version="1.0.11"
+  version="1.0.12"
   name="SupaboxTV"
   provider-name="SupaboxTV Team">
   <requires>
