@@ -4787,7 +4787,7 @@ Other languages with a great number of subtitles are: Danish, French, Swedish, D
 
 <addon
   id="skin.supaboxtv"
-  version="1.0.10"
+  version="1.0.11"
   name="SupaboxTV"
   provider-name="SupaboxTV Team">
   <requires>

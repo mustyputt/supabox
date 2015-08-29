@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon
   id="skin.supaboxtv"
-  version="2.5.9.006"
+  version="1.0.10"
   name="SupaboxTV"
   provider-name="SupaboxTV Team">
   <requires>

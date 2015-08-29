@@ -209,11 +209,17 @@
 			<height>35</height>
 			<texture border="0,0,0,3" flipx="true">HomeSubEnd.png</texture>
 		</control>
-		
+		<control type="button" id="90525">
+			<include>ButtonHomeSubCommonValues</include>
+			<label>Clear Memory</label>
+			<onclick>ActivateWindow(Videos,plugin://plugin.video.supaboxmaintenance/?url=3&mode=99,return)</onclick>
+			<visible>!Skin.HasSetting(ShowMaint_bttn)</visible>
+		</control>
 		<control type="button" id="90625">
 			<include>ButtonHomeSubCommonValues</include>
-			<label>$LOCALIZE[184] $LOCALIZE[24001]</label>
-			<onclick>UpdateLocalAddons()</onclick>
+			<label>Free Memory:$INFO[system.memory(free)]</label>
+			
+            <visible>!Skin.HasSetting(ShowMaint_bttn)</visible>
 		</control>
 		
 		<control type="image" id="90620">

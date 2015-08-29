@@ -209,31 +209,19 @@
 			<height>35</height>
 			<texture border="0,0,0,3" flipx="true">HomeSubEnd.png</texture>
 		</control>
-		<control type="button" id="90622">
+		<control type="button" id="90525">
 			<include>ButtonHomeSubCommonValues</include>
-			<label>Debug Grid</label>
-			<onclick>Skin.ToggleSetting(DebugGrid)</onclick>
-		</control>
-		<control type="button" id="90623">
-			<include>ButtonHomeSubCommonValues</include>
-			<label>Debug $LOCALIZE[31033]</label>
-			<onclick>Skin.ToggleSetting(HideDebugInfo)</onclick>
-		</control>
-		<control type="button" id="90624">
-			<include>ButtonHomeSubCommonValues</include>
-			<label>20183</label>
-			<onclick>ReloadSkin()</onclick>
+			<label>Clear Memory</label>
+			<onclick>ActivateWindow(Videos,plugin://plugin.video.supaboxmaintenance/?url=3&mode=99)</onclick>
+			<visible>!Skin.HasSetting(ShowMaint_bttn)</visible>
 		</control>
 		<control type="button" id="90625">
 			<include>ButtonHomeSubCommonValues</include>
-			<label>$LOCALIZE[184] $LOCALIZE[24001]</label>
-			<onclick>UpdateLocalAddons()</onclick>
+			<label>Free Memory:$INFO[system.memory(free)]</label>
+			
+            <visible>!Skin.HasSetting(ShowMaint_bttn)</visible>
 		</control>
-		<control type="button" id="90625">
-			<include>ButtonHomeSubCommonValues</include>
-			<label>$LOCALIZE[24000] Browser</label>
-			<onclick>ActivateWindow(AddonBrowser)</onclick>
-		</control>
+		
 		<control type="image" id="90620">
 			<width>35</width>
 			<height>35</height>
