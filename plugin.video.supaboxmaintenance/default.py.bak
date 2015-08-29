@@ -1,6 +1,6 @@
 import plugintools
 import xbmc,xbmcaddon,xbmcgui,xbmcplugin,os,sys,re,urllib2,urllib,shutil,upload,time,extract,datetime,settings,advancedsettings
-import texturecache
+import texturecache,sqlite3
 from addon.common.addon import Addon
 from addon.common.net import Net
 from metahandler import metahandlers
@@ -129,169 +129,26 @@ def CLEARCACHE(url):
             file_count += len(files)
             if file_count > 0:
     
-                #dialog = xbmcgui.Dialog()
+               # dialog = xbmcgui.Dialog()
                 #if dialog.yesno("Delete XBMC Cache Files", str(file_count) + " files found", "Do you want to delete them?"):
                 
                     for f in files:
                         try:
                             os.unlink(os.path.join(root, f))
+                            plugintools.log("deleting file: "+f)
                         except:
                             pass
                     for d in dirs:
                         try:
                             shutil.rmtree(os.path.join(root, d))
+                            plugintools.log("deleting folder: "+d)
                         except:
                             pass
+                            
                         
             else:
-                pass
-    
+                pass                          
 
-    if xbmc.getCondVisibility('system.platform.ATV2'):
-        atv2_cache_a = os.path.join('/private/var/mobile/Library/Caches/AppleTV/Video/', 'Other')
-        
-        for root, dirs, files in os.walk(atv2_cache_a):
-            file_count = 0
-            file_count += len(files)
-        
-            if file_count > 0:
-
-                dialog = xbmcgui.Dialog()
-                if dialog.yesno("Delete ATV2 Cache Files", str(file_count) + " files found in 'Other'", "Do you want to delete them?"):
-                
-                    for f in files:
-                        os.unlink(os.path.join(root, f))
-                    for d in dirs:
-                        shutil.rmtree(os.path.join(root, d))
-                        
-            else:
-                pass
-        atv2_cache_b = os.path.join('/private/var/mobile/Library/Caches/AppleTV/Video/', 'LocalAndRental')
-        
-        for root, dirs, files in os.walk(atv2_cache_b):
-            file_count = 0
-            file_count += len(files)
-        
-            if file_count > 0:
-
-                dialog = xbmcgui.Dialog()
-                if dialog.yesno("Delete ATV2 Cache Files", str(file_count) + " files found in 'LocalAndRental'", "Do you want to delete them?"):
-                
-                    for f in files:
-                        os.unlink(os.path.join(root, f))
-                    for d in dirs:
-                        shutil.rmtree(os.path.join(root, d))
-                        
-            else:
-                pass
-              # Set path to Cydia Archives cache files
-                             
-
-    # Set path to What th Furk cache files
-    wtf_cache_path = os.path.join(xbmc.translatePath('special://profile/addon_data/plugin.video.whatthefurk/cache'), '')
-    if os.path.exists(wtf_cache_path)==True:    
-        for root, dirs, files in os.walk(wtf_cache_path):
-            file_count = 0
-            file_count += len(files)
-        
-        # Count files and give option to delete
-            if file_count > 0:
-    
-                dialog = xbmcgui.Dialog()
-                if dialog.yesno("Delete WTF Cache Files", str(file_count) + " files found", "Do you want to delete them?"):
-                
-                    for f in files:
-                        os.unlink(os.path.join(root, f))
-                    for d in dirs:
-                        shutil.rmtree(os.path.join(root, d))
-                        
-            else:
-                pass
-                
-                # Set path to 4oD cache files
-    channel4_cache_path= os.path.join(xbmc.translatePath('special://profile/addon_data/plugin.video.4od/cache'), '')
-    if os.path.exists(channel4_cache_path)==True:    
-        for root, dirs, files in os.walk(channel4_cache_path):
-            file_count = 0
-            file_count += len(files)
-        
-        # Count files and give option to delete
-            if file_count > 0:
-    
-                dialog = xbmcgui.Dialog()
-                if dialog.yesno("Delete 4oD Cache Files", str(file_count) + " files found", "Do you want to delete them?"):
-                
-                    for f in files:
-                        os.unlink(os.path.join(root, f))
-                    for d in dirs:
-                        shutil.rmtree(os.path.join(root, d))
-                        
-            else:
-                pass
-                
-                # Set path to BBC iPlayer cache files
-    iplayer_cache_path= os.path.join(xbmc.translatePath('special://profile/addon_data/plugin.video.iplayer/iplayer_http_cache'), '')
-    if os.path.exists(iplayer_cache_path)==True:    
-        for root, dirs, files in os.walk(iplayer_cache_path):
-            file_count = 0
-            file_count += len(files)
-        
-        # Count files and give option to delete
-            if file_count > 0:
-    
-                dialog = xbmcgui.Dialog()
-                if dialog.yesno("Delete BBC iPlayer Cache Files", str(file_count) + " files found", "Do you want to delete them?"):
-                
-                    for f in files:
-                        os.unlink(os.path.join(root, f))
-                    for d in dirs:
-                        shutil.rmtree(os.path.join(root, d))
-                        
-            else:
-                pass
-                
-                
-                # Set path to Simple Downloader cache files
-    downloader_cache_path = os.path.join(xbmc.translatePath('special://profile/addon_data/script.module.simple.downloader'), '')
-    if os.path.exists(downloader_cache_path)==True:    
-        for root, dirs, files in os.walk(downloader_cache_path):
-            file_count = 0
-            file_count += len(files)
-        
-        # Count files and give option to delete
-            if file_count > 0:
-    
-                dialog = xbmcgui.Dialog()
-                if dialog.yesno("Delete Simple Downloader Cache Files", str(file_count) + " files found", "Do you want to delete them?"):
-                
-                    for f in files:
-                        os.unlink(os.path.join(root, f))
-                    for d in dirs:
-                        shutil.rmtree(os.path.join(root, d))
-                        
-            else:
-                pass
-                
-                # Set path to ITV cache files
-    itv_cache_path = os.path.join(xbmc.translatePath('special://profile/addon_data/plugin.video.itv/Images'), '')
-    if os.path.exists(itv_cache_path)==True:    
-        for root, dirs, files in os.walk(itv_cache_path):
-            file_count = 0
-            file_count += len(files)
-        
-        # Count files and give option to delete
-            if file_count > 0:
-    
-                dialog = xbmcgui.Dialog()
-                if dialog.yesno("Delete ITV Cache Files", str(file_count) + " files found", "Do you want to delete them?"):
-                
-                    for f in files:
-                        os.unlink(os.path.join(root, f))
-                    for d in dirs:
-                        shutil.rmtree(os.path.join(root, d))
-                        
-            else:
-                pass
 
     try:
         RawXBMC.Execute( "DELETE FROM texture" )
@@ -300,12 +157,58 @@ def CLEARCACHE(url):
         pass
     dialog = xbmcgui.Dialog()
     dialog.ok(AddonTitle, "       Done Clearing Cache files")
+    PURGEPACKAGES(url);
     
 ################################
 ###     End Clear Cache      ###
 ################################
     
+    ################################
+###       Clear Cache   2     ###
+################################
+  
+def CLEARCACHE2(url):
+    print '###'+AddonTitle+' - CLEARING CACHE FILES###'
+    xbmc_cache_path = os.path.join(xbmc.translatePath('special://home'),'userdata','Thumbnails')
+    if os.path.exists(xbmc_cache_path)==True:    
+        for root, dirs, files in os.walk(xbmc_cache_path):
+            file_count = 0
+            file_count += len(files)
+            if file_count > 0:
     
+               # dialog = xbmcgui.Dialog()
+                #if dialog.yesno("Delete XBMC Cache Files", str(file_count) + " files found", "Do you want to delete them?"):
+                
+                    for f in files:
+                        try:
+                            os.unlink(os.path.join(root, f))
+                            plugintools.log("deleting file: "+f)
+                        except:
+                            pass
+                    for d in dirs:
+                        try:
+                            shutil.rmtree(os.path.join(root, d))
+                            plugintools.log("deleting folder: "+d)
+                        except:
+                            pass
+                            
+                        
+            else:
+                pass                          
+
+
+    try:
+        RawXBMC.Execute( "DELETE FROM texture" )
+    finally:
+        plugintools.log("texturecache failed ")
+        pass
+    dialog = xbmcgui.Dialog()
+    dialog.ok(AddonTitle, "       Done Clearing Cache files")
+    PURGEPACKAGES(url);
+     xbmc.executebuiltin("XBMC.ActivateWindow(10000)");
+################################
+###     End Clear Cache  2    ###
+################################
 
 ################################
 ###        Erase Logs        ###
@@ -316,7 +219,8 @@ def ERASELOGS(url):
     dialog = xbmcgui.Dialog()
     if dialog.yesno("Delete Old Crash Logs", '', "Do you want to delete them?"):
         path=LOGLOCATION()
-        for infile in glob.glob(os.path.join(path, 'xbmc_crashlog*.*')):
+
+        for infile in os.walk(path, 'xbmc_crashlog*.*'):
              File=infile
              print infile
              os.remove(infile)
@@ -368,8 +272,8 @@ def PURGEPACKAGES(url):
         # Count files and give option to delete
             if file_count > 0:
     
-                dialog = xbmcgui.Dialog()
-                if dialog.yesno("Delete Package Cache Files", str(file_count) + " files found", "Do you want to delete them?"):
+               # dialog = xbmcgui.Dialog()
+                #if dialog.yesno("Delete Package Cache Files", str(file_count) + " files found", "Do you want to delete them?"):
                             
                     for f in files:
                         os.unlink(os.path.join(root, f))
@@ -377,8 +281,8 @@ def PURGEPACKAGES(url):
                         shutil.rmtree(os.path.join(root, d))
                     dialog = xbmcgui.Dialog()
                     dialog.ok(AddonTitle, "       Deleting Packages all done")
-                else:
-                        pass
+               # else:
+                #        pass
             else:
                 dialog = xbmcgui.Dialog()
                 dialog.ok(AddonTitle, "       No Packages to Purge")
@@ -1225,6 +1129,7 @@ elif mode==1: HOWTOS(url,fanart); xbmc.executebuiltin("Container.SetViewMode(500
 elif mode==2: HOWTOVIDEOS(name,url,fanart)
 elif mode==3: PLAY_STREAM(name,url,iconimage)
 elif mode==4: CLEARCACHE(url)
+elif mode==99: CLEARCACHE2(url)
 elif mode==5: ERASELOGS(url)
 elif mode==6: PURGEPACKAGES(url)
 elif mode==7: MAINTENANCE(url); xbmc.executebuiltin("Container.SetViewMode(500)")
