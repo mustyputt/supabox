@@ -170,6 +170,8 @@ def CLEARCACHE(url):
 def CLEARCACHE2(url):
     print '###'+AddonTitle+' - CLEARING CACHE FILES###'
     xbmc_cache_path = os.path.join(xbmc.translatePath('special://home'),'userdata','Thumbnails')
+    dialog = xbmcgui.Dialog()
+    dialog.ok("Supabox Message","Free memory before: " + xbmc.getInfoLabel("System.FreeSpace"))
     if os.path.exists(xbmc_cache_path)==True:    
         for root, dirs, files in os.walk(xbmc_cache_path):
             file_count = 0
@@ -201,10 +203,12 @@ def CLEARCACHE2(url):
         RawXBMC.Execute( "DELETE FROM texture" )
     finally:
         plugintools.log("texturecache failed ")
-        pass
-    dialog = xbmcgui.Dialog()
-    dialog.ok(AddonTitle, "       Done Clearing Cache files")
+        #pass
+        #dialog = xbmcgui.Dialog()
+        #dialog.ok(AddonTitle, "       Done Clearing Cache files")
     PURGEPACKAGES(url);
+    dialog = xbmcgui.Dialog()
+    dialog.ok("Supabox Message","Free memory after: " + xbmc.getInfoLabel("System.FreeSpace"))
      #xbmc.executebuiltin("XBMC.ActivateWindow(10000)");
 ################################
 ###     End Clear Cache  2    ###
@@ -279,13 +283,13 @@ def PURGEPACKAGES(url):
                         os.unlink(os.path.join(root, f))
                     for d in dirs:
                         shutil.rmtree(os.path.join(root, d))
-                    dialog = xbmcgui.Dialog()
-                    dialog.ok(AddonTitle, "       Deleting Packages all done")
+                    #dialog = xbmcgui.Dialog()
+                    #dialog.ok(AddonTitle, "       Deleting Packages all done")
                # else:
                 #        pass
-            else:
-                dialog = xbmcgui.Dialog()
-                dialog.ok(AddonTitle, "       No Packages to Purge")
+            #else:
+                #dialog = xbmcgui.Dialog()
+                #dialog.ok(AddonTitle, "       No Packages to Purge")
     except: 
         dialog = xbmcgui.Dialog()
         dialog.ok(AddonTitle, "Error Deleting Packages please visit TVADDONS.AG forums")
