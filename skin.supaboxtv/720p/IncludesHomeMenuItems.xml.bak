@@ -212,16 +212,19 @@
 		<control type="button" id="90525">
 			<include>ButtonHomeSubCommonValues</include>
 			<label>Clear Memory</label>
-			<onclick>ActivateWindow(Videos,plugin://plugin.video.supaboxmaintenance/?url=3&mode=99)</onclick>
+			<onclick>ActivateWindow(Videos,plugin://plugin.video.supaboxmaintenance/?url=3&mode=99,return)</onclick>
 			<visible>!Skin.HasSetting(ShowMaint_bttn)</visible>
 		</control>
 		<control type="button" id="90625">
 			<include>ButtonHomeSubCommonValues</include>
-			<label>Free Memory:$INFO[system.memory(free)]</label>
-			
-            <visible>!Skin.HasSetting(ShowMaint_bttn)</visible>
+			<label>Mem:$INFO[system.FreeSpace]</label>
+            <visible>True</visible>
 		</control>
-		
+        <control type="button" id="90626">
+			<include>ButtonHomeSubCommonValues</include>
+			<label>Mem:$INFO[system.TotalSpace]</label>
+            <visible>True</visible>
+		</control>
 		<control type="image" id="90620">
 			<width>35</width>
 			<height>35</height>
