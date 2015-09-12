@@ -168,7 +168,7 @@
 
 <addon
   id="skin.supaboxtv"
-  version="1.0.13"
+  version="1.0.14"
   name="SupaboxTV"
   provider-name="SupaboxTV Team">
   <requires>

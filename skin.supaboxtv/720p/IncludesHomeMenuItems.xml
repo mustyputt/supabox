@@ -212,12 +212,12 @@
 	
         <control type="button" id="90626">
 			<include>ButtonHomeSubCommonValues</include>
-			<label>Mem:$INFO[system.TotalSpace]</label>
+			<label>Mem:$INFO[system.Memory(total)] total</label>
             <visible>True</visible>
 		</control>
 		<control type="button" id="90625">
 			<include>ButtonHomeSubCommonValues</include>
-			<label>Mem:$INFO[system.FreeSpace]</label>
+			<label>Mem:$INFO[system.memory(free)] free</label>
             <visible>True</visible>
 		</control>
        	<control type="button" id="90525">

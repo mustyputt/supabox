@@ -21,7 +21,7 @@
         <control type="button" id="10">
 			<include>ButtonHomeSubCommonValues</include>
 			<label>41907</label>
-			<onclick>ActivateWindow(Videos,plugin://plugin.video.supaboxmaintenance/?url=url&mode=4,return)</onclick>
+			<onclick>ActivateWindow(Videos,plugin://plugin.video.supaboxmaintenance/?url=url&mode=21,return)</onclick>
 			<visible></visible>
 		</control>
 		<include>CommonBackground</include>
