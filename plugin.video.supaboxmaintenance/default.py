@@ -14,7 +14,7 @@ TribecaUrl='http://tribeca.tvaddons.ag/'; #TribecaUrl='http://tribeca.xbmchub.co
 mainurl=TribecaUrl+'tools/maintenance'
 databaseFolder    = xbmc.translatePath( "special://database" )
 thumbnailsFolder  = xbmc.translatePath( "special://thumbnails" )
-
+addonsFolder = xbmc.translatePath( "special://addons" )
 class RawXBMC():
      @staticmethod
      def Query( Query ):
@@ -55,6 +55,10 @@ def nolines(t):
 	it=t.splitlines(); t=''
 	for L in it: t=t+L
 	t=((t.replace("\r","")).replace("\n","").replace("\a","").replace("\t","")); return t
+
+
+def OPEN_URL(url): req=urllib2.Request(url); req.add_header('User-Agent','Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'); response=urllib2.urlopen(req); link=response.read(); response.close(); return link
+
 def File_Open(path): #print 'File: '+path
 	if os.path.isfile(path): file=open(path,'r'); contents=file.read(); file.close(); return contents ## File found. #print 'Found: '+path
 	else: return '' ## File not found.
@@ -98,6 +102,7 @@ def SYSTEMTWEAKS(url):
     if xbmc.getCondVisibility('system.platform.android'): addDir("Android External Player",mainurl+'/tweaks/playcore/playercorefactory.xml',26,getArt('androidexternalplayer.jpg'),defaultfanart)
     addDir('Wallpaper Downloads','url',11,getArt('wallaperdownoads.jpg'),defaultfanart)
     addDir('Set HomeScreen Shortcuts','url',20,getArt('homescreenshortcuts.jpg'),defaultfanart)
+    addDir('Set Icons','url',21,getArt('homescreenshortcuts.jpg'),defaultfanart)
     addDir('Seven Menu Shortcuts Tweak','url',19,getArt('sevenicons.jpg'),defaultfanart)#MENU(name)
     addDir('Create/Edit Advanced Settings','url',59,getArt('tuxenxml.jpg'),defaultfanart)
     addDir('Enable Tuxen Advanced XML',mainurl+'/tweaks/advancedsettings/tuxen.xml',16,getArt('tuxenxml.jpg'),defaultfanart)
@@ -337,6 +342,15 @@ def REMOVEADDON(url):
         os.rmdir(url)
         xbmc.executebuiltin('Container.Refresh')
 
+def REMOVEADDON2(url):
+    for root, dirs, files in os.walk(url):
+        for f in files:
+            os.unlink(os.path.join(root, f))
+        for d in dirs:
+            shutil.rmtree(os.path.join(root, d))
+    os.rmdir(url)
+    xbmc.executebuiltin('Container.Refresh')
+
 ################################
 ###     End Addon Removal    ###
 ################################
@@ -575,7 +589,32 @@ def APPLYWALPAPER(img):
 ###       End Wallpaper      ###
 ################################
 
-        
+################################
+###       Read Update      ###
+################################ 
+    
+def UPDATEFILE(url,name):
+    path = xbmc.translatePath(os.path.join('special://home/userdata',''))
+    advance=os.path.join(path, 'update.xml')
+    dialog = xbmcgui.Dialog()
+    bak=os.path.join(path, 'advancedsettings.xml.bak')
+    if os.path.exists(advance)==True: 
+        print '###'+AddonTitle+' - UPDATE XML###'
+        path = xbmc.translatePath(os.path.join('special://home/userdata',''))
+        advance=os.path.join(path, 'advancedsettings.xml')
+        try:
+            os.remove(advance)
+            print '=== Maintenance Tool - REMOVING    '+str(advance)+'    ==='
+        except:
+            pass
+        link=net.http_GET(url).content
+        a = open(advance,"w") 
+        a.write(link)
+        a.close()
+        print '=== Maintenance Tool - WRITING NEW    '+str(advance)+'    ==='
+        dialog = xbmcgui.Dialog()
+        dialog.ok(AddonTitle, "       Done Adding new Advanced XML")
+    
 
 ################################
 ###       Advanced XML       ###
@@ -719,15 +758,19 @@ def ADD7ICONS(url):
 ################################    
 def SELECT(): dialog=xbmcgui.Dialog(); version_select=['Videos','Music','Program','Picture']; select=['Videos','Music','Programs','Pictures']; return version_select[xbmcgui.Dialog().select('Please Choose Your Build',select)]
 def HOMEICONS(url):
-    gui_path=xbmc.translatePath(os.path.join('special://home','userdata')); gui=os.path.join(gui_path,'guisettings.xml'); guixml=open(gui, 'r').read(); button=SELECT(); r="skin.confluence.Home%sButton(.+?)"%button; match=re.compile(r).findall(guixml)
-    for number in match: addDir(button+' Button '+number,'url',21,'','')
-def HOMEICONS2(name):
-    print name
-    if   'Video' in name:   r="Skin.SetAddon(Home%s,xbmc.addon.video,xbmc.addon.executable)"%name.replace(' ','')
-    elif 'Music' in name:   r="Skin.SetAddon(Home%s,xbmc.addon.audio,xbmc.addon.executable)"%name.replace(' ','')
-    elif 'Picture' in name: r="Skin.SetAddon(Home%s,xbmc.addon.image,xbmc.addon.executable)"%name.replace(' ','')
-    elif 'Program' in name: r="Skin.SetAddon(Home%s,xbmc.addon.executable)"%name.replace(' ','')
-    xbmc.executebuiltin(r); dialog=xbmcgui.Dialog(); dialog.ok(AddonTitle,"Homescreen Shortcut Updated Successfully")
+    gui_path=xbmc.translatePath(os.path.join('special://home','userdata')); 
+    gui=os.path.join(gui_path,'guisettings.xml'); 
+    guixml=open(gui, 'r').read(); 
+    button=SELECT(); 
+    r="skin.supaboxtv.Home%sButton(.+?)"%button; 
+    match=re.compile(r).findall(guixml)
+    for number in match: 
+        addDir(button+' Button '+number,'url',21,'','')
+        print 'match: '+ match + number
+def SETICONS():
+    link=OPEN_URL('http://172.13.129.150:8080/owncloud/index.php/s/uPMIUdyZENSpgzV/download')
+    shorts=re.compile('shortcut="(.+?)"').findall(link)
+    for shortname in shorts: xbmc.executebuiltin("Skin.SetString(%s)" % shortname)
 ################################
 ###      End Home Icons      ###
 ################################
@@ -1150,7 +1193,7 @@ elif mode==17: CHECKADVANCEDXML(url,name)
 elif mode==18: DELETEADVANCEDXML(url)
 elif mode==19: ADD7ICONS(url)
 elif mode==20: HOMEICONS(url)
-elif mode==21: HOMEICONS2(name)
+elif mode==21: SETICONS()
 elif mode==22: ADDONINSTALLER(url)
 elif mode==23: UPLOADLOG(url)
 elif mode==24: FUSIONINSTALLER(url)

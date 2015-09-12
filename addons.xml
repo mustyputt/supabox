@@ -81,7 +81,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.supaboxmaintenance" version="0.0.4"
+<addon id="plugin.video.supaboxmaintenance" version="0.0.5"
 	name="Supabox Maintenance Tool" provider-name="flaggsoft">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
