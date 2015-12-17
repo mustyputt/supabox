@@ -209,15 +209,19 @@
 			<height>35</height>
 			<texture border="0,0,0,3" flipx="true">HomeSubEnd.png</texture>
 		</control>
-	
+        <control type="button" id="90624">
+			<include>ButtonHomeSubCommonValues</include>
+			<label>Total:$INFO[system.memory(total)]</label>
+            <visible>True</visible>
+		</control>
         <control type="button" id="90626">
 			<include>ButtonHomeSubCommonValues</include>
-			<label>Mem:$INFO[system.Memory(total)]</label>
+			<label>Free:$INFO[system.memory(free)]</label>
             <visible>True</visible>
 		</control>
 		<control type="button" id="90625">
 			<include>ButtonHomeSubCommonValues</include>
-			<label>Mem:$INFO[system.memory(free)]</label>
+			<label>:$INFO[system.memory(used)]</label>
             <visible>True</visible>
 		</control>
        	<control type="button" id="90525">
