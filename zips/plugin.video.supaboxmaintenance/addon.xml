@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.supaboxmaintenance" version="0.0.2"
+<addon id="plugin.video.supaboxmaintenance" version="0.0.8"
 	name="Supabox Maintenance Tool" provider-name="flaggsoft">
   <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
+<import addon="service.cronxbmc" />
+    <import addon="xbmc.python"/>
     <import addon="plugin.video.youtube" />
     <import addon="script.module.addon.common" />
     <import addon="script.module.metahandler" />
   </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
+  <extension point="xbmc.python.script" library="default.py">
         <provides>executable</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
