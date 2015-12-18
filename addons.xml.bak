@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon id="plugin.audio.mp3streams"
+       name="MP3 Streams"
+       version="1.0.9"
+       provider-name="Kinkin, art by Marquerite">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.t0mm0.common" version="1.1.0"/>
+        <import addon="script.module.mutagen"/>
+        <import addon="script.module.requests" version="1.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource"
+               	library="default.py">
+        <provides>audio</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary>A music streaming collection</summary>
+        <description>Browse and stream your favourite songs and albums</description>
+    </extension>
+
+</addon>
+
+<addon id="plugin.video.ratchetvideoweekly"
+	name="Ratchet Video Weekly"
+	version="1.0.9"
+	provider-name="tvaddons.ag">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.addon.common" version="2.0.0"/>
+    <import addon="plugin.video.youtube" version="5.0.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Ratchet Video Weekly</summary>
+    <description lang="en">Betty, a retired math professor, demonstrates her favorite recipes. Most of the recipes are Southern homestyle cooking.</description>
+    <platform>all</platform>
+    <forum>http://forums.tvaddons.ag/forums/113-TVADDONS-AG-ADDON-REPOSITORY</forum>
+    <website>http://www.tvaddons.ag/</website>
+  </extension>
+</addon>
+
+<addon id="plugin.video.supaboxclean"
+	name="Supabox Fresh Clean"
+	version="1.0.0.3"
+	provider-name="Flaggsoft">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Supabox Fresh Clean</summary>
+    <description lang="en">Easily clean your Supabox memory in One Simple Click! This tool will clean your Supabox of video thumbnails freeing up memory!</description>
+    <platform>all</platform>
+    <forum></forum>
+    <website></website>
+  </extension>
+</addon>
+
+<addon id="plugin.video.supaboxfreshstart"
+	name="Supabox Fresh Start"
+	version="1.2.1"
+	provider-name="Flaggsoft">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Supabox Fresh Start</summary>
+    <description lang="en">Easily Factory Restore your Supabox Configuration in One Simple Click! This tool will bring your Supabox back to its original installation state, deleting all customizations and add-ons you may have previously enabled, giving you a fresh start!</description>
+    <platform>all</platform>
+    <forum></forum>
+    <website></website>
+  </extension>
+</addon>
+
+<addon id="plugin.video.supaboxmaintenance" version="0.0.7"
+	name="Supabox Maintenance Tool" provider-name="flaggsoft">
+  <requires>
+<import addon="service.cronxbmc" version="0.0.4" />
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="plugin.video.youtube" />
+    <import addon="script.module.addon.common" />
+    <import addon="script.module.metahandler" />
+  </requires>
+  <extension point="xbmc.python.script" library="default.py">
+        <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Maintenance Tool</summary>
+    <description lang="en">Maintenance Tool is your one stop tool for all fixes and information.</description>
+    <platform>all</platform>
+    <forum></forum>
+    <website></website>
+  </extension>
+</addon>
+
+<addon id="plugin.video.supaboxupdater" version="1.0.0.0" name="Supabox Updater" provider-name="flaggsoft.com">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>The Supabox Updater</summary>
+		<description>Instantly update your Supabox experience with latest add-ons and goodies!</description>
+		<website></website>
+		<platform>all</platform>
+		<forum></forum>
+		<website></website>
+	</extension>
+</addon>
+
+<addon id="plugin.video.supaboxwizard" version="1.2.1" name="Supabox Config Wizard" provider-name="flaggsoft.com">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>The Supabox Wizard</summary>
+		<description>Instantly configure your Supabox experience with all the best add-ons and goodies!  </description>
+		<website></website>
+		<platform>all</platform>
+		<forum></forum>
+		<website></website>
+	</extension>
+</addon>
+
+<addon id="plugin.video.worldstarhiphop"
+	name="World Star Hiphop"
+	version="1.0.0.1"
+	provider-name="Flaggsoft">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="plugin.video.youtube" version="3.0.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>World Star Hiphop</summary>
+    <description>The official WorldStarHipHop channel featuring exclusive music video premieres, behind the scenes, original series and more.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="repository.supabox" name="Supabox REPO" version="3.1" provider-name="Flaggsoft">
+	<extension point="xbmc.addon.repository" name="supabox Addon Repository">
+		<info compressed="false">http://github.com/mustyputt/supabox/raw/master/addons.xml</info>
+		<checksum>http://github.com/mustyputt/supabox/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://github.com/mustyputt/supabox/raw/master/zips</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install MY Addons</summary>
+		<description>Download and install addons from supabox...</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="service.xbmc.supaboxmemcheck"
+      name="Memory Check"
+      version="1.0.0"
+      provider-name="Flaggsoft">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.addon.common" />
+        <import addon="script.module.metahandler" />
+    </requires>
+    <extension point="xbmc.service" library="service.py" start="login"/>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="be">Mem Version Check checks if you are running with most memory.</summary>
+
+        <platform>all</platform>
+
+
+        <email></email>
+
+    </extension>
+</addon>
+
+<addon
+  id="skin.supaboxtv"
+  version="1.0.15"
+  name="SupaboxTV"
+  provider-name="SupaboxTV Team">
+  <requires>
+    <import addon="xbmc.gui" version="5.3.0"/>
+  </requires>
+  <extension
+    point="xbmc.gui.skin"
+    defaultthemename="textures.xbt"
+    debugging="false"
+    effectslowdown="0.75">
+    <res width="1280" height="720" aspect="16:9" default="true" folder="720p" />
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary></summary>
+    <description></description>
+  	<disclaimer></disclaimer>
+    <platform>all</platform>
+    <forum></forum>
+    <website></website>
+  </extension>
+</addon>
+</addons>
