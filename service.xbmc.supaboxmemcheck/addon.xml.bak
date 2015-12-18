@@ -5,7 +5,8 @@
       provider-name="Flaggsoft">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
-        <import addon="plugin.video.supaboxmaintenance" version="0.0.6"/>
+        <import addon="script.module.addon.common" />
+        <import addon="script.module.metahandler" />
     </requires>
     <extension point="xbmc.service" library="service.py" start="login"/>
     <extension point="xbmc.addon.metadata">
