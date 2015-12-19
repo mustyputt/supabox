@@ -178,8 +178,8 @@ def CLEARCACHE2():
     #dialog.ok(AddonTitle, "home folder is: "+freespace[0])
     #xbmc.executebuiltin("Notification(Free memory before:,\'+freespace[0]+\',10000)")
     if os.path.exists(xbmc_cache_path)==True: 
-        dp = xbmcgui.DialogProgress()
-        dp.create(AddonTitle,"Clearing Cache",'')
+        #dp = xbmcgui.DialogProgress()
+        #dp.create(AddonTitle,"Clearing Cache",'')
    
         for root, dirs, files in os.walk(xbmc_cache_path):
             file_count = 0

@@ -94,11 +94,11 @@ class Main:
         clear_check=local.getSetting('clear_check')    
         freespace = xbmc.getInfoLabel('system.memory(free)').split('MB')
         if ((int(freespace[0])) < (int(free_mem))): 
-            dialog = xbmcgui.Dialog()
-            dialog.ok(AddonTitle, "int freespace is:" + (freespace[0])+"<" + free_mem)
+            #dialog = xbmcgui.Dialog()
+            #dialog.ok(AddonTitle, "int freespace is:" + (freespace[0])+"<" + free_mem)
             xbmc.executebuiltin("Notification(Time to clear memory,Working....,10000)")
             CLEARCACHE2()
-        xbmc.sleep(int(clear_check)*15000)
+        xbmc.sleep(int(clear_check)*60000)
  
     def _update(self, type):
         xbmc.sleep(1000)
