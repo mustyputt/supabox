@@ -101,7 +101,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.supaboxupdater" version="1.0.0.0" name="Supabox Updater" provider-name="flaggsoft.com">
+<addon id="plugin.video.supaboxupdater" version="1.0.1" name="Supabox Updater" provider-name="flaggsoft.com">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 	</requires>

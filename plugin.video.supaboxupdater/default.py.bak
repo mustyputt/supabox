@@ -80,9 +80,9 @@ def HELPUPDATER(name,url,description,filetype,auth):
         if (kb.isConfirmed()):
             name_confirmed  = kb.getText()
         if (name_confirmed == str(auth)):
-            dialog=xbmcgui.Dialog(); dialog.ok("Password confirmed!","XXX install enabled.")
+            dialog=xbmcgui.Dialog(); dialog.ok("Password confirmed!  XXX install enabled.",name_confirmed)
         else:
-            dialog=xbmcgui.Dialog(); dialog.ok("Password Wrong!","XXX install not allowed.")
+            dialog=xbmcgui.Dialog(); dialog.ok("Password Wrong!  XXX install not allowed.",name_confirmed)
             return
     confirm=xbmcgui.Dialog()
     if confirm.yesno("Supabox","Would you like Supabox to ","update your add-on selection? "," "):
