@@ -81,12 +81,12 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.supaboxmaintenance" version="0.1.0"
+<addon id="plugin.video.supaboxmaintenance" version="0.1.1"
 	name="Supabox Maintenance Tool" provider-name="flaggsoft">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="plugin.video.youtube" version="2.1.0"/>
-    <import addon="script.module.addon.common" version="2.1.0"/>
+    <import addon="script.module.addon.common" version="2.0.1"/>
     <import addon="script.module.metahandler" version="1.0.0"/>
   </requires>
   <extension point="xbmc.python.script" library="default.py">
