@@ -28,9 +28,10 @@ def HELPCATEGORIES():
         for name,url,iconimage,fanart,description,filetype,auth in match:
             #if 'status' in filetype:
                 #main.addHELPDir(name,url,'updaterstatus',iconimage,fanart,description,filetype)
-            #else:    
-                main.addHELPDir(name,url,'helpupdater',iconimage,fanart,description,filetype,auth)
-                main.AUTO_VIEW('movies')
+            #else:
+                if auth == 'ok' or xxxcheck() is False:
+                    main.addHELPDir(name,url,'helpupdater',iconimage,fanart,description,filetype,auth)
+                    main.AUTO_VIEW('movies')
                 #print [name,url]
         #main.addHELPDir('Testing','http://www.firedrive.com/file/################','helpupdater',iconimage,fanart,description,filetype) ## For Testing to test a url with a FileHost.
         ## ### ## \/ OS Check and Button Suggestions \/ ## ### ## 
@@ -80,9 +81,9 @@ def HELPUPDATER(name,url,description,filetype,auth):
         if (kb.isConfirmed()):
             name_confirmed  = kb.getText()
         if (name_confirmed == str(auth)):
-            dialog=xbmcgui.Dialog(); dialog.ok("Password confirmed!  XXX install enabled.",name_confirmed)
+            dialog=xbmcgui.Dialog(); dialog.ok("Password confirmed!","XXX install enabled.")
         else:
-            dialog=xbmcgui.Dialog(); dialog.ok("Password Wrong!  XXX install not allowed.",name_confirmed)
+            dialog=xbmcgui.Dialog(); dialog.ok("Password Wrong!","XXX install not allowed.")
             return
     confirm=xbmcgui.Dialog()
     if confirm.yesno("Supabox","Would you like Supabox to ","update your add-on selection? "," "):
@@ -128,8 +129,27 @@ def HELPUPDATER(name,url,description,filetype,auth):
         
         time.sleep(2)
         xbmc.executebuiltin('UnloadSkin()'); xbmc.executebuiltin('ReloadSkin()'); xbmc.executebuiltin("LoadProfile(%s)" % proname)
-        dialog=xbmcgui.Dialog(); dialog.ok("Success!","Installation Complete","   [COLOR gold]Brought To You By Supabox[/COLOR]")
-        xbmc.executebuiltin('RestartApp')
+        dialog=xbmcgui.Dialog(); dialog.ok("Success!","Installation Complete","Restart SupaboxTV to see new addons.")
+        ##xbmc.executebuiltin('RestartApp')
+        if xxxcheck():
+            pass
+        else:
+            xxxinstalled()
+
+def xxxinstalled():
+    path=os.path.join(xbmc.translatePath('special://home'),'userdata','xxxaddons.ok')
+    if not os.path.exists(path): 
+        f=open(path,mode='w'); 
+        f.write('xxaddons loaded');
+        f.close(); 
+       
+def xxxcheck():
+    path=os.path.join(xbmc.translatePath('special://home'),'userdata','xxxaddons.ok')
+    if not os.path.exists(path): 
+        return False
+    else:
+        return True
+       
 def UPDATERSTATUS(url):
     link=OPEN_URL(url).replace('\n','').replace('\r','')
     match=re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)".+?ype="(.+?)"').findall(link)

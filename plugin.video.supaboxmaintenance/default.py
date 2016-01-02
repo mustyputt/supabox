@@ -1,6 +1,6 @@
 import plugintools
 import xbmc,xbmcaddon,xbmcgui,xbmcplugin,os,sys,re,urllib2,urllib,shutil,upload,time,extract,datetime,settings,advancedsettings
-import texturecache,sqlite3
+import texturecache,sqlite3,downloader
 from addon.common.addon import Addon
 from addon.common.net import Net
 from metahandler import metahandlers
@@ -218,13 +218,67 @@ def CLEARCACHE2(url):
         #pass
         #dialog = xbmcgui.Dialog()
         #dialog.ok(AddonTitle, "       Done Clearing Cache files")
-    PURGEPACKAGES(url);
+    PURGEPACKAGES(url)
     xbmc.executebuiltin("Notification('Memory Cleared','All Set!!')")
     dialog = xbmcgui.Dialog()
     dialog.ok("Supabox Message","Free memory after: " + xbmc.getInfoLabel('System.Memory(free)'))
+    MEMCHECKINSTALLER(url)
     xbmc.executebuiltin("XBC.ActivateWindow(Programs)");
 ################################
 ###     End Clear Cache  2    ###
+################################
+
+################################
+###      MEMCHECK Addon Installer     ###
+################################
+def MEMCHECKINSTALLER(url):
+    url = 'http://owncloud:8080/owncloud/index.php/s/yRBzGbJqnQxEFgX/download'
+    pluginpath=os.path.exists(xbmc.translatePath(os.path.join('special://home','addons','service.xbmc.supaboxmemcheck')))
+    path=xbmc.translatePath(os.path.join('special://home/addons','packages'))
+    lib=os.path.join(path,'memcheck.zip')
+    if pluginpath: xbmc.executebuiltin("RunAddon(service.xbmc.supaboxmemcheck)")
+    else:
+        url=FireDrive(url)
+        if '[error]' in url: print url; dialog=xbmcgui.Dialog(); dialog.ok("Error!",url); return
+        else: print url
+        dp=xbmcgui.DialogProgress(); dp.create("Supabox Updater","Downloading ",'','Please Wait')
+        downloader.download(url,lib,dp)
+        addonfolder=xbmc.translatePath(os.path.join('special://home','addons',''))
+        time.sleep(2)
+        dp.update(0,"","Extracting Zip Please Wait")
+        print '======================================='; print addonfolder; print '======================================='
+        extract.all(lib,addonfolder,dp)
+        time.sleep(3)
+        xbmc.executebuiltin("XBMC.UpdateLocalAddons()"); xbmc.executebuiltin("RunAddon(service.xbmc.supaboxmemcheck)")
+
+def FireDrive(url):
+    if ('http://www.firedrive.com/file/' not in url) and ('http://firedrive.com/file/' not in url) and ('https://www.firedrive.com/file/' not in url) and ('https://firedrive.com/file/' not in url): return url ## contain with current url if not a filedrive url.
+    #else:
+    try:
+        if 'https://' in url: url=url.replace('https://','http://')
+        html=net.http_GET(url).content
+        if ">This file doesn't exist, or has been removed.<" in html: return "[error]  This file doesn't exist, or has been removed."
+        elif ">File Does Not Exist | Firedrive<" in html: return "[error]  File Does Not Exist."
+        elif "404: This file might have been moved, replaced or deleted.<" in html: return "[error]  404: This file might have been moved, replaced or deleted."
+        #print html; 
+        data={}; r=re.findall(r'<input\s+type="\D+"\s+name="(.+?)"\s+value="(.+?)"\s*/>',html);
+        for name,value in r: data[name]=value
+        #print data; 
+        if len(data)==0: return '[error]  input data not found.'
+        html=net.http_POST(url,data).content
+        #print html
+        r=re.search('<a\s+href="(.+?)"\s+target="_blank"\s+id=\'top_external_download\'\s+title=\'Download This File\'\s*>',html)
+        if r: 
+        	print urllib.unquote_plus(r.group(1)); 
+        	return urllib.unquote_plus(r.group(1))
+        else: return url+'#[error]'
+    except: return url+'#[error]'
+
+
+
+
+################################
+###    End MEMCHECKAddon Installer   ###
 ################################
 
 ################################

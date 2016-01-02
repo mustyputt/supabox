@@ -28,9 +28,10 @@ def HELPCATEGORIES():
         for name,url,iconimage,fanart,description,filetype,auth in match:
             #if 'status' in filetype:
                 #main.addHELPDir(name,url,'updaterstatus',iconimage,fanart,description,filetype)
-            #else:    
-                main.addHELPDir(name,url,'helpupdater',iconimage,fanart,description,filetype,auth)
-                main.AUTO_VIEW('movies')
+            #else:
+                if auth == 'ok' or xxxcheck() is False:
+                    main.addHELPDir(name,url,'helpupdater',iconimage,fanart,description,filetype,auth)
+                    main.AUTO_VIEW('movies')
                 #print [name,url]
         #main.addHELPDir('Testing','http://www.firedrive.com/file/################','helpupdater',iconimage,fanart,description,filetype) ## For Testing to test a url with a FileHost.
         ## ### ## \/ OS Check and Button Suggestions \/ ## ### ## 
@@ -109,27 +110,28 @@ def HELPUPDATER(name,url,description,filetype,auth):
         dp.update(0,"","Extracting Zip Please Wait")
         print '======================================='; print addonfolder; print '======================================='
         extract.all(lib,addonfolder,dp)
-        link=OPEN_URL('http://andersonflagg.com/updatershortcuts.txt')
-        proname=xbmc.getInfoLabel("System.ProfileName")
-        shorts=re.compile('shortcut="(.+?)"').findall(link)
-        for shortname in shorts: xbmc.executebuiltin("Skin.SetString(%s)" % shortname)
-        #xbmc.executebuiltin('Skin.SetString(CustomBackgroundPath,%s)' %img)
-        #xbmc.executebuiltin('Skin.SetBool(ShowBackgroundVideo)')       ## Set to true so we can later set them to false.
-        #xbmc.executebuiltin('Skin.SetBool(ShowBackgroundVis)')         ## Set to true so we can later set them to false.
-        xbmc.executebuiltin('Skin.SetBool(HideBackGroundFanart)')      ## Set to true.
-        xbmc.executebuiltin('Skin.SetBool(HideVisualizationFanart)')   ## Set to true.
-        xbmc.executebuiltin('Skin.SetBool(AutoScroll)')                ## Set to true.
-        #xbmc.executebuiltin('Skin.ToggleSetting(ShowBackgroundVideo)') ## Switching from true to false.
-        #xbmc.executebuiltin('Skin.ToggleSetting(ShowBackgroundVis)')   ## Switching from true to false.
-        xbmc.executebuiltin('Skin.SetString(CustomBackgroundPath,%s)' % (os.path.join('special://','home','media','SKINDEFAULT.jpg')))
-        xbmc.executebuiltin('Skin.SetString(CustomLogoPath,%s)' % (os.path.join('special://','home','media','initlogo.bmp')))      
-        xbmc.executebuiltin('Skin.SetBool(UseCustomBackground)')
-        xbmc.executebuiltin('Skin.SetBool(UseCustomLogo)')
         
-        time.sleep(2)
-        xbmc.executebuiltin('UnloadSkin()'); xbmc.executebuiltin('ReloadSkin()'); xbmc.executebuiltin("LoadProfile(%s)" % proname)
-        dialog=xbmcgui.Dialog(); dialog.ok("Success!","Installation Complete","   [COLOR gold]Brought To You By Supabox[/COLOR]")
-        xbmc.executebuiltin('RestartApp')
+        dialog=xbmcgui.Dialog(); dialog.ok("Success!","Installation Complete","Restart SupaboxTV to see new addons.")
+        ##xbmc.executebuiltin('RestartApp')
+        if xxxcheck():
+            pass
+        else:
+            xxxinstalled()
+
+def xxxinstalled():
+    path=os.path.join(xbmc.translatePath('special://home'),'userdata','xxxaddons.ok')
+    if not os.path.exists(path): 
+        f=open(path,mode='w'); 
+        f.write('xxaddons loaded');
+        f.close(); 
+       
+def xxxcheck():
+    path=os.path.join(xbmc.translatePath('special://home'),'userdata','xxxaddons.ok')
+    if not os.path.exists(path): 
+        return False
+    else:
+        return True
+       
 def UPDATERSTATUS(url):
     link=OPEN_URL(url).replace('\n','').replace('\r','')
     match=re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)".+?ype="(.+?)"').findall(link)

@@ -1,5 +1,5 @@
 import xbmc,xbmcaddon,xbmcgui,xbmcplugin,os
-AddonID='plugin.video.supaboxmemcheck'
+AddonID='plugin.video.supaboxmaintenance'
 ADDON=xbmcaddon.Addon(id=AddonID)
 DATA_PATH    =xbmc.translatePath(os.path.join('special://profile','addon_data',AddonID,''))
 ADDON_PATH   =xbmc.translatePath(os.path.join('special://home'   ,'addons',AddonID,''))
