@@ -81,7 +81,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.supaboxmaintenance" version="0.1.1"
+<addon id="plugin.video.supaboxmaintenance" version="0.1.2"
 	name="Supabox Maintenance Tool" provider-name="flaggsoft">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -101,7 +101,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.supaboxupdater" version="1.0.2" name="Supabox Updater" provider-name="flaggsoft.com">
+<addon id="plugin.video.supaboxupdater" version="1.0.3" name="Supabox Updater" provider-name="flaggsoft.com">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 	</requires>
@@ -166,6 +166,18 @@
 	</extension>
 </addon>
 
+<addon id="resource.uisounds.supaboxtv" version="1.0.0" name="supaboxtv UI Sounds" provider-name="Team Kodi">
+  <requires>
+    <import addon="kodi.resource" version="1.0.0"/>
+  </requires>
+  <extension point="kodi.resource.uisounds"/>
+  <extension point="kodi.addon.metadata">
+    <summary lang="en">Confluence GUI sounds</summary>
+    <description lang="en">Confluence GUI sounds</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="service.xbmc.supaboxmemcheck"
       name="Memory Check"
       version="1.0.2"
@@ -189,7 +201,7 @@
 
 <addon
   id="skin.supaboxtv"
-  version="1.0.15"
+  version="1.0.16"
   name="SupaboxTV"
   provider-name="SupaboxTV Team">
   <requires>

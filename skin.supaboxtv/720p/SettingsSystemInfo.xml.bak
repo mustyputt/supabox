@@ -273,14 +273,14 @@
 					<label>-</label>
 					<font>font13</font>
 				</control>
-				<control type="label" id="52">
-					<description>Kodi Build Version</description>
+				<control type="label">
+					<description>Version</description>
 					<left>20</left>
 					<top>400</top>
 					<width>730</width>
-					<label>Supabox BITCH!!!</label>
+					<label>$LOCALIZE[13271] $INFO[System.CPUUsage]</label>
 					<align>right</align>
-					<textcolor>blue</textcolor>
+					<textcolor>green</textcolor>
 					<shadowcolor>black</shadowcolor>
 					<font>font13_title</font>
 				</control>
@@ -349,7 +349,7 @@
 			<itemgap>5</itemgap>
 			<control type="label">
 				<include>WindowTitleCommons</include>
-				<label>$LOCALIZE[131]</label>
+				<label>$LOCALIZE[130]</label>
 			</control>
 		</control>
 		<include>Clock</include>

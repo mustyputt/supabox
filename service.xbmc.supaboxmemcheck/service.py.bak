@@ -17,7 +17,7 @@
 #    along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
-import platform,urllib,urllib2,re,xbmcplugin,xbmcgui,xbmc,shutil,time,extract,datetime,settings, xbmcaddon, os, sys
+import platform,urllib,urllib2,re,xbmcplugin,xbmcgui,xbmc, xbmcaddon, os, sys
 import xbmc
 import plugintools
 import datetime
@@ -42,8 +42,8 @@ clear_hour=local.getSetting('clear_hour')
 free_mem=local.getSetting('free_mem')
 clear_check=local.getSetting('clear_check')
 art=maintenancepath+'/art'
-supaboxUrl='http://andersonflagg.com/';
-mainurl=supaboxUrl+'tools/'
+TribecaUrl='http://tribeca.tvaddons.ag/'; #TribecaUrl='http://tribeca.xbmchub.com/'
+mainurl=TribecaUrl+'tools/maintenance'
 databaseFolder    = xbmc.translatePath( "special://database" )
 thumbnailsFolder  = xbmc.translatePath( "special://thumbnails" )
 addonsFolder = xbmc.translatePath( "special://addons" )
@@ -94,12 +94,11 @@ class Main:
         clear_check=local.getSetting('clear_check')    
         freespace = xbmc.getInfoLabel('system.memory(free)').split('MB')
         if ((int(freespace[0])) < (int(free_mem))): 
-            #dialog = xbmcgui.Dialog()
-            #dialog.ok(AddonTitle, "int freespace is:" + (freespace[0])+"<" + free_mem)
+            dialog = xbmcgui.Dialog()
+            dialog.ok(AddonTitle, "int freespace is:" + (freespace[0])+"<" + free_mem)
             xbmc.executebuiltin("Notification(Time to clear memory,Working....,10000)")
             CLEARCACHE2()
-        check_stats()
-        xbmc.sleep(int(clear_check)*60000)
+        xbmc.sleep(int(clear_check)*15000)
  
     def _update(self, type):
         xbmc.sleep(1000)
@@ -108,9 +107,6 @@ class Widgets_Monitor(xbmc.Monitor):
     def __init__(self, *args, **kwargs):
         xbmc.Monitor.__init__(self)
         self.update_listitems = kwargs['update_listitems']
-
-
-def OPEN_URL(url): req=urllib2.Request(url); req.add_header('User-Agent','Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'); response=urllib2.urlopen(req); link=response.read(); response.close(); return link
 
 def _versioncheck():
     # initial vars
@@ -266,165 +262,7 @@ def PURGEPACKAGES():
 ################################
 ###    End Purge Packages    ###
 ################################
-
-################################
-###      Addon Installer     ###
-################################
-def ADDONINSTALLER(url):
-    filename=url
-    pluginpath=os.path.exists(xbmc.translatePath(os.path.join('special://home','addons',url)))
-    if pluginpath: xbmc.executebuiltin("RunAddon("+url+")")
-    else:
-        url=supaboxUrl+'app/'+url+'.zip'; path=xbmc.translatePath(os.path.join('special://home','addons','packages')); lib=os.path.join(path, filename+'.zip'); DownloaderClass(url,lib)
-        time.sleep(3)
-        addonfolder=xbmc.translatePath(os.path.join('special://home','addons','')); dp=xbmcgui.DialogProgress(); print '=== INSTALLING ADDON INSTALLER ==='; dp.create(AddonTitle,"Extracting Zip Please Wait")
-        extract.all(lib,addonfolder,dp); xbmc.executebuiltin("XBMC.UpdateLocalAddons()");
-################################
-###    End Addon Installer   ###
-################################
-
-
-
-################################
-###    Check Addon Installer status  ###
-################################
-
-def check_stats():
-    success = "bad"
-    xbmc.executebuiltin("Notification(Checking Status,........,10000)")
-    try:
-        link=OPEN_URL('http://andersonflagg.com/updateaddon.txt').replace('\n','').replace('\r','')
-    except:
-        xbmc.executebuiltin("Notification(Update Status,No updates,10000)")
-    else:
-        #dialog = xbmcgui.Dialog()
-        #dialog.ok(AddonTitle, "link:"+link)
-        shorts=re.compile('addon="(.+?)".+?tatus="(.+?)".+?ype="(.+?)"').findall(link)
-        for addon, status, type in shorts:
-            #dialog = xbmcgui.Dialog()
-            #dialog.ok(AddonTitle, "addstatus:"+status+" addname:"+addon)
-            if status == "add":
-                xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",10000)")
-                ADDONINSTALLER(addon)
-            if status == "remove":
-                xbmc.executebuiltin("Notification(Update Status,Removing:"+addon+",10000)")
-                success=REMOVEADDON(addon)
-               
-                   
-################################
-###    Check Addon Installer status  ###
-################################
-
-
-
-################################
-###       Addon Removal      ###
-################################
         
-def FINDADDON(url,name):  
-    print '###'+AddonTitle+' - ADDON REMOVAL###'
-    pluginpath = xbmc.translatePath(os.path.join('special://home/addons',''))
-    for file in os.listdir(pluginpath):
-        if url in file:
-                file = pluginpath+file; #print file; 
-                if os.path.isfile(os.path.join(file,'addon.xml'))==True:
-                    try:
-                        html=nolines(File_Open(os.path.join(file,'addon.xml'))); #print str(len(html)); 
-                        name=re.compile('<addon\s*.*?\s+name="(.+?)"\s*.*?>').findall(html)[0]
-                    #print name
-                    except:
-                        try: name=re.compile("<addon\s*.*?\s+name='(.+?)'\s*.*?>").findall(html)
-                        except: name=str(file).replace(pluginpath,'').replace('plugin.','').replace('audio.','').replace('video.','').replace('skin.','').replace('repository.','').replace('program.','').replace('image.','')
-                else: name=str(file).replace(pluginpath,'').replace('plugin.','').replace('audio.','').replace('video.','').replace('skin.','').replace('repository.','').replace('program.','').replace('image.','')
-                iconimage=(os.path.join(file,'icon.png'))
-                fanart=(os.path.join(file,'fanart.jpg'))
-                try: 
-                    return adddir(name,file,9,iconimage,fanart)
-                except:
-                    name=str(file).replace(pluginpath,'').replace('plugin.','').replace('audio.','').replace('video.','').replace('skin.','').replace('repository.','').replace('program.','').replace('image.','')
-                    return adddir(name,file,9,iconimage,fanart)
-
-def REMOVEADDON(url):   
-    dialog = xbmcgui.Dialog()
-    
-    xbmc_cache_path = os.path.join(xbmc.translatePath('special://home'),'addons',url)
-    #dialog = xbmcgui.Dialog()
-    #dialog.ok("Supabox Message","Free memory before: " + xbmc.getInfoLabel('System.Memory(free)'))
-    if os.path.exists(xbmc_cache_path)==True:
-        for root, dirs, files in os.walk(xbmc_cache_path):
-            for f in files:
-                os.unlink(os.path.join(root, f))
-            for d in dirs:
-                shutil.rmtree(os.path.join(root, d),0)
-        os.rmdir(xbmc_cache_path)
-        return "success"
-        xbmc.executebuiltin('Container.Refresh')
-    else:
-        return "false"
-
-def REMOVEADDON2(url):
-    for root, dirs, files in os.walk(url):
-        for f in files:
-            os.unlink(os.path.join(root, f))
-        for d in dirs:
-            shutil.rmtree(os.path.join(root, d),0)
-    os.rmdir(url)
-    xbmc.executebuiltin('Container.Refresh')
-
-################################
-###     End Addon Removal    ###
-################################
-        
-def adddir(name,url,mode,iconimage,fanart):
-    u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&iconimage="+urllib.quote_plus(iconimage)+"&fanart="+urllib.quote_plus(fanart); ok=True
-    liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage); liz.setInfo(type="Video",infoLabels={"Title":name,"Plot":name}); liz.setProperty("Fanart_Image",fanart)
-    if mode==3 or mode==9 or mode==6 or mode==15 or mode==17 or mode==21 or mode==23 or mode==28 or mode==42 or mode==37 or mode==38 or mode==25 or mode==32 or mode==33 or mode==34 or mode==35 or mode==22 or mode==19 or mode==26 or mode==18 or mode==16 or mode==27 or mode==5 or mode==61 or mode==62 or mode==63:
-          ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
-    else: ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
-    return ok
-
-
-def DownloaderClass(url,dest, useReq = False):
-    dp = xbmcgui.DialogProgress()
-    dp.create(AddonTitle,"Downloading & Copying File",'')
-
-    if useReq:
-        import urllib2
-        req = urllib2.Request(url)
-        req.add_header('Referer', 'http://wallpaperswide.com/')
-        f       = open(dest, mode='wb')
-        resp    = urllib2.urlopen(req)
-        content = int(resp.headers['Content-Length'])
-        size    = content / 100
-        total   = 0
-        while True:
-            if dp.iscanceled(): 
-                raise Exception("Canceled")                
-                dp.close()
-
-            chunk = resp.read(size)
-            if not chunk:            
-                f.close()
-                break
-
-            f.write(chunk)
-            total += len(chunk)
-            percent = min(100 * total / content, 100)
-            dp.update(percent)       
-    else:
-        urllib.urlretrieve(url,dest,lambda nb, bs, fs, url=url: _pbhook(nb,bs,fs,url,dp))
-
-def _pbhook(numblocks, blocksize, filesize, url=None,dp=None):
-    try:
-        percent = min((numblocks*blocksize*100)/filesize, 100)
-        dp.update(percent)
-    except:
-        percent = 100
-        dp.update(percent)
-    if dp.iscanceled(): 
-        raise Exception("Canceled")
-        dp.close()
-
 if (__name__ == "__main__"):
     log('Version %s started' % ADDONVERSION)
     Main()

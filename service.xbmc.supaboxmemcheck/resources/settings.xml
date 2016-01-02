@@ -1,5 +1,5 @@
 <settings>
    <setting id="clear_hour" type="number" label="Hour to Clear Cache (24 hour time)" default="3"/>
  <setting id="free_mem" type="number" label="Free memory before cache clears. (Megabytes)" default="200"/>
-<setting id="clear_check" type="number" label="Free memory check inteval. (Minutes)" default="60"/>
+<setting id="clear_check" type="number" label="Free memory check inteval. (Minutes)" default="1"/>
 </settings>

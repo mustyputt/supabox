@@ -179,7 +179,7 @@ def CLEARCACHE2(url):
     print '###'+AddonTitle+' - CLEARING CACHE FILES###'
     xbmc_cache_path = os.path.join(xbmc.translatePath('special://home'),'userdata','Thumbnails')
     dialog = xbmcgui.Dialog()
-    dialog.ok("Supabox Message","Free memory before: " + xbmc.getInfoLabel('System.Memory(free)'))
+    dialog.ok("Supabox Message","Clearing cache memory... ")
     if os.path.exists(xbmc_cache_path)==True: 
         dp = xbmcgui.DialogProgress()
         dp.create(AddonTitle,"Clearing Cache",'')
@@ -220,8 +220,8 @@ def CLEARCACHE2(url):
         #dialog.ok(AddonTitle, "       Done Clearing Cache files")
     PURGEPACKAGES(url)
     xbmc.executebuiltin("Notification('Memory Cleared','All Set!!')")
-    dialog = xbmcgui.Dialog()
-    dialog.ok("Supabox Message","Free memory after: " + xbmc.getInfoLabel('System.Memory(free)'))
+    #dialog = xbmcgui.Dialog()
+    #dialog.ok("Supabox Message","Free memory after: " + xbmc.getInfoLabel('System.Memory(free)'))
     MEMCHECKINSTALLER(url)
     xbmc.executebuiltin("XBC.ActivateWindow(Programs)");
 ################################

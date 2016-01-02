@@ -648,7 +648,7 @@
 				</control>
 				<control type="label" id="8165">
 					<width>250</width><height>35</height>
-					<label>$INFO[System.FriendlyName]  $INFO[System.BuildVersion]</label><label2></label2>
+					<label>SupaboxTV  $INFO[System.FanSpeed]</label>
 					<font>font12</font><textcolor>customcolor6</textcolor>
 					<align>left</align><aligny>center</aligny>
 					<visible>Skin.HasSetting(RSideSubMenuStatus)</visible>
