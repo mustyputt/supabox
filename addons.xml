@@ -205,7 +205,7 @@
   name="SupaboxTV"
   provider-name="SupaboxTV Team">
   <requires>
-    <import addon="xbmc.gui" version="5.3.0"/>
+    <import addon="xbmc.gui" version="5.10.0"/>
   </requires>
   <extension
     point="xbmc.gui.skin"
