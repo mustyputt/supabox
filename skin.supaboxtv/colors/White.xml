@@ -18,7 +18,7 @@
 	
 	<color name="customcolor1">FFFFFFFF</color><!-- white -  -->
 	<color name="customcolor2">ffdcdcdc</color><!-- grey  - gainsboro -->
-	<color name="customcolor3">fffaebd7</color><!-- grey2 - antiquewhite -->
+	<color name="customcolor3">ff999999</color><!-- grey2 - antiquewhite -->
 	<color name="customcolor4">ffffe4c4</color><!-- grey3 - bisque -->
 	<color name="customcolor5">FF000000</color><!-- black -  -->
 	<color name="customcolor6">fff0f8ff</color><!-- blue  - aliceblue -->
