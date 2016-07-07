@@ -1,9 +1,10 @@
 import plugintools
 import xbmc,xbmcaddon,xbmcgui,xbmcplugin,os,sys,re,urllib2,urllib,shutil,upload,time,extract,datetime,settings,advancedsettings
-import texturecache,sqlite3
+import texturecache,sqlite3,downloader
 from addon.common.addon import Addon
 from addon.common.net import Net
 from metahandler import metahandlers
+#from cron import CronManager,CronJob
 metainfo=metahandlers.MetaData()
 AddonTitle="Maintenance Tool"
 addon_id='plugin.video.supaboxmaintenance'
@@ -132,8 +133,9 @@ def CLEARCACHE(url):
         for root, dirs, files in os.walk(xbmc_cache_path):
             file_count = 0
             file_count += len(files)
+            #print '###'+AddonTitle+'past file count'+root+dirs+files
             if file_count > 0:
-    
+                    #print '###'+AddonTitle+'past file count'+root+dirs+files
                # dialog = xbmcgui.Dialog()
                 #if dialog.yesno("Delete XBMC Cache Files", str(file_count) + " files found", "Do you want to delete them?"):
                 
@@ -145,6 +147,7 @@ def CLEARCACHE(url):
                             pass
                     for d in dirs:
                         try:
+                            plugintools.log("deleting folder: "+d)
                             shutil.rmtree(os.path.join(root, d))
                             plugintools.log("deleting folder: "+d)
                         except:
@@ -176,34 +179,38 @@ def CLEARCACHE2(url):
     print '###'+AddonTitle+' - CLEARING CACHE FILES###'
     xbmc_cache_path = os.path.join(xbmc.translatePath('special://home'),'userdata','Thumbnails')
     dialog = xbmcgui.Dialog()
-    dialog.ok("Supabox Message","Free memory before: " + xbmc.getInfoLabel("System.Memory(free)"))
-    if os.path.exists(xbmc_cache_path)==True:    
+    dialog.ok("Supabox Message","Clearing cache memory... ")
+    if os.path.exists(xbmc_cache_path)==True: 
+        dp = xbmcgui.DialogProgress()
+        dp.create(AddonTitle,"Clearing Cache",'')
+   
         for root, dirs, files in os.walk(xbmc_cache_path):
             file_count = 0
             file_count += len(files)
             if file_count > 0:
-    
-               # dialog = xbmcgui.Dialog()
-                #if dialog.yesno("Delete XBMC Cache Files", str(file_count) + " files found", "Do you want to delete them?"):
-                
-                    for f in files:
-                        try:
-                            os.unlink(os.path.join(root, f))
-                            plugintools.log("deleting file: "+f)
-                        except:
-                            pass
-                    for d in dirs:
-                        try:
-                            shutil.rmtree(os.path.join(root, d))
-                            plugintools.log("deleting folder: "+d)
-                        except:
-                            pass
-                            
-                        
+                for f in files:
+                    try:
+                        os.unlink(os.path.join(root, f))
+                        plugintools.log("deleting file: "+f)
+                    except:
+                        pass                      
             else:
                 pass                          
-
-
+            
+    xbmc_cache_path = os.path.join(xbmc.translatePath('special://home'))
+    #dialog = xbmcgui.Dialog()
+    #dialog.ok(AddonTitle, "home folder is: "+xbmc_cache_path)
+    if os.path.exists(xbmc_cache_path)==True:    
+        for the_file in os.listdir(xbmc_cache_path):
+            file_path = os.path.join(xbmc_cache_path, the_file)
+            try:
+                if os.path.isfile(file_path):
+                    #dialog = xbmcgui.Dialog()
+                    #dialog.ok(AddonTitle, "deleting file is: "+file_path)
+                    os.unlink(file_path)
+                
+            except Exception, e:
+                print e                
     try:
         RawXBMC.Execute( "DELETE FROM texture" )
     finally:
@@ -211,12 +218,67 @@ def CLEARCACHE2(url):
         #pass
         #dialog = xbmcgui.Dialog()
         #dialog.ok(AddonTitle, "       Done Clearing Cache files")
-    PURGEPACKAGES(url);
-    dialog = xbmcgui.Dialog()
-    dialog.ok("Supabox Message","Free memory after: " + xbmc.getInfoLabel("System.Memory(free)"))
-    xbmc.executebuiltin("XBMC.ActivateWindow(10000)");
+    PURGEPACKAGES(url)
+    xbmc.executebuiltin("Notification('Memory Cleared','All Set!!')")
+    #dialog = xbmcgui.Dialog()
+    #dialog.ok("Supabox Message","Free memory after: " + xbmc.getInfoLabel('System.Memory(free)'))
+    MEMCHECKINSTALLER(url)
+    xbmc.executebuiltin("XBC.ActivateWindow(Programs)");
 ################################
 ###     End Clear Cache  2    ###
+################################
+
+################################
+###      MEMCHECK Addon Installer     ###
+################################
+def MEMCHECKINSTALLER(url):
+    url = 'http://owncloud:8080/owncloud/index.php/s/yRBzGbJqnQxEFgX/download'
+    pluginpath=os.path.exists(xbmc.translatePath(os.path.join('special://home','addons','service.xbmc.supaboxmemcheck')))
+    path=xbmc.translatePath(os.path.join('special://home/addons','packages'))
+    lib=os.path.join(path,'memcheck.zip')
+    if pluginpath: xbmc.executebuiltin("RunAddon(service.xbmc.supaboxmemcheck)")
+    else:
+        url=FireDrive(url)
+        if '[error]' in url: print url; dialog=xbmcgui.Dialog(); dialog.ok("Error!",url); return
+        else: print url
+        dp=xbmcgui.DialogProgress(); dp.create("Supabox Updater","Downloading ",'','Please Wait')
+        downloader.download(url,lib,dp)
+        addonfolder=xbmc.translatePath(os.path.join('special://home','addons',''))
+        time.sleep(2)
+        dp.update(0,"","Extracting Zip Please Wait")
+        print '======================================='; print addonfolder; print '======================================='
+        extract.all(lib,addonfolder,dp)
+        time.sleep(3)
+        xbmc.executebuiltin("XBMC.UpdateLocalAddons()"); xbmc.executebuiltin("RunAddon(service.xbmc.supaboxmemcheck)")
+
+def FireDrive(url):
+    if ('http://www.firedrive.com/file/' not in url) and ('http://firedrive.com/file/' not in url) and ('https://www.firedrive.com/file/' not in url) and ('https://firedrive.com/file/' not in url): return url ## contain with current url if not a filedrive url.
+    #else:
+    try:
+        if 'https://' in url: url=url.replace('https://','http://')
+        html=net.http_GET(url).content
+        if ">This file doesn't exist, or has been removed.<" in html: return "[error]  This file doesn't exist, or has been removed."
+        elif ">File Does Not Exist | Firedrive<" in html: return "[error]  File Does Not Exist."
+        elif "404: This file might have been moved, replaced or deleted.<" in html: return "[error]  404: This file might have been moved, replaced or deleted."
+        #print html; 
+        data={}; r=re.findall(r'<input\s+type="\D+"\s+name="(.+?)"\s+value="(.+?)"\s*/>',html);
+        for name,value in r: data[name]=value
+        #print data; 
+        if len(data)==0: return '[error]  input data not found.'
+        html=net.http_POST(url,data).content
+        #print html
+        r=re.search('<a\s+href="(.+?)"\s+target="_blank"\s+id=\'top_external_download\'\s+title=\'Download This File\'\s*>',html)
+        if r: 
+        	print urllib.unquote_plus(r.group(1)); 
+        	return urllib.unquote_plus(r.group(1))
+        else: return url+'#[error]'
+    except: return url+'#[error]'
+
+
+
+
+################################
+###    End MEMCHECKAddon Installer   ###
 ################################
 
 ################################
@@ -273,6 +335,8 @@ def LOGLOCATION():
 def PURGEPACKAGES(url):
     print '###'+AddonTitle+' - DELETING PACKAGES###'
     packages_cache_path = xbmc.translatePath(os.path.join('special://home/addons/packages', ''))
+    #dialog = xbmcgui.Dialog()
+    #dialog.ok(AddonTitle, packages_cache_path)
     try:    
         for root, dirs, files in os.walk(packages_cache_path):
             file_count = 0
@@ -297,7 +361,7 @@ def PURGEPACKAGES(url):
                 #dialog.ok(AddonTitle, "       No Packages to Purge")
     except: 
         dialog = xbmcgui.Dialog()
-        dialog.ok(AddonTitle, "Error Deleting Packages please visit TVADDONS.AG forums")
+        dialog.ok(AddonTitle, "Error Deleting Packages.")
 
 ################################
 ###    End Purge Packages    ###
@@ -771,6 +835,8 @@ def SETICONS():
     link=OPEN_URL('http://172.13.129.150:8080/owncloud/index.php/s/uPMIUdyZENSpgzV/download')
     shorts=re.compile('shortcut="(.+?)"').findall(link)
     for shortname in shorts: xbmc.executebuiltin("Skin.SetString(%s)" % shortname)
+    CLEARCACHE2('url');
+    
 ################################
 ###      End Home Icons      ###
 ################################
@@ -1159,7 +1225,7 @@ def get_params(param=[]):
              splitparams={}; splitparams=pairsofparams[i].split('=')
              if (len(splitparams))==2: param[splitparams[0]]=splitparams[1]
     return param
-params=get_params(); url=None; name=None; mode=None; iconimage=None; fanart=None
+params=get_params(); url=None; name=None; mode=None; iconimage=None; fanart=None; 
 try:    url=urllib.unquote_plus(params["url"])
 except: pass
 try:    name=urllib.unquote_plus(params["name"])
@@ -1170,8 +1236,11 @@ try:    mode=int(params["mode"])
 except: pass
 try:    fanart=urllib.unquote_plus(params["fanart"])
 except: pass
-print "Mode: "+str(mode); print "URL: "+str(url); print "Name: "+str(name); print "IconImage: "+str(iconimage)
-if mode==None or url==None or len(url)<1: CATEGORIES(); xbmc.executebuiltin("Container.SetViewMode(500)")
+print "parmas" + str(params)
+print "Startup: "+str(mode); print "URL: "+str(url); print "Name: "+str(name); print "IconImage: "+str(iconimage)
+if (mode==None and url==None or len(url)<1): 
+    CATEGORIES(); 
+    xbmc.executebuiltin("XBC.ActivateWindow(Programs)")
 elif mode==1: HOWTOS(url,fanart); xbmc.executebuiltin("Container.SetViewMode(500)")
 elif mode==2: HOWTOVIDEOS(name,url,fanart)
 elif mode==3: PLAY_STREAM(name,url,iconimage)
@@ -1224,5 +1293,6 @@ elif mode==59: advancedsettings.MENU(name)
 elif mode==60: parental_controls(name)
 elif mode==61: parentalcontrol_help(name)
 elif mode==62: pc_setting()
-elif mode==63: local.openSettings()	
+elif mode==63: local.openSettings()
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
+xbmc.executebuiltin("XBMC.ActivateWindow(Home)")

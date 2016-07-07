@@ -1,0 +1,8 @@
+2014-10-14 15:25:30.284841:MainThread: Command line args: ['C:\\GitHub\\supabox\\plugin.video.supaboxclean\\texturecache.py', 'f']
+2014-10-14 15:25:30.284841:MainThread: Current version #: v1.7.6
+2014-10-14 15:25:30.284841:MainThread: Current platform : win32
+2014-10-14 15:25:30.284841:MainThread: Python  version #: v3.4.1.0 (final)
+2014-10-14 15:25:30.415847:MainThread: RPC connection established with IPv4
+2014-10-14 15:25:30.415847:MainThread: libVersion.JSON SOCKET REQUEST: [{"method": "JSONRPC.Version", "id": "libVersion", "jsonrpc": "2.0"}]
+2014-10-14 15:28:41.197458:MainThread: libVersion.BUFFER RECEIVED (len 0)
+2014-10-14 15:28:41.197458:MainThread: ERROR: Socket closed prematurely - exiting
