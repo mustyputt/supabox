@@ -282,7 +282,7 @@ def ADDONINSTALLER(urln,state):
         addoninstalled(urln)
     else:
         pluginpath=os.path.exists(xbmc.translatePath(os.path.join('special://home','addons',urln)))
-        if pluginpath: xbmc.executebuiltin("RunAddon("+urln+")")
+        if pluginpath: return #xbmc.executebuiltin("RunAddon("+urln+")")
         else:
             url=supaboxUrl+'app/'+urln+'.zip'; path=xbmc.translatePath(os.path.join('special://home','addons','packages')); lib=os.path.join(path, urln+'.zip'); DownloaderClass(url,lib)
             #dialog = xbmcgui.Dialog()
@@ -326,7 +326,7 @@ def addoninstalled(url):
 def check_stats():
     totadd = 0
     totremove = 0
-    xbmc.executebuiltin("Notification(Checking Status,........,10000)")
+    xbmc.executebuiltin("Notification(Checking Status,........,2000)")
     #dialog = xbmcgui.Dialog()
     #dialog.ok(AddonTitle, "checking now:")
     try:
@@ -345,21 +345,22 @@ def check_stats():
             #dialog.ok(AddonTitle, "addstatus:"+status+" addname:"+addon)
             if status == "update":
                 if not addoncheck(addon):
-                    xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",10000)")
+                    xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
                     ADDONINSTALLER(addon,1)
             if status == "add":
-                xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",10000)")
-                ADDONINSTALLER(addon,0)
+                if not addoncheck(addon):
+                    xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
+                    ADDONINSTALLER(addon,0)
             if status == "remove":
                 if addoncheck(addon):
-                    xbmc.executebuiltin("Notification(Update Status,Removing:"+addon+",10000)")
+                    xbmc.executebuiltin("Notification(Update Status,Removing:"+addon+",2000)")
                     FINDADDON(type,addon)
     except:
         xbmc.executebuiltin("Notification(Update Status,No updates,10000)")
         
-    if (totadd > 0 or totremove > 0):
-        dialog = xbmcgui.Dialog()
-        dialog.ok(AddonTitle, "Adding:"+str(totadd)+" Removing:"+str(totremove))
+    #if (totadd > 0 or totremove > 0):
+        #dialog = xbmcgui.Dialog()
+        #dialog.ok(AddonTitle, "Adding:"+str(totadd)+" Removing:"+str(totremove))
       
 
 ################################
@@ -375,7 +376,7 @@ def check_stats():
 def FINDADDON(url,name):  
     print '###'+AddonTitle+' - ADDON REMOVAL###'
     pluginpath = xbmc.translatePath(os.path.join('special://home/addons',''))
-    nameComp=str(name).replace(pluginpath,'').replace('plugin.','').replace('audio.','').replace('video.','').replace('skin.','').replace('repository.','').replace('program.','').replace('image.','').replace('script.','')
+    nameComp=str(name).replace(pluginpath,'').replace('plugin.','').replace('service.','').replace('audio.','').replace('video.','').replace('skin.','').replace('repository.','').replace('program.','').replace('image.','').replace('script.','')
     for file in os.listdir(pluginpath):
         if url in file:
                 file = pluginpath+file; #print file; 
@@ -386,8 +387,8 @@ def FINDADDON(url,name):
                     #print name
                     except:
                         try: name2=re.compile("<addon\s*.*?\s+name='(.+?)'\s*.*?>").findall(html)
-                        except: name2=str(file).replace(pluginpath,'').replace('plugin.','').replace('audio.','').replace('video.','').replace('skin.','').replace('repository.','').replace('program.','').replace('image.','').replace('script.','')
-                else: name2=str(file).replace(pluginpath,'').replace('plugin.','').replace('audio.','').replace('video.','').replace('skin.','').replace('repository.','').replace('program.','').replace('image.','').replace('script.','')
+                        except: name2=str(file).replace(pluginpath,'').replace('plugin.','').replace('service.','').replace('audio.','').replace('video.','').replace('skin.','').replace('repository.','').replace('program.','').replace('image.','').replace('script.','')
+                else: name2=str(file).replace(pluginpath,'').replace('plugin.','').replace('service.','').replace('audio.','').replace('video.','').replace('skin.','').replace('repository.','').replace('program.','').replace('image.','').replace('script.','')
                 iconimage=(os.path.join(file,'icon.png'))
                 fanart=(os.path.join(file,'fanart.jpg'))
                 #dialog = xbmcgui.Dialog()
@@ -395,7 +396,7 @@ def FINDADDON(url,name):
                 if nameComp == name2:
                     try: REMOVEADDON2(name,file)
                     except:
-                        name2=str(file).replace(pluginpath,'').replace('plugin.','').replace('audio.','').replace('video.','').replace('skin.','').replace('repository.','').replace('program.','').replace('image.','').replace('script.','')
+                        name2=str(file).replace(pluginpath,'').replace('plugin.','').replace('service.','').replace('audio.','').replace('video.','').replace('skin.','').replace('repository.','').replace('program.','').replace('image.','').replace('script.','')
                         REMOVEADDON2(name,file)
 
 def REMOVEADDON(url):   
@@ -417,11 +418,11 @@ def REMOVEADDON2(name,path):
          # remove if exists
          shutil.rmtree(path)
     xbmc.executebuiltin("XBMC.UpdateLocalAddons()")
-    dialog = xbmcgui.Dialog()
-    dialog.ok(AddonTitle, "nameComp:"+name+" name2:"+path)
+    #dialog = xbmcgui.Dialog()
+    #dialog.ok(AddonTitle, "nameComp:"+name+" name2:"+path)
     addonremoved(name)
-    dialog = xbmcgui.Dialog()
-    dialog.ok("ADDONS UPDATE", "Addons have been deleted.  Please restart Supabox Media.  Press the HOME button on your remote")
+    #dialog = xbmcgui.Dialog()
+    #dialog.ok("ADDONS UPDATE", "Non-Functional Addons have been deleted.  Please restart Supabox Media.  Press the HOME button on your remote")
 ################################
 ###     End Addon Removal    ###
 ################################
