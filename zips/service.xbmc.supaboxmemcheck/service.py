@@ -282,7 +282,7 @@ def ADDONINSTALLER(urln,state):
         addoninstalled(urln)
     else:
         pluginpath=os.path.exists(xbmc.translatePath(os.path.join('special://home','addons',urln)))
-        if pluginpath: return #xbmc.executebuiltin("RunAddon("+urln+")")
+        if (pluginpath and state != 2): return #xbmc.executebuiltin("RunAddon("+urln+")")
         else:
             url=supaboxUrl+'app/'+urln+'.zip'; path=xbmc.translatePath(os.path.join('special://home','addons','packages')); lib=os.path.join(path, urln+'.zip'); DownloaderClass(url,lib)
             #dialog = xbmcgui.Dialog()
@@ -343,10 +343,13 @@ def check_stats():
         for addon, status, type in shorts:
             #dialog = xbmcgui.Dialog()
             #dialog.ok(AddonTitle, "addstatus:"+status+" addname:"+addon)
+            if status == "apk":
+                xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
+                ADDONINSTALLER(addon,1)
             if status == "update":
                 if not addoncheck(addon):
                     xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
-                    ADDONINSTALLER(addon,1)
+                    ADDONINSTALLER(addon,2)
             if status == "add":
                 if not addoncheck(addon):
                     xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
