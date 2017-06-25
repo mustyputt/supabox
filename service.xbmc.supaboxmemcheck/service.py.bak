@@ -309,6 +309,13 @@ def addoncheck(url):
         return False
     else:
         return True
+
+def addondelcheck(url):
+    path=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.deleted')
+    if not os.path.exists(path): 
+        return False
+    else:
+        return True
        
 def addonremoved(url):
     path=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.ok')
@@ -341,6 +348,7 @@ def check_stats():
     xbmc.executebuiltin("Notification(Checking Status,........,2000)")
     #dialog = xbmcgui.Dialog()
     #dialog.ok(AddonTitle, "checking now:")
+    
     try:
         link=OPEN_URL('http://172.13.129.150/app/updateaddon.txt').replace('\n','').replace('\r','')
         plugintools.log("link: "+link)
@@ -358,18 +366,22 @@ def check_stats():
             if status == "apk":
                 xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
                 ADDONINSTALLER(addon,1)
+                enableAddons()
             if status == "update":
                 if not addoncheck(addon):
                     xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
                     ADDONINSTALLER(addon,2)
+                    enableAddons()
             if status == "add":
                 if not addoncheck(addon):
                     xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
                     ADDONINSTALLER(addon,0)
+                    enableAddons()
             if status == "remove":
-                #if addoncheck(addon):
+                if addoncheck(addon):
                     xbmc.executebuiltin("Notification(Update Status,Removing:"+addon+",2000)")
                     FINDADDON(type,addon)
+                    enableAddons()
     except:
         xbmc.executebuiltin("Notification(Update Status,No updates,10000)")
         
@@ -559,7 +571,7 @@ def enableAddons():
 			try:
 				if isinstance(msg, unicode):
 					msg = '%s' % (msg.encode('utf-8'))
-				xbmc.log('[AutoExec.py]: %s' % msg, level)
+				#xbmc.log('[AutoExec.py]: %s' % msg, level)
 			except Exception as e:
 				try: xbmc.log('[AutoExec.py] Logging Failure: %s' % (e), xbmc.LOGERROR)
 				except: pass
@@ -599,13 +611,13 @@ def enableAddons():
 				self.log("Erroring enabling addon: %s" % addon, xbmc.LOGERROR)
 	
 	try:
-		xbmcgui.Dialog().notification("AutoExec.py", "Starting Script...")
+		#xbmcgui.Dialog().notification("AutoExec.py", "Starting Script...")
 		firstRun = enableAll()
-		xbmcgui.Dialog().notification("AutoExec.py", "All Addons Enabled")
+		#xbmcgui.Dialog().notification("AutoExec.py", "All Addons Enabled")
 		xbmcvfs.delete('special://userdata/autoexec.py')
 	except Exception, e:
-		xbmcgui.Dialog().notification("AutoExec.py", "Error Check LogFile")
-		xbmc.log(str(e), xbmc.LOGERROR)
+		#xbmcgui.Dialog().notification("AutoExec.py", "Error Check LogFile")
+		#xbmc.log(str(e), xbmc.LOGERROR)
 		xbmcvfs.delete('special://userdata/autoexec.py')
 
 def parseDOM(html, name=u"", attrs={}, ret=False):
