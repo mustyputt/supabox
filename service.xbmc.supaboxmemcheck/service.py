@@ -320,8 +320,8 @@ def addondelcheck(url):
 def addonremoved(url):
     path=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.ok')
     path2=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.deleted')
-    dialog = xbmcgui.Dialog()
-    dialog.ok(AddonTitle, "deleted:"+url)
+    #dialog = xbmcgui.Dialog()
+    #dialog.ok(AddonTitle, "deleted:"+url)
     if not os.path.exists(path): 
         time.sleep(1)
     else:
