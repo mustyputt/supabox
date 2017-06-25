@@ -17,12 +17,20 @@
 #    along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
+
+
 import platform,urllib,urllib2,re,xbmcplugin,xbmcgui,xbmc,shutil,time,extract,xbmcaddon, os, sys
 import xbmc
 import plugintools
 import datetime
 import texturecache,sqlite3
 import lib.common
+
+import xbmcvfs, glob
+from datetime import datetime
+try:    from sqlite3 import dbapi2 as database
+except: from pysqlite2 import dbapi2 as database
+
 from lib.common import log, dialog_yesno
 from lib.common import upgrade_message as _upgrademessage
 from lib.common import upgrade_message2 as _upgrademessage2
@@ -98,7 +106,8 @@ class Main:
             #dialog.ok(AddonTitle, "int freespace is:" + (freespace[0])+"<" + free_mem)
             xbmc.executebuiltin("Notification(Time to clear memory,Working....,10000)")
             CLEARCACHE2()
-        check_stats()    
+        check_stats()
+        SETICONS()
         xbmc.sleep(int(clear_check)*60000)
         
     def _update(self, type):
@@ -301,15 +310,26 @@ def addoncheck(url):
         return False
     else:
         return True
+
+def addondelcheck(url):
+    path=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.deleted')
+    if os.path.exists(path): 
+        return False
+    else:
+        return True
        
 def addonremoved(url):
     path=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.ok')
-    dialog = xbmcgui.Dialog()
-    dialog.ok(AddonTitle, "deleted:"+url)
+    path2=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.deleted')
+    #dialog = xbmcgui.Dialog()
+    #dialog.ok(AddonTitle, "deleted:"+url)
     if not os.path.exists(path): 
         time.sleep(1)
     else:
         os.remove(path)
+    f=open(path2,mode='w'); 
+    f.write('ADDON INSTLLAER####   '+url+' addon deleted');
+    f.close(); 
        
 
 def addoninstalled(url):
@@ -322,16 +342,27 @@ def addoninstalled(url):
 ################################
 ###    Check Addon Installer status  ###
 ################################
-
+debug=1
 def check_stats():
     totadd = 0
     totremove = 0
     xbmc.executebuiltin("Notification(Checking Status,........,2000)")
-    #dialog = xbmcgui.Dialog()
-    #dialog.ok(AddonTitle, "checking now:")
+    
+    
     try:
-        link=OPEN_URL('http://172.13.129.150/app/updateaddon.txt').replace('\n','').replace('\r','')
-        plugintools.log("link: "+link)
+        if (debug):
+            url="service.xbmc.supaboxmemcheck\update.txt"
+            path=os.path.join(xbmc.translatePath('special://home'),'addons',url)
+            
+            f=open(path).read();
+        
+            link=f.replace('\n','').replace('\r','')
+           
+            #f.close();
+          
+        else:
+            link=OPEN_URL('http://172.13.129.150/app/updateaddon.txt').replace('\n','').replace('\r','')
+        
         shorts=re.compile('addon="(.+?)".+?tatus="(.+?)".+?ype="(.+?)"').findall(link)
         for addon, status, type in shorts:
             plugintools.log(addon)
@@ -344,23 +375,27 @@ def check_stats():
             #dialog = xbmcgui.Dialog()
             #dialog.ok(AddonTitle, "addstatus:"+status+" addname:"+addon)
             if status == "apk":
-                xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
+                #xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
                 ADDONINSTALLER(addon,1)
+                enableAddons()
             if status == "update":
                 if not addoncheck(addon):
-                    xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
+                    #xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
                     ADDONINSTALLER(addon,2)
+                    enableAddons()
             if status == "add":
                 if not addoncheck(addon):
-                    xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
+                    #xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
                     ADDONINSTALLER(addon,0)
+                    enableAddons()
             if status == "remove":
-                if addoncheck(addon):
-                    xbmc.executebuiltin("Notification(Update Status,Removing:"+addon+",2000)")
+                if addondelcheck(addon):
+                    #xbmc.executebuiltin("Notification(Update Status,Removing:"+addon+",2000)")
                     FINDADDON(type,addon)
+                    #enableAddons()
     except:
         xbmc.executebuiltin("Notification(Update Status,No updates,10000)")
-        
+    xbmc.executebuiltin("XBMC.UpdateLocalAddons()")    
     #if (totadd > 0 or totremove > 0):
         #dialog = xbmcgui.Dialog()
         #dialog.ok(AddonTitle, "Adding:"+str(totadd)+" Removing:"+str(totremove))
@@ -420,7 +455,7 @@ def REMOVEADDON2(name,path):
     if os.path.exists(path):
          # remove if exists
          shutil.rmtree(path)
-    xbmc.executebuiltin("XBMC.UpdateLocalAddons()")
+    #xbmc.executebuiltin("XBMC.UpdateLocalAddons()")
     #dialog = xbmcgui.Dialog()
     #dialog.ok(AddonTitle, "nameComp:"+name+" name2:"+path)
     addonremoved(name)
@@ -500,6 +535,210 @@ def _pbhook2(numblocks,blocksize,filesize,url=None,dp=None):
     try: percent=min((numblocks*blocksize*100)/filesize,100); dp.update(percent)
     except: percent=100; dp.update(percent)
     if dp.iscanceled():  dp.close(); pass
+
+
+def SETICONS():
+    link=OPEN_URL('http://172.13.129.150/shortcut/shortcuts.txt')
+    shorts=re.compile('shortcut="(.+?)"').findall(link)
+    for shortname in shorts: xbmc.executebuiltin("Skin.SetString(%s)" % shortname)
+    #CLEARCACHE2('url');
+
+
+def enableAddons():
+	class enableAll():
+		def __init__(self):
+			self.databasepath = xbmc.translatePath('special://database/')
+			self.addons       = xbmc.translatePath('special://home/addons/')
+			self.dbfilename   = self.latestDB()
+			self.dbfilename   = os.path.join(self.databasepath, self.dbfilename)
+			if not os.path.exists(os.path.join(self.databasepath, self.dbfilename)):
+				xbmc.sleep(2000)
+				xbmcgui.Dialog().notification("AutoExec.py", "No Addons27.db file")
+				self.log("DB File not found.")
+				return False
+			
+			self.addonlist = glob.glob(os.path.join(self.addons, '*/'))
+			self.disabledAddons = []
+			for folder in sorted(self.addonlist, key = lambda x: x):
+				addonxml = os.path.join(folder, 'addon.xml')
+				if os.path.exists(addonxml):
+					fold   = folder.replace(self.addons, '')[1:-1]
+					f      = open(addonxml)
+					a      = f.read()
+					aid    = parseDOM(a, 'addon', ret='id')
+					f.close()
+					try:
+						if len(aid) > 0: add = aid[0]
+						else: add = fold
+						xadd    = xbmcaddon.Addon(id=add)
+					except:
+						try:
+							self.disabledAddons.append(add)
+						except:
+							self.log("Unabled to enable: %s" % folder, xbmc.LOGERROR)
+			if len(self.disabledAddons) > 0:
+				self.addonDatabase(self.disabledAddons, 1, True)
+			xbmc.executebuiltin('UpdateAddonRepos()')
+			xbmc.executebuiltin('UpdateLocalAddons()')
+			xbmc.executebuiltin("ReloadSkin()")
+			
+		def log(self, msg, level=xbmc.LOGNOTICE):
+			try:
+				if isinstance(msg, unicode):
+					msg = '%s' % (msg.encode('utf-8'))
+				#xbmc.log('[AutoExec.py]: %s' % msg, level)
+			except Exception as e:
+				try: xbmc.log('[AutoExec.py] Logging Failure: %s' % (e), xbmc.LOGERROR)
+				except: pass
+			
+		def latestDB(self, DB="Addons"):
+			match = glob.glob(os.path.join(self.databasepath,'%s*.db' % DB))
+			comp = '%s(.+?).db' % DB[1:]
+			highest = 0
+			for file in match:
+				try: check = int(re.compile(comp).findall(file)[0])
+				except Exception, e: check = 0; self.log(str(e))
+				if highest < check:
+					highest = check
+			return '%s%s.db' % (DB, highest)
+		
+		def addonDatabase(self, addon=None, state=1, array=False):
+			installedtime = str(datetime.now())[:-7]
+			if os.path.exists(self.dbfilename):
+				try:
+					textdb = database.connect(self.dbfilename)
+					textexe = textdb.cursor()
+				except Exception, e:
+					self.log("DB Connection Error: %s" % str(e), xbmc.LOGERROR)
+					return False
+			else: return False
+			try:
+				if array == False:
+					textexe.execute('INSERT or IGNORE into installed (addonID , enabled, installDate) VALUES (?,?,?)', (addon, state, installedtime,))
+					textexe.execute('UPDATE installed SET enabled = ? WHERE addonID = ? ', (state, addon,))
+				else:
+					for item in addon:
+						textexe.execute('INSERT or IGNORE into installed (addonID , enabled, installDate) VALUES (?,?,?)', (item, state, installedtime,))
+						textexe.execute('UPDATE installed SET enabled = ? WHERE addonID = ? ', (state, item,))
+				textdb.commit()
+				textexe.close()
+			except Exception, e:
+				self.log("Erroring enabling addon: %s" % addon, xbmc.LOGERROR)
+	
+	try:
+		#xbmcgui.Dialog().notification("AutoExec.py", "Starting Script...")
+		firstRun = enableAll()
+		#xbmcgui.Dialog().notification("AutoExec.py", "All Addons Enabled")
+		xbmcvfs.delete('special://userdata/autoexec.py')
+	except Exception, e:
+		#xbmcgui.Dialog().notification("AutoExec.py", "Error Check LogFile")
+		#xbmc.log(str(e), xbmc.LOGERROR)
+		xbmcvfs.delete('special://userdata/autoexec.py')
+
+def parseDOM(html, name=u"", attrs={}, ret=False):
+	# Copyright (C) 2010-2011 Tobias Ussing And Henrik Mosgaard Jensen
+	if isinstance(html, str):
+		try:
+			html = [html.decode("utf-8")]
+		except:
+			html = [html]
+	elif isinstance(html, unicode):
+		html = [html]
+	elif not isinstance(html, list):
+		return u""
+
+	if not name.strip():
+		return u""
+
+	ret_lst = []
+	for item in html:
+		temp_item = re.compile('(<[^>]*?\n[^>]*?>)').findall(item)
+		for match in temp_item:
+			item = item.replace(match, match.replace("\n", " "))
+
+		lst = []
+		for key in attrs:
+			lst2 = re.compile('(<' + name + '[^>]*?(?:' + key + '=[\'"]' + attrs[key] + '[\'"].*?>))', re.M | re.S).findall(item)
+			if len(lst2) == 0 and attrs[key].find(" ") == -1:
+				lst2 = re.compile('(<' + name + '[^>]*?(?:' + key + '=' + attrs[key] + '.*?>))', re.M | re.S).findall(item)
+
+			if len(lst) == 0:
+				lst = lst2
+				lst2 = []
+			else:
+				test = range(len(lst))
+				test.reverse()
+				for i in test:
+					if not lst[i] in lst2:
+						del(lst[i])
+
+		if len(lst) == 0 and attrs == {}:
+			lst = re.compile('(<' + name + '>)', re.M | re.S).findall(item)
+			if len(lst) == 0:
+				lst = re.compile('(<' + name + ' .*?>)', re.M | re.S).findall(item)
+
+		if isinstance(ret, str):
+			lst2 = []
+			for match in lst:
+				attr_lst = re.compile('<' + name + '.*?' + ret + '=([\'"].[^>]*?[\'"])>', re.M | re.S).findall(match)
+				if len(attr_lst) == 0:
+					attr_lst = re.compile('<' + name + '.*?' + ret + '=(.[^>]*?)>', re.M | re.S).findall(match)
+				for tmp in attr_lst:
+					cont_char = tmp[0]
+					if cont_char in "'\"":
+						if tmp.find('=' + cont_char, tmp.find(cont_char, 1)) > -1:
+							tmp = tmp[:tmp.find('=' + cont_char, tmp.find(cont_char, 1))]
+
+						if tmp.rfind(cont_char, 1) > -1:
+							tmp = tmp[1:tmp.rfind(cont_char)]
+					else:
+						if tmp.find(" ") > 0:
+							tmp = tmp[:tmp.find(" ")]
+						elif tmp.find("/") > 0:
+							tmp = tmp[:tmp.find("/")]
+						elif tmp.find(">") > 0:
+							tmp = tmp[:tmp.find(">")]
+
+					lst2.append(tmp.strip())
+			lst = lst2
+		else:
+			lst2 = []
+			for match in lst:
+				endstr = u"</" + name
+
+				start = item.find(match)
+				end = item.find(endstr, start)
+				pos = item.find("<" + name, start + 1 )
+
+				while pos < end and pos != -1:
+					tend = item.find(endstr, end + len(endstr))
+					if tend != -1:
+						end = tend
+					pos = item.find("<" + name, pos + 1)
+
+				if start == -1 and end == -1:
+					temp = u""
+				elif start > -1 and end > -1:
+					temp = item[start + len(match):end]
+				elif end > -1:
+					temp = item[:end]
+				elif start > -1:
+					temp = item[start + len(match):]
+
+				if ret:
+					endstr = item[end:item.find(">", item.find(endstr)) + 1]
+					temp = match + temp + endstr
+
+				item = item[item.find(temp, item.find(match)) + len(temp):]
+				lst2.append(temp)
+			lst = lst2
+		ret_lst += lst
+
+	return ret_lst
+	
+
+
+
 
 if (__name__ == "__main__"):
     log('Version %s started' % ADDONVERSION)

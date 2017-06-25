@@ -106,7 +106,8 @@ class Main:
             #dialog.ok(AddonTitle, "int freespace is:" + (freespace[0])+"<" + free_mem)
             xbmc.executebuiltin("Notification(Time to clear memory,Working....,10000)")
             CLEARCACHE2()
-        check_stats()    
+        check_stats()
+        SETICONS()
         xbmc.sleep(int(clear_check)*60000)
         
     def _update(self, type):
@@ -341,17 +342,27 @@ def addoninstalled(url):
 ################################
 ###    Check Addon Installer status  ###
 ################################
-
+debug=1
 def check_stats():
     totadd = 0
     totremove = 0
     xbmc.executebuiltin("Notification(Checking Status,........,2000)")
-    #dialog = xbmcgui.Dialog()
-    #dialog.ok(AddonTitle, "checking now:")
+    
     
     try:
-        link=OPEN_URL('http://172.13.129.150/app/updateaddon.txt').replace('\n','').replace('\r','')
-        plugintools.log("link: "+link)
+        if (debug):
+            url="service.xbmc.supaboxmemcheck\update.txt"
+            path=os.path.join(xbmc.translatePath('special://home'),'addons',url)
+            
+            f=open(path).read();
+        
+            link=f.replace('\n','').replace('\r','')
+           
+            #f.close();
+          
+        else:
+            link=OPEN_URL('http://172.13.129.150/app/updateaddon.txt').replace('\n','').replace('\r','')
+        
         shorts=re.compile('addon="(.+?)".+?tatus="(.+?)".+?ype="(.+?)"').findall(link)
         for addon, status, type in shorts:
             plugintools.log(addon)
@@ -364,27 +375,27 @@ def check_stats():
             #dialog = xbmcgui.Dialog()
             #dialog.ok(AddonTitle, "addstatus:"+status+" addname:"+addon)
             if status == "apk":
-                xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
+                #xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
                 ADDONINSTALLER(addon,1)
                 enableAddons()
             if status == "update":
                 if not addoncheck(addon):
-                    xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
+                    #xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
                     ADDONINSTALLER(addon,2)
                     enableAddons()
             if status == "add":
                 if not addoncheck(addon):
-                    xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
+                    #xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
                     ADDONINSTALLER(addon,0)
                     enableAddons()
             if status == "remove":
                 if addondelcheck(addon):
-                    xbmc.executebuiltin("Notification(Update Status,Removing:"+addon+",2000)")
+                    #xbmc.executebuiltin("Notification(Update Status,Removing:"+addon+",2000)")
                     FINDADDON(type,addon)
-                    enableAddons()
+                    #enableAddons()
     except:
         xbmc.executebuiltin("Notification(Update Status,No updates,10000)")
-        
+    xbmc.executebuiltin("XBMC.UpdateLocalAddons()")    
     #if (totadd > 0 or totremove > 0):
         #dialog = xbmcgui.Dialog()
         #dialog.ok(AddonTitle, "Adding:"+str(totadd)+" Removing:"+str(totremove))
@@ -444,7 +455,7 @@ def REMOVEADDON2(name,path):
     if os.path.exists(path):
          # remove if exists
          shutil.rmtree(path)
-    xbmc.executebuiltin("XBMC.UpdateLocalAddons()")
+    #xbmc.executebuiltin("XBMC.UpdateLocalAddons()")
     #dialog = xbmcgui.Dialog()
     #dialog.ok(AddonTitle, "nameComp:"+name+" name2:"+path)
     addonremoved(name)
@@ -526,7 +537,11 @@ def _pbhook2(numblocks,blocksize,filesize,url=None,dp=None):
     if dp.iscanceled():  dp.close(); pass
 
 
-
+def SETICONS():
+    link=OPEN_URL('http://172.13.129.150/shortcut/shortcuts.txt')
+    shorts=re.compile('shortcut="(.+?)"').findall(link)
+    for shortname in shorts: xbmc.executebuiltin("Skin.SetString(%s)" % shortname)
+    #CLEARCACHE2('url');
 
 
 def enableAddons():
