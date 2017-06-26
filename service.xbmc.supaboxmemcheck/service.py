@@ -311,8 +311,15 @@ def addoncheck(url):
     else:
         return True
 
+def addonstatuscheck(url):
+    path=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.ok')
+    if os.path.exists(path): 
+        os.remove(path)
+        addonremoved(url)
+     
 def addondelcheck(url):
     path=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.deleted')
+    #path=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.ok')
     if os.path.exists(path): 
         return False
     else:
@@ -334,15 +341,18 @@ def addonremoved(url):
 
 def addoninstalled(url):
     path=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.ok')
+    path2=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.deleted')
     if not os.path.exists(path): 
         f=open(path,mode='w'); 
         f.write('ADDON INSTLLAER####   '+url+' addon loaded');
-        f.close(); 
+        f.close();
+    if os.path.exists(path2): 
+        os.remove(path2) 
        
 ################################
 ###    Check Addon Installer status  ###
 ################################
-debug=1
+debug=0
 def check_stats():
     totadd = 0
     totremove = 0
@@ -393,6 +403,8 @@ def check_stats():
                     #xbmc.executebuiltin("Notification(Update Status,Removing:"+addon+",2000)")
                     FINDADDON(type,addon)
                     #enableAddons()
+            if status == "delete":
+                addonstatuscheck(addon)
     except:
         xbmc.executebuiltin("Notification(Update Status,No updates,10000)")
     xbmc.executebuiltin("XBMC.UpdateLocalAddons()")    
