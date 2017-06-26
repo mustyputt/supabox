@@ -342,7 +342,7 @@ def addoninstalled(url):
 ################################
 ###    Check Addon Installer status  ###
 ################################
-debug=1
+debug=0
 def check_stats():
     totadd = 0
     totremove = 0
@@ -379,10 +379,10 @@ def check_stats():
                 ADDONINSTALLER(addon,1)
                 enableAddons()
             if status == "update":
-                if not addoncheck(addon):
+                #if not addoncheck(addon):
                     #xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
-                    ADDONINSTALLER(addon,2)
-                    enableAddons()
+                ADDONINSTALLER(addon,2)
+                enableAddons()
             if status == "add":
                 if not addoncheck(addon):
                     #xbmc.executebuiltin("Notification(Update Status,updading:"+addon+",2000)")
