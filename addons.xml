@@ -225,7 +225,7 @@
 
 <addon id="service.xbmc.supaboxmemcheck"
       name="Memory Check"
-      version="1.0.10"
+      version="1.0.11"
       provider-name="Flaggsoft">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
