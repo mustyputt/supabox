@@ -313,9 +313,12 @@ def addoncheck(url):
 
 def addonstatuscheck(url):
     path=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.ok')
-    if os.path.exists(path): 
-        os.remove(path)
-        addonremoved(url)
+    path2=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.statremoved')
+    if ((os.path.exists(path)) and (not os.path.exits(path2))): 
+        os.remove(path) 
+        f=open(path2,mode='w'); 
+        f.write('ADDON INSTLLAER####   '+url+' addon loaded');
+        f.close();
      
 def addondelcheck(url):
     path=os.path.join(xbmc.translatePath('special://home'),'userdata',url+'.deleted')
